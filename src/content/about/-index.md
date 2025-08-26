@@ -7,13 +7,13 @@ draft: false
 what_i_do:
   title: "Zafus Myokan"
   items:
-  - title: "Content Writing"
+  - title: "Couture"
     description: "Purus eget ipsum elementum venenatis, quis rutrum mi semper nonpurus eget ipsum elementum venenatis."
   
-  - title: "Photography"
+  - title: "Zafus"
     description: "Aenean maximus urna magna elementum, quis rutrum mi semper non purus eget ipsum venenatis."
   
-  - title: "Web Research"
+  - title: "Méditation"
     description: "Aenean maximus urna magna elementum venenatis, quis semper non purus eget ipsum venenatis."
 
 ---
