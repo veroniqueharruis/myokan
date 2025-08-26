@@ -1,6 +1,6 @@
 {
   "site": {
-    "title": "Bookworm Light Astro | Blog Template",
+    "title": "Myokan zafus",
     "base_url": "https://bookworm-light-astro.vercel.app",
     "base_path": "/",
     "trailing_slash": false,
@@ -8,7 +8,7 @@
     "logo": "/images/logo.png",
     "logo_width": "200",
     "logo_height": "34",
-    "logo_text": "Bookworm Light"
+    "logo_text": "Myokan zafus"
   },
 
   "settings": {
@@ -17,19 +17,19 @@
   },
 
   "metadata": {
-    "meta_author": "Themefisher",
+    "meta_author": "Véronique Harruis",
     "meta_image": "/images/og-image.png",
-    "meta_description": "Bookworm Light Astro Blog Template"
+    "meta_description": "Zafus et accessoires zen"
   },
 
   "params": {
     "contact_form_action": "#",
-    "copyright": "Copyright © 2025 a theme by [Themefisher](https://themefisher.com)"
+    "copyright": "Copyright © 2025 Véronique Harruis"
   },
 
   "contactinfo": {
-    "address": "355 S Grand Ave <br/> Los Angeles, CA 90071",
+    "address": "Montpellier",
     "email": "veroniqueharruis@gmail.com",
-    "phone": "+800 567 1234"
+    "phone": "06 xxx"
   }
 }
