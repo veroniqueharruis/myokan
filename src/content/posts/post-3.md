@@ -1,5 +1,5 @@
 ---
-title: "Des zafus partout"
+title: "📜 Histoire et tradition"
 meta_title: ""
 description: "meta description"
 date: 2022-04-03T06:00:00+00:00
@@ -10,16 +10,9 @@ tags: ["diy", "toy"]
 draft: false
 ---
 
-Les zafu contemporains sont en tissu fort, généralement noir, et comportent trois pièces cousues : deux fonds circulaires et un grand rectangle qui les relie. Ils sont le plus souvent remplis de kapok ou de balles de millet. Le coussin relève les hanches, rendant plus stables les positions assises avec les jambes croisées.
 
-Nemo vel ad consectetur namut rutrum ex, venenatis sollicitudin urna. Aliquam erat volutpat. Integer eu ipsum sem. Ut bibendum lacus vestibulum maximus suscipit. Quisque vitae nibh iaculis neque blandit euismod.
+Le zafu est issu de la tradition bouddhique chinoise et japonaise.
 
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo vel ad consectetur ut aperiam. Itaque eligendi natus aperiam? Excepturi repellendus consequatur quibusdam optio expedita praesentium est adipisci dolorem ut eius!
+Selon la tradition, le Bouddha historique (Siddhārtha Gautama) aurait confectionné un coussin de méditation à partir d’herbes et de fibres naturelles.
 
-## Creative Design
-
-Nam ut rutrum ex, venenatis sollicitudin urna. Aliquam erat volutpat. Integer eu ipsum sem. Ut bibendum lacus vestibulum maximus suscipit. Quisque vitae nibh iaculis neque blandit euismod.
-
-> Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo vel ad consectetur ut aperiam. Itaque eligendi natus aperiam? Excepturi repellendus consequatur quibusdam optio expedita praesentium est adipisci dolorem ut eius!
-
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo vel ad consectetur ut aperiam. Itaque eligendi natus aperiam? Excepturi repellendus consequatur quibusdam optio expedita praesentium est adipisci dolorem ut eius!
+En Chine, les moines zen (Chan) reprirent cet usage, qui fut ensuite transmis au Japon, où le zafu est devenu l’accessoire standard du zazen.
