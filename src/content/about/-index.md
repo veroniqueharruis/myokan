@@ -14,7 +14,7 @@ what_i_do:
     description: "Aenean maximus urna magna elementum, quis rutrum mi semper non purus eget ipsum venenatis."
   
   - title: "Méditation"
-    description: "Aenean maximus urna magna elementum venenatis, quis semper non purus eget ipsum venenatis."
+    description: "Plus de 40 ans de pratique de zazen."
 
 ---
 
