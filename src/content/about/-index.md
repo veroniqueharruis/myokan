@@ -1,7 +1,7 @@
 ---
 title: "Véronique Myokan Harris, nonne zen et couturière"
 meta_title: "À propos"
-image: "/images/author.png"
+image: "/images/myokan.webp"
 draft: false
 
 what_i_do:
