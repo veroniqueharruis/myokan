@@ -8,7 +8,7 @@ what_i_do:
   title: "Zafus Myokan"
   items:
   - title: "Couture"
-    description: "Purus eget ipsum elementum venenatis, quis rutrum mi semper nonpurus eget ipsum elementum venenatis."
+    description: "Purus eget ipsum elementum venenatis, quis rutrum mi semper nonpurus eget ipsum "
   
   - title: "Zafus"
     description: "Aenean maximus urna magna elementum, quis rutrum mi semper non purus eget ipsum venenatis."
