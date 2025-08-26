@@ -3,7 +3,7 @@ title: "Zafu à remplir"
 meta_title: ""
 description: "meta description"
 date: 2022-04-03T06:00:00+00:00
-image: "/images/posts/03.jpg"
+image: "/images/posts/kapokier.webp"
 categories: ["art"]
 authors: ["Mark Dinn"]
 tags: ["diy", "toy"]
