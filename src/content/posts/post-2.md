@@ -1,5 +1,5 @@
 ---
-title: Why a balloon is a flexible bag
+title: "🧘‍♂️ Rôle du zafu dans la méditation"
 meta_title: ""
 description: "meta description"
 date: 2022-04-02T05:00:00Z
@@ -10,14 +10,12 @@ tags: ["diy", "toy"]
 draft: false
 ---
 
-Nemo vel ad consectetur namut rutrum ex, venenatis sollicitudin urna. Aliquam erat volutpat. Integer eu ipsum sem. Ut bibendum lacus vestibulum maximus suscipit. Quisque vitae nibh iaculis neque blandit euismod.
+Le zafu est un élément central de la pratique du zazen (méditation assise dans le bouddhisme zen).
 
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo vel ad consectetur ut aperiam. Itaque eligendi natus aperiam? Excepturi repellendus consequatur quibusdam optio expedita praesentium est adipisci dolorem ut eius!
+Il rehausse le bassin et permet d’incliner légèrement le bassin vers l’avant.
 
-## Creative Design
+Cette posture aide la colonne vertébrale à se maintenir droite et stable sans tension.
 
-Nam ut rutrum ex, venenatis sollicitudin urna. Aliquam erat volutpat. Integer eu ipsum sem. Ut bibendum lacus vestibulum maximus suscipit. Quisque vitae nibh iaculis neque blandit euismod.
+Il facilite la respiration abdominale et évite la fatigue musculaire lors de longues séances.
 
-> Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo vel ad consectetur ut aperiam. Itaque eligendi natus aperiam? Excepturi repellendus consequatur quibusdam optio expedita praesentium est adipisci dolorem ut eius!
-
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo vel ad consectetur ut aperiam. Itaque eligendi natus aperiam? Excepturi repellendus consequatur quibusdam optio expedita praesentium est adipisci dolorem ut eius!
+On l’utilise presque toujours posé sur un zabuton (coussin plat rectangulaire) qui protège les genoux et les chevilles du sol.
