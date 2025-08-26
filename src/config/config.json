@@ -1,7 +1,7 @@
 {
   "site": {
     "title": "Myokan zafus",
-    "base_url": "https://bookworm-light-astro.vercel.app",
+    "base_url": "https://myokan.vercel.app",
     "base_path": "/",
     "trailing_slash": false,
     "favicon": "/images/favicon.png",
@@ -12,8 +12,8 @@
   },
 
   "settings": {
-    "pagination": 5,
-    "summary_length": 100
+    "pagination": 1,
+    "summary_length": 106
   },
 
   "metadata": {

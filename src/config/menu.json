@@ -1,6 +1,10 @@
 {
   "main": [
     {
+      "name": "Zafus",
+      "url": "/zafus"
+    },
+    {
       "name": "À propos",
       "url": "/about"
     },
