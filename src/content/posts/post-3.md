@@ -1,5 +1,5 @@
 ---
-title: "📜 Histoire et tradition"
+title: "Zafu à remplir"
 meta_title: ""
 description: "meta description"
 date: 2022-04-03T06:00:00+00:00
@@ -11,8 +11,28 @@ draft: false
 ---
 
 
-Le zafu est issu de la tradition bouddhique chinoise et japonaise.
+3 formats
 
-Selon la tradition, le Bouddha historique (Siddhārtha Gautama) aurait confectionné un coussin de méditation à partir d’herbes et de fibres naturelles.
+Zafu  32cms H 20cms prix 30€
+Zafu standard 30cms H 15cms 27€
+Zafu de voyage 28cms H 13 cms 25€
 
-En Chine, les moines zen (Chan) reprirent cet usage, qui fut ensuite transmis au Japon, où le zafu est devenu l’accessoire standard du zazen.
+Zafus pleins:
+
+Zafu  32cms H 20cms prix 40€
+Zafu standard 30cms H 15cms 45€
+Zafu de voyage 28cms H 13 cms 50€
+
+100% coton
+
+5 couleurs :
+Noir /marron /rouge /vert /bleu
+
+Possibilité de demander une  couleur à votre convenance 
+Ex: rouge carmin, bleu turquoise, vert émeraude, etc.
+
+Je fabrique des zafus sur mesure.
+
+Le zafu est rempli à du kapok:
+Fibre végétale venant du kapokier, récoltée en Asie, Amérique, du Sud, Afrique.
+
