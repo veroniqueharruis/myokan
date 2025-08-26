@@ -1,5 +1,5 @@
 ---
-title: "Zolis zafus"
+title: "🌱 Origine et étymologie du mot zafu"
 meta_title: ""
 description: "meta description"
 date: 2022-04-01T05:00:00Z
@@ -10,14 +10,11 @@ tags: ["diy", "toy"]
 draft: false
 ---
 
-Mes zafus, ils sont zolis !
 
-Le zafu haut de gamme est un coussin de qualité extrêmement confortable pour pratiquer le yoga, la méditation, le pranayama et toutes les activités de relaxation. Il peut également servir de coussin nomade, de pouf autour d'une table basse ou bien lorsque vous jouez avec les enfants.
 
-## Creative Design
+座 (za) : « s’asseoir », « place ».
 
-Nam ut rutrum ex, venenatis sollicitudin urna. Aliquam erat volutpat. Integer eu ipsum sem. Ut bibendum lacus vestibulum maximus suscipit. Quisque vitae nibh iaculis neque blandit euismod.
+蒲 (fu) : « plante de marais », « jonc », utilisé autrefois comme matériau de rembourrage.
 
-> Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo vel ad consectetur ut aperiam. Itaque eligendi natus aperiam? Excepturi repellendus consequatur quibusdam optio expedita praesentium est adipisci dolorem ut eius!
+À l’origine, le zafu était donc un coussin de joncs pour s’asseoir. Avec le temps, il a évolué en un coussin rond et ferme, traditionnellement rempli de kapok (fibres végétales) ou de cosses de sarrasin.
 
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo vel ad consectetur ut aperiam. Itaque eligendi natus aperiam? Excepturi repellendus consequatur quibusdam optio expedita praesentium est adipisci dolorem ut eius!
