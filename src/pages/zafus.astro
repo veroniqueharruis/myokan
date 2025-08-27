@@ -49,8 +49,8 @@ const images = [
           </tr>
         </thead>
         <tbody class="divide-y divide-gray-200">
-          {zafus.map((zafu) => (
-            <tr>
+          {zafus.map((zafu, index) => (
+            <tr class={index % 2 === 0 ? "bg-white" : "bg-gray-50"}>
               <td class="px-4 py-2 text-gray-800 font-semibold">{zafu.name}</td>
               <td class="px-4 py-2 text-gray-700">{zafu.type}</td>
               <td class="px-4 py-2 text-gray-700">{zafu.height}</td>
