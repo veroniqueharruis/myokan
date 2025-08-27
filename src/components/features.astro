@@ -2,28 +2,69 @@
 import { Icon } from "astro-icon/components";
 
 const zafus = [
+  // Zafus à remplir
   {
     name: "Zafu à remplir",
-    dimensions: "32cm h 20cm",
+    height: "32cm",
+    width: "20cm",
     price: "30€",
+    type: "À remplir",
     icon: "bx:bxs-briefcase",
   },
   {
-    name: "Zafu standard",
-    dimensions: "30cm h 15cm",
+    name: "Zafu standard à remplir",
+    height: "30cm",
+    width: "15cm",
     price: "27€",
+    type: "À remplir",
     icon: "bx:bxs-window-alt",
   },
   {
-    name: "Zafu de voyage",
-    dimensions: "28cm h 13cm",
+    name: "Zafu de voyage à remplir",
+    height: "28cm",
+    width: "13cm",
     price: "25€",
+    type: "À remplir",
+    icon: "bx:bxs-data",
+  },
+  // Zafus pleins
+  {
+    name: "Zafu plein",
+    height: "32cm",
+    width: "20cm",
+    price: "40€",
+    type: "Plein",
+    icon: "bx:bxs-briefcase",
+  },
+  {
+    name: "Zafu standard plein",
+    height: "30cm",
+    width: "15cm",
+    price: "45€",
+    type: "Plein",
+    icon: "bx:bxs-window-alt",
+  },
+  {
+    name: "Zafu de voyage plein",
+    height: "28cm",
+    width: "13cm",
+    price: "50€",
+    type: "Plein",
     icon: "bx:bxs-data",
   },
 ];
+
+const zafuInfo = {
+  material: "100% coton",
+  colors: ["Noir", "Marron", "Rouge", "Vert", "Bleu"],
+  customColors: true,
+  filling: "Kapok (fibre végétale provenant du kapokier, récoltée en Asie, Amérique du Sud, Afrique)",
+  customMade: true,
+  orderEmail: "myokan@hotmail.fr",
+};
 ---
 
-<div class="mt-16">
+<div class="mt-16 px-4">
   <h2 class="text-4xl lg:text-5xl font-bold text-green-800">
     Des zafus partout !
   </h2>
@@ -36,8 +77,10 @@ const zafus = [
       <thead class="bg-green-100">
         <tr>
           <th class="px-4 py-2"></th>
-          <th class="px-4 py-2"></th>
-          <th class="px-4 py-2">Dimensions</th>
+          <th class="px-4 py-2">Nom</th>
+          <th class="px-4 py-2">Type</th>
+          <th class="px-4 py-2">Hauteur</th>
+          <th class="px-4 py-2">Largeur</th>
           <th class="px-4 py-2">Prix</th>
         </tr>
       </thead>
@@ -50,11 +93,24 @@ const zafus = [
               </div>
             </td>
             <td class="px-4 py-2 text-green-800 font-semibold">{zafu.name}</td>
-            <td class="px-4 py-2 text-green-700">{zafu.dimensions}</td>
+            <td class="px-4 py-2 text-green-700">{zafu.type}</td>
+            <td class="px-4 py-2 text-green-700">{zafu.height}</td>
+            <td class="px-4 py-2 text-green-700">{zafu.width}</td>
             <td class="px-4 py-2 text-green-700">{zafu.price}</td>
           </tr>
         ))}
       </tbody>
     </table>
+  </div>
+
+  <div class="mt-6 text-green-700">
+    <p><strong>Matériau :</strong> {zafuInfo.material}</p>
+    <p><strong>Couleurs disponibles :</strong> {zafuInfo.colors.join(" / ")}</p>
+    {zafuInfo.customColors && (
+      <p>Possibilité de demander une couleur à votre convenance (ex: rouge carmin, bleu turquoise, vert émeraude…)</p>
+    )}
+    <p><strong>Remplissage :</strong> {zafuInfo.filling}</p>
+    {zafuInfo.customMade && <p>Je fabrique des zafus sur mesure.</p>}
+    <p class="mt-4 font-semibold">Commandes par mail : <a href={`mailto:${zafuInfo.orderEmail}`} class="text-green-800 underline">{zafuInfo.orderEmail}</a></p>
   </div>
 </div>
