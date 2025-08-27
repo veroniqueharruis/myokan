@@ -1,0 +1,171 @@
+---
+import Base from "../layouts/Layout.astro";
+import { Icon } from "astro-icon/components";
+
+const zafus = [
+  // Zafus à remplir
+  {
+    name: "Zafu à remplir",
+    height: "32cm",
+    width: "20cm",
+    price: "30€",
+    type: "À remplir",
+    icon: "bx:bxs-briefcase",
+  },
+  {
+    name: "Zafu standard à remplir",
+    height: "30cm",
+    width: "15cm",
+    price: "27€",
+    type: "À remplir",
+    icon: "bx:bxs-window-alt",
+  },
+  {
+    name: "Zafu de voyage à remplir",
+    height: "28cm",
+    width: "13cm",
+    price: "25€",
+    type: "À remplir",
+    icon: "bx:bxs-data",
+  },
+  // Zafus pleins
+  {
+    name: "Zafu plein",
+    height: "32cm",
+    width: "20cm",
+    price: "40€",
+    type: "Plein",
+    icon: "bx:bxs-briefcase",
+  },
+  {
+    name: "Zafu standard plein",
+    height: "30cm",
+    width: "15cm",
+    price: "45€",
+    type: "Plein",
+    icon: "bx:bxs-window-alt",
+  },
+  {
+    name: "Zafu de voyage plein",
+    height: "28cm",
+    width: "13cm",
+    price: "50€",
+    type: "Plein",
+    icon: "bx:bxs-data",
+  },
+];
+
+const zafuInfo = {
+  material: "100% coton",
+  colors: ["Noir", "Marron", "Rouge", "Vert", "Bleu"],
+  customColors: true,
+  filling:
+    "Kapok (fibre végétale provenant du kapokier, récoltée en Asie, Amérique du Sud, Afrique)",
+  customMade: true,
+  orderEmail: "myokan@hotmail.fr",
+};
+
+const images = [
+  "FB_IMG_1756283080119.webp",
+  "FB_IMG_1756283083798.webp",
+  "FB_IMG_1756283086911.webp",
+  "FB_IMG_1756283090242.webp",
+  "FB_IMG_1756283093869.webp",
+  "FB_IMG_1756283102483.webp",
+  "FB_IMG_1756283105974.webp",
+  "FB_IMG_1756283154325.webp",
+  "FB_IMG_1756283186686.webp",
+  "FB_IMG_1756283189697.webp",
+  "FB_IMG_1756283192405.webp",
+  "FB_IMG_1756283194924.webp",
+  "FB_IMG_1756283204194.webp",
+];
+---
+
+<Base title="Zafus artisanaux">
+  <main class="mt-16 px-4 max-w-6xl mx-auto">
+    <h2 class="text-4xl lg:text-5xl font-bold text-green-800">
+      Des zafus partout&nbsp;!
+    </h2>
+    <p class="text-lg mt-4 text-green-600">
+      Zafus artisanaux réalisés dans la tradition par une nonne zen.
+    </p>
+
+    <!-- Tableau -->
+    <div class="overflow-x-auto mt-8">
+      <table
+        class="min-w-full border border-green-200 divide-y divide-green-200 text-left"
+      >
+        <thead class="bg-green-100">
+          <tr>
+            <th class="px-4 py-2"></th>
+            <th class="px-4 py-2">Nom</th>
+            <th class="px-4 py-2">Type</th>
+            <th class="px-4 py-2">Hauteur</th>
+            <th class="px-4 py-2">Largeur</th>
+            <th class="px-4 py-2">Prix</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-green-200">
+          {zafus.map((zafu) => (
+            <tr>
+              <td class="px-4 py-2">
+                <div
+                  class="bg-green-800 rounded-full p-2 w-8 h-8 flex items-center justify-center"
+                >
+                  <Icon class="text-white" name={zafu.icon} />
+                </div>
+              </td>
+              <td class="px-4 py-2 text-green-800 font-semibold">
+                {zafu.name}
+              </td>
+              <td class="px-4 py-2 text-green-700">{zafu.type}</td>
+              <td class="px-4 py-2 text-green-700">{zafu.height}</td>
+              <td class="px-4 py-2 text-green-700">{zafu.width}</td>
+              <td class="px-4 py-2 text-green-700">{zafu.price}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Infos -->
+    <div class="mt-6 text-green-700">
+      <p><strong>Matériau&nbsp;:</strong> {zafuInfo.material}</p>
+      <p>
+        <strong>Couleurs disponibles&nbsp;:</strong>{" "}
+        {zafuInfo.colors.join(" / ")}
+      </p>
+      {zafuInfo.customColors && (
+        <p>
+          Possibilité de demander une couleur à votre convenance (ex: rouge
+          carmin, bleu turquoise, vert émeraude…)
+        </p>
+      )}
+      <p><strong>Remplissage&nbsp;:</strong> {zafuInfo.filling}</p>
+      {zafuInfo.customMade && <p>Je fabrique des zafus sur mesure.</p>}
+      <p class="mt-4 font-semibold">
+        Commandes par mail :{" "}
+        <a
+          href={`mailto:${zafuInfo.orderEmail}`}
+          class="text-green-800 underline"
+          >{zafuInfo.orderEmail}</a
+        >
+      </p>
+    </div>
+
+    <!-- Galerie -->
+    <div class="mt-12">
+      <h3 class="text-2xl font-bold text-green-800 mb-4">Galerie</h3>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+        {images.map((src) => (
+          <img
+            src={src}
+            alt="Zafu"
+            class="rounded-lg shadow-md w-full object-cover"
+          />
+        ))}
+      </div>
+    </div>
+  </main>
+</Base>
