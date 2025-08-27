@@ -10,20 +10,18 @@ import { Icon } from "astro-icon/components";
   <Container>
     <Sectionhead>
       <Fragment slot="title">Contact</Fragment>
-      <Fragment slot="desc">We are here to help.</Fragment>
+      <Fragment slot="desc">Merci d'effectuer vos commandes par mail !</Fragment>
     </Sectionhead>
 
     <div class="grid md:grid-cols-2 gap-10 mx-auto max-w-4xl mt-16">
       <div>
-        <h2 class="font-medium text-2xl text-green-800">Contactez Véronique</h2>
+        <h2 class="font-medium text-2xl text-green-800">Contactez-moi</h2>
         <p class="text-lg leading-relaxed text-green-600 mt-3">
-          Have something to say? We are here to help. Fill up the form or send
-          an email or call.
-        </p>
+Réponse sous quelques jours.       </p>
         <div class="mt-5">
           <div class="flex items-center mt-2 space-x-2 text-green-700">
             <Icon class="text-green-400 w-4 h-4" name="uil:map-marker" />
-            <span>1734 Sanfransico, CA 93063</span>
+            <span>Montpellier, France</span>
           </div>
           <div class="flex items-center mt-2 space-x-2 text-green-700">
             <Icon class="text-green-400 w-4 h-4" name="uil:envelope" />
@@ -31,16 +29,7 @@ import { Icon } from "astro-icon/components";
               myokan@hotmail.fr
             </a>
           </div>
-          <div class="flex items-center mt-2 space-x-2 text-green-700">
-            <Icon class="text-green-400 w-4 h-4" name="uil:phone" />
-            <a href="tel:+1 (987) 4587 899" class="hover:text-green-900">
-              +1 (987) 4587 899
-            </a>
-          </div>
         </div>
-      </div>
-      <div>
-        <Contactform />
       </div>
     </div>
   </Container>
