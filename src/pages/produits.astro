@@ -3,64 +3,19 @@ import Base from "../layouts/Layout.astro";
 import { Icon } from "astro-icon/components";
 
 const zafus = [
-  // Zafus à remplir
-  {
-    name: "Zafu à remplir",
-    height: "32cm",
-    width: "20cm",
-    price: "30€",
-    type: "À remplir",
-    icon: "bx:bxs-briefcase",
-  },
-  {
-    name: "Zafu standard à remplir",
-    height: "30cm",
-    width: "15cm",
-    price: "27€",
-    type: "À remplir",
-    icon: "bx:bxs-window-alt",
-  },
-  {
-    name: "Zafu de voyage à remplir",
-    height: "28cm",
-    width: "13cm",
-    price: "25€",
-    type: "À remplir",
-    icon: "bx:bxs-data",
-  },
-  // Zafus pleins
-  {
-    name: "Zafu plein",
-    height: "32cm",
-    width: "20cm",
-    price: "40€",
-    type: "Plein",
-    icon: "bx:bxs-briefcase",
-  },
-  {
-    name: "Zafu standard plein",
-    height: "30cm",
-    width: "15cm",
-    price: "45€",
-    type: "Plein",
-    icon: "bx:bxs-window-alt",
-  },
-  {
-    name: "Zafu de voyage plein",
-    height: "28cm",
-    width: "13cm",
-    price: "50€",
-    type: "Plein",
-    icon: "bx:bxs-data",
-  },
+  { name: "Zafu à remplir", height: "32cm", width: "20cm", price: "30€", type: "À remplir", icon: "bx:bxs-briefcase" },
+  { name: "Zafu standard à remplir", height: "30cm", width: "15cm", price: "27€", type: "À remplir", icon: "bx:bxs-window-alt" },
+  { name: "Zafu de voyage à remplir", height: "28cm", width: "13cm", price: "25€", type: "À remplir", icon: "bx:bxs-data" },
+  { name: "Zafu plein", height: "32cm", width: "20cm", price: "40€", type: "Plein", icon: "bx:bxs-briefcase" },
+  { name: "Zafu standard plein", height: "30cm", width: "15cm", price: "45€", type: "Plein", icon: "bx:bxs-window-alt" },
+  { name: "Zafu de voyage plein", height: "28cm", width: "13cm", price: "50€", type: "Plein", icon: "bx:bxs-data" },
 ];
 
 const zafuInfo = {
   material: "100% coton",
   colors: ["Noir", "Marron", "Rouge", "Vert", "Bleu"],
   customColors: true,
-  filling:
-    "Kapok (fibre végétale provenant du kapokier, récoltée en Asie, Amérique du Sud, Afrique)",
+  filling: "Kapok (fibre végétale provenant du kapokier, récoltée en Asie, Amérique du Sud, Afrique)",
   customMade: true,
   orderEmail: "myokan@hotmail.fr",
 };
@@ -84,18 +39,12 @@ const images = [
 
 <Base title="Zafus artisanaux">
   <main class="mt-16 px-4 max-w-6xl mx-auto">
-    <h2 class="text-4xl lg:text-5xl font-bold text-green-800">
-      Des zafus partout&nbsp;!
-    </h2>
-    <p class="text-lg mt-4 text-green-600">
-      Zafus artisanaux réalisés dans la tradition par une nonne zen.
-    </p>
+    <h2 class="text-4xl lg:text-5xl font-bold text-green-800">Des zafus partout&nbsp;!</h2>
+    <p class="text-lg mt-4 text-green-600">Zafus artisanaux réalisés dans la tradition par une nonne zen.</p>
 
     <!-- Tableau -->
     <div class="overflow-x-auto mt-8">
-      <table
-        class="min-w-full border border-green-200 divide-y divide-green-200 text-left"
-      >
+      <table class="min-w-full border border-green-200 divide-y divide-green-200 text-left">
         <thead class="bg-green-100">
           <tr>
             <th class="px-4 py-2"></th>
@@ -110,15 +59,11 @@ const images = [
           {zafus.map((zafu) => (
             <tr>
               <td class="px-4 py-2">
-                <div
-                  class="bg-green-800 rounded-full p-2 w-8 h-8 flex items-center justify-center"
-                >
+                <div class="bg-green-800 rounded-full p-2 w-8 h-8 flex items-center justify-center">
                   <Icon class="text-white" name={zafu.icon} />
                 </div>
               </td>
-              <td class="px-4 py-2 text-green-800 font-semibold">
-                {zafu.name}
-              </td>
+              <td class="px-4 py-2 text-green-800 font-semibold">{zafu.name}</td>
               <td class="px-4 py-2 text-green-700">{zafu.type}</td>
               <td class="px-4 py-2 text-green-700">{zafu.height}</td>
               <td class="px-4 py-2 text-green-700">{zafu.width}</td>
@@ -132,75 +77,73 @@ const images = [
     <!-- Infos -->
     <div class="mt-6 text-green-700">
       <p><strong>Matériau&nbsp;:</strong> {zafuInfo.material}</p>
-      <p>
-        <strong>Couleurs disponibles&nbsp;:</strong>{" "}
-        {zafuInfo.colors.join(" / ")}
-      </p>
-      {zafuInfo.customColors && (
-        <p>
-          Possibilité de demander une couleur à votre convenance (ex: rouge
-          carmin, bleu turquoise, vert émeraude…)
-        </p>
-      )}
+      <p><strong>Couleurs disponibles&nbsp;:</strong> {zafuInfo.colors.join(" / ")}</p>
+      {zafuInfo.customColors && <p>Possibilité de demander une couleur à votre convenance (ex: rouge carmin, bleu turquoise, vert émeraude…)</p>}
       <p><strong>Remplissage&nbsp;:</strong> {zafuInfo.filling}</p>
       {zafuInfo.customMade && <p>Je fabrique des zafus sur mesure.</p>}
-      <p class="mt-4 font-semibold">
-        Commandes par mail :{" "}
-        <a
-          href={`mailto:${zafuInfo.orderEmail}`}
-          class="text-green-800 underline"
-          >{zafuInfo.orderEmail}</a
-        >
-      </p>
+      <p class="mt-4 font-semibold">Commandes par mail : <a href={`mailto:${zafuInfo.orderEmail}`} class="text-green-800 underline">{zafuInfo.orderEmail}</a></p>
     </div>
 
     <!-- Galerie -->
     <div class="mt-12">
       <h3 class="text-2xl font-bold text-green-800 mb-4">Galerie</h3>
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-        {images.map((src) => (
+        {images.map((src, index) => (
           <img
             src={src}
             alt="Zafu"
             class="rounded-lg shadow-md w-full object-cover cursor-pointer hover:opacity-80 transition"
-            data-lightbox
+            data-index={index}
           />
         ))}
       </div>
     </div>
-
-    <!-- Lightbox -->
-    <div
-      id="lightbox"
-      class="fixed inset-0 bg-black bg-opacity-80 hidden items-center justify-center z-50"
-    >
-      <img
-        id="lightbox-img"
-        src=""
-        alt="Zafu agrandi"
-        class="max-h-[90%] max-w-[90%] rounded-lg shadow-xl"
-      />
-    </div>
   </main>
 
-  <script is:inline>
-    document.addEventListener("DOMContentLoaded", () => {
-      const images = document.querySelectorAll("[data-lightbox]");
-      const lightbox = document.getElementById("lightbox");
-      const img = document.getElementById("lightbox-img");
+  <!-- Lightbox placé en dehors de <main>, pour qu'il couvre toujours l'écran -->
+  <div id="lightbox" class="fixed inset-0 bg-black bg-opacity-80 hidden items-center justify-center z-50">
+    <button id="prev" class="absolute left-4 text-white text-3xl top-1/2 -translate-y-1/2">&#10094;</button>
+    <img id="lightbox-img" src="" alt="Zafu agrandi" class="max-h-[90%] max-w-[90%] rounded-lg shadow-xl" />
+    <button id="next" class="absolute right-4 text-white text-3xl top-1/2 -translate-y-1/2">&#10095;</button>
+  </div>
 
-      images.forEach((image) => {
-        image.addEventListener("click", () => {
-          img.src = image.getAttribute("src");
-          lightbox.classList.remove("hidden");
-          lightbox.classList.add("flex");
-        });
-      });
+  <script is:inline client:load>
+    const images = document.querySelectorAll("[data-index]");
+    const lightbox = document.getElementById("lightbox");
+    const img = document.getElementById("lightbox-img");
+    const prevBtn = document.getElementById("prev");
+    const nextBtn = document.getElementById("next");
 
-      lightbox.addEventListener("click", () => {
-        lightbox.classList.add("hidden");
-        lightbox.classList.remove("flex");
-      });
+    let currentIndex = 0;
+
+    function showLightbox(index) {
+      currentIndex = index;
+      img.src = images[currentIndex].getAttribute("src");
+      lightbox.classList.remove("hidden");
+      lightbox.classList.add("flex");
+    }
+
+    function hideLightbox() {
+      lightbox.classList.add("hidden");
+      lightbox.classList.remove("flex");
+    }
+
+    function showPrev() {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      img.src = images[currentIndex].getAttribute("src");
+    }
+
+    function showNext() {
+      currentIndex = (currentIndex + 1) % images.length;
+      img.src = images[currentIndex].getAttribute("src");
+    }
+
+    images.forEach((image, index) => {
+      image.addEventListener("click", () => showLightbox(index));
     });
+
+    prevBtn.addEventListener("click", (e) => { e.stopPropagation(); showPrev(); });
+    nextBtn.addEventListener("click", (e) => { e.stopPropagation(); showNext(); });
+    lightbox.addEventListener("click", hideLightbox);
   </script>
 </Base>
