@@ -3,12 +3,12 @@ import Base from "../layouts/Layout.astro";
 import { Icon } from "astro-icon/components";
 
 const zafus = [
-  { name: "Zafu à remplir", height: "32cm", width: "20cm", price: "30€", type: "À remplir", icon: "bx:bxs-briefcase" },
-  { name: "Zafu standard à remplir", height: "30cm", width: "15cm", price: "27€", type: "À remplir", icon: "bx:bxs-window-alt" },
-  { name: "Zafu de voyage à remplir", height: "28cm", width: "13cm", price: "25€", type: "À remplir", icon: "bx:bxs-data" },
-  { name: "Zafu plein", height: "32cm", width: "20cm", price: "40€", type: "Plein", icon: "bx:bxs-briefcase" },
-  { name: "Zafu standard plein", height: "30cm", width: "15cm", price: "45€", type: "Plein", icon: "bx:bxs-window-alt" },
-  { name: "Zafu de voyage plein", height: "28cm", width: "13cm", price: "50€", type: "Plein", icon: "bx:bxs-data" },
+  { name: "Zafu de voyage", height: "28cm", width: "13cm", price: "25€", type: "À remplir", icon: "bx:bxs-data" },
+  { name: "Zafu standard", height: "30cm", width: "15cm", price: "27€", type: "À remplir", icon: "bx:bxs-window-alt" },
+  { name: "Zafu haut", height: "32cm", width: "20cm", price: "30€", type: "À remplir", icon: "bx:bxs-briefcase" },
+  { name: "Zafu de voyage", height: "28cm", width: "13cm", price: "50€", type: "Plein", icon: "bx:bxs-data" },
+  { name: "Zafu standard", height: "30cm", width: "15cm", price: "45€", type: "Plein", icon: "bx:bxs-window-alt" },
+  { name: "Zafu haut", height: "32cm", width: "20cm", price: "40€", type: "Plein", icon: "bx:bxs-briefcase" },
 ];
 
 const zafuInfo = {
@@ -28,7 +28,7 @@ const images = [
   "zafu-vide-framboise.webp",
   "zafus-pile.webp",
   "zafu-bleu-fonce.webp",  
-  ];
+];
 ---
 
 <Base title="Zafus artisanaux">
@@ -41,7 +41,6 @@ const images = [
       <table class="min-w-full border border-gray-200 divide-y divide-gray-200 text-left">
         <thead class="bg-gray-100">
           <tr>
-            <th class="px-4 py-2"></th>
             <th class="px-4 py-2">Nom</th>
             <th class="px-4 py-2">Type</th>
             <th class="px-4 py-2">Hauteur</th>
@@ -52,11 +51,6 @@ const images = [
         <tbody class="divide-y divide-gray-200">
           {zafus.map((zafu) => (
             <tr>
-              <td class="px-4 py-2">
-                <div class="bg-gray-800 rounded-full p-2 w-8 h-8 flex items-center justify-center">
-                  <Icon class="text-white" name={zafu.icon} />
-                </div>
-              </td>
               <td class="px-4 py-2 text-gray-800 font-semibold">{zafu.name}</td>
               <td class="px-4 py-2 text-gray-700">{zafu.type}</td>
               <td class="px-4 py-2 text-gray-700">{zafu.height}</td>
