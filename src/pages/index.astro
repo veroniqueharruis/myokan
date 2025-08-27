@@ -10,7 +10,21 @@ const posts = await getSinglePage("posts");
 const sortedPosts = sortByDate(posts);
 const totalPages = Math.ceil(posts.length / config.settings.pagination);
 const currentPosts = sortedPosts.slice(0, config.settings.pagination);
+
 ---
+
+<html lang="en">
+  <head>
+    <meta http-equiv="refresh" content="0; url=/zafus" />
+    <link rel="canonical" href="/zafus" />
+  </head>
+  <body>
+    <p>Redirecting to <a href="/zafus">/zafus</a>…</p>
+    <script>
+      window.location.href = "/zafus";
+    </script>
+  </body>
+</html>
 
 <Base>
   <section class="section">
