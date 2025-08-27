@@ -19,8 +19,8 @@ async function getHighlighter() {
 
 // https://astro.build/config
 export default defineConfig({
-  site: config.site.base_url ? config.site.base_url : "https://myokan.vercel.app/zafus",
-  base: config.site.base_path ? config.site.base_path : "/",
+  site: config.site.base_url ? config.site.base_url : "https://myokan.vercel.app/",
+  base: config.site.base_path ? config.site.base_path : "/zafus",
   trailingSlash: config.site.trailing_slash ? "always" : "never",
   vite: { plugins: [tailwindcss()] },
   integrations: [
