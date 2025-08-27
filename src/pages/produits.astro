@@ -162,10 +162,45 @@ const images = [
           <img
             src={src}
             alt="Zafu"
-            class="rounded-lg shadow-md w-full object-cover"
+            class="rounded-lg shadow-md w-full object-cover cursor-pointer hover:opacity-80 transition"
+            data-lightbox
           />
         ))}
       </div>
     </div>
+
+    <!-- Lightbox -->
+    <div
+      id="lightbox"
+      class="fixed inset-0 bg-black bg-opacity-80 hidden items-center justify-center z-50"
+    >
+      <img
+        id="lightbox-img"
+        src=""
+        alt="Zafu agrandi"
+        class="max-h-[90%] max-w-[90%] rounded-lg shadow-xl"
+      />
+    </div>
   </main>
+
+  <script is:inline>
+    document.addEventListener("DOMContentLoaded", () => {
+      const images = document.querySelectorAll("[data-lightbox]");
+      const lightbox = document.getElementById("lightbox");
+      const img = document.getElementById("lightbox-img");
+
+      images.forEach((image) => {
+        image.addEventListener("click", () => {
+          img.src = image.getAttribute("src");
+          lightbox.classList.remove("hidden");
+          lightbox.classList.add("flex");
+        });
+      });
+
+      lightbox.addEventListener("click", () => {
+        lightbox.classList.add("hidden");
+        lightbox.classList.remove("flex");
+      });
+    });
+  </script>
 </Base>
