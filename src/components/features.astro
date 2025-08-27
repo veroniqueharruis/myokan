@@ -62,6 +62,22 @@ const zafuInfo = {
   customMade: true,
   orderEmail: "myokan@hotmail.fr",
 };
+
+const images = [
+  "/src/assets/FB_IMG_1756283080119.webp",
+  "/src/assets/FB_IMG_1756283083798.webp",
+  "/src/assets/FB_IMG_1756283086911.webp",
+  "/src/assets/FB_IMG_1756283090242.webp",
+  "/src/assets/FB_IMG_1756283093869.webp",
+  "/src/assets/FB_IMG_1756283102483.webp",
+  "/src/assets/FB_IMG_1756283105974.webp",
+  "/src/assets/FB_IMG_1756283154325.webp",
+  "/src/assets/FB_IMG_1756283186686.webp",
+  "/src/assets/FB_IMG_1756283189697.webp",
+  "/src/assets/FB_IMG_1756283192405.webp",
+  "/src/assets/FB_IMG_1756283194924.webp",
+  "/src/assets/FB_IMG_1756283204194.webp",
+];
 ---
 
 <div class="mt-16 px-4">
@@ -112,5 +128,15 @@ const zafuInfo = {
     <p><strong>Remplissage :</strong> {zafuInfo.filling}</p>
     {zafuInfo.customMade && <p>Je fabrique des zafus sur mesure.</p>}
     <p class="mt-4 font-semibold">Commandes par mail : <a href={`mailto:${zafuInfo.orderEmail}`} class="text-green-800 underline">{zafuInfo.orderEmail}</a></p>
+  </div>
+
+  <!-- Images section -->
+  <div class="mt-12">
+    <h3 class="text-2xl font-bold text-green-800 mb-4">Galerie des Zafus</h3>
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+      {images.map((src) => (
+        <img src={src} alt="Zafu" class="rounded-lg shadow-md w-full object-cover" />
+      ))}
+    </div>
   </div>
 </div>
