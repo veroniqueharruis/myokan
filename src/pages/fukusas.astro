@@ -2,24 +2,6 @@
 import Base from "../layouts/Layout.astro";
 import { Icon } from "astro-icon/components";
 
-const zafus = [
-  { name: "Zafu à remplir", height: "32cm", width: "20cm", price: "30€", type: "À remplir", icon: "bx:bxs-briefcase" },
-  { name: "Zafu standard à remplir", height: "30cm", width: "15cm", price: "27€", type: "À remplir", icon: "bx:bxs-window-alt" },
-  { name: "Zafu de voyage à remplir", height: "28cm", width: "13cm", price: "25€", type: "À remplir", icon: "bx:bxs-data" },
-  { name: "Zafu plein", height: "32cm", width: "20cm", price: "40€", type: "Plein", icon: "bx:bxs-briefcase" },
-  { name: "Zafu standard plein", height: "30cm", width: "15cm", price: "45€", type: "Plein", icon: "bx:bxs-window-alt" },
-  { name: "Zafu de voyage plein", height: "28cm", width: "13cm", price: "50€", type: "Plein", icon: "bx:bxs-data" },
-];
-
-const zafuInfo = {
-  material: "100% coton",
-  colors: ["Noir", "Marron", "Rouge", "Vert", "Bleu"],
-  customColors: true,
-  filling: "Kapok (fibre végétale provenant du kapokier, récoltée en Asie, Amérique du Sud, Afrique)",
-  customMade: true,
-  orderEmail: "myokan@hotmail.fr",
-};
-
 const images = [
   "fukusa-FB_IMG_1756283080119.webp",
   "fukusa-bleu-jaune.webp",
@@ -30,7 +12,7 @@ const images = [
 ];
 ---
 
-<Base title="Zafus artisanaux">
+<Base title="Fukusas artisanaux">
   <main class="mt-16 px-4 max-w-6xl mx-auto">
     <h2 class="text-4xl lg:text-5xl font-bold text-gray-800">Accessoires zen</h2>
     <p class="text-lg mt-4 text-gray-600">Les fukusas sont des pièces de tissu utilisées par les moines et nonnes zen pour protéger leur bol oryoki. </p>
@@ -43,7 +25,7 @@ const images = [
         {images.map((src, index) => (
           <img
             src={src}
-            alt="Zafu"
+            alt="Fukusa"
             class="rounded-lg shadow-md w-full object-cover cursor-pointer hover:opacity-80 transition"
             data-index={index}
           />
@@ -55,7 +37,7 @@ const images = [
   <!-- Lightbox -->
   <div id="lightbox" class="fixed inset-0 bg-black bg-opacity-80 hidden items-center justify-center z-50">
     <button id="prev" class="absolute left-4 text-white text-3xl top-1/2 -translate-y-1/2">&#10094;</button>
-    <img id="lightbox-img" src="" alt="Zafu agrandi" class="max-h-[90%] max-w-[90%] rounded-lg shadow-xl" />
+    <img id="lightbox-img" src="" alt="Fukusa" class="max-h-[90%] max-w-[90%] rounded-lg shadow-xl" />
     <button id="next" class="absolute right-4 text-white text-3xl top-1/2 -translate-y-1/2">&#10095;</button>
   </div>
 
