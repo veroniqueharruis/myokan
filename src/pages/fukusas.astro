@@ -32,50 +32,9 @@ const images = [
 
 <Base title="Zafus artisanaux">
   <main class="mt-16 px-4 max-w-6xl mx-auto">
-    <h2 class="text-4xl lg:text-5xl font-bold text-gray-800">Des zafus partout&nbsp;!</h2>
-    <p class="text-lg mt-4 text-gray-600">Zafus artisanaux réalisés dans la tradition par une nonne zen.</p>
+    <h2 class="text-4xl lg:text-5xl font-bold text-gray-800">Accessoires zen&nbsp;!</h2>
+    <p class="text-lg mt-4 text-gray-600">Les fukusas sont des pièces de tissu utilisées par les moines et nonnes zen pour protéger leur bol oryoki. </p>
 
-    <!-- Tableau -->
-    <div class="overflow-x-auto mt-8">
-      <table class="min-w-full border border-gray-200 divide-y divide-gray-200 text-left">
-        <thead class="bg-gray-100">
-          <tr>
-            <th class="px-4 py-2"></th>
-            <th class="px-4 py-2">Nom</th>
-            <th class="px-4 py-2">Type</th>
-            <th class="px-4 py-2">Hauteur</th>
-            <th class="px-4 py-2">Largeur</th>
-            <th class="px-4 py-2">Prix</th>
-          </tr>
-        </thead>
-        <tbody class="divide-y divide-gray-200">
-          {zafus.map((zafu) => (
-            <tr>
-              <td class="px-4 py-2">
-                <div class="bg-gray-800 rounded-full p-2 w-8 h-8 flex items-center justify-center">
-                  <Icon class="text-white" name={zafu.icon} />
-                </div>
-              </td>
-              <td class="px-4 py-2 text-gray-800 font-semibold">{zafu.name}</td>
-              <td class="px-4 py-2 text-gray-700">{zafu.type}</td>
-              <td class="px-4 py-2 text-gray-700">{zafu.height}</td>
-              <td class="px-4 py-2 text-gray-700">{zafu.width}</td>
-              <td class="px-4 py-2 text-gray-700">{zafu.price}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-
-    <!-- Infos -->
-    <div class="mt-6 text-gray-700">
-      <p><strong>Matériau&nbsp;:</strong> {zafuInfo.material}</p>
-      <p><strong>Couleurs disponibles&nbsp;:</strong> {zafuInfo.colors.join(" / ")}</p>
-      {zafuInfo.customColors && <p>Possibilité de demander une couleur à votre convenance (ex: rouge carmin, bleu turquoise, vert émeraude…)</p>}
-      <p><strong>Remplissage&nbsp;:</strong> {zafuInfo.filling}</p>
-      {zafuInfo.customMade && <p>Je fabrique des zafus sur mesure.</p>}
-      <p class="mt-4 font-semibold">Commandes par mail : <a href={`mailto:${zafuInfo.orderEmail}`} class="text-gray-800 underline">{zafuInfo.orderEmail}</a></p>
-    </div>
 
     <!-- Galerie -->
     <div class="mt-12">
