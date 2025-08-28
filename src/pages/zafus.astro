@@ -3,12 +3,12 @@ import Base from "../layouts/Layout.astro";
 import { Icon } from "astro-icon/components";
 
 const zafus = [
-  { name: "Zafu de voyage", height: "28cm", width: "13cm", price: "25€", type: "À remplir", icon: "bx:bxs-data" },
-  { name: "Zafu standard", height: "30cm", width: "15cm", price: "27€", type: "À remplir", icon: "bx:bxs-window-alt" },
-  { name: "Zafu haut", height: "32cm", width: "20cm", price: "30€", type: "À remplir", icon: "bx:bxs-briefcase" },
-  { name: "Zafu de voyage", height: "28cm", width: "13cm", price: "50€", type: "Plein", icon: "bx:bxs-data" },
-  { name: "Zafu standard", height: "30cm", width: "15cm", price: "45€", type: "Plein", icon: "bx:bxs-window-alt" },
-  { name: "Zafu haut", height: "32cm", width: "20cm", price: "40€", type: "Plein", icon: "bx:bxs-briefcase" },
+  { name: "S", height: "28", width: "13", price: "25", type: "Vide", icon: "bx:bxs-data" },
+  { name: "    M", height: "30", width: "15", price: "27", type: "Vide", icon: "bx:bxs-window-alt" },
+  { name: "L", height: "32", width: "20", price: "30", type: "Vide", icon: "bx:bxs-briefcase" },
+  { name: "S", height: "28", width: "13", price: "50", type: "Plein", icon: "bx:bxs-data" },
+  { name: "M", height: "30", width: "15", price: "45", type: "Plein", icon: "bx:bxs-window-alt" },
+  { name: "L", height: "32", width: "20", price: "40", type: "Plein", icon: "bx:bxs-briefcase" },
 ];
 
 const zafuInfo = {
@@ -41,11 +41,11 @@ const images = [
       <table class="min-w-full border border-gray-200 divide-y divide-gray-200 text-left">
         <thead class="bg-gray-100">
           <tr>
-            <th class="px-4 py-2">Nom</th>
+            <th class="px-4 py-2">Taille</th>
             <th class="px-4 py-2">Type</th>
-            <th class="px-4 py-2">Hauteur</th>
-            <th class="px-4 py-2">Largeur</th>
-            <th class="px-4 py-2">Prix</th>
+            <th class="px-4 py-2">Hauteur (cm)</th>
+            <th class="px-4 py-2">Largeur (cm)</th>
+            <th class="px-4 py-2">Prix (€)</th>
           </tr>
         </thead>
         <tbody class="divide-y divide-gray-200">
