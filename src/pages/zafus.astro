@@ -180,7 +180,7 @@ const baseColors = [
     function updateResult() {
       if (selectedSize && selectedType && selectedColor) {
         let price = prices[selectedSize][selectedType];
-        const priceText = price ? price + " €" : "A déterminer";
+        const priceText = price ? price + " €" : "à déterminer";
         const code = `ZAFU-${selectedSize}-${selectedType}-${selectedColor}`;
         result.innerHTML = `<p>Prix (hors frais de port) : <strong>${priceText}</strong></p><p>Code - envoyer à myokan@hotmail.fr : <strong>${code}</strong></p>`;
       } else {
