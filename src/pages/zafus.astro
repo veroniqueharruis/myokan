@@ -133,7 +133,7 @@ const images = [
 
       <!-- Main Zafu Image -->
       <div class="mt-6 text-center">
-        <img id="main-zafu-image" src="/zafu-plein-violet-pois.webp" alt="Zafu principal" class="mx-auto w-64 h-auto rounded-lg shadow-md transition-all duration-300" />
+        <img id="main-zafu-image" src="/zafu-plein-defaut.webp" alt="Zafu principal" class="mx-auto w-64 h-auto rounded-lg shadow-md transition-all duration-300" />
       </div>
     </div>
 
@@ -213,7 +213,7 @@ const images = [
 
     function updateZafuImage(color) {
       if (color.startsWith("#")) {
-        mainImage.src = "/zafu-plein-violet-pois.webp"; // base image for custom color
+        mainImage.src = "/zafu-plein-defaut.webp"; // base image for custom color
         mainImage.style.filter = `drop-shadow(0 0 0 ${color}) saturate(2)`;
       } else if (colorMapImages[color]) {
         mainImage.src = colorMapImages[color];
