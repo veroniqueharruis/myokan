@@ -2,12 +2,12 @@
 import Base from "../layouts/Layout.astro";
 
 const zafus = [
-  { name: "S", width: "28", height: "13", price: "25", type: "Vide" },
-  { name: "M", width: "30", height: "15", price: "27", type: "Vide" },
-  { name: "L", width: "32", height: "20", price: "30", type: "Vide" },
-  { name: "S", width: "28", height: "13", price: "40", type: "Plein" },
-  { name: "M", width: "30", height: "15", price: "45", type: "Plein" },
-  { name: "L", width: "32", height: "20", price: "50", type: "Plein" },
+  { name: "S", width: "28", height: "13", price: "25", type: "vide" },
+  { name: "M", width: "30", height: "15", price: "27", type: "vide" },
+  { name: "L", width: "32", height: "20", price: "30", type: "vide" },
+  { name: "S", width: "28", height: "13", price: "40", type: "plein" },
+  { name: "M", width: "30", height: "15", price: "45", type: "plein" },
+  { name: "L", width: "32", height: "20", price: "50", type: "plein" },
 ];
 
 const zafuInfo = {
@@ -143,12 +143,12 @@ const images = [
   <!-- Client-side script -->
   <script type="module">
     const zafus = [
-      { name: "S", type: "Vide", price: "25" },
-      { name: "M", type: "Vide", price: "27" },
-      { name: "L", type: "Vide", price: "30" },
-      { name: "S", type: "Plein", price: "40" },
-      { name: "M", type: "Plein", price: "45" },
-      { name: "L", type: "Plein", price: "50" },
+      { name: "S", type: "vide", price: "25" },
+      { name: "M", type: "vide", price: "27" },
+      { name: "L", type: "vide", price: "30" },
+      { name: "S", type: "plein", price: "40" },
+      { name: "M", type: "plein", price: "45" },
+      { name: "L", type: "plein", price: "50" },
     ];
 
     const orderCode = document.getElementById("order-code");
