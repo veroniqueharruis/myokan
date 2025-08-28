@@ -3,12 +3,12 @@ import Base from "../layouts/Layout.astro";
 import { Icon } from "astro-icon/components";
 
 const zafus = [
-  { name: "S", height: "28", width: "13", price: "25", type: "○ Vide"},
-  { name: "M", height: "30", width: "15", price: "27", type: "○ Vide"},
-  { name: "L", height: "32", width: "20", price: "30", type: "○ Vide"},
-  { name: "S", height: "28", width: "13", price: "40", type: "● Plein"},
-  { name: "M", height: "30", width: "15", price: "45", type: "● Plein"},
-  { name: "L", height: "32", width: "20", price: "50", type: "● Plein"},
+  { name: "S", width: "28", height: "13", price: "25", type: "○ Vide"},
+  { name: "M", width: "30", height: "15", price: "27", type: "○ Vide"},
+  { name: "L", width: "32", height: "20", price: "30", type: "○ Vide"},
+  { name: "S", width: "28", height: "13", price: "40", type: "● Plein"},
+  { name: "M", width: "30", height: "15", price: "45", type: "● Plein"},
+  { name: "L", width: "32", height: "20", price: "50", type: "● Plein"},
 ];
 
 const zafuInfo = {
@@ -60,9 +60,9 @@ const images = [
           <label for="size" class="block text-sm font-medium text-gray-700">Taille</label>
           <select id="size" class="mt-1 block border rounded-md px-2 py-1">
             <option value="">Choisissez</option>
-            <option value="S">S</option>
-            <option value="M">M</option>
-            <option value="L">L</option>
+            <option value="S">S (L28xH13)</option>
+            <option value="M">M (L30xH15)</option>
+            <option value="L">L (L32xH20)</option>
             <option value="sur-mesure">Sur mesure</option>
           </select>
         </div>
