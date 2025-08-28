@@ -56,7 +56,7 @@ const baseColors = [
       <!-- Taille -->
       <div>
         <select id="size" class="border p-2 w-full">
-          <option value="">👕 Sélectionnez une taille</option>
+          <option value="">👕</option>
           {sizes.map(s => (
             <option value={s.name}>
               {s.name} ({s.width ? s.width + " × " + s.height + " cm" : "sur mesure"})
@@ -65,19 +65,25 @@ const baseColors = [
         </select>
       </div>
 
-      <!-- Type -->
+      <!-- Remplissage (Radio Buttons) -->
       <div>
-        <select id="type" class="border p-2 w-full">
-          <option value="">🪷 Sélectionnez un type</option>
+        <div class="flex gap-4">
           {types.map(t => (
-            <option value={t}>{t}</option>
+            <label class="flex items-center gap-1 cursor-pointer">
+              <input 
+                type="radio" 
+                name="type" 
+                value={t} 
+                class="accent-purple-600"
+              />
+              <span>{t}</span>
+            </label>
           ))}
-        </select>
+        </div>
       </div>
 
       <!-- Couleur -->
       <div>
-        <label class="block font-medium">Choisissez une couleur</label>
 
         <!-- Couleurs de base -->
         <div class="mt-2 flex flex-wrap gap-2">
@@ -109,7 +115,7 @@ const baseColors = [
 
     <!-- Résultat -->
     <div id="result" class="mt-6 p-4 border rounded-lg bg-gray-50 text-center text-lg font-semibold">
-      🌸 Commencez par sélectionner une taille, un type et une couleur
+      🌸 Sélectionnez une taille 👕, un remplissage et une couleur.
     </div>
 
     <!-- Citation -->
@@ -126,12 +132,13 @@ const baseColors = [
     const zafuImage = document.getElementById("main-zafu-image");
     const colorOverlay = document.getElementById("color-overlay");
     const sizeSelect = document.getElementById("size");
-    const typeSelect = document.getElementById("type");
+    const typeRadios = document.querySelectorAll("input[name='type']");
     const result = document.getElementById("result");
     const colorPicker = document.getElementById("color-picker");
     const colorNameSpan = document.getElementById("color-name");
     const lightbox = document.getElementById("lightbox");
     const lightboxImg = document.getElementById("lightbox-img");
+
     let selectedColor = "";
     let selectedHex = "#cccccc";
     let selectedSize = "";
@@ -156,7 +163,6 @@ const baseColors = [
         zafuImage.src = btn.dataset.img;
         colorOverlay.classList.add("hidden");
         updateResult();
-        // reset roue couleur
         colorPicker.value = "#cccccc";
       });
     });
@@ -164,7 +170,7 @@ const baseColors = [
     // choix couleur roue
     colorPicker.addEventListener("input", () => {
       selectedHex = normalizeHex(colorPicker.value);
-      selectedColor = selectedHex.replace("#","").toUpperCase(); // fallback: hex code
+      selectedColor = selectedHex.replace("#","").toUpperCase(); // fallback
       colorNameSpan.textContent = selectedHex;
       zafuImage.src = "/zafu-plein-violet-pois.webp";
       colorOverlay.style.background = selectedHex;
@@ -178,10 +184,12 @@ const baseColors = [
       updateResult();
     });
 
-    // type
-    typeSelect.addEventListener("change", () => {
-      selectedType = typeSelect.value;
-      updateResult();
+    // type (radio buttons)
+    typeRadios.forEach(radio => {
+      radio.addEventListener("change", () => {
+        selectedType = radio.value;
+        updateResult();
+      });
     });
 
     function updateResult() {
@@ -195,7 +203,7 @@ const baseColors = [
           <p class="mt-2 text-purple-700 font-bold">${code}</p>
         `;
       } else {
-        result.textContent = "🌸 Commencez par sélectionner une taille, un type et une couleur";
+        result.textContent = "🌸 Sélectionnez une taille 👕, un remplissage et une couleur.";
       }
     }
 
