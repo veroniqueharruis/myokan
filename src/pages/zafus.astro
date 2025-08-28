@@ -55,6 +55,7 @@ const baseColors = [
 
       <!-- Taille (slider avec marks) -->
       <div>
+        <p class="font-medium mb-2">👕 Choisissez une taille</p>
         <input 
           type="range" 
           id="size-slider" 
@@ -75,6 +76,7 @@ const baseColors = [
 
       <!-- Type -->
       <div>
+        <p class="font-medium mb-2">🪷 Choisissez un type</p>
         <div class="flex gap-4">
           {types.map(t => (
             <label class="flex items-center gap-2 cursor-pointer">
@@ -92,6 +94,7 @@ const baseColors = [
 
       <!-- Couleur -->
       <div>
+        <label class="block font-medium">Choisissez une couleur</label>
 
         <!-- Couleurs de base -->
         <div class="mt-2 flex flex-wrap gap-2">
@@ -153,17 +156,17 @@ const baseColors = [
     let selectedType = "";
 
     const sizes = [
-      { name: "👕 S", width: 28, height: 13 },
-      { name: "👕 M", width: 30, height: 15 },
-      { name: "👕 L", width: 32, height: 17 },
-      { name: "👕 Sur mesure", width: null, height: null },
+      { name: "S", width: 28, height: 13 },
+      { name: "M", width: 30, height: 15 },
+      { name: "L", width: 32, height: 17 },
+      { name: "Sur mesure", width: null, height: null },
     ];
 
     const prices = {
-      "👕 S": { "Vide": 25, "Plein": 40 },
-      "👕 M": { "Vide": 27, "Plein": 45 },
-      "👕 L": { "Vide": 30, "Plein": 50 },
-      "👕 Sur mesure": { "Vide": null, "Plein": null }
+      "S": { "Vide": 25, "Plein": 40 },
+      "M": { "Vide": 27, "Plein": 45 },
+      "L": { "Vide": 30, "Plein": 50 },
+      "Sur mesure": { "Vide": null, "Plein": null }
     };
 
     function normalizeHex(hex) {
