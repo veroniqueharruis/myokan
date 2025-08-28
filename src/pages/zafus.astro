@@ -62,19 +62,9 @@ const images = [
       </table>
     </div>
 
-    <!-- Infos -->
-    <div class="mt-6 text-gray-700">
-      <p><strong>Matériau&nbsp;:</strong> {zafuInfo.material}</p>
-      <p><strong>Couleurs disponibles&nbsp;:</strong> {zafuInfo.colors.join(" / ")}</p>
-      {zafuInfo.customColors && <p>Possibilité de demander une couleur à votre convenance (ex: rouge carmin, bleu turquoise, vert émeraude…)</p>}
-      <p><strong>Remplissage&nbsp;:</strong> {zafuInfo.filling}</p>
-      {zafuInfo.customMade && <p>Je fabrique des zafus sur mesure.</p>}
-      <p class="mt-4 font-semibold">Commandes par mail : <a href={`mailto:${zafuInfo.orderEmail}`} class="text-gray-800 underline">{zafuInfo.orderEmail}</a></p>
-    </div>
 
     <!-- Galerie -->
     <div class="mt-12">
-      <h3 class="text-2xl font-bold text-gray-800 mb-4">Galerie</h3>
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
         {images.map((src, index) => (
           <img
@@ -86,7 +76,18 @@ const images = [
         ))}
       </div>
     </div>
-  </main>
+
+    <!-- Infos -->
+    <div class="mt-6 text-gray-700">
+      <p><strong>Matériau&nbsp;:</strong> {zafuInfo.material}</p>
+      <p><strong>Couleurs disponibles&nbsp;:</strong> {zafuInfo.colors.join(" / ")}</p>
+      {zafuInfo.customColors && <p>Possibilité de demander une couleur à votre convenance (ex: rouge carmin, bleu turquoise, vert émeraude…)</p>}
+      <p><strong>Remplissage&nbsp;:</strong> {zafuInfo.filling}</p>
+      {zafuInfo.customMade && <p>Je fabrique des zafus sur mesure.</p>}
+      <p class="mt-4 font-semibold">Commandes par mail : <a href={`mailto:${zafuInfo.orderEmail}`} class="text-gray-800 underline">{zafuInfo.orderEmail}</a></p>
+    </div>
+
+</main>
 
   <!-- Lightbox -->
   <div id="lightbox" class="fixed inset-0 bg-black bg-opacity-80 hidden items-center justify-center z-50">
