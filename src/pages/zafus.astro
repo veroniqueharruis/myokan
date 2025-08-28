@@ -1,255 +1,210 @@
 ---
 import Base from "../layouts/Layout.astro";
 
-const zafus = [
-  { name: "S", width: "28", height: "13", price: "25", type: "vide" },
-  { name: "M", width: "30", height: "15", price: "27", type: "vide" },
-  { name: "L", width: "32", height: "20", price: "30", type: "vide" },
-  { name: "S", width: "28", height: "13", price: "40", type: "plein" },
-  { name: "M", width: "30", height: "15", price: "45", type: "plein" },
-  { name: "L", width: "32", height: "20", price: "50", type: "plein" },
+const sizes = [
+  { name: "S", width: 28, height: 13 },
+  { name: "M", width: 30, height: 15 },
+  { name: "L", width: 32, height: 17 },
+  { name: "Sur mesure", width: null, height: null },
 ];
 
-const zafuInfo = {
-  material: "100% coton",
-  colors: ["Noir", "Marron", "Rouge", "Vert", "Bleu"],
-  customColors: true,
-  filling: "Kapok (fibre végétale provenant du kapokier, récoltée en Asie, Amérique du Sud, Afrique)",
-  customMade: true,
-  orderEmail: "myokan@hotmail.fr",
-};
+const types = ["Vide", "Plein"];
 
-const colorMap = {
-  "Noir": "#000000",
-  "Marron": "#b37d58",
-  "Rouge": "#C21807",
-  "Vert": "#809100",
-  "Bleu": "#446087",
-};
-
-const colorMapImages = {
-  "Noir": "/zafu-plein-noir.webp",
-  "Marron": "/zafu-plein-marron.webp",
-  "Rouge": "/zafu-plein-rouge.webp",
-  "Vert": "/zafu-plein-vert.webp",
-  "Bleu": "/zafu-plein-bleu.webp",
-};
-
-const images = [
-  "/zafus-vides-gris.webp",
-  "/zafu-plein-violet-pois.webp",
-  "/zafu-plein-violet.webp",
-  "/zafu-plein-orange.webp",
-  "/zafu-vide-framboise.webp",
-  "/zafus-pile.webp",
-  "/zafu-bleu-fonce.webp",  
+const baseColors = [
+  { name: "Noir", hex: "#000000", img: "/zafu-plein-noir.webp" },
+  { name: "Rouge", hex: "#FF0000", img: "/zafu-plein-rouge.webp" },
+  { name: "Vert", hex: "#008000", img: "/zafu-plein-vert.webp" },
+  { name: "Bleu", hex: "#0000FF", img: "/zafu-plein-bleu.webp" },
+  { name: "Marron", hex: "#4B2E1E", img: "/zafu-plein-marron.webp" },
 ];
 ---
 
-<Base title="Zafus artisanaux">
-  <main class="mt-16 px-4 max-w-6xl mx-auto">
-    <h2 class="text-4xl lg:text-5xl font-bold text-gray-800">Trouvez votre zafu&nbsp;!</h2>
-    <p class="text-lg mt-4 text-gray-600">Zafus artisanaux réalisés dans la tradition japonaise par une nonne zen.</p>
+<Base title="Sélecteur de Zafu">
+  <div class="max-w-2xl mx-auto p-6">
+    <h1 class="text-2xl font-bold text-center">Choisissez votre Zafu</h1>
 
-    <blockquote class="mt-6 border-l-4 border-purple-500 pl-4 text-gray-700 bg-purple-50 rounded-r-lg py-2">
-      <p class="italic">
-        Le fait de s’asseoir sur un zafu, quoi que vous fassiez de toute façon, va vous mener vers la respiration zen abdominale. L’énergie va remplir toutes les cellules et le mental va se calmer.
-      </p>
-      <p>Le maître zen Kosen Thibaut</p>
-    </blockquote>
-
-    <!-- Zafu Selector -->
-    <div class="mt-10 p-4 bg-gray-50 border rounded-lg shadow-sm">
-      <h3 class="text-xl font-semibold mb-4">Personnalisez votre zafu</h3>
-      <div class="flex flex-wrap gap-6">
-        <!-- Taille -->
-        <div>
-          <label for="size" class="block text-sm font-medium text-gray-700">Taille</label>
-          <select id="size" class="mt-1 block border rounded-md px-2 py-1">
-            <option value="">Choisissez</option>
-            <option value="S">S (L28xH13)</option>
-            <option value="M">M (L30xH15)</option>
-            <option value="L">L (L32xH20)</option>
-            <option value="sur-mesure">Sur mesure</option>
-          </select>
-        </div>
-
-        <!-- Type -->
-        <div>
-          <label for="type" class="block text-sm font-medium text-gray-700">Type</label>
-          <select id="type" class="mt-1 block border rounded-md px-2 py-1">
-            <option value="">Choisissez</option>
-            <option value="vide">Vide</option>
-            <option value="plein">Plein</option>
-          </select>
-        </div>
-
-        <!-- Couleur -->
-        <div>
-          <p class="block text-sm font-medium text-gray-700 mb-2">Couleur</p>
-          <div class="flex flex-wrap gap-4 items-center" id="color-picker">
-            {zafuInfo.colors.map((color) => (
-              <div class="flex flex-col items-center text-center">
-                <div
-                  role="button"
-                  aria-label={color}
-                  title={color}
-                  data-color={color}
-                  style={`background: ${colorMap[color] || "#cccccc"}`}
-                  class="color-circle w-10 h-10 rounded-full border border-gray-300 shadow-sm cursor-pointer"
-                />
-                <span class="text-xs mt-1">{color}</span>
-              </div>
-            ))}
-            {zafuInfo.customColors && (
-              <div class="flex flex-col items-center text-center relative">
-                <div 
-                  class="w-10 h-10 rounded-full border border-dashed border-gray-300 flex items-center justify-center cursor-pointer" 
-                  data-color="couleur-personnalisee"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
-                  </svg>
-                </div>
-                <input type="color" id="custom-color-input" class="absolute top-0 left-0 w-10 h-10 opacity-0 cursor-pointer rounded-full" />
-                <span class="text-xs mt-1">Couleur personnalisée</span>
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
-
-      <!-- Price & Code -->
-      <div class="mt-6">
-        <p class="text-lg font-semibold text-gray-800">
-          Prix : <span id="price-display">–</span>
-        </p>
-        <p class="text-sm text-gray-600 mt-2 mb-2">Les couleurs affichées sont indicatives. Prix hors frais de port. Code de commande :</p>
-        <div class="flex items-center gap-2">
-          <input id="order-code" type="text" readonly class="w-full border rounded-md px-2 py-1 bg-gray-100 text-gray-800" placeholder="Sélectionnez taille, type et couleur" />
-          <button id="copy-btn" class="px-3 py-1 bg-purple-600 text-white rounded-md hover:bg-purple-700 disabled:opacity-50" disabled>Copier</button>
-        </div>
-      </div>
-
-      <!-- Main Zafu Image -->
-      <div class="mt-6 text-center">
-        <img id="main-zafu-image" src="/zafu-plein-defaut.webp" alt="Zafu principal" class="mx-auto w-64 h-auto rounded-lg shadow-md transition-all duration-300" />
-      </div>
+    <!-- Image principale avec overlay -->
+    <div class="mt-6 text-center relative inline-block">
+      <img 
+        id="main-zafu-image" 
+        src="/zafu-plein-violet-pois.webp" 
+        alt="Zafu principal" 
+        class="mx-auto w-64 h-auto rounded-lg shadow-md transition-all duration-300 cursor-pointer relative z-10"
+      />
+      <div 
+        id="color-overlay"
+        class="absolute top-0 left-0 w-full h-full rounded-lg mix-blend-multiply opacity-60 pointer-events-none hidden"
+      ></div>
     </div>
 
-    <!-- Infos -->
-    <div class="mt-6 text-gray-700">
-      <p><strong>Matériau&nbsp;:</strong> {zafuInfo.material}</p>
-      <p class="mt-2"><strong>Remplissage&nbsp;:</strong> {zafuInfo.filling}</p>
-      <p class="mt-4 font-semibold">Commandes par mail : <a href={`mailto:${zafuInfo.orderEmail}`} class="text-gray-800 underline">{zafuInfo.orderEmail}</a></p>
+    <!-- Lightbox -->
+    <div 
+      id="lightbox" 
+      class="fixed inset-0 bg-black bg-opacity-80 hidden items-center justify-center z-50"
+    >
+      <img 
+        id="lightbox-img" 
+        src="" 
+        alt="Agrandissement du Zafu" 
+        class="max-w-[90%] max-h-[90%] rounded-lg shadow-lg"
+      />
     </div>
 
-    <!-- Galerie -->
-    <div class="mt-12">
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-        {images.map((src, index) => (
-          <img
-            src={src}
-            alt="Zafu"
-            class="rounded-lg shadow-md w-full object-cover cursor-pointer hover:opacity-80 transition"
-            data-index={index}
+    <!-- Sélecteurs -->
+    <div class="mt-6 space-y-4">
+
+      <!-- Taille -->
+      <div>
+        <label for="size" class="block font-medium">Taille :</label>
+        <select id="size" class="border p-2 w-full">
+          <option value="">Choisissez</option>
+          {sizes.map(s => (
+            <option value={s.name}>
+              {s.name} ({s.width ? s.width + "×" + s.height + " cm" : "sur mesure"})
+            </option>
+          ))}
+        </select>
+      </div>
+
+      <!-- Type -->
+      <div>
+        <label for="type" class="block font-medium">Type :</label>
+        <select id="type" class="border p-2 w-full">
+          <option value="">Choisissez</option>
+          {types.map(t => (
+            <option value={t}>{t}</option>
+          ))}
+        </select>
+      </div>
+
+      <!-- Couleur -->
+      <div>
+        <label class="block font-medium">Couleur (indicative) :</label>
+
+        <!-- Cercles de base -->
+        <div class="mt-2 flex flex-wrap gap-2">
+          {baseColors.map(c => (
+            <button 
+              type="button"
+              class="w-8 h-8 rounded-full border-2 border-gray-300"
+              style={`background:${c.hex}`}
+              data-name={c.name}
+              data-hex={c.hex}
+              data-img={c.img}
+              title={c.name}
+            ></button>
+          ))}
+        </div>
+
+        <!-- Sélecteur personnalisé -->
+        <div class="mt-3 flex items-center gap-2">
+          <input 
+            type="color" 
+            id="color-picker"
+            value="#cccccc" 
+            class="w-12 h-10 border rounded cursor-pointer"
           />
-        ))}
+          <span id="color-name" class="text-sm text-gray-600">Couleur personnalisée</span>
+        </div>
       </div>
     </div>
-  </main>
 
-  <script type="module">
-    const zafus = [
-      { name: "S", type: "vide", price: "25" },
-      { name: "M", type: "vide", price: "27" },
-      { name: "L", type: "vide", price: "30" },
-      { name: "S", type: "plein", price: "40" },
-      { name: "M", type: "plein", price: "45" },
-      { name: "L", type: "plein", price: "50" },
-    ];
+    <!-- Résultat -->
+    <div id="result" class="mt-6 p-4 border rounded-lg bg-gray-50 text-center text-lg font-semibold">
+      Sélectionnez une taille, un type et une couleur
+    </div>
+  </div>
 
-    const orderCode = document.getElementById("order-code");
-    const copyBtn = document.getElementById("copy-btn");
-    const priceDisplay = document.getElementById("price-display");
-    const mainImage = document.getElementById("main-zafu-image");
-    let selectedColor = "";
-
+  <script>
+    const zafuImage = document.getElementById("main-zafu-image");
+    const colorOverlay = document.getElementById("color-overlay");
     const sizeSelect = document.getElementById("size");
     const typeSelect = document.getElementById("type");
+    const result = document.getElementById("result");
+    const colorPicker = document.getElementById("color-picker");
+    const colorNameSpan = document.getElementById("color-name");
 
-    const colorCircles = document.querySelectorAll(".color-circle, [data-color='couleur-personnalisee']");
-    const customColorInput = document.getElementById("custom-color-input");
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
 
-    const colorMapImages = {
-      "Noir": "/zafu-plein-noir.webp",
-      "Marron": "/zafu-plein-marron.webp",
-      "Rouge": "/zafu-plein-rouge.webp",
-      "Vert": "/zafu-plein-vert.webp",
-      "Bleu": "/zafu-plein-bleu.webp",
+    let selectedColor = "";
+    let selectedHex = "#cccccc";
+    let selectedSize = "";
+    let selectedType = "";
+
+    const prices = {
+      "S": { "Vide": 25, "Plein": 40 },
+      "M": { "Vide": 27, "Plein": 45 },
+      "L": { "Vide": 30, "Plein": 50 },
+      "Sur mesure": { "Vide": null, "Plein": null }
     };
 
-    function updatePriceAndCode() {
-      const size = sizeSelect.value;
-      const type = typeSelect.value;
-
-      if (!size || !type || !selectedColor) {
-        priceDisplay.textContent = "–";
-        orderCode.value = "Sélectionnez taille, type et couleur";
-        copyBtn.disabled = true;
-        return;
-      }
-
-      if (size === "sur-mesure") {
-        priceDisplay.textContent = "à déterminer";
-      } else {
-        const zafu = zafus.find(z => z.name === size && z.type === type);
-        priceDisplay.textContent = zafu ? zafu.price + " €" : "-";
-      }
-
-      orderCode.value = `ZAFU-${size}-${type}-${selectedColor}`;
-      copyBtn.disabled = false;
+    function normalizeHex(hex) {
+      return hex.toUpperCase();
     }
 
-    function updateZafuImage(color) {
-      if (color.startsWith("#")) {
-        mainImage.src = "/zafu-plein-defaut.webp"; // base image for custom color
-        mainImage.style.filter = `drop-shadow(0 0 0 ${color}) saturate(2)`;
-      } else if (colorMapImages[color]) {
-        mainImage.src = colorMapImages[color];
-        mainImage.style.filter = "none";
-      }
-    }
+    // clic sur cercle de base
+    document.querySelectorAll("[data-name]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        selectedColor = btn.dataset.name;
+        selectedHex = normalizeHex(btn.dataset.hex);
 
-    sizeSelect.addEventListener("change", updatePriceAndCode);
-    typeSelect.addEventListener("change", updatePriceAndCode);
+        colorNameSpan.textContent = selectedColor;
+        zafuImage.src = btn.dataset.img;
+        colorOverlay.classList.add("hidden");
 
-    colorCircles.forEach(circle => {
-      circle.addEventListener("click", () => {
-        if (circle.dataset.color === "couleur-personnalisee") {
-          customColorInput.click();
-        } else {
-          selectedColor = circle.dataset.color;
-          updateZafuImage(selectedColor);
-        }
+        updateResult();
 
-        colorCircles.forEach(c => c.classList.remove("ring-4", "ring-purple-500"));
-        circle.classList.add("ring-4", "ring-purple-500");
-        updatePriceAndCode();
+        // reset roue couleur
+        colorPicker.value = "#cccccc";
       });
     });
 
-    customColorInput.addEventListener("input", (e) => {
-      selectedColor = e.target.value;
-      updateZafuImage(selectedColor);
-      updatePriceAndCode();
+    // choix couleur roue
+    colorPicker.addEventListener("input", () => {
+      selectedHex = normalizeHex(colorPicker.value);
+      selectedColor = selectedHex.replace("#","").toUpperCase(); // fallback: hex in code
+      colorNameSpan.textContent = selectedHex;
+
+      zafuImage.src = "/zafu-plein-violet-pois.webp";
+      colorOverlay.style.background = selectedHex;
+      colorOverlay.classList.remove("hidden");
+
+      updateResult();
     });
 
-    copyBtn.addEventListener("click", () => {
-      orderCode.select();
-      document.execCommand("copy");
-      copyBtn.textContent = "Copié !";
-      setTimeout(() => (copyBtn.textContent = "Copier"), 1500);
+    // taille
+    sizeSelect.addEventListener("change", () => {
+      selectedSize = sizeSelect.value;
+      updateResult();
+    });
+
+    // type
+    typeSelect.addEventListener("change", () => {
+      selectedType = typeSelect.value;
+      updateResult();
+    });
+
+    function updateResult() {
+      if (selectedSize && selectedType && selectedColor) {
+        let price = prices[selectedSize][selectedType];
+        const priceText = price ? price + " €" : "A déterminer";
+        const code = `ZAFU-${selectedSize}-${selectedType}-${selectedColor}`;
+        result.innerHTML = `<p>Prix : <strong>${priceText}</strong></p><p>Code - envoyer à myokan@hotmail.fr : <strong>${code}</strong></p>`;
+      } else {
+        result.textContent = "Sélectionnez une taille, un type et une couleur";
+      }
+    }
+
+    // lightbox
+    zafuImage.addEventListener("click", () => {
+      lightboxImg.src = zafuImage.src;
+      lightbox.classList.remove("hidden");
+      lightbox.classList.add("flex");
+    });
+    lightbox.addEventListener("click", () => {
+      lightbox.classList.add("hidden");
+      lightbox.classList.remove("flex");
     });
   </script>
 </Base>
