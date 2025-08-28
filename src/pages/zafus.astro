@@ -51,28 +51,45 @@ const baseColors = [
     </div>
 
     <!-- Options -->
-    <div class="mt-6 space-y-4">
+    <div class="mt-6 space-y-6">
 
-      <!-- Taille -->
+      <!-- Taille (slider avec marks) -->
       <div>
-        <select id="size" class="border p-2 w-full">
-          <option value="">👕 Sélectionnez une taille</option>
-          {sizes.map(s => (
-            <option value={s.name}>
-              {s.name} ({s.width ? s.width + " × " + s.height + " cm" : "sur mesure"})
-            </option>
+        <p class="font-medium mb-2">👕 Choisissez une taille</p>
+        <input 
+          type="range" 
+          id="size-slider" 
+          min="0" 
+          max={sizes.length - 1} 
+          step="1" 
+          value="0" 
+          list="size-marks"
+          class="w-full"
+        />
+        <datalist id="size-marks">
+          {sizes.map((s, idx) => (
+            <option value={idx} label={s.name}></option>
           ))}
-        </select>
+        </datalist>
+        <p id="size-label" class="mt-2 text-center text-gray-700 font-medium"></p>
       </div>
 
       <!-- Type -->
       <div>
-        <select id="type" class="border p-2 w-full">
-          <option value="">🪷 Sélectionnez un type</option>
+        <p class="font-medium mb-2">🪷 Choisissez un type</p>
+        <div class="flex gap-4">
           {types.map(t => (
-            <option value={t}>{t}</option>
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input 
+                type="radio" 
+                name="type" 
+                value={t} 
+                class="text-purple-600"
+              />
+              <span>{t}</span>
+            </label>
           ))}
-        </select>
+        </div>
       </div>
 
       <!-- Couleur -->
@@ -125,17 +142,26 @@ const baseColors = [
   <script>
     const zafuImage = document.getElementById("main-zafu-image");
     const colorOverlay = document.getElementById("color-overlay");
-    const sizeSelect = document.getElementById("size");
-    const typeSelect = document.getElementById("type");
+    const sizeSlider = document.getElementById("size-slider");
+    const sizeLabel = document.getElementById("size-label");
     const result = document.getElementById("result");
     const colorPicker = document.getElementById("color-picker");
     const colorNameSpan = document.getElementById("color-name");
     const lightbox = document.getElementById("lightbox");
     const lightboxImg = document.getElementById("lightbox-img");
+
     let selectedColor = "";
     let selectedHex = "#cccccc";
     let selectedSize = "";
     let selectedType = "";
+
+    const sizes = [
+      { name: "S", width: 28, height: 13 },
+      { name: "M", width: 30, height: 15 },
+      { name: "L", width: 32, height: 17 },
+      { name: "Sur mesure", width: null, height: null },
+    ];
+
     const prices = {
       "S": { "Vide": 25, "Plein": 40 },
       "M": { "Vide": 27, "Plein": 45 },
@@ -146,43 +172,6 @@ const baseColors = [
     function normalizeHex(hex) {
       return hex.toUpperCase();
     }
-
-    // clic sur cercle de base
-    document.querySelectorAll("[data-name]").forEach(btn => {
-      btn.addEventListener("click", () => {
-        selectedColor = btn.dataset.name;
-        selectedHex = normalizeHex(btn.dataset.hex);
-        colorNameSpan.textContent = selectedColor;
-        zafuImage.src = btn.dataset.img;
-        colorOverlay.classList.add("hidden");
-        updateResult();
-        // reset roue couleur
-        colorPicker.value = "#cccccc";
-      });
-    });
-
-    // choix couleur roue
-    colorPicker.addEventListener("input", () => {
-      selectedHex = normalizeHex(colorPicker.value);
-      selectedColor = selectedHex.replace("#","").toUpperCase(); // fallback: hex code
-      colorNameSpan.textContent = selectedHex;
-      zafuImage.src = "/zafu-plein-violet-pois.webp";
-      colorOverlay.style.background = selectedHex;
-      colorOverlay.classList.remove("hidden");
-      updateResult();
-    });
-
-    // taille
-    sizeSelect.addEventListener("change", () => {
-      selectedSize = sizeSelect.value;
-      updateResult();
-    });
-
-    // type
-    typeSelect.addEventListener("change", () => {
-      selectedType = typeSelect.value;
-      updateResult();
-    });
 
     function updateResult() {
       if (selectedSize && selectedType && selectedColor) {
@@ -199,7 +188,49 @@ const baseColors = [
       }
     }
 
-    // lightbox
+    // Taille slider
+    function updateSizeLabel(idx) {
+      const s = sizes[idx];
+      selectedSize = s.name;
+      sizeLabel.textContent = s.name + " (" + (s.width ? s.width + " × " + s.height + " cm" : "sur mesure") + ")";
+      updateResult();
+    }
+    sizeSlider.addEventListener("input", () => updateSizeLabel(parseInt(sizeSlider.value)));
+    updateSizeLabel(0); // initialize
+
+    // Type radios
+    document.querySelectorAll("input[name='type']").forEach(radio => {
+      radio.addEventListener("change", () => {
+        selectedType = radio.value;
+        updateResult();
+      });
+    });
+
+    // Base color buttons
+    document.querySelectorAll("[data-name]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        selectedColor = btn.dataset.name;
+        selectedHex = normalizeHex(btn.dataset.hex);
+        colorNameSpan.textContent = selectedColor;
+        zafuImage.src = btn.dataset.img;
+        colorOverlay.classList.add("hidden");
+        updateResult();
+        colorPicker.value = "#cccccc";
+      });
+    });
+
+    // Custom color picker
+    colorPicker.addEventListener("input", () => {
+      selectedHex = normalizeHex(colorPicker.value);
+      selectedColor = selectedHex.replace("#","").toUpperCase();
+      colorNameSpan.textContent = selectedHex;
+      zafuImage.src = "/zafu-plein-violet-pois.webp";
+      colorOverlay.style.background = selectedHex;
+      colorOverlay.classList.remove("hidden");
+      updateResult();
+    });
+
+    // Lightbox
     zafuImage.addEventListener("click", () => {
       lightboxImg.src = zafuImage.src;
       lightbox.classList.remove("hidden");
