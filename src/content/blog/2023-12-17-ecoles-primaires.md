@@ -3,8 +3,8 @@ title: "Écoles primaires"
 draft: false
 snippet: "Mes formats d'atelier pour les écoles primaires sur le temps scolaire"
 image: {
-    src: "/assets/cours-calligraphie-ecoles-primaires.jpg",
-    alt: "Mes formats d'atelier pour les écoles primaires sur le temps scolaire"
+  src: "/assets/cours-calligraphie-ecoles-primaires.jpg",
+  alt: "Mes formats d'atelier pour les écoles primaires sur le temps scolaire"
 }
 publishDate: "2022-11-07 15:39"
 category: "Ateliers de groupe"
