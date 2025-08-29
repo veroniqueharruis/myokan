@@ -15,6 +15,8 @@ tags: [astro, tailwindcss, frontend]
 
 ## Mes formats d'atelier pour les lycées
 
-\[table id=4 /\]
-
-[cours calligraphie lycées](cours-calligraphie-lycees.avif)](http://ateliersdecalligraphie.com/wp-content/uploads/2023/12/cours-calligraphie-lycees.avif)
+| Horaires               | Entre 12 et 14 h                 |
+|------------------------|----------------------------------|
+| Durée                  | 1/2 heure 3/4 d'heure ou 1 heure |
+| Nombre de participants | De 6 à 12                        |
+| Tarifs                 | 60 euros HT par heure            |
