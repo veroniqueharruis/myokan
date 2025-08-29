@@ -17,7 +17,7 @@ tags: [astro, tailwindcss, frontend]
 
 L'amplitude horaire idéale pour un **atelier de groupe** de calligraphie est de deux heures ou trois heures maximum. Le matériel nécessaire que sont pinceaux, encre, pierre d'encre et papier chinois, est mis à disposition du public. Pour qu'un atelier soit efficace, il est recommandé de ne pas dépasser les huit personnes.
 
-Atelier de groupe](atelier-de-groupe-calligraphie-lyon.jpg)
+![Atelier de groupe](/assets/atelier-de-groupe-calligraphie-lyon.jpg)
 
 Cours de 1 h 30 par semaine : 80 € par trimestre après réduction d'impôts.
 

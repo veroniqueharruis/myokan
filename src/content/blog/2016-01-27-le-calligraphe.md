@@ -86,7 +86,7 @@ Je donne des cours de calligraphie et des cours de chinois individuels ou en gro
 - Intervention en calligraphie chinoise à l'occasion de la _Fête du Qigong_ à _Saint Priest_ le dimanche 9 juin 2013 organisée par l'association Akikai du Rhône.
 - Intervention autour du thème des _contes chinois_ et de la _calligraphie chinoise_ auprès des enfants de l'École Doisneau (Lyon), février 2013.
 
-Calligraphe - Lyon](calligraphe-lyon.jpg)
+![Calligraphe - Lyon](/assets/calligraphe-lyon.jpg)
 
 - Atelier de calligraphie bénévole à l'École Michel Servet (Lyon Croix-Rousse) le vendredi 11 mai 2012 pour _la Fête du livre_
 - Interventions en calligraphie chinoise de mars à mai 2012 dans les écoles de _Meyzieu_ : Groupes scolaires Calabre, Carreau, Grand Large, René Cassin, Condorcet, Jules Ferry, Marcel Pagnol, Jacques Prévert

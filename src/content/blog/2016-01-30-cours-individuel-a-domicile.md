@@ -19,4 +19,4 @@ tags: [astro, tailwindcss, frontend]
 
 40 € TTC / heure
 
-Cours individuel à domicile de calligraphie - Lyon](cours-individuel-a-domicile-calligraphie-lyon.jpg)
+![Cours individuel à domicile de calligraphie - Lyon](/assets/cours-individuel-a-domicile-calligraphie-lyon.jpg)
