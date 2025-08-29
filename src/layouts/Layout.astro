@@ -20,8 +20,8 @@ const resolvedImageWithDomain = new URL(
 const { title } = Astro.props;
 
 const makeTitle = title
-  ? title + " | " + "Astroship"
-  : "Astroship - Starter Template for Astro with Tailwind CSS";
+  ? title + " | " + "Calligraphie Lyon"
+  : "Calligraphie chinoise";
 ---
 
 <!doctype html>
@@ -35,7 +35,7 @@ const makeTitle = title
     <!-- <link rel="preload" as="image" href={src} alt="Hero" /> -->
     <SEO
       title={makeTitle}
-      description="Astroship is a starter website template for Astro built with TailwindCSS."
+      description="Cours privés et collectifs de calligraphie chinoise à Lyon."
       canonical={canonicalURL}
       twitter={{
         creator: "@surjithctly",
@@ -46,11 +46,11 @@ const makeTitle = title
         basic: {
           url: canonicalURL,
           type: "website",
-          title: `Astroship - Starter Template for Astro`,
+          title: `Ateliers de calligraphuie chinoise à Lyon`,
           image: resolvedImageWithDomain,
         },
         image: {
-          alt: "Astroship Homepage Screenshot",
+          alt: "Ateliers de calligraphuie chinoise à Lyon",
         },
       }}
     />
