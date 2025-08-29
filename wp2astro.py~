@@ -1,0 +1,76 @@
+import os
+import re
+import argparse
+import html
+import xml.etree.ElementTree as ET
+from datetime import datetime
+from slugify import slugify
+from markdownify import markdownify as md
+
+def parse_wordpress_xml(xml_file, output_dir):
+    ns = {
+        'content': 'http://purl.org/rss/1.0/modules/content/',
+        'dc': 'http://purl.org/dc/elements/1.1/',
+        'wp': 'http://wordpress.org/export/1.2/',
+    }
+
+    tree = ET.parse(xml_file)
+    root = tree.getroot()
+
+    items = root.findall('./channel/item')
+    os.makedirs(output_dir, exist_ok=True)
+
+    for item in items:
+        title = item.find('title').text or "Untitled"
+        slug = slugify(title)
+        pub_date = item.find('pubDate').text
+        pub_date = datetime.strptime(pub_date, '%a, %d %b %Y %H:%M:%S %z')
+        description = item.find('description').text or ""
+        content = item.find('content:encoded', ns).text or ""
+        content = html.unescape(content)
+
+        # Convert HTML → Markdown
+        markdown_content = md(content, strip=['span'])
+
+        # Categories & Tags
+        categories = []
+        tags = []
+        for cat in item.findall('category'):
+            domain = cat.get('domain')
+            if domain == "category":
+                categories.append(cat.text)
+            elif domain == "post_tag":
+                tags.append(cat.text)
+
+        # Draft status
+        status = item.find('wp:status', ns).text
+        draft = True if status != "publish" else False
+
+        # Build Astro Frontmatter
+        frontmatter = f"""---
+title: "{title.replace('"', "'")}"
+description: "{description.strip().replace('"', "'")}"
+pubDate: {pub_date.date().isoformat()}
+updatedDate: {pub_date.date().isoformat()}
+tags: {tags if tags else []}
+categories: {categories if categories else []}
+slug: "{slug}"
+draft: {str(draft).lower()}
+---
+"""
+
+        filename = f"{pub_date.date().isoformat()}-{slug}.md"
+        filepath = os.path.join(output_dir, filename)
+
+        with open(filepath, "w", encoding="utf-8") as f:
+            f.write(frontmatter + "\n" + markdown_content)
+
+        print(f"✓ Exported: {filename}")
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Convert WordPress XML to Astro Markdown")
+    parser.add_argument("xml_file", help="Path to WordPress XML export")
+    parser.add_argument("-o", "--output", default="astro-md", help="Output directory for Markdown files")
+    args = parser.parse_args()
+
+    parse_wordpress_xml(args.xml_file, args.output)
