@@ -7,7 +7,7 @@ image: {
     alt: "frontend master"
 }
 publishDate: "2022-11-07 15:39"
-category: "Tutorials"
+category: "Ateliers"
 author: "Christophe Desmur"
 tags: [astro, tailwindcss, frontend]
 ---
