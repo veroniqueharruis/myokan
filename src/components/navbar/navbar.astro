@@ -1,8 +1,9 @@
 ---
 import Container from "@/components/container.astro";
-import Link from "@/components/ui/link.astro";
 import Dropdown from "./dropdown.astro";
 import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
+
+let mobileMenuOpen = false;
 
 const menuitems = [
   {
@@ -13,18 +14,9 @@ const menuitems = [
       { title: "Lycées", path: "/blog/2016-01-31-formats-atelier-pour-les-ecoles-primaires" },
     ],
   },
-  {
-    title: "Cours individuels à domicile",
-    path: "/blog/2016-01-30-cours-individuel-a-domicile",
-  },
-  {
-    title: "Cours de chinois",
-    path: "/blog/2016-01-30-cours-de-chinois",
-  },
-  {
-    title: "Galerie",
-    path: "/galerie",
-  },
+  { title: "Cours individuels à domicile", path: "/blog/2016-01-30-cours-individuel-a-domicile" },
+  { title: "Cours de chinois", path: "/blog/2016-01-30-cours-de-chinois" },
+  { title: "Galerie", path: "/galerie" },
   {
     title: "Traductions",
     path: "#",
@@ -48,6 +40,7 @@ const menuitems = [
   },
 ];
 ---
+<script src="//unpkg.com/alpinejs" defer></script>
 
 <Container>
   <header class="flex flex-col lg:flex-row justify-between items-center my-5">
@@ -57,39 +50,38 @@ const menuitems = [
           <span class="font-bold text-slate-800">Ateliers </span>
           <span class="text-slate-500">de calligraphie</span>
         </a>
-        <div class="block lg:hidden">
+        <button
+          class="block lg:hidden"
+          onClick={() => mobileMenuOpen = !mobileMenuOpen}
+        >
           <MenuIcon class="w-4 h-4 text-gray-800" />
-        </div>
+        </button>
       </div>
 
-      <MenuItems class="hidden w-full lg:w-auto mt-2 lg:flex lg:mt-0">
+      <MenuItems class={`w-full lg:w-auto mt-2 lg:flex lg:mt-0 ${mobileMenuOpen ? 'block' : 'hidden'}`}>
         <ul class="flex flex-col lg:flex-row lg:gap-3">
           {menuitems.map((item, index) => (
-            <>
-              {item.children && (
-                <Dropdown
-                  title={item.title}
-                  children={item.children}
-                  lastItem={index === menuitems.length - 1}
-                />
-              )}
-
-              {!item.children && (
-                <li>
-                  <a
-                    href={item.path}
-                    class="flex lg:px-3 py-2 items-center text-gray-600 hover:text-gray-900"
-                  >
-                    <span>{item.title}</span>
-                    {item.badge && (
-                      <span class="ml-1 px-2 py-0.5 text-[10px] animate-pulse font-semibold uppercase text-white bg-indigo-600 rounded-full">
-                        New
-                      </span>
-                    )}
-                  </a>
-                </li>
-              )}
-            </>
+            item.children ? (
+              <Dropdown
+                title={item.title}
+                children={item.children}
+                lastItem={index === menuitems.length - 1}
+              />
+            ) : (
+              <li key={item.title}>
+                <a
+                  href={item.path}
+                  class="flex lg:px-3 py-2 items-center text-gray-600 hover:text-gray-900"
+                >
+                  {item.title}
+                  {item.badge && (
+                    <span class="ml-1 px-2 py-0.5 text-[10px] animate-pulse font-semibold uppercase text-white bg-indigo-600 rounded-full">
+                      New
+                    </span>
+                  )}
+                </a>
+              </li>
+            )
           ))}
         </ul>
       </MenuItems>
