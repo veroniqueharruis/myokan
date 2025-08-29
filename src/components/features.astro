@@ -1,67 +1,74 @@
 ---
-// @ts-ignore
-import { Icon } from "astro-icon/components";
+import { getCollection } from "astro:content";
+import { Picture } from "astro:assets";
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/container.astro";
+import Sectionhead from "@components/sectionhead.astro";
 
-const features = [
-  {
-    title: "Bring Your Own Framework",
-    description:
-      "Build your site using React, Svelte, Vue, Preact, web components, or just plain ol' HTML + JavaScript.",
-    icon: "bx:bxs-briefcase",
-  },
-  {
-    title: "100% Static HTML, No JS",
-    description:
-      "Astro renders your entire page to static HTML, removing all JavaScript from your final build by default.",
-    icon: "bx:bxs-window-alt",
-  },
-  {
-    title: "On-Demand Components",
-    description:
-      "Need some JS? Astro can automatically hydrate interactive components when they become visible on the page.  ",
-    icon: "bx:bxs-data",
-  },
-  {
-    title: "Broad Integration",
-    description:
-      "Astro supports TypeScript, Scoped CSS, CSS Modules, Sass, Tailwind, Markdown, MDX, and any other npm packages.",
-    icon: "bx:bxs-bot",
-  },
-  {
-    title: "SEO Enabled",
-    description:
-      "Automatic sitemaps, RSS feeds, pagination and collections take the pain out of SEO and syndication. It just works!",
-    icon: "bx:bxs-file-find",
-  },
-  {
-    title: "Community",
-    description:
-      "Astro is an open source project powered by hundreds of contributors making thousands of individual contributions.",
-    icon: "bx:bxs-user",
-  },
-];
+// Filter team entries with 'draft: false' & date before current date
+const publishedTeamMembers = await getCollection("team", ({ data }) => {
+  return !data.draft && data.publishDate < new Date();
+});
 ---
 
-<div class="mt-16 md:mt-0">
-  <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
-    Everything you need to start a website
+<div class="flex flex-col gap-3 mx-auto max-w-4xl mt-16">
+  <h2 class="font-bold text-3xl text-gray-800">
+    Calligraphie Lyon : pratiquez la calligraphie chinoise
   </h2>
-  <p class="text-lg mt-4 text-slate-600">
-    Astro comes batteries included. It takes the best parts of state-of-the-art
-    tools and adds its own innovations.
+
+  <p class="text-lg leading-relaxed text-gray-600">
+    <strong>Calligraphie Lyon</strong> vous accueille pour pratiquer l'art énergétique de la calligraphie chinoise.
+  </p>
+
+  <p class="text-lg leading-relaxed text-gray-600">
+    L'importance de l'attitude corporelle, la concentration sur la respiration et la recherche d'harmonie et d'équilibre font partie intégrante de l'art millénaire de la calligraphie chinoise. Vous trouverez à <strong>Calligraphie Lyon</strong> un moyen privilégié d'expression de votre sensibilité et de votre créativité.
+  </p>
+
+  <p class="text-lg leading-relaxed text-gray-600">
+    Le travail sur l'horizontalité et la verticalité ainsi que sur les proportions et le rapport à l'espace vous permettront de mieux vous replacer dans l'espace, la feuille de papier sur laquelle vous vous exercez devenant une représentation en miniature de l'univers. 
+  </p>
+
+  <p class="text-lg leading-relaxed text-gray-600">
+    <strong>Calligraphie Lyon</strong> vous accompagne dans l'apprentissage du maniement du pinceau, la maîtrise du geste dans le tracé des caractères, le travail sur les proportions et l'équilibre ainsi que la recherche d'harmonie entre force et délicatesse.
+  </p>
+
+  <p class="text-lg leading-relaxed text-gray-600">
+    Correctement pratiquée, la calligraphie chinoise apporte calme et sérénité, équilibre intérieur et force. Elle développe la créativité artistique et l'expression de la sensibilité par le tracé de caractères chinois et se rapproche ainsi d'une pratique picturale.
+  </p>
+
+  <p class="text-lg leading-relaxed text-gray-600">
+    Pratiquée en Chine par les grands comme par les petits, elle peut s'inscrire dans une pratique artistique et de sensibilisation à une autre culture aussi bien pour les enfants que pour les adultes. La pratique de la calligraphie est associée dans l'esprit chinois au calme, à la concentration ainsi qu'à l'expression de ce qu'il y a de plus beau et de plus raffiné dans une personnalité humaine.
+  </p>
+
+  <p class="text-lg leading-relaxed text-gray-600">
+    Pour être pratiquée au mieux, vous vous approprierez un certain nombre de caractères que vous pourrez ensuite écrire spontanément au cours des ateliers de calligraphie. Cet apprentissage est un moment propice à la découverte d'une langue millénaire qui a évolué en passant par une représentation picturale des choses à ses débuts (les pictogrammes) à une représentation d'idée ou de concept (les idéogrammes) puis à l'élaboration de caractères comportant une partie phonétique (les phonogrammes).
+  </p>
+
+  <p class="text-lg leading-relaxed text-gray-600">
+    L'ensemble de ces caractères, les <em>sinogrammes</em>, composent l'écriture chinoise et auxquels vous vous initierez progressivement.
   </p>
 </div>
 
-<div class="grid sm:grid-cols-2 md:grid-cols-3 mt-16 gap-16">
+<div class="grid md:grid-cols-3 gap-10 mx-auto max-w-4xl mt-12">
   {
-    features.map((item) => (
-      <div class="flex gap-4 items-start">
-        <div class="mt-1 bg-black rounded-full  p-2 w-8 h-8 shrink-0">
-          <Icon class="text-white" name={item.icon} />
+    publishedTeamMembers.map((teamMemberEntry) => (
+      <div class="group">
+        <div class="w-full aspect-square">
+          <Picture
+            src={teamMemberEntry.data.avatar.src}
+            alt={teamMemberEntry.data.avatar.alt}
+            sizes="(max-width: 800px) 100vw, 400px"
+            width={400}
+            height={400}
+            class="w-full rounded-md transition group-hover:-translate-y-1 group-hover:shadow-xl bg-gray-50 object-cover object-center aspect-square"
+          />
         </div>
-        <div>
-          <h3 class="font-semibold text-lg">{item.title}</h3>{" "}
-          <p class="text-slate-500 mt-2 leading-relaxed">{item.description}</p>
+
+        <div class="mt-4 text-center">
+          <h2 class="text-lg text-gray-800">{teamMemberEntry.data.name}</h2>
+          <h3 class="text-sm text-gray-600">
+            {teamMemberEntry.data.title}
+          </h3>
         </div>
       </div>
     ))
