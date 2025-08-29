@@ -19,7 +19,7 @@ tags: [astro, tailwindcss, frontend]
 
 La calligraphie chinoise ou japonaise que je pratique a été intimement liée pendant des siècles à la pratique du Zen. C'est un fait historique. Ça s'est réalisé en Chine pendant sept siècles, puis au Japon pendant sept siècles également. La calligraphie chinoise a particulièrement été appréciée par les gens qui pratiquaient le Zen parce que c'était un moyen d'exprimer l'essence, l'élan, la beauté du Zen.
 
-[](calligraphie-zen-1.webp)](http://ateliersdecalligraphie.com/wp-content/uploads/2023/05/calligraphie-zen-1.webp)
+![calligraphie-zen-1.webp](/assets/calligraphie-zen-1.webp)
 
 Il n'est pas toujours facile de parler du Zen, de l'exprimer, de le manifester. À travers la calligraphie, à travers _une_ calligraphie, on pouvait percevoir l'esprit d'une personne. Et par exemple, l'esprit d'une personne qui pratiquait le Zen, qui pratiquait la posture d'éveil.
 
