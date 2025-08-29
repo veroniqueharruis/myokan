@@ -16,4 +16,12 @@ tags: [astro, tailwindcss, frontend]
 
 Cours de calligraphie écoles primaires](cours-calligraphie-ecoles-primaires.jpg)
 
-\[table id=3 /\]
+| Jours possibles | Du lundi au vendredi |
+|---|---|
+| Horaires | Entre 10 et 16 h |
+| Durée | Atelier de deux à trois heures minimum |
+| Nombre de participants | 30 enfants maximum |
+| Tarifs | 60 euros HT l'heure |
+| Programme | Découverte des pictogrammes chinois au pinceau |
+|  | Salutations en chinois |
+|  | Apprendre à dessiner à l'encre de Chine (Sumi-e) : animaux fleurs... |
