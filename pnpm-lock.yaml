@@ -20,9 +20,15 @@ importers:
       '@fontsource-variable/bricolage-grotesque':
         specifier: ^5.0.6
         version: 5.2.8
+      '@fontsource-variable/cormorant':
+        specifier: ^5.2.8
+        version: 5.2.8
       '@fontsource-variable/inter':
         specifier: ^5.0.18
         version: 5.2.6
+      '@fontsource/noto-serif-jp':
+        specifier: ^5.2.8
+        version: 5.2.8
       '@iconify-json/bx':
         specifier: ^1.1.10
         version: 1.2.2
@@ -325,8 +331,14 @@ packages:
   '@fontsource-variable/bricolage-grotesque@5.2.8':
     resolution: {integrity: sha512-sfPWF+R0z2EV7xFrrtcQC/cDcTLPM0ifBnR9EEUDFrB2bUQiGdcikgxONOf8rdRaOpk7BKduNI1/OoxdJzGZFA==}
 
+  '@fontsource-variable/cormorant@5.2.8':
+    resolution: {integrity: sha512-fcBJbUH/ZGA3mhHo6fNnsG+1sfPHn0rAVNUI7MftF34XeevTjcKUw00qus+leFSaVuZc/x9ZaB7AAlDiQagBKQ==}
+
   '@fontsource-variable/inter@5.2.6':
     resolution: {integrity: sha512-jks/bficUPQ9nn7GvXvHtlQIPudW7Wx8CrlZoY8bhxgeobNxlQan8DclUJuYF2loYRrGpfrhCIZZspXYysiVGg==}
+
+  '@fontsource/noto-serif-jp@5.2.8':
+    resolution: {integrity: sha512-x+tGrrK+4t/hoHLxAl7Ry5nN8CVPermqz0fD7HtCXzBJSxzFKxNH9y+cuOD3gZW0tyKZ2CD7WvuAfHbISvjL5Q==}
 
   '@iconify-json/bx@1.2.2':
     resolution: {integrity: sha512-hZVx6LMEkYckScdRdUuQWcmv8Lm2au6Cnf799TLoR6YgiAfFvaJ4M5ElwcnExvCu8ntsS7jW89r0W5LwBAfZXQ==}
@@ -2919,7 +2931,11 @@ snapshots:
 
   '@fontsource-variable/bricolage-grotesque@5.2.8': {}
 
+  '@fontsource-variable/cormorant@5.2.8': {}
+
   '@fontsource-variable/inter@5.2.6': {}
+
+  '@fontsource/noto-serif-jp@5.2.8': {}
 
   '@iconify-json/bx@1.2.2':
     dependencies:
