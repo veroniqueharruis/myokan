@@ -10,6 +10,7 @@ import "@fontsource/noto-serif-jp/700.css";
 
 export interface Props {
   title: string;
+  fullTitle?: string;
   description?: string;
 }
 
@@ -20,9 +21,11 @@ const resolvedImageWithDomain = new URL(
   Astro.site
 ).toString();
 
-const { title, description = "Zafus de méditation zen artisanaux, faits main à Montpellier. Coussins de zazen traditionnels cousus à la main par Myokan." } = Astro.props;
+const { title, fullTitle, description = "Zafus de méditation zen artisanaux, faits main à Montpellier. Coussins de zazen traditionnels cousus à la main par Myokan." } = Astro.props;
 
-const makeTitle = title
+const makeTitle = fullTitle
+  ? fullTitle
+  : title
   ? title + " — Myokan"
   : "Zafu de méditation zen artisanal — Myokan";
 ---
