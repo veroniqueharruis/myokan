@@ -20,18 +20,41 @@ import PriceTag from "@components/price-tag.astro";
       "seller": { "@type": "LocalBusiness", "name": "Myokan" }
     }
   })} />
-  <main class="mt-16 px-4 max-w-6xl mx-auto">
+  <main class="mt-16 px-4 max-w-3xl mx-auto">
     <h1 class="text-4xl lg:text-5xl font-bold text-gray-800">Oryoki artisanal</h1>
     <PriceTag price="Prix sur demande" />
+
     <p class="text-lg mt-6 text-gray-600">
-      L'oryoki est le bol utilisé par les pratiquants zen lors des repas en sesshin.
-      Véronique réalise ces accessoires selon la manière dont ils sont utilisés au sein
-      de la Kosen Sangha — non pas selon la tradition stricte de certains temples, mais
-      adaptée à la pratique contemporaine.
+      L'oryoki — littéralement « juste ce qu'il faut » — est l'ensemble de bols et d'accessoires
+      utilisé lors des repas cérémonieux en sesshin dans les dojos zen. La cérémonie du repas
+      est elle-même une forme de pratique : chaque geste, chaque portion, chaque nettoyage du bol
+      est accompli avec la même attention que le zazen.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4">L'oryoki dans la pratique de la Kosen Sangha</h2>
+    <p class="text-lg text-gray-600">
+      Véronique réalise ces accessoires selon la manière dont ils sont utilisés au sein de la
+      Kosen Sangha, dans la lignée de maître Kosen — non pas selon la tradition stricte de
+      certains temples japonais, mais adaptée à la pratique contemporaine telle qu'elle se
+      transmet en Europe depuis maître Deshimaru.
     </p>
     <p class="text-lg mt-4 text-gray-600">
-      Chaque pièce est cousue à la main, avec soin, en tissu de qualité.
+      Cette approche permet d'obtenir un oryoki fonctionnel, robuste et adapté aux sesshins
+      organisées dans les dojos occidentaux, tout en respectant l'esprit de la cérémonie.
     </p>
+
+    <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4">Fabrication</h2>
+    <p class="text-lg text-gray-600">
+      Chaque pièce est cousue à la main, avec soin, en tissu de qualité soigneusement choisi
+      pour sa résistance et sa tenue dans le temps. Les coutures sont réalisées selon les
+      techniques apprises depuis 1982 au contact de la tradition zen.
+    </p>
+    <ul class="mt-4 space-y-2 text-gray-600">
+      <li class="flex gap-2"><span class="text-gray-400">—</span> Couture main entièrement réalisée à Montpellier</li>
+      <li class="flex gap-2"><span class="text-gray-400">—</span> Tissu solide et résistant aux utilisations répétées</li>
+      <li class="flex gap-2"><span class="text-gray-400">—</span> Adapté aux usages de la Kosen Sangha</li>
+      <li class="flex gap-2"><span class="text-gray-400">—</span> Dimensions et coloris sur demande</li>
+    </ul>
 
     <OrderCta product="un oryoki" />
 
@@ -42,6 +65,7 @@ import PriceTag from "@components/price-tag.astro";
       <div class="flex flex-wrap gap-3">
         <a href="/fukusas" class="px-4 py-2 border border-gray-200 rounded-md text-sm text-gray-700 hover:border-gray-400 transition">Fukusas</a>
         <a href="/kesas" class="px-4 py-2 border border-gray-200 rounded-md text-sm text-gray-700 hover:border-gray-400 transition">Sacs à kesa</a>
+        <a href="/zafus" class="px-4 py-2 border border-gray-200 rounded-md text-sm text-gray-700 hover:border-gray-400 transition">Zafus</a>
       </div>
     </nav>
   </main>
