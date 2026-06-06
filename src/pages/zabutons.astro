@@ -5,6 +5,19 @@ import Base from "../layouts/Layout.astro";
 <Base
   title="Zabuton artisanal — coussin de sol pour zazen"
   description="Zabutons faits main à Montpellier : coussin rectangulaire de sol pour la pratique du zazen. Protège genoux et chevilles, complément naturel du zafu.">
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Zabuton artisanal",
+    "description": "Grand coussin rectangulaire de sol pour la pratique du zazen, cousu à la main. Protège genoux et chevilles, complément indispensable du zafu.",
+    "brand": { "@type": "Brand", "name": "Myokan" },
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "EUR",
+      "availability": "https://schema.org/InStock",
+      "seller": { "@type": "LocalBusiness", "name": "Myokan" }
+    }
+  })} />
   <main class="mt-16 px-4 max-w-6xl mx-auto">
     <h1 class="text-4xl lg:text-5xl font-bold text-gray-800">Zabuton artisanal</h1>
     <p class="text-lg mt-4 text-gray-600">

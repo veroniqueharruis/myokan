@@ -5,6 +5,19 @@ import Base from "../layouts/Layout.astro";
 <Base
   title="Oryoki artisanal — bol zen pour la cérémonie du repas"
   description="Oryokis réalisés selon les usages de la Kosen Sangha : bols zen utilisés lors des repas en sesshin et retraites de méditation. Faits main à Montpellier.">
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Oryoki artisanal",
+    "description": "Accessoire zen pour la cérémonie du repas en sesshin. Réalisé à la main selon les usages de la Kosen Sangha.",
+    "brand": { "@type": "Brand", "name": "Myokan" },
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "EUR",
+      "availability": "https://schema.org/InStock",
+      "seller": { "@type": "LocalBusiness", "name": "Myokan" }
+    }
+  })} />
   <main class="mt-16 px-4 max-w-6xl mx-auto">
     <h1 class="text-4xl lg:text-5xl font-bold text-gray-800">Oryoki artisanal</h1>
     <p class="text-lg mt-4 text-gray-600">

@@ -20,6 +20,23 @@ const baseColors = [
 ---
 
 <Base title="Acheter un zafu artisanal personnalisé" description="Commandez votre zafu de méditation zen sur mesure : taille, remplissage et couleur au choix. Coussin zazen fait main, livraison depuis Montpellier.">
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Zafu de méditation zen artisanal",
+    "description": "Coussin de zazen artisanal cousu à la main. Disponible en plusieurs tailles (S, M, L, sur mesure), vide ou plein, dans de nombreux coloris.",
+    "brand": { "@type": "Brand", "name": "Myokan" },
+    "offers": {
+      "@type": "AggregateOffer",
+      "priceCurrency": "EUR",
+      "lowPrice": 25,
+      "highPrice": 50,
+      "offerCount": 8,
+      "availability": "https://schema.org/InStock",
+      "seller": { "@type": "LocalBusiness", "name": "Myokan" }
+    },
+    "image": "https://myokan.fr/zafu-plein-violet-pois.webp"
+  })} />
   <div class="max-w-2xl mx-auto p-6">
     <h1 class="text-2xl font-bold text-center">Configurez votre zafu idéal !</h1>
 

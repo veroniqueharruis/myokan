@@ -5,6 +5,19 @@ import Base from "../layouts/Layout.astro";
 <Base
   title="Sac à kesa et pochette ketsumyaku artisanaux"
   description="Sacs pour kesa (robe de moine zen) et pochettes de ketsumyaku faits main à Montpellier. Couture traditionnelle, tissu résistant, sur commande.">
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Sac à kesa et pochette ketsumyaku artisanaux",
+    "description": "Sac pour le transport et la protection du kesa (robe de moine zen) et pochette pour ketsumyaku, cousus à la main à Montpellier.",
+    "brand": { "@type": "Brand", "name": "Myokan" },
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "EUR",
+      "availability": "https://schema.org/InStock",
+      "seller": { "@type": "LocalBusiness", "name": "Myokan" }
+    }
+  })} />
   <main class="mt-16 px-4 max-w-6xl mx-auto">
     <h1 class="text-4xl lg:text-5xl font-bold text-gray-800">Sacs à kesa et pochettes ketsumyaku</h1>
     <p class="text-lg mt-4 text-gray-600">

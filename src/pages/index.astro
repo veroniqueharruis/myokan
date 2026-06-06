@@ -8,6 +8,35 @@ import Layout from "@layouts/Layout.astro";
 ---
 
 <Layout title="Zafu de méditation zen, fait main" description="Zafus et accessoires zen artisanaux cousus à la main à Montpellier. Coussins de zazen traditionnels, sacs à zafu, fukusas — commande par mail.">
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "LocalBusiness",
+        "name": "Myokan",
+        "description": "Zafus et accessoires zen artisanaux cousus à la main à Montpellier.",
+        "url": "https://myokan.fr",
+        "email": "myokan@hotmail.fr",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Montpellier",
+          "addressCountry": "FR"
+        },
+        "priceRange": "€–€€"
+      },
+      {
+        "@type": "Person",
+        "name": "Véronique Myokan Harruis",
+        "jobTitle": "Nonne zen et couturière artisanale",
+        "worksFor": { "@type": "LocalBusiness", "name": "Myokan" },
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Montpellier",
+          "addressCountry": "FR"
+        }
+      }
+    ]
+  })} />
   <Container>
     <Hero />
     <Features />

@@ -8,6 +8,21 @@ const images = [
 ---
 
 <Base title="Sac à zafu en coton artisanal" description="Sac de transport pour zafu en coton 100 % naturel, fait main. Protégez et transportez votre coussin de méditation zen facilement.">
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Sac à zafu en coton artisanal",
+    "description": "Sac de transport pour zafu en coton 100 % naturel, cousu à la main. Fermeture cordon, lavable en machine. Disponible en plusieurs coloris.",
+    "brand": { "@type": "Brand", "name": "Myokan" },
+    "material": "coton",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "EUR",
+      "availability": "https://schema.org/InStock",
+      "seller": { "@type": "LocalBusiness", "name": "Myokan" }
+    },
+    "image": "https://myokan.fr/sac-zafu-rouge.webp"
+  })} />
   <main class="mt-16 px-4 max-w-6xl mx-auto">
     <h2 class="text-4xl lg:text-5xl font-bold text-gray-800">Sac en coton pour zafu</h2>
     <p class="text-lg mt-4 text-gray-600">Pratique et léger, ce sac de transport est spécialement conçu pour emporter votre zafu partout avec vous : en salle de méditation, en stage ou en voyage.</p>
