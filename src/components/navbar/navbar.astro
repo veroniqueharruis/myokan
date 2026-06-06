@@ -1,72 +1,77 @@
 ---
 import Container from "@components/container.astro";
-import Link from "@components/ui/link.astro";
-import Dropdown from "./dropdown.astro";
-import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
 
-const menuitems = [
-  {
-    title: "Créations",
-    children: [
-      { title: "Zafus", path: "/zafus" },
-      { title: "Sacs à zafu", path: "/sacs-zafus" },
-      { title: "Zabutons", path: "/zabutons" },
-      { title: "Oryokis", path: "/oryokis" },
-      { title: "Fukusas", path: "/fukusas" },
-      { title: "Kesas", path: "/kesas" },
-    ],
-  },
-  {
-    title: "Contact",
-    path: "/contact",
-  },
+const produits = [
+  { title: "Zafus", path: "/zafus" },
+  { title: "Zabutons", path: "/zabutons" },
+  { title: "Sacs à zafu", path: "/sacs-zafus" },
+  { title: "Fukusas", path: "/fukusas" },
+  { title: "Oryokis", path: "/oryokis" },
+  { title: "Sacs à kesa", path: "/kesas" },
 ];
 ---
 
 <Container>
-  <header class="flex flex-col lg:flex-row justify-between items-center my-5">
-    <Astronav>
-      <div class="flex w-full lg:w-auto items-center justify-between">
+  <header class="my-5">
+
+    <!-- Desktop -->
+    <nav class="hidden lg:flex items-center justify-between">
+      <a href="/" class="text-lg shrink-0">
+        <span class="font-bold text-gray-800">Zafus</span>
+        <span class="text-gray-500">Myokan</span>
+      </a>
+      <ul class="flex items-center gap-1">
+        <li class="relative group">
+          <button class="flex items-center gap-1 px-3 py-2 text-gray-700 hover:text-gray-900 cursor-default select-none">
+            Créations
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 mt-0.5" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+            </svg>
+          </button>
+          <ul class="absolute left-0 top-full hidden group-hover:block bg-white border border-gray-200 rounded-md shadow-md w-44 py-1 z-50">
+            {produits.map((p) => (
+              <li>
+                <a href={p.path} class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900">
+                  {p.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </li>
+        <li>
+          <a href="/contact" class="px-3 py-2 text-gray-700 hover:text-gray-900">Contact</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Mobile -->
+    <div class="lg:hidden">
+      <div class="flex items-center justify-between">
         <a href="/" class="text-lg">
           <span class="font-bold text-gray-800">Zafus</span>
           <span class="text-gray-500">Myokan</span>
         </a>
-        <div class="block lg:hidden">
-          <MenuIcon class="w-4 h-4 text-gray-800" />
-        </div>
+        <label for="nav-toggle" class="cursor-pointer p-2 text-gray-700" aria-label="Ouvrir le menu">
+          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5" />
+          </svg>
+        </label>
       </div>
-      <MenuItems class="hidden w-full lg:w-auto mt-2 lg:flex lg:mt-0">
-        <ul class="flex flex-col lg:flex-row lg:gap-3">
-          {
-            menuitems.map((item, index) => (
-              <>
-                {item.children && (
-                  <Dropdown
-                    title={item.title}
-                    children={item.children}
-                    lastItem={index === menuitems.length - 1}
-                  />
-                )}
-
-                {!item.children && (
-                  <li>
-                    <a
-                      href={item.path}
-                      class="flex lg:px-3 py-2 items-center text-gray-700 hover:text-gray-900">
-                      <span>{item.title}</span>
-                      {item.badge && (
-                        <span class="ml-1 px-2 py-0.5 text-[10px] animate-pulse font-semibold uppercase text-white bg-gray-600 rounded-full">
-                          New
-                        </span>
-                      )}
-                    </a>
-                  </li>
-                )}
-              </>
-            ))
-          }
+      <input type="checkbox" id="nav-toggle" class="peer hidden" />
+      <nav class="hidden peer-checked:block mt-3 border-t border-gray-100 pt-3">
+        <p class="px-2 pb-1 text-xs font-semibold text-gray-400 uppercase tracking-wide">Créations</p>
+        <ul class="mb-3">
+          {produits.map((p) => (
+            <li>
+              <a href={p.path} class="block px-2 py-2 text-gray-700 hover:text-gray-900">{p.title}</a>
+            </li>
+          ))}
         </ul>
-      </MenuItems>
-    </Astronav>
+        <div class="border-t border-gray-100 pt-3">
+          <a href="/contact" class="block px-2 py-2 text-gray-700 hover:text-gray-900">Contact</a>
+        </div>
+      </nav>
+    </div>
+
   </header>
 </Container>
