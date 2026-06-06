@@ -1,26 +1,15 @@
 ---
-const produits = [
-  { title: "Zafus", path: "/zafus", desc: "Coussin de zazen personnalisé" },
-  { title: "Zabutons", path: "/zabutons", desc: "Coussin de sol pour zazen" },
-  { title: "Sacs à zafu", path: "/sacs-zafus", desc: "Transport en coton" },
-  { title: "Fukusas", path: "/fukusas", desc: "Protection pour bol oryoki" },
-  { title: "Oryokis", path: "/oryokis", desc: "Bol pour la cérémonie du repas" },
-  { title: "Sacs à kesa", path: "/kesas", desc: "Protection de la robe zen" },
-];
 ---
 
-<section class="mt-16 mb-8">
-  <h2 class="text-3xl font-bold text-gray-800 mb-2">Toutes les créations</h2>
-  <p class="text-gray-600 mb-8">Chaque pièce est cousue à la main, sur commande, depuis Montpellier.</p>
-  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-    {produits.map((p) => (
-      <a href={p.path} class="block p-5 border border-gray-200 rounded-lg hover:border-gray-400 hover:shadow-sm transition">
-        <p class="font-semibold text-gray-800">{p.title}</p>
-        <p class="text-sm text-gray-500 mt-1">{p.desc}</p>
-      </a>
-    ))}
+<section class="mt-16 mb-4 rounded-xl bg-gray-50 border border-gray-200 px-8 py-10 max-w-5xl mx-auto text-center">
+  <h2 class="text-2xl font-bold text-gray-800">Toutes les pièces sont réalisées sur commande</h2>
+  <p class="text-gray-600 mt-2">Choisissez votre article, écrivez un mail, Véronique répond sous quelques jours.</p>
+  <div class="mt-6 flex justify-center gap-4 flex-wrap">
+    <a href="/contact" class="px-6 py-3 bg-gray-800 text-white rounded-md hover:bg-gray-700 transition font-medium">
+      Passer commande
+    </a>
+    <a href="mailto:myokan@hotmail.fr" class="px-6 py-3 border border-gray-300 text-gray-700 rounded-md hover:border-gray-500 transition font-medium">
+      myokan@hotmail.fr
+    </a>
   </div>
-  <p class="mt-8 text-gray-600">
-    Pour commander, écrivez à <a href="mailto:myokan@hotmail.fr" class="text-gray-800 underline">myokan@hotmail.fr</a> ou consultez la <a href="/contact" class="text-gray-800 underline">page contact</a>.
-  </p>
 </section>
