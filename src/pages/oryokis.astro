@@ -1,6 +1,7 @@
 ---
 import Base from "../layouts/Layout.astro";
 import OrderCta from "@components/order-cta.astro";
+import PriceTag from "@components/price-tag.astro";
 ---
 
 <Base
@@ -21,7 +22,8 @@ import OrderCta from "@components/order-cta.astro";
   })} />
   <main class="mt-16 px-4 max-w-6xl mx-auto">
     <h1 class="text-4xl lg:text-5xl font-bold text-gray-800">Oryoki artisanal</h1>
-    <p class="text-lg mt-4 text-gray-600">
+    <PriceTag price="Prix sur demande" />
+    <p class="text-lg mt-6 text-gray-600">
       L'oryoki est le bol utilisé par les pratiquants zen lors des repas en sesshin.
       Véronique réalise ces accessoires selon la manière dont ils sont utilisés au sein
       de la Kosen Sangha — non pas selon la tradition stricte de certains temples, mais

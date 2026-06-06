@@ -2,6 +2,7 @@
 import Base from "../layouts/Layout.astro";
 import { Icon } from "astro-icon/components";
 import OrderCta from "@components/order-cta.astro";
+import PriceTag from "@components/price-tag.astro";
 
 const images = [
   "sac-zafu-rouge.webp",
@@ -25,7 +26,8 @@ const images = [
     "image": "https://myokan.fr/sac-zafu-rouge.webp"
   })} />
   <main class="mt-16 px-4 max-w-6xl mx-auto">
-    <h2 class="text-4xl lg:text-5xl font-bold text-gray-800">Sac en coton pour zafu</h2>
+    <h1 class="text-4xl lg:text-5xl font-bold text-gray-800">Sac en coton pour zafu</h1>
+    <PriceTag price="Prix sur demande" />
     <p class="text-lg mt-4 text-gray-600">Pratique et léger, ce sac de transport est spécialement conçu pour emporter votre zafu partout avec vous : en salle de méditation, en stage ou en voyage.</p>
     <p class="text-lg mt-4 text-gray-600">100% coton résistant et respirant.</p>
     <p class="text-lg mt-4 text-gray-600">Disponible en divers coloris.</p>

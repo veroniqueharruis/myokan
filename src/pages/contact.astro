@@ -1,37 +1,87 @@
 ---
-import Contactform from "@components/contactform.astro";
-import Container from "@components/container.astro";
-import Sectionhead from "@components/sectionhead.astro";
 import Layout from "@layouts/Layout.astro";
-import { Icon } from "astro-icon/components";
+import Container from "@components/container.astro";
 ---
 
-<Layout title="Commander un zafu — Contact" description="Passez commande par mail pour un zafu, sac à zafu ou fukusa artisanal. Réponse sous quelques jours depuis Montpellier.">
+<Layout
+  title="Commander un zafu — Contact"
+  description="Passez commande par mail pour un zafu, sac à zafu ou fukusa artisanal. Réponse sous quelques jours depuis Montpellier.">
   <Container>
-    <Sectionhead>
-      <Fragment slot="title">Contact</Fragment>
-      <Fragment slot="desc">Merci d'effectuer vos commandes par mail !</Fragment>
-    </Sectionhead>
+    <div class="max-w-2xl mx-auto mt-16 mb-20">
 
-    <div class="grid md:grid-cols-2 gap-10 mx-auto max-w-4xl mt-16">
-      <div>
-        <h2 class="font-medium text-2xl text-gray-800">Contactez-moi</h2>
-        <p class="text-lg leading-relaxed text-gray-600 mt-3">
-          Réponse sous quelques jours.
-        </p>
-        <div class="mt-5">
-          <div class="flex items-center mt-2 space-x-2 text-gray-700">
-            <Icon class="text-gray-400 w-4 h-4" name="uil:map-marker" />
-            <span>Montpellier, France</span>
-          </div>
-          <div class="flex items-center mt-2 space-x-2 text-gray-700">
-            <Icon class="text-gray-400 w-4 h-4" name="uil:envelope" />
-            <a href="mailto:myokan@hotmail.fr" class="hover:text-gray-900">
-              myokan@hotmail.fr
-            </a>
-          </div>
+      <h1 class="text-4xl lg:text-5xl font-bold text-gray-800">Passer commande</h1>
+      <p class="text-lg text-gray-600 mt-4">
+        Toutes les commandes se font par mail. Véronique répond personnellement sous quelques jours.
+      </p>
+
+      <!-- Email bien en vue -->
+      <a
+        href="mailto:myokan@hotmail.fr"
+        class="mt-8 flex items-center gap-4 p-6 bg-gray-50 border border-gray-200 rounded-xl hover:border-gray-400 transition group">
+        <div class="shrink-0 w-12 h-12 bg-gray-800 text-white rounded-full flex items-center justify-center text-xl">
+          @
+        </div>
+        <div>
+          <p class="text-sm text-gray-500 mb-0.5">Écrire à</p>
+          <p class="text-xl font-semibold text-gray-800 group-hover:underline">myokan@hotmail.fr</p>
+        </div>
+      </a>
+
+      <!-- Comment commander -->
+      <div class="mt-12">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6">Comment ça se passe ?</h2>
+        <ol class="space-y-6">
+          <li class="flex gap-4">
+            <span class="shrink-0 w-8 h-8 bg-gray-800 text-white rounded-full flex items-center justify-center text-sm font-bold">1</span>
+            <div>
+              <p class="font-semibold text-gray-800">Choisissez votre article</p>
+              <p class="text-gray-600 text-sm mt-1">
+                Parcourez les créations — zafu, zabuton, sac, fukusa, oryoki, sac à kesa — et notez vos préférences (taille, coloris, remplissage).
+              </p>
+            </div>
+          </li>
+          <li class="flex gap-4">
+            <span class="shrink-0 w-8 h-8 bg-gray-800 text-white rounded-full flex items-center justify-center text-sm font-bold">2</span>
+            <div>
+              <p class="font-semibold text-gray-800">Envoyez un mail</p>
+              <p class="text-gray-600 text-sm mt-1">
+                Décrivez votre commande à <a href="mailto:myokan@hotmail.fr" class="underline">myokan@hotmail.fr</a>.
+                Pour les zafus, utilisez le code généré par le configurateur.
+              </p>
+            </div>
+          </li>
+          <li class="flex gap-4">
+            <span class="shrink-0 w-8 h-8 bg-gray-800 text-white rounded-full flex items-center justify-center text-sm font-bold">3</span>
+            <div>
+              <p class="font-semibold text-gray-800">Confirmation et paiement</p>
+              <p class="text-gray-600 text-sm mt-1">
+                Véronique confirme la commande, le délai de confection et le montant. Le paiement se fait par virement bancaire.
+              </p>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      <!-- Infos pratiques -->
+      <div class="mt-12 grid sm:grid-cols-2 gap-4 text-sm text-gray-600">
+        <div class="p-4 bg-gray-50 rounded-lg">
+          <p class="font-semibold text-gray-800 mb-1">Délai de réponse</p>
+          <p>Quelques jours ouvrés.</p>
+        </div>
+        <div class="p-4 bg-gray-50 rounded-lg">
+          <p class="font-semibold text-gray-800 mb-1">Livraison</p>
+          <p>Envoi depuis Montpellier, frais à préciser selon destination.</p>
+        </div>
+        <div class="p-4 bg-gray-50 rounded-lg">
+          <p class="font-semibold text-gray-800 mb-1">Paiement</p>
+          <p>Virement bancaire après confirmation de commande.</p>
+        </div>
+        <div class="p-4 bg-gray-50 rounded-lg">
+          <p class="font-semibold text-gray-800 mb-1">Sur mesure</p>
+          <p>Dimensions et coloris personnalisables sur demande.</p>
         </div>
       </div>
+
     </div>
   </Container>
 </Layout>
