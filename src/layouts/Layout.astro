@@ -2,8 +2,9 @@
 import { SEO } from "astro-seo";
 import Footer from "@components/footer.astro";
 import Navbar from "@components/navbar/navbar.astro";
-import "@fontsource-variable/inter/index.css";
-import '@fontsource-variable/bricolage-grotesque';
+import "@fontsource-variable/cormorant/index.css";
+import "@fontsource/noto-serif-jp/400.css";
+import "@fontsource/noto-serif-jp/700.css";
 
 
 
@@ -57,10 +58,14 @@ const makeTitle = title
     <slot />
     <Footer />
     <style is:global>
-      /* Improve Page speed */
-      /* https://css-tricks.com/almanac/properties/c/content-visibility/ */
       img {
         content-visibility: auto;
+      }
+      body {
+        font-family: "Noto Serif JP", Georgia, serif;
+      }
+      h1, h2, h3, h4, h5, h6 {
+        font-family: "Cormorant Variable", Georgia, serif;
       }
     </style>
   </body>
