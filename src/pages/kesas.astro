@@ -1,5 +1,6 @@
 ---
 import Base from "../layouts/Layout.astro";
+import OrderCta from "@components/order-cta.astro";
 ---
 
 <Base
@@ -30,10 +31,8 @@ import Base from "../layouts/Layout.astro";
       dimensions appropriées à chaque type d'accessoire.
     </p>
     <p class="text-lg mt-4 text-gray-600">Dimensions et coloris sur demande.</p>
-    <p class="text-lg mt-4 text-gray-600">
-      Pour passer commande :
-      <a href="mailto:myokan@hotmail.fr" class="text-purple-700 underline">myokan@hotmail.fr</a>
-    </p>
+
+    <OrderCta product="un sac à kesa" />
 
     <!-- Galerie — à compléter quand les photos seront disponibles -->
 
@@ -42,7 +41,6 @@ import Base from "../layouts/Layout.astro";
       <div class="flex flex-wrap gap-3">
         <a href="/fukusas" class="px-4 py-2 border border-gray-200 rounded-md text-sm text-gray-700 hover:border-gray-400 transition">Fukusas</a>
         <a href="/oryokis" class="px-4 py-2 border border-gray-200 rounded-md text-sm text-gray-700 hover:border-gray-400 transition">Oryokis</a>
-        <a href="/contact" class="px-4 py-2 bg-gray-800 text-white rounded-md text-sm hover:bg-gray-700 transition">Passer commande</a>
       </div>
     </nav>
   </main>

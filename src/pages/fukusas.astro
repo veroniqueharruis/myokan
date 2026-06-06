@@ -1,6 +1,7 @@
 ---
 import Base from "../layouts/Layout.astro";
 import { Icon } from "astro-icon/components";
+import OrderCta from "@components/order-cta.astro";
 
 const images = [
   "fukusa-FB_IMG_1756283080119.webp",
@@ -31,6 +32,8 @@ const images = [
     <h2 class="text-4xl lg:text-5xl font-bold text-gray-800">Accessoires zen</h2>
     <p class="text-lg mt-4 text-gray-600">Les fukusas sont des pièces de tissu utilisées par les moines et nonnes zen pour protéger leur bol oryoki. </p>
 
+
+    <OrderCta product="un fukusa" />
 
     <nav aria-label="Voir aussi" class="mt-8">
       <p class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">Voir aussi</p>

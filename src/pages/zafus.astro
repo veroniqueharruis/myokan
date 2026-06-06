@@ -1,5 +1,6 @@
 ---
 import Base from "../layouts/Layout.astro";
+import OrderCta from "@components/order-cta.astro";
 
 const sizes = [
   { name: "S", width: 28, height: 13 },
@@ -235,6 +236,10 @@ const baseColors = [
       lightbox.classList.remove("flex");
     });
   </script>
+
+  <div class="max-w-2xl mx-auto px-6">
+    <OrderCta product="un zafu" />
+  </div>
 
   <nav aria-label="Voir aussi" class="max-w-2xl mx-auto px-6 mt-12 mb-8">
     <p class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">Voir aussi</p>
