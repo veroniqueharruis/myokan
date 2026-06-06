@@ -1,12 +1,9 @@
 ---
 import { Picture } from "astro:assets";
 import heroImage from "assets/hero.webp";
-import Link from "@components/ui/link.astro";
-import { Icon } from "astro-icon/components";
 ---
 
-<main
-  class="grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24">
+<main class="grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24">
   <div class="py-6 md:order-1 hidden md:block">
     <Picture
       src={heroImage}
@@ -18,12 +15,19 @@ import { Icon } from "astro-icon/components";
     />
   </div>
   <div>
-    <h1
-      class="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter text-gray-800">
+    <h1 class="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter text-gray-800">
       Zafus Myokan
     </h1>
     <p class="text-lg mt-4 text-gray-600 max-w-xl">
-      Zafus traditionnels ou fantaisie.
+      Zafus traditionnels ou fantaisie, cousus à la main à Montpellier.
     </p>
+    <div class="mt-8 flex flex-wrap gap-4">
+      <a href="/zafus" class="px-6 py-3 bg-gray-800 text-white rounded-md hover:bg-gray-700 transition">
+        Configurer un zafu
+      </a>
+      <a href="/contact" class="px-6 py-3 border border-gray-300 text-gray-700 rounded-md hover:border-gray-500 transition">
+        Passer commande
+      </a>
+    </div>
   </div>
 </main>
