@@ -37,6 +37,15 @@ const makeTitle = fullTitle
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.png" />
     <meta name="generator" content={Astro.generator} />
+    <script is:inline>
+      (function () {
+        const saved = localStorage.getItem("theme");
+        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        if (saved === "dark" || (!saved && prefersDark)) {
+          document.documentElement.classList.add("dark");
+        }
+      })();
+    </script>
 
     <slot name="head" />
     <SEO
@@ -70,6 +79,28 @@ const makeTitle = fullTitle
       h1, h2, h3, h4, h5, h6 {
         font-family: "Cormorant Variable", Georgia, serif;
       }
+
+      /* Dark mode — override Tailwind gray classes globally */
+      html.dark body                { background-color: #111827; color: #f9fafb; }
+      html.dark .text-gray-800      { color: #f9fafb; }
+      html.dark .text-gray-700      { color: #f3f4f6; }
+      html.dark .text-gray-600      { color: #d1d5db; }
+      html.dark .text-gray-500      { color: #9ca3af; }
+      html.dark .text-gray-400      { color: #6b7280; }
+      html.dark .bg-gray-50         { background-color: #1f2937; }
+      html.dark .bg-gray-100        { background-color: #1f2937; }
+      html.dark .bg-white           { background-color: #111827; }
+      html.dark .border-gray-100    { border-color: #374151; }
+      html.dark .border-gray-200    { border-color: #374151; }
+      html.dark .border-gray-300    { border-color: #4b5563; }
+      html.dark .border-t           { border-color: #374151; }
+      html.dark select, html.dark input[type="text"] {
+        background-color: #1f2937;
+        border-color: #374151;
+        color: #f9fafb;
+      }
+      html.dark .bg-purple-50       { background-color: #2e1065; }
+      html.dark .text-slate-400     { color: #6b7280; }
     </style>
   </body>
 </html>
