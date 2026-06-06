@@ -9,6 +9,7 @@ import '@fontsource-variable/bricolage-grotesque';
 
 export interface Props {
   title: string;
+  description?: string;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
@@ -18,15 +19,15 @@ const resolvedImageWithDomain = new URL(
   Astro.site
 ).toString();
 
-const { title } = Astro.props;
+const { title, description = "Zafus de méditation zen artisanaux, faits main à Montpellier. Coussins de zazen traditionnels cousus à la main par Myokan." } = Astro.props;
 
 const makeTitle = title
-  ? title + " | " + "Zafus"
-  : "Zafus Myokan";
+  ? title + " — Myokan"
+  : "Zafu de méditation zen artisanal — Myokan";
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -36,22 +37,17 @@ const makeTitle = title
     <!-- <link rel="preload" as="image" href={src} alt="Hero" /> -->
     <SEO
       title={makeTitle}
-      description="Zafus Myokan"
+      description={description}
       canonical={canonicalURL}
-      twitter={{
-        creator: "@surjithctly",
-        site: "@web3templates",
-        card: "summary_large_image",
-      }}
       openGraph={{
         basic: {
           url: canonicalURL,
           type: "website",
-          title: `Zafus`,
+          title: makeTitle,
           image: resolvedImageWithDomain,
         },
         image: {
-          alt: "Zafus Myokan",
+          alt: "Zafus de méditation zen artisanaux Myokan",
         },
       }}
     />
