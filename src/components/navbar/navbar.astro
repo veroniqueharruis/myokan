@@ -6,16 +6,15 @@ import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
 
 const menuitems = [
   {
-    title: "Zafus",
-    path: "/zafus",
-  },
-  {
-    title: "Sacs à zafu",
-    path: "/sacs-zafus",
-  },
-  {
-    title: "Fukusas",
-    path: "/fukusas",
+    title: "Créations",
+    children: [
+      { title: "Zafus", path: "/zafus" },
+      { title: "Sacs à zafu", path: "/sacs-zafus" },
+      { title: "Zabutons", path: "/zabutons" },
+      { title: "Oryokis", path: "/oryokis" },
+      { title: "Fukusas", path: "/fukusas" },
+      { title: "Kesas", path: "/kesas" },
+    ],
   },
   {
     title: "Contact",
