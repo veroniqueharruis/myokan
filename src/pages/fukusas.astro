@@ -5,12 +5,12 @@ import OrderCta from "@components/order-cta.astro";
 import PriceTag from "@components/price-tag.astro";
 
 const images = [
-  "fukusa-FB_IMG_1756283080119.webp",
-  "fukusa-bleu-jaune.webp",
-  "fukusa-FB_IMG_1756283086911.webp",
-  "fukusa-FB_IMG_1756283090242.webp",
-  "fukusa-orange-gris.webp",
-  "fukusa-FB_IMG_1756283102483.webp",
+  { src: "fukusa-FB_IMG_1756283080119.webp", alt: "Fukusa zen artisanal cousu main — coloris uni, Myokan Montpellier" },
+  { src: "fukusa-bleu-jaune.webp", alt: "Fukusa zen bleu et jaune artisanal pour bol oryoki — Myokan Montpellier" },
+  { src: "fukusa-FB_IMG_1756283086911.webp", alt: "Fukusa zen artisanal pour oryoki — tissu résistant cousu à la main" },
+  { src: "fukusa-FB_IMG_1756283090242.webp", alt: "Fukusa de protection pour bol oryoki, couture artisanale — Myokan" },
+  { src: "fukusa-orange-gris.webp", alt: "Fukusa zen orange et gris artisanal cousu à la main — Myokan" },
+  { src: "fukusa-FB_IMG_1756283102483.webp", alt: "Fukusa zen fait main, disponible en plusieurs coloris sur commande — Myokan" },
 ];
 ---
 
@@ -85,10 +85,10 @@ const images = [
     <div class="mt-12">
       <h3 class="text-2xl font-bold text-gray-800 mb-4">Galerie</h3>
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-        {images.map((src, index) => (
+        {images.map((img, index) => (
           <img
-            src={src}
-            alt="Fukusa zen artisanal pour bol oryoki — Myokan"
+            src={img.src}
+            alt={img.alt}
             class="rounded-lg shadow-md w-full object-cover cursor-pointer hover:opacity-80 transition"
             data-index={index}
           />
