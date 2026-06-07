@@ -1,7 +1,6 @@
 ---
 import { Picture } from "astro:assets";
 import { getCollection } from "astro:content";
-import heroImage from "assets/hero.webp";
 
 const publishedTeamMembers = await getCollection("team", ({ data }) => {
   return !data.draft && data.publishDate < new Date();
@@ -89,12 +88,12 @@ const produits = [
 <!-- Bio courte -->
 <section class="mt-16 mx-auto max-w-5xl">
   <div class="flex flex-col sm:flex-row gap-6 items-start p-6 bg-gray-50 rounded-xl border border-gray-100">
-    <Picture
-      src={heroImage}
-      alt="Sceau de Myokan — artisanat zen depuis 1982"
-      width={80}
-      height={80}
-      class="w-20 h-20 object-contain shrink-0"
+    <img
+      src="/veronique.webp"
+      alt="Véronique Myokan Harruis, nonne zen et créatrice de zafus artisanaux à Montpellier"
+      width="80"
+      height="80"
+      class="w-20 h-20 rounded-full object-cover shrink-0"
       loading="lazy"
     />
     <div>
