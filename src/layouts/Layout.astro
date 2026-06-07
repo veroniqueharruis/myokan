@@ -59,9 +59,21 @@ const makeTitle = fullTitle
           title: makeTitle,
           image: resolvedImageWithDomain,
         },
+        optional: {
+          description: description,
+        },
         image: {
           alt: "Zafus de méditation zen artisanaux Myokan",
+          width: 1200,
+          height: 630,
         },
+      }}
+      twitter={{
+        card: "summary_large_image",
+        title: makeTitle,
+        description: description,
+        image: resolvedImageWithDomain,
+        imageAlt: "Zafus de méditation zen artisanaux Myokan",
       }}
     />
   </head>
