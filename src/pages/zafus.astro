@@ -12,11 +12,11 @@ const sizes = [
 const types = ["Vide", "Plein"];
 
 const baseColors = [
-  { name: "Noir", hex: "#000000", img: "/zafu-plein-noir.webp" },
-  { name: "Rouge", hex: "#FF0000", img: "/zafu-plein-rouge.webp" },
-  { name: "Vert", hex: "#008000", img: "/zafu-plein-vert.webp" },
-  { name: "Bleu", hex: "#0000FF", img: "/zafu-plein-bleu.webp" },
-  { name: "Marron", hex: "#4B2E1E", img: "/zafu-plein-marron.webp" },
+  { name: "Noir", hex: "#000000" },
+  { name: "Rouge", hex: "#FF0000" },
+  { name: "Vert", hex: "#008000" },
+  { name: "Bleu", hex: "#0000FF" },
+  { name: "Marron", hex: "#4B2E1E" },
 ];
 ---
 
@@ -115,7 +115,6 @@ const baseColors = [
               style={`background:${c.hex}`}
               data-name={c.name}
               data-hex={c.hex}
-              data-img={c.img}
               title={`Zafu ${c.name}`}
               aria-label={`Couleur ${c.name}`}
             ></button>
@@ -183,8 +182,9 @@ const baseColors = [
         selectedColor = btn.dataset.name;
         selectedHex = normalizeHex(btn.dataset.hex);
         colorNameSpan.textContent = selectedColor;
-        zafuImage.src = btn.dataset.img;
-        colorOverlay.classList.add("hidden");
+        zafuImage.src = "/zafu-plein-violet-pois.webp";
+        colorOverlay.style.background = selectedHex;
+        colorOverlay.classList.remove("hidden");
         updateResult();
         colorPicker.value = "#cccccc";
       });
