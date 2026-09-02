@@ -1,87 +1,159 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Accueil",
+      "item": "https://myokan.fr/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Commander & Contact",
+      "item": "https://myokan.fr/contact/"
+    }
+  ]
+};
+
+const prefilledGeneralSubject = encodeURIComponent("Demande de renseignement / commande — Myokan");
+const prefilledGeneralBody = encodeURIComponent(
+  "Bonjour Véronique,\n\nJe vous contacte au sujet de :\n[ ] Commande de zafu de méditation\n[ ] Commande de zabuton\n[ ] Commande de sac ou accessoire (fukusa, oryoki, sac à kesa)\n[ ] Conseil sur la posture ou les dimensions\n\nMes préférences (taille, coloris, questions) :\n...\n\nNom & Prénom :\nAdresse de livraison :\nTéléphone (facultatif) :\n\nMerci d'avance,\nCordialement"
+);
 ---
 
 <Layout
-  fullTitle="Commander un zafu artisanal — Myokan, Montpellier"
-  description="Passez commande par mail pour un zafu, sac à zafu ou fukusa artisanal. Réponse sous quelques jours depuis Montpellier.">
-  <Container>
-    <div class="max-w-2xl mx-auto mt-16 mb-20">
+  fullTitle="Commander un zafu artisanal & Contact — Myokan, Montpellier"
+  description="Passez commande par e-mail pour un zafu, zabuton, sac ou fukusa artisanal. Confection à Montpellier et réponse personnalisée sous quelques jours.">
+  
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumbSchema)} />
 
-      <h1 class="text-4xl lg:text-5xl font-bold text-gray-800">Passer commande</h1>
-      <p class="text-lg text-gray-600 mt-4">
-        Toutes les commandes se font par mail. Véronique répond personnellement sous quelques jours.
+  <Container>
+    <main id="main-content" class="max-w-2xl mx-auto mt-10 mb-20">
+      
+      <!-- Fil d'Ariane -->
+      <nav aria-label="Fil d'Ariane" class="text-xs text-gray-600 dark:text-gray-400 mb-8">
+        <ol class="flex items-center gap-2">
+          <li>
+            <a href="/" class="hover:text-gray-950 dark:hover:text-white transition">Accueil</a>
+          </li>
+          <li aria-hidden="true">/</li>
+          <li class="font-medium text-gray-900 dark:text-white" aria-current="page">Commander & Contact</li>
+        </ol>
+      </nav>
+
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white break-words">Passer commande & Nous contacter</h1>
+      <p class="text-lg text-gray-700 dark:text-gray-300 mt-4 leading-relaxed">
+        Toutes les créations sont réalisées sur mesure et à la demande. 
+        Véronique Myokan Harruis répond personnellement à chaque message sous quelques jours ouvrés depuis Montpellier.
       </p>
 
-      <!-- Email bien en vue -->
+      <!-- Bouton mailto direct -->
       <a
-        href="mailto:myokan@hotmail.fr"
-        class="mt-8 flex items-center gap-4 p-6 bg-gray-50 border border-gray-200 rounded-xl hover:border-gray-400 transition group">
-        <div class="shrink-0 w-12 h-12 bg-gray-800 text-white rounded-full flex items-center justify-center text-xl">
+        href={`mailto:myokan@hotmail.fr?subject=${prefilledGeneralSubject}&body=${prefilledGeneralBody}`}
+        class="mt-8 flex items-center gap-4 p-6 bg-gray-50 dark:bg-gray-900/70 border border-gray-200 dark:border-gray-700 rounded-2xl hover:border-gray-400 dark:hover:border-gray-500 transition group shadow-sm focus-visible:ring-2"
+        aria-label="Envoyer un e-mail à myokan@hotmail.fr avec le modèle pré-rempli"
+      >
+        <div class="shrink-0 w-12 h-12 bg-gray-900 dark:bg-white text-white dark:text-gray-950 rounded-full flex items-center justify-center text-xl font-bold">
           @
         </div>
-        <div>
-          <p class="text-sm text-gray-500 mb-0.5">Écrire à</p>
-          <p class="text-xl font-semibold text-gray-800 group-hover:underline">myokan@hotmail.fr</p>
+        <div class="flex-1">
+          <p class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-0.5">Écrire directement à</p>
+          <p class="text-xl font-bold text-gray-900 dark:text-white group-hover:underline">myokan@hotmail.fr</p>
         </div>
+        <span class="hidden sm:inline text-xs font-semibold text-gray-600 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white">
+          Ouvrir l'e-mail →
+        </span>
       </a>
 
       <!-- Comment commander -->
-      <div class="mt-12">
-        <h2 class="text-2xl font-bold text-gray-800 mb-6">Comment ça se passe ?</h2>
+      <div class="mt-14">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Les étapes de votre commande</h2>
         <ol class="space-y-6">
           <li class="flex gap-4">
-            <span class="shrink-0 w-8 h-8 bg-gray-800 text-white rounded-full flex items-center justify-center text-sm font-bold">1</span>
+            <span class="shrink-0 w-8 h-8 bg-gray-900 dark:bg-white text-white dark:text-gray-950 rounded-full flex items-center justify-center text-sm font-bold">1</span>
             <div>
-              <p class="font-semibold text-gray-800">Choisissez votre article</p>
-              <p class="text-gray-600 text-sm mt-1">
-                Parcourez les créations — zafu, zabuton, sac, fukusa, oryoki, sac à kesa — et notez vos préférences (taille, coloris, remplissage).
+              <h3 class="font-bold text-gray-900 dark:text-white text-base">Choisissez votre article</h3>
+              <p class="text-gray-700 dark:text-gray-300 text-sm mt-1 leading-relaxed">
+                Parcourez nos créations — <a href="/zafus/" class="underline hover:text-gray-950 dark:hover:text-white font-medium">zafu</a>, 
+                <a href="/zabutons/" class="underline hover:text-gray-950 dark:hover:text-white font-medium">zabuton</a>, 
+                <a href="/sacs-zafus/" class="underline hover:text-gray-950 dark:hover:text-white font-medium">sac à zafu</a>, 
+                <a href="/fukusas/" class="underline hover:text-gray-950 dark:hover:text-white font-medium">fukusa</a>, 
+                <a href="/oryokis/" class="underline hover:text-gray-950 dark:hover:text-white font-medium">oryoki</a> ou sac à kesa — et notez vos souhaits de dimensions, remplissage (kapok plein ou housse vide) et coloris.
               </p>
             </div>
           </li>
+
           <li class="flex gap-4">
-            <span class="shrink-0 w-8 h-8 bg-gray-800 text-white rounded-full flex items-center justify-center text-sm font-bold">2</span>
+            <span class="shrink-0 w-8 h-8 bg-gray-900 dark:bg-white text-white dark:text-gray-950 rounded-full flex items-center justify-center text-sm font-bold">2</span>
             <div>
-              <p class="font-semibold text-gray-800">Envoyez un mail</p>
-              <p class="text-gray-600 text-sm mt-1">
-                Décrivez votre commande à <a href="mailto:myokan@hotmail.fr" class="underline">myokan@hotmail.fr</a>.
-                Pour les zafus, utilisez le code généré par le configurateur.
+              <h3 class="font-bold text-gray-900 dark:text-white text-base">Envoyez votre message</h3>
+              <p class="text-gray-700 dark:text-gray-300 text-sm mt-1 leading-relaxed">
+                Écrivez à <a href="mailto:myokan@hotmail.fr" class="underline font-medium hover:text-gray-950 dark:hover:text-white">myokan@hotmail.fr</a>. 
+                Si vous avez configuré un zafu, vous pouvez simplement inclure le code généré (ex. <code>ZAFU-M-Plein-Noir</code>) ou nous exposer vos questions d'assise.
               </p>
             </div>
           </li>
+
           <li class="flex gap-4">
-            <span class="shrink-0 w-8 h-8 bg-gray-800 text-white rounded-full flex items-center justify-center text-sm font-bold">3</span>
+            <span class="shrink-0 w-8 h-8 bg-gray-900 dark:bg-white text-white dark:text-gray-950 rounded-full flex items-center justify-center text-sm font-bold">3</span>
             <div>
-              <p class="font-semibold text-gray-800">Confirmation et paiement</p>
-              <p class="text-gray-600 text-sm mt-1">
-                Véronique confirme la commande, le délai de confection et le montant. Le paiement se fait par virement bancaire.
+              <h3 class="font-bold text-gray-900 dark:text-white text-base">Confirmation & Réalisation</h3>
+              <p class="text-gray-700 dark:text-gray-300 text-sm mt-1 leading-relaxed">
+                Véronique vous confirme la faisabilité, le délai de couture et le montant avec les frais de port. Le règlement s'effectue par virement bancaire avant l'envoi soigné depuis Montpellier.
               </p>
             </div>
           </li>
         </ol>
       </div>
 
-      <!-- Infos pratiques -->
-      <div class="mt-12 grid sm:grid-cols-2 gap-4 text-sm text-gray-600">
-        <div class="p-4 bg-gray-50 rounded-lg">
-          <p class="font-semibold text-gray-800 mb-1">Délai de réponse</p>
-          <p>Quelques jours ouvrés.</p>
-        </div>
-        <div class="p-4 bg-gray-50 rounded-lg">
-          <p class="font-semibold text-gray-800 mb-1">Livraison</p>
-          <p>Envoi depuis Montpellier, frais à préciser selon destination.</p>
-        </div>
-        <div class="p-4 bg-gray-50 rounded-lg">
-          <p class="font-semibold text-gray-800 mb-1">Paiement</p>
-          <p>Virement bancaire après confirmation de commande.</p>
-        </div>
-        <div class="p-4 bg-gray-50 rounded-lg">
-          <p class="font-semibold text-gray-800 mb-1">Sur mesure</p>
-          <p>Dimensions et coloris personnalisables sur demande.</p>
+      <!-- Informations pratiques -->
+      <div class="mt-12">
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Informations pratiques</h2>
+        <div class="grid sm:grid-cols-2 gap-4 text-sm text-gray-700 dark:text-gray-300">
+          <div class="p-4 bg-gray-50 dark:bg-gray-900/60 rounded-xl border border-gray-200 dark:border-gray-800">
+            <h3 class="font-bold text-gray-900 dark:text-white mb-1">Délai de réponse</h3>
+            <p>Quelques jours ouvrés.</p>
+          </div>
+          <div class="p-4 bg-gray-50 dark:bg-gray-900/60 rounded-xl border border-gray-200 dark:border-gray-800">
+            <h3 class="font-bold text-gray-900 dark:text-white mb-1">Livraison</h3>
+            <p>Expédition soignée en France métropolitaine et en Europe depuis Montpellier.</p>
+          </div>
+          <div class="p-4 bg-gray-50 dark:bg-gray-900/60 rounded-xl border border-gray-200 dark:border-gray-800">
+            <h3 class="font-bold text-gray-900 dark:text-white mb-1">Paiement</h3>
+            <p>Virement bancaire sécurisé à la validation de commande.</p>
+          </div>
+          <div class="p-4 bg-gray-50 dark:bg-gray-900/60 rounded-xl border border-gray-200 dark:border-gray-800">
+            <h3 class="font-bold text-gray-900 dark:text-white mb-1">Sur mesure</h3>
+            <p>Tailles, hauteurs et harmonies de couleurs personnalisables sur simple demande.</p>
+          </div>
         </div>
       </div>
 
-    </div>
+      <!-- Vous souhaitez pratiquer le zazen ? -->
+      <div class="mt-14 p-6 sm:p-8 bg-gray-50 dark:bg-gray-900/60 rounded-2xl border border-gray-200 dark:border-gray-800">
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
+          Vous souhaitez pratiquer le Zazen à Montpellier ?
+        </h2>
+        <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+          Pour assister à une séance de méditation, participer à une initiation débutant ou rejoindre la pratique collective, 
+          veuillez contacter directement le <strong>Dojo Zen de Montpellier</strong> :
+        </p>
+        <div class="mt-4 p-4 bg-white dark:bg-gray-800/80 rounded-xl border border-gray-200 dark:border-gray-700 text-sm space-y-1.5">
+          <p class="font-semibold text-gray-900 dark:text-white">Dojo Zen de Montpellier (Kosen Sangha)</p>
+          <p class="text-gray-600 dark:text-gray-400">34, rue Bourrely — 34000 Montpellier</p>
+          <p class="text-gray-600 dark:text-gray-400">Téléphone : <a href="tel:+33624531820" class="underline hover:text-gray-900 dark:hover:text-white">06 24 53 18 20</a></p>
+          <p class="pt-1">
+            Site officiel : <a href="https://zen-montpellier.fr/" target="_blank" rel="noopener" class="underline hover:text-gray-900 dark:hover:text-white font-medium">zen-montpellier.fr ↗</a>
+          </p>
+        </div>
+      </div>
+
+    </main>
   </Container>
 </Layout>

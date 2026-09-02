@@ -1,72 +1,134 @@
 ---
-import Base from "../layouts/Layout.astro";
+import Layout from "@layouts/Layout.astro";
 import OrderCta from "@components/order-cta.astro";
 import PriceTag from "@components/price-tag.astro";
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Accueil",
+      "item": "https://myokan.fr/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Oryokis",
+      "item": "https://myokan.fr/oryokis/"
+    }
+  ]
+};
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Oryoki artisanal — accessoires pour la cérémonie du repas",
+  "description": "Accessoires zen en tissu pour la cérémonie du repas en sesshin. Confectionnés à la main à Montpellier selon les usages de la Kosen Sangha.",
+  "brand": { "@type": "Brand", "name": "Myokan" },
+  "image": "https://myokan.fr/fukusa-orange-gris.webp",
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "EUR",
+    "priceValidUntil": "2027-12-31",
+    "availability": "https://schema.org/InStock",
+    "url": "https://myokan.fr/oryokis/",
+    "seller": { 
+      "@type": "LocalBusiness", 
+      "name": "Myokan",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Montpellier",
+        "addressCountry": "FR"
+      }
+    }
+  }
+};
 ---
 
-<Base
-  fullTitle="Oryoki zen artisanal — cérémonie du repas — Myokan"
-  description="Oryokis réalisés selon les usages de la Kosen Sangha : bols zen utilisés lors des repas en sesshin et retraites de méditation. Faits main à Montpellier.">
-  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": "Oryoki artisanal",
-    "description": "Accessoire zen pour la cérémonie du repas en sesshin. Réalisé à la main selon les usages de la Kosen Sangha.",
-    "brand": { "@type": "Brand", "name": "Myokan" },
-    "offers": {
-      "@type": "Offer",
-      "priceCurrency": "EUR",
-      "availability": "https://schema.org/InStock",
-      "seller": { "@type": "LocalBusiness", "name": "Myokan" }
-    }
-  })} />
-  <main class="mt-16 px-4 max-w-3xl mx-auto">
-    <h1 class="text-4xl lg:text-5xl font-bold text-gray-800">Oryoki artisanal</h1>
-    <PriceTag price="Prix sur demande" />
+<Layout
+  fullTitle="Oryoki zen artisanal — cérémonie du repas — Myokan, Montpellier"
+  description="Oryokis réalisés selon les usages de la Kosen Sangha : accessoires textiles utilisés lors des repas en sesshin et retraites zen. Faits main à Montpellier.">
+  
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(productSchema)} />
 
-    <p class="text-lg mt-6 text-gray-600">
-      L'oryoki — littéralement « juste ce qu'il faut » — est l'ensemble de bols et d'accessoires
-      utilisé lors des repas cérémonieux en sesshin dans les dojos zen. La cérémonie du repas
-      est elle-même une forme de pratique : chaque geste, chaque portion, chaque nettoyage du bol
-      est accompli avec la même attention que le zazen.
-    </p>
+  <main id="main-content" class="mt-10 px-4 max-w-3xl mx-auto pb-20">
+    <!-- Fil d'Ariane -->
+    <nav aria-label="Fil d'Ariane" class="text-xs text-gray-600 dark:text-gray-400 mb-8">
+      <ol class="flex items-center gap-2">
+        <li>
+          <a href="/" class="hover:text-gray-950 dark:hover:text-white transition">Accueil</a>
+        </li>
+        <li aria-hidden="true">/</li>
+        <li>
+          <a href="/" class="hover:text-gray-950 dark:hover:text-white transition">Créations</a>
+        </li>
+        <li aria-hidden="true">/</li>
+        <li class="font-medium text-gray-900 dark:text-white" aria-current="page">Oryokis</li>
+      </ol>
+    </nav>
 
-    <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4">L'oryoki dans la pratique de la Kosen Sangha</h2>
-    <p class="text-lg text-gray-600">
-      Véronique réalise ces accessoires selon la manière dont ils sont utilisés au sein de la
-      Kosen Sangha, dans la lignée de maître Kosen — non pas selon la tradition stricte de
-      certains temples japonais, mais adaptée à la pratique contemporaine telle qu'elle se
-      transmet en Europe depuis maître Deshimaru.
-    </p>
-    <p class="text-lg mt-4 text-gray-600">
-      Cette approche permet d'obtenir un oryoki fonctionnel, robuste et adapté aux sesshins
-      organisées dans les dojos occidentaux, tout en respectant l'esprit de la cérémonie.
+    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white break-words">Oryokis artisanaux</h1>
+    <PriceTag price="Sur devis" />
+
+    <p class="text-lg mt-6 text-gray-700 dark:text-gray-300 leading-relaxed">
+      L'oryoki — littéralement « juste ce qu'il faut » — désigne l'ensemble de bols et d'accessoires en tissu
+      utilisé lors des repas rituels en sesshin dans les dojos zen. La cérémonie du repas
+      est elle-même une méditation en action : chaque geste, chaque bouchée, chaque nettoyage du bol
+      est accompli avec la même présence attentive et silencieuse que le zazen.
     </p>
 
-    <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4">Fabrication</h2>
-    <p class="text-lg text-gray-600">
-      Chaque pièce est cousue à la main, avec soin, en tissu de qualité soigneusement choisi
-      pour sa résistance et sa tenue dans le temps. Les coutures sont réalisées selon les
-      techniques apprises depuis 1982 au contact de la tradition zen.
+    <div class="my-8 rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900">
+      <img
+        src="/fukusa-orange-gris.webp"
+        alt="Tissu de protection pour bol oryoki cousu main à Montpellier — Atelier Myokan"
+        width="800"
+        height="500"
+        class="w-full h-64 sm:h-80 object-cover"
+        loading="lazy"
+      />
+      <p class="p-3 text-xs text-center text-gray-500 dark:text-gray-400">
+        Accessoires en tissu pour oryoki confectionnés dans l'atelier Myokan à Montpellier
+      </p>
+    </div>
+
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mt-10 mb-4">L'oryoki dans la pratique de la Kosen Sangha</h2>
+    <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+      Véronique confectionne ces accessoires selon la manière dont ils sont utilisés au sein de la
+      Kosen Sangha, dans la lignée de maître Stéphane Kosen Thibaut — une forme épurée et robuste, adaptée
+      à la pratique contemporaine telle qu'elle se transmet en Europe depuis maître Deshimaru.
     </p>
-    <ul class="mt-4 space-y-2 text-gray-600">
-      <li class="flex gap-2"><span class="text-gray-400">—</span> Couture main entièrement réalisée à Montpellier</li>
-      <li class="flex gap-2"><span class="text-gray-400">—</span> Tissu solide et résistant aux utilisations répétées</li>
-      <li class="flex gap-2"><span class="text-gray-400">—</span> Adapté aux usages de la Kosen Sangha</li>
-      <li class="flex gap-2"><span class="text-gray-400">—</span> Dimensions et coloris sur demande</li>
+    <p class="text-lg mt-4 text-gray-700 dark:text-gray-300 leading-relaxed">
+      Cette approche permet d'obtenir un équipement textile d'oryoki fonctionnel et solide pour les sesshins 
+      organisées dans les dojos occidentaux, tout en préservant scrupuleusement l'esprit du rituel traditionnel.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mt-10 mb-4">Fabrication & Finitions</h2>
+    <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+      Chaque pièce textile (nappe de repas, serviette, fukusa de protection) est coupée et cousue à la main avec soin, 
+      dans des tissus naturels choisis pour leur tenue et leur résistance aux lavages fréquents. Les coutures 
+      sont réalisées selon le savoir-faire acquis depuis 1982 au contact de la transmission zen.
+    </p>
+    <ul class="mt-4 space-y-2 text-gray-700 dark:text-gray-300">
+      <li class="flex gap-2"><span class="text-gray-400 dark:text-gray-500">—</span> Confection manuelle intégrale à Montpellier</li>
+      <li class="flex gap-2"><span class="text-gray-400 dark:text-gray-500">—</span> Toile de coton résistante aux usages répétés en sesshin</li>
+      <li class="flex gap-2"><span class="text-gray-400 dark:text-gray-500">—</span> Dimensions adaptées aux bols utilisés dans la Kosen Sangha</li>
+      <li class="flex gap-2"><span class="text-gray-400 dark:text-gray-500">—</span> Coloris et assortiments personnalisables sur demande</li>
     </ul>
 
-    <OrderCta product="un oryoki" />
+    <OrderCta product="un ensemble oryoki" />
 
-    <!-- Galerie — à compléter quand les photos seront disponibles -->
-
-    <nav aria-label="Voir aussi" class="mt-12">
-      <p class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">Voir aussi</p>
+    <nav aria-label="Voir aussi" class="mt-12 pt-6 border-t border-gray-200 dark:border-gray-800">
+      <p class="text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider mb-3">Voir aussi</p>
       <div class="flex flex-wrap gap-3">
-        <a href="/fukusas" class="px-4 py-2 border border-gray-200 rounded-md text-sm text-gray-700 hover:border-gray-400 transition">Fukusas</a>
-        <a href="/kesas" class="px-4 py-2 border border-gray-200 rounded-md text-sm text-gray-700 hover:border-gray-400 transition">Sacs à kesa</a>
-        <a href="/zafus" class="px-4 py-2 border border-gray-200 rounded-md text-sm text-gray-700 hover:border-gray-400 transition">Zafus</a>
+        <a href="/fukusas/" class="px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg text-sm text-gray-800 dark:text-gray-200 hover:border-gray-500 transition">Fukusas</a>
+        <a href="/kesas/" class="px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg text-sm text-gray-800 dark:text-gray-200 hover:border-gray-500 transition">Sacs à kesa</a>
+        <a href="/zafus/" class="px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg text-sm text-gray-800 dark:text-gray-200 hover:border-gray-500 transition">Zafus de méditation</a>
+        <a href="/pratique-zazen/" class="px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg text-sm text-gray-800 dark:text-gray-200 hover:border-gray-500 transition">Guide pratique zazen</a>
       </div>
     </nav>
   </main>
-</Base>
+</Layout>

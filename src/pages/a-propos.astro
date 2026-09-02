@@ -1,77 +1,150 @@
 ---
-import Base from "../layouts/Layout.astro";
+import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Accueil",
+      "item": "https://myokan.fr/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "À propos",
+      "item": "https://myokan.fr/a-propos/"
+    }
+  ]
+};
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Véronique Myokan Harruis",
+  "jobTitle": "Nonne zen Soto et créatrice de zafus artisanaux",
+  "description": "Pratiquante de zazen depuis 1980 ordonnée bodhisattva par maître Taisen Deshimaru et couturière d'accessoires zen artisanaux à Montpellier depuis 1982.",
+  "image": "https://myokan.fr/veronique.webp",
+  "worksFor": {
+    "@type": "LocalBusiness",
+    "name": "Myokan",
+    "url": "https://myokan.fr/"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Montpellier",
+    "addressRegion": "Occitanie",
+    "addressCountry": "FR"
+  }
+};
 ---
 
-<Base
-  title="À propos — Véronique Myokan Harruis, nonne zen et couturière"
-  description="Véronique Myokan Harruis pratique le zazen depuis 1980 et confectionne des zafus artisanaux depuis 1982, selon la tradition transmise par maître Deshimaru. Montpellier.">
-  <Container>
-    <div class="max-w-2xl mx-auto mt-16 mb-20">
+<Layout
+  fullTitle="À propos de Véronique Myokan Harruis — Nonne zen et couturière à Montpellier"
+  description="Véronique Myokan Harruis pratique le zazen depuis 1980 et confectionne des zafus artisanaux depuis 1982 à Montpellier selon la tradition transmise par maître Deshimaru.">
+  
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(personSchema)} />
 
-      <div class="flex flex-col sm:flex-row gap-8 items-start">
+  <Container>
+    <main id="main-content" class="max-w-2xl mx-auto mt-10 mb-20">
+      
+      <!-- Fil d'Ariane -->
+      <nav aria-label="Fil d'Ariane" class="text-xs text-gray-600 dark:text-gray-400 mb-8">
+        <ol class="flex items-center gap-2">
+          <li>
+            <a href="/" class="hover:text-gray-950 dark:hover:text-white transition">Accueil</a>
+          </li>
+          <li aria-hidden="true">/</li>
+          <li class="font-medium text-gray-900 dark:text-white" aria-current="page">À propos</li>
+        </ol>
+      </nav>
+
+      <div class="flex flex-col sm:flex-row gap-6 sm:gap-8 items-center sm:items-start text-center sm:text-left">
         <img
           src="/veronique.webp"
           alt="Véronique Myokan Harruis, nonne zen et créatrice de zafus artisanaux à Montpellier"
           width="160"
           height="160"
-          class="w-40 h-40 rounded-full object-cover shrink-0"
+          class="w-36 h-36 sm:w-40 sm:h-40 rounded-full object-cover shrink-0 shadow-md border-4 border-white dark:border-gray-800"
+          loading="eager"
         />
         <div>
-          <h1 class="text-4xl font-bold text-gray-800">Véronique Myokan Harruis</h1>
-          <p class="text-lg text-gray-500 mt-1">Nonne zen et couturière artisanale · Montpellier</p>
+          <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white">Véronique Myokan Harruis</h1>
+          <p class="text-lg text-gray-600 dark:text-gray-400 mt-1">Nonne zen Soto et couturière artisanale · Montpellier</p>
+          <div class="mt-3 flex flex-wrap justify-center sm:justify-start gap-2">
+            <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200">
+              Pratique zazen depuis 1980
+            </span>
+            <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200">
+              Couture artisanale depuis 1982
+            </span>
+          </div>
         </div>
       </div>
 
-      <h2 class="text-2xl font-bold text-gray-800 mt-12 mb-4">La pratique du zazen</h2>
-      <p class="text-lg text-gray-600">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mt-12 mb-4">La pratique du zazen</h2>
+      <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
         J'ai débuté la pratique du zazen en 1980 auprès de maître Taisen Deshimaru, fondateur
         de la Soto Zen Mission en Europe. En 1981, j'ai reçu l'ordination de bodhisattva de ses
         mains. Durant quinze ans, j'ai participé à de nombreux camps d'été et sesshins au temple
         de la Gendronnière, en Loir-et-Cher, haut lieu de la transmission zen en France.
       </p>
-      <p class="text-lg mt-4 text-gray-600">
-        J'ai ensuite poursuivi mon chemin avec maître Kosen, dans le cadre de la Kosen Sangha.
+      <p class="text-lg mt-4 text-gray-700 dark:text-gray-300 leading-relaxed">
+        J'ai ensuite poursuivi mon chemin avec maître Stéphane Kosen Thibaut, dans le cadre de la Kosen Sangha.
         Aujourd'hui, je pratique au
-        <a href="https://zen-montpellier.fr/" class="underline hover:text-gray-900" target="_blank" rel="noopener">dojo zen de Montpellier</a>,
+        <a href="https://zen-montpellier.fr/" class="underline hover:text-gray-950 dark:hover:text-white font-medium" target="_blank" rel="noopener">Dojo Zen de Montpellier</a>,
         où zazen, cérémonie et vie communautaire continuent de nourrir ma pratique quotidienne.
       </p>
+      <p class="text-base mt-3 text-gray-600 dark:text-gray-400">
+        Si vous souhaitez découvrir la méditation au dojo, consultez également notre <a href="/pratique-zazen/" class="underline hover:text-gray-950 dark:hover:text-white">guide de la pratique et du débutant</a>.
+      </p>
 
-      <h2 class="text-2xl font-bold text-gray-800 mt-12 mb-4">La confection des zafus depuis 1982</h2>
-      <p class="text-lg text-gray-600">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mt-12 mb-4">La confection des zafus depuis 1982</h2>
+      <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
         C'est en 1982, à l'atelier du dojo de Paris à Pernety, que j'ai appris à confectionner
         les premiers zafus. On m'a expliqué que cette méthode traditionnelle avait été transmise
         par madame Deshimaru, qui en avait préservé la forme exacte issue de la tradition japonaise.
       </p>
-      <p class="text-lg mt-4 text-gray-600">
+      <p class="text-lg mt-4 text-gray-700 dark:text-gray-300 leading-relaxed">
         Depuis, je continue à réaliser ces coussins de zazen selon cette méthode, à la demande,
-        depuis Montpellier. Chaque zafu, chaque zabuton, chaque accessoire est cousu à la main,
-        avec les matériaux et les gestes transmis depuis plus de quarante ans.
+        depuis Montpellier. Chaque <a href="/zafus/" class="underline hover:text-gray-950 dark:hover:text-white font-medium">zafu</a>, 
+        chaque <a href="/zabutons/" class="underline hover:text-gray-950 dark:hover:text-white font-medium">zabuton</a>, 
+        chaque accessoire est cousu à la main, avec les matériaux et les gestes transmis depuis plus de quarante ans.
       </p>
-      <p class="text-lg mt-4 text-gray-600">
-        Je propose également des <a href="/sacs-zafus" class="underline hover:text-gray-900">sacs à zafu</a>,
-        des <a href="/fukusas" class="underline hover:text-gray-900">fukusas</a>,
-        des <a href="/oryokis" class="underline hover:text-gray-900">oryokis</a> adaptés aux usages
-        de la Kosen Sangha, ainsi que des <a href="/kesas" class="underline hover:text-gray-900">sacs à kesa et pochettes de ketsumyaku</a>.
+      <p class="text-lg mt-4 text-gray-700 dark:text-gray-300 leading-relaxed">
+        Je propose également des <a href="/sacs-zafus/" class="underline hover:text-gray-950 dark:hover:text-white font-medium">sacs à zafu</a> en coton,
+        des <a href="/fukusas/" class="underline hover:text-gray-950 dark:hover:text-white font-medium">fukusas</a>,
+        des <a href="/oryokis/" class="underline hover:text-gray-950 dark:hover:text-white font-medium">oryokis</a> adaptés aux usages
+        de la Kosen Sangha, ainsi que des <a href="/kesas/" class="underline hover:text-gray-950 dark:hover:text-white font-medium">sacs à kesa et pochettes de ketsumyaku</a>.
       </p>
 
-      <h2 class="text-2xl font-bold text-gray-800 mt-12 mb-4">Autres activités</h2>
-      <p class="text-lg text-gray-600">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mt-12 mb-4">Autres activités artistiques</h2>
+      <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
         En dehors de la pratique zen et de la couture, je me passionne pour le théâtre de marionnettes.
         En 2009, j'ai créé la compagnie « Les Marrons Show » et animé des ateliers destinés aux enfants.
-        Je fais également partie d'une troupe amateur — le théâtre occupe une place importante dans ma vie,
-        au même titre que le zazen et la couture.
+        Je fais également partie d'une troupe amateur — le théâtre occupe une place vivante dans ma vie,
+        au même titre que le zazen et le travail du tissu.
       </p>
 
-      <div class="mt-12 p-6 bg-gray-50 rounded-xl border border-gray-100">
-        <p class="font-semibold text-gray-800 mb-1">Commander un article</p>
-        <p class="text-gray-600 text-sm">
-          Toutes les pièces sont réalisées sur commande.
-          Écrivez à <a href="mailto:myokan@hotmail.fr" class="underline hover:text-gray-900">myokan@hotmail.fr</a>
-          ou consultez la <a href="/contact" class="underline hover:text-gray-900">page contact</a>.
+      <div class="mt-12 p-6 sm:p-8 bg-gray-50 dark:bg-gray-900/60 rounded-2xl border border-gray-200 dark:border-gray-800">
+        <h3 class="font-bold text-gray-900 dark:text-white text-lg mb-2">Commander un article ou demander conseil</h3>
+        <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed mb-4">
+          Toutes les pièces sont réalisées sur commande à Montpellier. Écrivez avec vos souhaits (dimensions, couleurs, remplissage kapok).
         </p>
+        <div class="flex flex-wrap gap-3">
+          <a href="/contact/" class="px-5 py-2.5 bg-gray-900 dark:bg-white text-white dark:text-gray-950 font-medium text-sm rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition">
+            Consulter les modalités de commande
+          </a>
+          <a href="mailto:myokan@hotmail.fr" class="px-5 py-2.5 border border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-200 text-sm rounded-lg hover:border-gray-500 transition font-medium">
+            myokan@hotmail.fr
+          </a>
+        </div>
       </div>
 
-    </div>
+    </main>
   </Container>
-</Base>
+</Layout>

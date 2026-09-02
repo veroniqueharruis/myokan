@@ -3,13 +3,43 @@ import Container from "@components/container.astro";
 import Layout from "@layouts/Layout.astro";
 ---
 
-<Layout title="404 Not Found">
+<Layout 
+  fullTitle="Page non trouvée (404) — Myokan, Montpellier"
+  description="La page que vous recherchez n'existe pas ou a été déplacée. Retrouvez nos zafus de méditation et créations zen artisanales.">
+  <meta name="robots" content="noindex, follow" slot="head" />
+  
   <Container>
-    <div class="min-h-[calc(100vh-16rem)] flex items-center justify-center">
-      <div class="mt-16 text-center">
-        <h1 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">404</h1>
-        <p class="text-lg mt-4 text-slate-600">Page not found.</p>
+    <main id="main-content" class="min-h-[60vh] flex items-center justify-center py-16">
+      <div class="text-center max-w-lg mx-auto">
+        <p class="text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">Erreur 404</p>
+        <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white font-heading">
+          Cette page semble introuvable
+        </h1>
+        <p class="text-lg mt-4 text-gray-700 dark:text-gray-300 leading-relaxed">
+          Le lien suivi est peut-être erroné ou la page a été déplacée. Respirez calmement et revenez vers les créations ou l'accueil.
+        </p>
+
+        <div class="mt-8 flex flex-wrap justify-center gap-4">
+          <a 
+            href="/" 
+            class="px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-950 font-medium text-sm rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition shadow-sm"
+          >
+            Retourner à l'accueil
+          </a>
+          <a 
+            href="/zafus/" 
+            class="px-6 py-3 border border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-200 font-medium text-sm rounded-lg hover:border-gray-500 transition"
+          >
+            Voir les zafus
+          </a>
+          <a 
+            href="/pratique-zazen/" 
+            class="px-6 py-3 border border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-200 font-medium text-sm rounded-lg hover:border-gray-500 transition"
+          >
+            Guide du zazen
+          </a>
+        </div>
       </div>
-    </div>
+    </main>
   </Container>
 </Layout>

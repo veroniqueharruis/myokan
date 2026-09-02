@@ -1,257 +1,555 @@
 ---
-import Base from "../layouts/Layout.astro";
+import Layout from "@layouts/Layout.astro";
 import OrderCta from "@components/order-cta.astro";
 
 const sizes = [
-  { name: "S", width: 28, height: 13 },
-  { name: "M", width: 30, height: 15 },
-  { name: "L", width: 32, height: 17 },
-  { name: "Sur mesure", width: null, height: null },
+  { name: "S", width: 28, height: 13, desc: "Souplesse ou voyage", detail: "28 × 13 cm" },
+  { name: "M", width: 30, height: 15, desc: "Standard recommandé", detail: "30 × 15 cm" },
+  { name: "L", width: 32, height: 17, desc: "Assise haute / grande taille", detail: "32 × 17 cm" },
+  { name: "Sur mesure", width: null, height: null, desc: "Dimensions au choix", detail: "Sur mesure" },
 ];
 
-const types = ["Vide", "Plein"];
+const types = [
+  { label: "Plein (rempli de kapok)", val: "Plein", note: "Prêt à l'assise, maintien ferme traditionnel" },
+  { label: "Vide (à remplir)", val: "Vide", note: "Housse seule, si vous possédez déjà du kapok" },
+];
 
 const baseColors = [
   { name: "Noir", hex: "#000000", img: "/zafu-plein-noir.webp" },
-  { name: "Rouge", hex: "#FF0000", img: "/zafu-plein-rouge.webp" },
-  { name: "Vert", hex: "#008000", img: "/zafu-plein-vert.webp" },
-  { name: "Bleu", hex: "#0000FF", img: "/zafu-plein-bleu.webp" },
+  { name: "Rouge", hex: "#B91C1C", img: "/zafu-plein-rouge.webp" },
+  { name: "Vert", hex: "#15803D", img: "/zafu-plein-vert.webp" },
+  { name: "Bleu", hex: "#1D4ED8", img: "/zafu-plein-bleu.webp" },
   { name: "Marron", hex: "#4B2E1E", img: "/zafu-plein-marron.webp" },
 ];
+
+const galleryImages = [
+  { src: "/zafus-pile.webp", alt: "Pile de zafus artisanaux multicolores — Atelier Myokan Montpellier" },
+  { src: "/zafus-vides-gris.webp", alt: "Zafus de méditation zen gris prêts à être remplis de kapok" },
+  { src: "/zafu-bleu-fonce.webp", alt: "Zafu de méditation bleu foncé cousu main à Montpellier" },
+  { src: "/zafu-plein-orange.webp", alt: "Zafu artisanal orange en tissu 100% coton" },
+  { src: "/zafu-vide-framboise.webp", alt: "Housse de zafu vide coloris framboise — Myokan" },
+  { src: "/zafu-plein-violet-pois.webp", alt: "Zafu de méditation violet à pois fait main" },
+];
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Accueil",
+      "item": "https://myokan.fr/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Zafus de méditation",
+      "item": "https://myokan.fr/zafus/"
+    }
+  ]
+};
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Zafu de méditation zen artisanal",
+  "description": "Coussin de zazen traditionnel cousu à la main en coton et kapok naturel à Montpellier. Disponible en tailles S, M, L ou sur mesure, vide ou plein.",
+  "brand": { "@type": "Brand", "name": "Myokan" },
+  "image": "https://myokan.fr/zafu-plein-violet-pois.webp",
+  "offers": {
+    "@type": "AggregateOffer",
+    "priceCurrency": "EUR",
+    "lowPrice": 25,
+    "highPrice": 50,
+    "offerCount": 8,
+    "priceValidUntil": "2027-12-31",
+    "availability": "https://schema.org/InStock",
+    "seller": { 
+      "@type": "LocalBusiness", 
+      "name": "Myokan",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Montpellier",
+        "addressCountry": "FR"
+      }
+    }
+  }
+};
 ---
 
-<Base fullTitle="Zafu de méditation zen artisanal — Myokan, Montpellier" description="Commandez votre zafu de méditation zen sur mesure : taille, remplissage et couleur au choix. Coussin zazen fait main, livraison depuis Montpellier.">
-  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": "Zafu de méditation zen artisanal",
-    "description": "Coussin de zazen artisanal cousu à la main. Disponible en plusieurs tailles (S, M, L, sur mesure), vide ou plein, dans de nombreux coloris.",
-    "brand": { "@type": "Brand", "name": "Myokan" },
-    "offers": {
-      "@type": "AggregateOffer",
-      "priceCurrency": "EUR",
-      "lowPrice": 25,
-      "highPrice": 50,
-      "offerCount": 8,
-      "availability": "https://schema.org/InStock",
-      "seller": { "@type": "LocalBusiness", "name": "Myokan" }
-    },
-    "image": "https://myokan.fr/zafu-plein-violet-pois.webp"
-  })} />
-  <div class="max-w-2xl mx-auto p-6">
-    <h1 class="text-2xl font-bold text-center">Configurez votre zafu idéal !</h1>
+<Layout 
+  fullTitle="Zafus de méditation zen artisanaux faits main — Myokan, Montpellier" 
+  description="Commandez votre zafu de méditation zen traditionnel sur mesure : taille S, M, L ou sur devis, rembourrage kapok naturel, confectionné à la main à Montpellier.">
+  
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(productSchema)} />
 
-    <!-- Image principale -->
-    <div class="mt-6 text-center relative inline-block">
-      <img 
-        id="main-zafu-image" 
-        src="/zafu-plein-violet-pois.webp" 
-        alt="Coussin zafu de méditation zen artisanal personnalisable — Myokan"
-        class="mx-auto w-64 h-auto rounded-lg shadow-md transition-all duration-300 cursor-pointer relative z-10"
-      />
+  <main id="main-content" class="max-w-4xl mx-auto px-4 pt-10 pb-20">
+    
+    <!-- Fil d'Ariane -->
+    <nav aria-label="Fil d'Ariane" class="text-xs text-gray-600 dark:text-gray-400 mb-8">
+      <ol class="flex items-center gap-2">
+        <li>
+          <a href="/" class="hover:text-gray-950 dark:hover:text-white transition">Accueil</a>
+        </li>
+        <li aria-hidden="true">/</li>
+        <li>
+          <a href="/" class="hover:text-gray-950 dark:hover:text-white transition">Créations</a>
+        </li>
+        <li aria-hidden="true">/</li>
+        <li class="font-medium text-gray-900 dark:text-white" aria-current="page">Zafus de méditation</li>
+      </ol>
+    </nav>
+
+    <!-- En-tête de la page -->
+    <header class="mb-12">
+      <p class="text-xs uppercase tracking-wider font-semibold text-gray-600 dark:text-gray-400 mb-2">
+        Confection artisanale · Depuis 1982
+      </p>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white tracking-tight break-words">
+        Zafus de méditation zen artisanaux
+      </h1>
+      <p class="text-lg sm:text-xl text-gray-700 dark:text-gray-300 mt-4 leading-relaxed max-w-3xl">
+        Le zafu est le coussin d'assise traditionnel du zazen. Cousu à la main en tissu 100 % coton 
+        et rembourré de kapok végétal, il assure la bascule naturelle du bassin et l'alignement stable 
+        de la colonne vertébrale.
+      </p>
+    </header>
+
+    <!-- Configurateur interactif -->
+    <section class="p-6 sm:p-8 bg-gray-50 dark:bg-gray-900/60 rounded-2xl border border-gray-200 dark:border-gray-800" aria-labelledby="configurator-heading">
+      <h2 id="configurator-heading" class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+        Personnalisez votre zafu
+      </h2>
+      <p class="text-sm text-gray-600 dark:text-gray-400 mb-6">
+        Choisissez la taille, le type de remplissage et le coloris. Votre code de commande et le tarif indicatif se calculent instantanément.
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-8 items-start">
+        <!-- Visualisation & Lightbox trigger -->
+        <div class="text-center">
+          <div class="relative inline-block bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
+            <img 
+              id="main-zafu-image" 
+              src="/zafu-plein-violet-pois.webp" 
+              alt="Aperçu du zafu de méditation zen artisanal sélectionné"
+              width="320"
+              height="240"
+              class="mx-auto w-64 sm:w-72 h-auto rounded-lg transition-all duration-300 cursor-pointer relative z-10"
+              title="Cliquer pour agrandir la photo"
+            />
+            <div 
+              id="color-overlay"
+              class="absolute inset-4 rounded-lg mix-blend-multiply opacity-60 pointer-events-none hidden z-20"
+            ></div>
+            <p class="text-xs text-gray-500 dark:text-gray-400 mt-3 flex items-center justify-center gap-1">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" />
+              </svg>
+              <span>Cliquez sur l'image pour l'agrandir</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- Formulaire d'options -->
+        <div class="space-y-6">
+          <!-- Taille -->
+          <div>
+            <label for="size" class="block text-sm font-semibold text-gray-900 dark:text-white mb-1.5">
+              1. Choisir la taille
+            </label>
+            <select 
+              id="size" 
+              class="border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-lg p-3 w-full text-gray-900 dark:text-white focus:ring-2 focus:ring-gray-800 dark:focus:ring-gray-300 text-sm font-medium"
+            >
+              <option value="">Sélectionner une taille…</option>
+              {sizes.map(s => (
+                <option value={s.name}>
+                  Taille {s.name} ({s.detail}) — {s.desc}
+                </option>
+              ))}
+            </select>
+            <p class="text-xs text-gray-500 dark:text-gray-400 mt-1.5">
+              Taille standard recommandée pour la majorité : Taille M (30 × 15 cm).
+            </p>
+          </div>
+
+          <!-- Remplissage -->
+          <div>
+            <p class="text-sm font-semibold text-gray-900 dark:text-white mb-2">
+              2. Remplissage
+            </p>
+            <div class="space-y-2">
+              {types.map((t, idx) => (
+                <label class="flex items-start gap-3 p-2.5 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 cursor-pointer hover:border-gray-400 transition">
+                  <input
+                    type="radio"
+                    name="type"
+                    value={t.val}
+                    class="mt-1 accent-gray-900 dark:accent-gray-100 w-4 h-4"
+                  />
+                  <div>
+                    <span class="block text-sm font-semibold text-gray-900 dark:text-white">{t.label}</span>
+                    <span class="block text-xs text-gray-500 dark:text-gray-400">{t.note}</span>
+                  </div>
+                </label>
+              ))}
+            </div>
+          </div>
+
+          <!-- Couleur -->
+          <div>
+            <p class="text-sm font-semibold text-gray-900 dark:text-white mb-2">
+              3. Coloris de base
+            </p>
+            <div class="flex flex-wrap gap-3" id="color-swatches-group" role="group" aria-label="Palette des coloris disponibles">
+              {baseColors.map(c => (
+                <button
+                  type="button"
+                  class="color-swatch w-11 h-11 rounded-full border-2 border-gray-300 dark:border-gray-600 transition hover:scale-105 focus-visible:ring-2 focus-visible:ring-offset-2"
+                  style={`background-color: ${c.hex};`}
+                  data-name={c.name}
+                  data-hex={c.hex}
+                  data-img={c.img}
+                  title={`Zafu coloris ${c.name}`}
+                  aria-label={`Sélectionner la couleur ${c.name}`}
+                  aria-pressed="false"
+                ></button>
+              ))}
+            </div>
+
+            <!-- Couleur personnalisée -->
+            <div class="mt-4 pt-3 border-t border-gray-200 dark:border-gray-700 flex items-center gap-3">
+              <label for="color-picker" class="text-xs font-medium text-gray-700 dark:text-gray-300">
+                Autre teinte sur mesure :
+              </label>
+              <input
+                type="color"
+                id="color-picker"
+                value="#8b5cf6"
+                class="w-10 h-10 p-0 border border-gray-300 dark:border-gray-700 rounded cursor-pointer bg-transparent"
+                aria-label="Nuancier de couleur personnalisée"
+              />
+              <span id="color-name" class="text-xs text-gray-600 dark:text-gray-400">Teinte personnalisable</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Résultat dynamique de configuration -->
       <div 
-        id="color-overlay"
-        class="absolute top-0 left-0 w-full h-full rounded-lg mix-blend-multiply opacity-60 pointer-events-none hidden"
-      ></div>
-    </div>
+        id="result-box" 
+        class="mt-8 p-6 border border-gray-200 dark:border-gray-700 rounded-xl bg-white dark:bg-gray-800 text-center transition"
+        aria-live="polite"
+      >
+        <p class="text-gray-600 dark:text-gray-300 text-base">
+          Sélectionnez une taille, un remplissage et une couleur pour voir le tarif et préparer votre commande.
+        </p>
+      </div>
+    </section>
 
-    <!-- Lightbox -->
-    <div 
-      id="lightbox" 
-      class="fixed inset-0 bg-black bg-opacity-80 hidden items-center justify-center z-50"
-    >
+    <!-- Guide des tailles -->
+    <section class="mt-14 pt-6 border-t border-gray-200 dark:border-gray-800" aria-labelledby="sizes-guide-heading">
+      <h2 id="sizes-guide-heading" class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-4">
+        Comment choisir la taille de votre zafu ?
+      </h2>
+      <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+        La hauteur d'assise détermine la facilité avec laquelle vos genoux touchent le sol tout en gardant 
+        le bas du dos naturellement cambré sans effort musculaire.
+      </p>
+
+      <div class="grid sm:grid-cols-3 gap-6">
+        <div class="p-5 bg-gray-50 dark:bg-gray-900/60 rounded-xl border border-gray-200 dark:border-gray-800">
+          <h3 class="font-bold text-gray-900 dark:text-white text-lg">Taille S (28 × 13 cm)</h3>
+          <p class="text-xs font-semibold text-gray-500 dark:text-gray-400 mt-0.5">25 € vide / 40 € plein</p>
+          <p class="text-sm text-gray-700 dark:text-gray-300 mt-3 leading-relaxed">
+            Recommandée pour les personnes souples, assises en plein lotus, ou pour emporter en voyage et sesshin grâce à son encombrement réduit.
+          </p>
+        </div>
+
+        <div class="p-5 bg-gray-50 dark:bg-gray-900/60 rounded-xl border-2 border-gray-900 dark:border-gray-400 shadow-sm relative">
+          <span class="absolute -top-2.5 right-4 bg-gray-900 dark:bg-white text-white dark:text-gray-950 text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded">Standard</span>
+          <h3 class="font-bold text-gray-900 dark:text-white text-lg">Taille M (30 × 15 cm)</h3>
+          <p class="text-xs font-semibold text-gray-500 dark:text-gray-400 mt-0.5">27 € vide / 45 € plein</p>
+          <p class="text-sm text-gray-700 dark:text-gray-300 mt-3 leading-relaxed">
+            La taille de référence transmise par maître Deshimaru. Convient à la grande majorité des gabarits adultes pour une assise quotidienne stable.
+          </p>
+        </div>
+
+        <div class="p-5 bg-gray-50 dark:bg-gray-900/60 rounded-xl border border-gray-200 dark:border-gray-800">
+          <h3 class="font-bold text-gray-900 dark:text-white text-lg">Taille L (32 × 17 cm)</h3>
+          <p class="text-xs font-semibold text-gray-500 dark:text-gray-400 mt-0.5">30 € vide / 50 € plein</p>
+          <p class="text-sm text-gray-700 dark:text-gray-300 mt-3 leading-relaxed">
+            Recommandée pour les personnes de grande taille (&gt; 1m80) ou ressentant une raideur dans les hanches nécessitant une surélévation.
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-6 text-sm text-gray-600 dark:text-gray-400">
+        <p>
+          Pour en savoir plus sur les détails de posture, consultez notre 
+          <a href="/pratique-zazen/#choisir-zafu" class="underline hover:text-gray-900 dark:hover:text-white font-medium">guide complet de posture et d'assise zazen</a>.
+        </p>
+      </div>
+    </section>
+
+    <!-- Galerie d'exemples artisanaux -->
+    <section class="mt-14 pt-6 border-t border-gray-200 dark:border-gray-800" aria-labelledby="gallery-heading">
+      <h2 id="gallery-heading" class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-6">
+        Galerie de confections de l'atelier
+      </h2>
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+        {galleryImages.map((img, index) => (
+          <div class="relative group overflow-hidden rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-800">
+            <img
+              src={img.src}
+              alt={img.alt}
+              width="400"
+              height="300"
+              class="w-full h-44 sm:h-52 object-cover cursor-pointer group-hover:scale-105 transition-transform duration-300 gallery-thumb"
+              data-full={img.src}
+              data-alt={img.alt}
+              loading="lazy"
+            />
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Encart de commande -->
+    <OrderCta product="un zafu de méditation" />
+
+    <!-- Liens connexes -->
+    <nav aria-label="Articles complémentaires" class="mt-12 pt-6 border-t border-gray-200 dark:border-gray-800">
+      <p class="text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider mb-3">Compléments indispensables</p>
+      <div class="flex flex-wrap gap-3">
+        <a href="/zabutons/" class="px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg text-sm text-gray-800 dark:text-gray-200 hover:border-gray-500 transition">
+          Zabutons (tapis de sol)
+        </a>
+        <a href="/sacs-zafus/" class="px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg text-sm text-gray-800 dark:text-gray-200 hover:border-gray-500 transition">
+          Sacs à zafu en coton
+        </a>
+        <a href="/pratique-zazen/" class="px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg text-sm text-gray-800 dark:text-gray-200 hover:border-gray-500 transition">
+          Guide de la posture zen
+        </a>
+        <a href="/contact/" class="px-4 py-2 bg-gray-900 dark:bg-white text-white dark:text-gray-950 rounded-lg text-sm hover:bg-gray-800 dark:hover:bg-gray-100 transition font-medium">
+          Formulaire de contact
+        </a>
+      </div>
+    </nav>
+  </main>
+
+  <!-- Lightbox accessible -->
+  <div 
+    id="lightbox" 
+    role="dialog" 
+    aria-modal="true" 
+    aria-label="Agrandissement de la photo" 
+    class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden items-center justify-center z-50 p-4"
+  >
+    <div class="relative max-w-3xl max-h-[90vh] flex flex-col items-center">
+      <button
+        type="button"
+        id="lightbox-close"
+        aria-label="Fermer la vue agrandie"
+        class="absolute -top-12 right-0 text-white hover:text-gray-300 p-2 text-2xl font-bold transition focus-visible:ring-2 focus-visible:ring-white rounded-lg"
+      >
+        ✕
+      </button>
       <img 
         id="lightbox-img" 
         src="" 
-        alt="Agrandissement du zafu" 
-        class="max-w-[90%] max-h-[90%] rounded-lg shadow-lg"
+        alt="" 
+        class="max-w-full max-h-[80vh] rounded-lg shadow-2xl object-contain"
       />
+      <p id="lightbox-caption" class="text-white/90 text-sm mt-3 text-center"></p>
     </div>
-
-    <!-- Options -->
-    <div class="mt-6 space-y-5">
-
-      <!-- Taille -->
-      <div>
-        <label for="size" class="block text-sm font-semibold text-gray-700 mb-1">Taille</label>
-        <select id="size" class="border border-gray-300 rounded-md p-3 w-full text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-400">
-          <option value="">Choisir une taille…</option>
-          {sizes.map(s => (
-            <option value={s.name}>
-              {s.name} ({s.width ? s.width + " × " + s.height + " cm" : "sur mesure"})
-            </option>
-          ))}
-        </select>
-      </div>
-
-      <!-- Remplissage -->
-      <div>
-        <p class="text-sm font-semibold text-gray-700 mb-2">Remplissage</p>
-        <div class="flex gap-6">
-          {types.map(t => (
-            <label class="flex items-center gap-2 cursor-pointer min-h-[44px]">
-              <input
-                type="radio"
-                name="type"
-                value={t}
-                class="accent-purple-600 w-4 h-4"
-              />
-              <span class="text-gray-800">{t}</span>
-            </label>
-          ))}
-        </div>
-      </div>
-
-      <!-- Couleur -->
-      <div>
-        <p class="text-sm font-semibold text-gray-700 mb-2">Couleur</p>
-
-        <!-- Couleurs de base -->
-        <div class="flex flex-wrap gap-3">
-          {baseColors.map(c => (
-            <button
-              type="button"
-              class="w-11 h-11 rounded-full border-2 border-gray-300 hover:border-gray-600 transition"
-              style={`background:${c.hex}`}
-              data-name={c.name}
-              data-hex={c.hex}
-              data-img={c.img}
-              title={`Zafu ${c.name}`}
-              aria-label={`Couleur ${c.name}`}
-            ></button>
-          ))}
-        </div>
-
-        <!-- Couleur personnalisée -->
-        <div class="mt-3 flex items-center gap-3">
-          <label for="color-picker" class="text-sm text-gray-600">Autre couleur :</label>
-          <input
-            type="color"
-            id="color-picker"
-            value="#cccccc"
-            class="w-12 h-11 border border-gray-300 rounded cursor-pointer"
-          />
-          <span id="color-name" class="text-sm text-gray-500">Couleur personnalisée</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Résultat -->
-    <div id="result" class="mt-6 p-4 border rounded-lg bg-gray-50 text-center text-lg font-semibold">
-      🌸 Sélectionnez une taille 👕, un remplissage et une couleur.
-    </div>
-
-    <!-- Citation -->
-    <blockquote class="mt-6 border-l-4 border-purple-500 pl-4 text-gray-700 bg-purple-50 rounded-r-lg py-2">
-      <p class="text-gray-700 italic">
-        « S’asseoir sur un zafu, quoi que vous fassiez, vous conduit naturellement vers la respiration zen abdominale. 
-        L’énergie circule dans tout le corps et l’esprit retrouve son calme. »
-      </p>
-      <p class="text-gray-700 text-right">— Maître zen Kosen Thibaut</p>
-    </blockquote>
   </div>
 
-  <script>
-    const zafuImage = document.getElementById("main-zafu-image");
-    const colorOverlay = document.getElementById("color-overlay");
-    const sizeSelect = document.getElementById("size");
-    const typeRadios = document.querySelectorAll("input[name='type']");
-    const result = document.getElementById("result");
-    const colorPicker = document.getElementById("color-picker");
-    const colorNameSpan = document.getElementById("color-name");
-    const lightbox = document.getElementById("lightbox");
-    const lightboxImg = document.getElementById("lightbox-img");
+  <script is:inline>
+    (function () {
+      const zafuImage = document.getElementById("main-zafu-image");
+      const colorOverlay = document.getElementById("color-overlay");
+      const sizeSelect = document.getElementById("size");
+      const typeRadios = document.querySelectorAll("input[name='type']");
+      const resultBox = document.getElementById("result-box");
+      const colorPicker = document.getElementById("color-picker");
+      const colorNameSpan = document.getElementById("color-name");
+      const colorSwatches = document.querySelectorAll(".color-swatch");
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImg = document.getElementById("lightbox-img");
+      const lightboxCaption = document.getElementById("lightbox-caption");
+      const lightboxClose = document.getElementById("lightbox-close");
 
-    let selectedColor = "";
-    let selectedHex = "#cccccc";
-    let selectedSize = "";
-    let selectedType = "";
-    const prices = {
-      "S": { "Vide": 25, "Plein": 40 },
-      "M": { "Vide": 27, "Plein": 45 },
-      "L": { "Vide": 30, "Plein": 50 },
-      "Sur mesure": { "Vide": null, "Plein": null }
-    };
+      let selectedColor = "Violet à pois";
+      let selectedHex = "";
+      let selectedSize = "";
+      let selectedType = "";
 
-    function normalizeHex(hex) {
-      return hex.toUpperCase();
-    }
+      const prices = {
+        "S": { "Vide": 25, "Plein": 40 },
+        "M": { "Vide": 27, "Plein": 45 },
+        "L": { "Vide": 30, "Plein": 50 },
+        "Sur mesure": { "Vide": null, "Plein": null }
+      };
 
-    // clic sur cercle de base
-    document.querySelectorAll("[data-name]").forEach(btn => {
-      btn.addEventListener("click", () => {
-        selectedColor = btn.dataset.name;
-        selectedHex = normalizeHex(btn.dataset.hex);
-        colorNameSpan.textContent = selectedColor;
-        zafuImage.src = btn.dataset.img;
-        colorOverlay.classList.add("hidden");
-        updateResult();
-        colorPicker.value = "#cccccc";
-      });
-    });
+      function updateResult() {
+        if (!resultBox) return;
 
-    // choix couleur roue
-    colorPicker.addEventListener("input", () => {
-      selectedHex = normalizeHex(colorPicker.value);
-      selectedColor = selectedHex.replace("#","").toUpperCase(); // fallback
-      colorNameSpan.textContent = selectedHex;
-      zafuImage.src = "/zafu-plein-violet-pois.webp";
-      colorOverlay.style.background = selectedHex;
-      colorOverlay.classList.remove("hidden");
-      updateResult();
-    });
+        if (selectedSize && selectedType && selectedColor) {
+          const priceObj = prices[selectedSize];
+          const price = priceObj ? priceObj[selectedType] : null;
+          const priceText = price ? `${price} €` : "Sur devis";
+          const code = `ZAFU-${selectedSize}-${selectedType}-${selectedColor.replace(/\s+/g, "_")}`;
+          
+          const mailSubject = encodeURIComponent(`Commande zafu artisanal : ${code}`);
+          const mailBody = encodeURIComponent(
+            `Bonjour Véronique,\n\nJe souhaite vous commander un zafu artisanal confectionné à Montpellier :\n\n- Taille : ${selectedSize}\n- Remplissage : ${selectedType}\n- Couleur : ${selectedColor}\n- Code : ${code}\n- Prix indicatif : ${priceText} (hors frais de port)\n\nPourriez-vous me confirmer la disponibilité, le délai de réalisation et les modalités de paiement par virement ?\n\nNom & Prénom :\nAdresse de livraison :\nTéléphone (facultatif) :\n\nMerci d'avance,\nCordialement`
+          );
+          const mailtoUrl = `mailto:myokan@hotmail.fr?subject=${mailSubject}&body=${mailBody}`;
 
-    // taille
-    sizeSelect.addEventListener("change", () => {
-      selectedSize = sizeSelect.value;
-      updateResult();
-    });
+          resultBox.innerHTML = `
+            <div class="space-y-4">
+              <div class="flex flex-col sm:flex-row items-center justify-between gap-2 pb-4 border-b border-gray-200 dark:border-gray-700">
+                <div class="text-left">
+                  <p class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider font-semibold">Récapitulatif de votre sélection</p>
+                  <p class="text-lg font-bold text-gray-900 dark:text-white">Taille ${selectedSize} · ${selectedType} · Coloris ${selectedColor}</p>
+                </div>
+                <div class="text-right">
+                  <span class="text-xs text-gray-500 dark:text-gray-400 block">Prix indicatif</span>
+                  <span class="text-2xl font-bold text-gray-900 dark:text-white">${priceText}</span>
+                </div>
+              </div>
 
-    // type (radio buttons)
-    typeRadios.forEach(radio => {
-      radio.addEventListener("change", () => {
-        selectedType = radio.value;
-        updateResult();
-      });
-    });
-
-    function updateResult() {
-      if (selectedSize && selectedType && selectedColor) {
-        let price = prices[selectedSize][selectedType];
-        const priceText = price ? price + " €" : "à déterminer";
-        const code = `ZAFU-${selectedSize}-${selectedType}-${selectedColor}`;
-        result.innerHTML = `
-          <p class="mb-2">Prix (hors frais de port) : <strong>${priceText}</strong></p>
-          <p>Pour commander, envoyez le code suivant à <a href="mailto:myokan@hotmail.fr" class="text-purple-600 underline">myokan@hotmail.fr</a> :</p>
-          <p class="mt-2 text-purple-700 font-bold">${code}</p>
-        `;
-      } else {
-        result.textContent = "🌸 Sélectionnez une taille 👕, un remplissage et une couleur.";
+              <div class="bg-gray-50 dark:bg-gray-900/50 p-4 rounded-lg flex flex-col sm:flex-row items-center justify-between gap-3 text-left">
+                <div>
+                  <p class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Code de commande</p>
+                  <code class="text-base font-mono font-bold text-gray-900 dark:text-white">${code}</code>
+                </div>
+                <a 
+                  href="${mailtoUrl}"
+                  class="px-5 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-950 font-medium text-sm rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition shadow-sm whitespace-nowrap"
+                >
+                  Commander par e-mail avec cette configuration →
+                </a>
+              </div>
+              <p class="text-xs text-gray-500 dark:text-gray-400">
+                Le clic ouvre votre messagerie avec les détails préremplis. Vous pouvez également nous écrire à <a href="mailto:myokan@hotmail.fr" class="underline">myokan@hotmail.fr</a>.
+              </p>
+            </div>
+          `;
+        } else {
+          resultBox.innerHTML = `
+            <p class="text-gray-600 dark:text-gray-300 text-sm">
+              Sélectionnez une <strong>taille</strong>, un <strong>remplissage</strong> et une <strong>couleur</strong> pour calculer le tarif et pré-remplir votre commande par e-mail.
+            </p>
+          `;
+        }
       }
-    }
 
-    // lightbox
-    zafuImage.addEventListener("click", () => {
-      lightboxImg.src = zafuImage.src;
-      lightbox.classList.remove("hidden");
-      lightbox.classList.add("flex");
-    });
-    lightbox.addEventListener("click", () => {
-      lightbox.classList.add("hidden");
-      lightbox.classList.remove("flex");
-    });
+      // Gestion des pastilles de couleur
+      colorSwatches.forEach(btn => {
+        btn.addEventListener("click", () => {
+          colorSwatches.forEach(b => {
+            b.classList.remove("ring-2", "ring-offset-2", "ring-gray-900", "dark:ring-white", "scale-105");
+            b.setAttribute("aria-pressed", "false");
+          });
+
+          btn.classList.add("ring-2", "ring-offset-2", "ring-gray-900", "dark:ring-white", "scale-105");
+          btn.setAttribute("aria-pressed", "true");
+
+          selectedColor = btn.dataset.name;
+          selectedHex = btn.dataset.hex;
+          if (colorNameSpan) colorNameSpan.textContent = selectedColor;
+          if (zafuImage && btn.dataset.img) {
+            zafuImage.src = btn.dataset.img;
+            zafuImage.alt = `Zafu de méditation zen artisanal coloris ${selectedColor}`;
+          }
+          if (colorOverlay) colorOverlay.classList.add("hidden");
+          updateResult();
+        });
+      });
+
+      // Gestion de la couleur personnalisée
+      if (colorPicker) {
+        colorPicker.addEventListener("input", () => {
+          colorSwatches.forEach(b => {
+            b.classList.remove("ring-2", "ring-offset-2", "ring-gray-900", "dark:ring-white", "scale-105");
+            b.setAttribute("aria-pressed", "false");
+          });
+
+          selectedHex = colorPicker.value.toUpperCase();
+          selectedColor = `Teinte sur mesure (${selectedHex})`;
+          if (colorNameSpan) colorNameSpan.textContent = selectedColor;
+          if (zafuImage) zafuImage.src = "/zafu-plein-violet-pois.webp";
+          if (colorOverlay) {
+            colorOverlay.style.backgroundColor = selectedHex;
+            colorOverlay.classList.remove("hidden");
+          }
+          updateResult();
+        });
+      }
+
+      // Taille
+      if (sizeSelect) {
+        sizeSelect.addEventListener("change", () => {
+          selectedSize = sizeSelect.value;
+          updateResult();
+        });
+      }
+
+      // Remplissage
+      typeRadios.forEach(radio => {
+        radio.addEventListener("change", () => {
+          selectedType = radio.value;
+          updateResult();
+        });
+      });
+
+      // Lightbox handling
+      function openLightbox(src, alt) {
+        if (!lightbox || !lightboxImg) return;
+        lightboxImg.src = src;
+        lightboxImg.alt = alt || "Agrandissement";
+        if (lightboxCaption) lightboxCaption.textContent = alt || "";
+        lightbox.classList.remove("hidden");
+        lightbox.classList.add("flex");
+        document.body.style.overflow = "hidden";
+        lightboxClose?.focus();
+      }
+
+      function closeLightbox() {
+        if (!lightbox) return;
+        lightbox.classList.add("hidden");
+        lightbox.classList.remove("flex");
+        document.body.style.overflow = "";
+      }
+
+      if (zafuImage) {
+        zafuImage.addEventListener("click", () => {
+          openLightbox(zafuImage.src, zafuImage.alt);
+        });
+      }
+
+      document.querySelectorAll(".gallery-thumb").forEach(thumb => {
+        thumb.addEventListener("click", () => {
+          const full = thumb.getAttribute("data-full") || thumb.getAttribute("src");
+          const alt = thumb.getAttribute("data-alt") || "";
+          openLightbox(full, alt);
+        });
+      });
+
+      lightboxClose?.addEventListener("click", closeLightbox);
+      lightbox?.addEventListener("click", (e) => {
+        if (e.target === lightbox) closeLightbox();
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && lightbox && !lightbox.classList.contains("hidden")) {
+          closeLightbox();
+        }
+      });
+    })();
   </script>
-
-  <div class="max-w-2xl mx-auto px-6">
-    <OrderCta product="un zafu" />
-  </div>
-
-  <nav aria-label="Voir aussi" class="max-w-2xl mx-auto px-6 mt-12 mb-8">
-    <p class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">Voir aussi</p>
-    <div class="flex flex-wrap gap-3">
-      <a href="/zabutons" class="px-4 py-2 border border-gray-200 rounded-md text-sm text-gray-700 hover:border-gray-400 transition">Zabutons</a>
-      <a href="/sacs-zafus" class="px-4 py-2 border border-gray-200 rounded-md text-sm text-gray-700 hover:border-gray-400 transition">Sacs à zafu</a>
-      <a href="/contact" class="px-4 py-2 bg-gray-800 text-white rounded-md text-sm hover:bg-gray-700 transition">Passer commande</a>
-    </div>
-  </nav>
-</Base>
+</Layout>

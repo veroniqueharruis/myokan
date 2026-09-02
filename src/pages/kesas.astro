@@ -1,74 +1,136 @@
 ---
-import Base from "../layouts/Layout.astro";
+import Layout from "@layouts/Layout.astro";
 import OrderCta from "@components/order-cta.astro";
 import PriceTag from "@components/price-tag.astro";
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Accueil",
+      "item": "https://myokan.fr/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Sacs à kesa",
+      "item": "https://myokan.fr/kesas/"
+    }
+  ]
+};
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Sac à kesa et pochette ketsumyaku artisanaux",
+  "description": "Sac pour le transport et la protection du kesa (robe de moine zen) et pochette pour ketsumyaku, cousus à la main à Montpellier selon la tradition.",
+  "brand": { "@type": "Brand", "name": "Myokan" },
+  "image": "https://myokan.fr/zafus-vides-gris.webp",
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "EUR",
+    "priceValidUntil": "2027-12-31",
+    "availability": "https://schema.org/InStock",
+    "url": "https://myokan.fr/kesas/",
+    "seller": { 
+      "@type": "LocalBusiness", 
+      "name": "Myokan",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Montpellier",
+        "addressCountry": "FR"
+      }
+    }
+  }
+};
 ---
 
-<Base
+<Layout
   fullTitle="Sac à kesa et pochette ketsumyaku — Myokan, Montpellier"
-  description="Sacs pour kesa (robe de moine zen) et pochettes de ketsumyaku faits main à Montpellier. Couture traditionnelle, tissu résistant, sur commande.">
-  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": "Sac à kesa et pochette ketsumyaku artisanaux",
-    "description": "Sac pour le transport et la protection du kesa (robe de moine zen) et pochette pour ketsumyaku, cousus à la main à Montpellier.",
-    "brand": { "@type": "Brand", "name": "Myokan" },
-    "offers": {
-      "@type": "Offer",
-      "priceCurrency": "EUR",
-      "availability": "https://schema.org/InStock",
-      "seller": { "@type": "LocalBusiness", "name": "Myokan" }
-    }
-  })} />
-  <main class="mt-16 px-4 max-w-3xl mx-auto">
-    <h1 class="text-4xl lg:text-5xl font-bold text-gray-800">Sacs à kesa et pochettes ketsumyaku</h1>
-    <PriceTag price="Prix sur demande" />
+  description="Sacs pour kesa (robe monastique zen) et pochettes de ketsumyaku faits main à Montpellier. Couture traditionnelle sur commande, respect des dimensions.">
+  
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(productSchema)} />
 
-    <p class="text-lg mt-6 text-gray-600">
-      Le kesa est la robe de cérémonie du moine ou de la nonne zen, héritée de la tradition
-      indienne du vêtement de pratique. Cousu de carrés de tissu assemblés selon des règles
-      précises, il est porté lors du zazen, des cérémonies et des sesshins. Sa protection
-      et son transport nécessitent un sac adapté à sa forme et à sa fragilité.
+  <main id="main-content" class="mt-10 px-4 max-w-3xl mx-auto pb-20">
+    <!-- Fil d'Ariane -->
+    <nav aria-label="Fil d'Ariane" class="text-xs text-gray-600 dark:text-gray-400 mb-8">
+      <ol class="flex items-center gap-2">
+        <li>
+          <a href="/" class="hover:text-gray-950 dark:hover:text-white transition">Accueil</a>
+        </li>
+        <li aria-hidden="true">/</li>
+        <li>
+          <a href="/" class="hover:text-gray-950 dark:hover:text-white transition">Créations</a>
+        </li>
+        <li aria-hidden="true">/</li>
+        <li class="font-medium text-gray-900 dark:text-white" aria-current="page">Sacs à kesa</li>
+      </ol>
+    </nav>
+
+    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white break-words">Sacs à kesa et pochettes ketsumyaku</h1>
+    <PriceTag price="Sur devis" />
+
+    <p class="text-lg mt-6 text-gray-700 dark:text-gray-300 leading-relaxed">
+      Le kesa est la robe de cérémonie du moine, de la nonne ou du bodhisattva zen, héritée de la tradition
+      bouddhiste originelle du vêtement de pratique. Assemblé à partir de pièces d'étoffe selon des règles
+      géométriques précises, il est revêtu lors du zazen, des cérémonies et des sesshins. Sa protection
+      et son transport réclament un sac adapté à son volume et à son pliage délicat.
     </p>
 
-    <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4">Le sac à kesa</h2>
-    <p class="text-lg text-gray-600">
-      Véronique confectionne des sacs destinés au transport et à la protection du kesa.
-      Chaque sac est taillé aux dimensions exactes du kesa qu'il doit contenir — petite,
-      moyenne ou grande robe — en tissu soigneusement choisi pour sa solidité et son respect
-      du contenu. La fermeture est conçue pour préserver les plis du kesa lors du transport
-      entre le domicile et le dojo.
+    <div class="my-8 rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900">
+      <img
+        src="/zafus-vides-gris.webp"
+        alt="Toile textile et confection sur mesure dans l'atelier Myokan à Montpellier"
+        width="800"
+        height="500"
+        class="w-full h-64 sm:h-80 object-cover"
+        loading="lazy"
+      />
+      <p class="p-3 text-xs text-center text-gray-500 dark:text-gray-400">
+        Confection textile et finitions soignées à l'atelier Myokan de Montpellier
+      </p>
+    </div>
+
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mt-10 mb-4">Le sac à kesa traditionnel</h2>
+    <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+      Véronique confectionne des sacs spécialement étudiés pour le transport et la préservation du kesa.
+      Chaque pièce est taillée aux dimensions précises de la robe qu'elle abrite — kesa 7 bandes, 9 bandes 
+      ou rakusu — dans un tissu soigneusement sélectionné pour sa solidité et sa douceur intérieure. 
+      La fermeture permet de maintenir le pliage impeccable de la robe lors des déplacements vers le dojo.
     </p>
-    <ul class="mt-4 space-y-2 text-gray-600">
-      <li class="flex gap-2"><span class="text-gray-400">—</span> Dimensions adaptées à chaque taille de kesa</li>
-      <li class="flex gap-2"><span class="text-gray-400">—</span> Tissu protecteur, couture solide</li>
-      <li class="flex gap-2"><span class="text-gray-400">—</span> Coloris sur demande</li>
+    <ul class="mt-4 space-y-2 text-gray-700 dark:text-gray-300">
+      <li class="flex gap-2"><span class="text-gray-400 dark:text-gray-500">—</span> Gabarits ajustés à votre taille de kesa ou de rakusu</li>
+      <li class="flex gap-2"><span class="text-gray-400 dark:text-gray-500">—</span> Tissu extérieur protecteur et doublure protectrice</li>
+      <li class="flex gap-2"><span class="text-gray-400 dark:text-gray-500">—</span> Coloris et fermetures personnalisables sur commande</li>
     </ul>
 
-    <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4">La pochette de ketsumyaku</h2>
-    <p class="text-lg text-gray-600">
-      Le ketsumyaku est le certificat de transmission de lignée remis lors de l'ordination
-      bodhisattva. Ce document précieux, calligraphié sur papier washi ou soie, est conservé
-      avec soin dans une pochette spécifique qui le protège des plis, de l'humidité et du temps.
-      Véronique réalise ces pochettes à la main, dans des tissus nobles et résistants.
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mt-10 mb-4">La pochette de ketsumyaku</h2>
+    <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+      Le ketsumyaku est le précieux document de transmission de lignée remis lors de l'ordination
+      bodhisattva ou monastique. Souvent calligraphié sur papier washi ou soie, il est conservé
+      avec une attention toute particulière dans une pochette plate protectrice qui le préserve des plis,
+      de la lumière et de l'humidité au fil des décennies.
     </p>
-    <ul class="mt-4 space-y-2 text-gray-600">
-      <li class="flex gap-2"><span class="text-gray-400">—</span> Format adapté au ketsumyaku</li>
-      <li class="flex gap-2"><span class="text-gray-400">—</span> Tissu protecteur contre l'humidité et les plis</li>
-      <li class="flex gap-2"><span class="text-gray-400">—</span> Fermeture soignée, couture main</li>
+    <ul class="mt-4 space-y-2 text-gray-700 dark:text-gray-300">
+      <li class="flex gap-2"><span class="text-gray-400 dark:text-gray-500">—</span> Format sur mesure adapté au ketsumyaku plié</li>
+      <li class="flex gap-2"><span class="text-gray-400 dark:text-gray-500">—</span> Toile noble et protectrice contre l'humidité et les frottements</li>
+      <li class="flex gap-2"><span class="text-gray-400 dark:text-gray-500">—</span> Couture main traditionnelle avec finitions discrètes</li>
     </ul>
 
-    <OrderCta product="un sac à kesa" />
+    <OrderCta product="un sac à kesa ou une pochette de ketsumyaku" />
 
-    <!-- Galerie — à compléter quand les photos seront disponibles -->
-
-    <nav aria-label="Voir aussi" class="mt-12">
-      <p class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">Voir aussi</p>
+    <nav aria-label="Voir aussi" class="mt-12 pt-6 border-t border-gray-200 dark:border-gray-800">
+      <p class="text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider mb-3">Voir aussi</p>
       <div class="flex flex-wrap gap-3">
-        <a href="/fukusas" class="px-4 py-2 border border-gray-200 rounded-md text-sm text-gray-700 hover:border-gray-400 transition">Fukusas</a>
-        <a href="/oryokis" class="px-4 py-2 border border-gray-200 rounded-md text-sm text-gray-700 hover:border-gray-400 transition">Oryokis</a>
-        <a href="/zafus" class="px-4 py-2 border border-gray-200 rounded-md text-sm text-gray-700 hover:border-gray-400 transition">Zafus</a>
+        <a href="/fukusas/" class="px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg text-sm text-gray-800 dark:text-gray-200 hover:border-gray-500 transition">Fukusas</a>
+        <a href="/oryokis/" class="px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg text-sm text-gray-800 dark:text-gray-200 hover:border-gray-500 transition">Oryokis</a>
+        <a href="/zafus/" class="px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg text-sm text-gray-800 dark:text-gray-200 hover:border-gray-500 transition">Zafus de méditation</a>
+        <a href="/pratique-zazen/" class="px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg text-sm text-gray-800 dark:text-gray-200 hover:border-gray-500 transition">Guide pratique zazen</a>
       </div>
     </nav>
   </main>
-</Base>
+</Layout>

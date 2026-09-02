@@ -1,38 +1,46 @@
 ---
 ---
 
-<main class="grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24">
-  <div class="py-6 md:order-1 hidden md:block">
-    <img
-      src="/veronique.webp"
-      alt="Véronique Myokan Harruis, nonne zen et créatrice de zafus artisanaux à Montpellier"
-      width="275"
-      height="275"
-      class="rounded-full object-cover mx-auto shadow-md"
-      loading="eager"
-    />
+<section class="grid lg:grid-cols-2 place-items-center pt-12 pb-8 md:pt-14 md:pb-20 gap-8" aria-labelledby="hero-title">
+  <div class="order-1 lg:order-2 flex justify-center w-full">
+    <div class="relative">
+      <img
+        src="/veronique.webp"
+        alt="Véronique Myokan Harruis, nonne zen Soto et créatrice de zafus artisanaux à Montpellier"
+        width="275"
+        height="275"
+        class="w-44 h-44 sm:w-56 sm:h-56 lg:w-72 lg:h-72 rounded-full object-cover mx-auto shadow-md border-4 border-white dark:border-gray-800"
+        loading="eager"
+      />
+      <div class="absolute -bottom-2 sm:-bottom-3 left-1/2 -translate-x-1/2 bg-white dark:bg-gray-900 px-3 py-1 rounded-full shadow border border-gray-200 dark:border-gray-700 text-xs font-medium text-gray-700 dark:text-gray-300 whitespace-nowrap">
+        Nonne zen & couturière
+      </div>
+    </div>
   </div>
-  <div>
-    <p class="text-sm font-semibold uppercase tracking-widest text-gray-400 mb-3">
-      Artisanat zen depuis 1982 · Montpellier
+
+  <div class="order-2 lg:order-1 text-center lg:text-left">
+    <p class="text-xs sm:text-sm font-semibold uppercase tracking-wider text-gray-600 dark:text-gray-400 mb-3">
+      Artisanat zen traditionnel · Fait main à Montpellier depuis 1982
     </p>
-    <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter text-gray-800">
-      Coussins de méditation artisanaux
+    <h1 id="hero-title" class="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 dark:text-white leading-[1.18] break-words">
+      Coussins de méditation & accessoires zen artisanaux
     </h1>
-    <p class="text-xl mt-5 text-gray-600 max-w-xl leading-relaxed">
-      Zafus cousus à la main, zabutons, fukusas et accessoires pour la méditation,
-      sur commande depuis Montpellier, dans la tradition transmise par maître Deshimaru.
+    <p class="text-lg sm:text-xl mt-5 text-gray-700 dark:text-gray-300 max-w-xl leading-relaxed mx-auto lg:mx-0">
+      Zafus cousus main sur mesure, zabutons, fukusas et accessoires de cérémonie. 
+      Confectionnés sur commande à Montpellier selon la méthode transmise par maître Deshimaru.
     </p>
-    <div class="mt-8 flex flex-wrap gap-4">
-      <a href="/zafus" class="px-6 py-3.5 bg-gray-800 text-white rounded-md hover:bg-gray-700 transition font-medium">
+
+    <div class="mt-8 flex flex-wrap justify-center lg:justify-start gap-4">
+      <a href="/zafus/" class="px-6 py-3.5 bg-gray-900 dark:bg-white text-white dark:text-gray-950 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition font-medium text-base shadow-sm">
         Configurer mon zafu
       </a>
-      <a href="/contact" class="px-6 py-3.5 border border-gray-300 text-gray-700 rounded-md hover:border-gray-500 transition font-medium">
-        Passer commande
+      <a href="/pratique-zazen/" class="px-6 py-3.5 border border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-200 rounded-lg hover:border-gray-500 transition font-medium text-base">
+        Guide de la pratique & posture
       </a>
     </div>
-    <p class="mt-5 text-sm text-gray-500">
-      ou écrivez directement à <a href="mailto:myokan@hotmail.fr" class="underline hover:text-gray-800 transition">myokan@hotmail.fr</a>
+
+    <p class="mt-5 text-sm text-gray-600 dark:text-gray-400">
+      Commande directe par e-mail : <a href="mailto:myokan@hotmail.fr" class="underline hover:text-gray-950 dark:hover:text-white font-medium transition">myokan@hotmail.fr</a>
     </p>
   </div>
-</main>
+</section>

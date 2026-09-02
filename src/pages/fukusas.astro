@@ -1,146 +1,257 @@
 ---
-import Base from "../layouts/Layout.astro";
-import { Icon } from "astro-icon/components";
+import Layout from "@layouts/Layout.astro";
 import OrderCta from "@components/order-cta.astro";
 import PriceTag from "@components/price-tag.astro";
 
 const images = [
-  { src: "fukusa-FB_IMG_1756283080119.webp", alt: "Fukusa zen artisanal cousu main — coloris uni, Myokan Montpellier" },
-  { src: "fukusa-bleu-jaune.webp", alt: "Fukusa zen bleu et jaune artisanal pour bol oryoki — Myokan Montpellier" },
-  { src: "fukusa-FB_IMG_1756283086911.webp", alt: "Fukusa zen artisanal pour oryoki — tissu résistant cousu à la main" },
-  { src: "fukusa-FB_IMG_1756283090242.webp", alt: "Fukusa de protection pour bol oryoki, couture artisanale — Myokan" },
-  { src: "fukusa-orange-gris.webp", alt: "Fukusa zen orange et gris artisanal cousu à la main — Myokan" },
-  { src: "fukusa-FB_IMG_1756283102483.webp", alt: "Fukusa zen fait main, disponible en plusieurs coloris sur commande — Myokan" },
+  { src: "/fukusa-FB_IMG_1756283080119.webp", alt: "Fukusa zen artisanal cousu main coloris uni — Myokan Montpellier" },
+  { src: "/fukusa-bleu-jaune.webp", alt: "Fukusa zen bleu et jaune artisanal pour bol oryoki — Myokan Montpellier" },
+  { src: "/fukusa-FB_IMG_1756283086911.webp", alt: "Fukusa zen artisanal pour oryoki en tissu résistant cousu main" },
+  { src: "/fukusa-FB_IMG_1756283090242.webp", alt: "Fukusa de protection pour bol oryoki, couture artisanale — Myokan" },
+  { src: "/fukusa-orange-gris.webp", alt: "Fukusa zen orange et gris artisanal cousu à la main — Myokan" },
+  { src: "/fukusa-FB_IMG_1756283102483.webp", alt: "Fukusa zen fait main, coloris personnalisables sur commande — Myokan" },
 ];
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Accueil",
+      "item": "https://myokan.fr/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Fukusas",
+      "item": "https://myokan.fr/fukusas/"
+    }
+  ]
+};
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Fukusa zen artisanal pour oryoki",
+  "description": "Pièce de tissu traditionnelle utilisée par les pratiquants zen pour envelopper et protéger leur bol oryoki lors des repas cérémoniels en sesshin. Cousu main à Montpellier.",
+  "brand": { "@type": "Brand", "name": "Myokan" },
+  "image": "https://myokan.fr/fukusa-bleu-jaune.webp",
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "EUR",
+    "priceValidUntil": "2027-12-31",
+    "availability": "https://schema.org/InStock",
+    "url": "https://myokan.fr/fukusas/",
+    "seller": { 
+      "@type": "LocalBusiness", 
+      "name": "Myokan",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Montpellier",
+        "addressCountry": "FR"
+      }
+    }
+  }
+};
 ---
 
-<Base fullTitle="Fukusa zen artisanal pour oryoki — Myokan, Montpellier" description="Fukusas artisanaux cousus main, utilisés par les moines zen pour protéger leur bol oryoki. Réalisés en tissu résistant, disponibles en plusieurs coloris.">
-  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": "Fukusa zen artisanal",
-    "description": "Pièce de tissu utilisée par les moines et nonnes zen pour protéger leur bol oryoki. Cousu à la main, disponible en plusieurs coloris.",
-    "brand": { "@type": "Brand", "name": "Myokan" },
-    "offers": {
-      "@type": "Offer",
-      "priceCurrency": "EUR",
-      "availability": "https://schema.org/InStock",
-      "seller": { "@type": "LocalBusiness", "name": "Myokan" }
-    },
-    "image": "https://myokan.fr/fukusa-bleu-jaune.webp"
-  })} />
-  <main class="mt-16 px-4 max-w-6xl mx-auto">
-    <h1 class="text-4xl lg:text-5xl font-bold text-gray-800">Fukusas artisanaux</h1>
-    <PriceTag price="Prix sur demande" />
+<Layout 
+  fullTitle="Fukusa zen artisanal pour oryoki — Myokan, Montpellier" 
+  description="Fukusas artisanaux cousus main à Montpellier, utilisés pour protéger les bols oryoki lors des repas cérémoniels en sesshin. Tissu résistant, coloris variés.">
+  
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(productSchema)} />
 
-    <p class="text-lg mt-6 text-gray-600">
-      Le fukusa est un carré de tissu replié en deux, utilisé par les moines et nonnes zen pour protéger et
-      transporter leur <a href="/oryokis" class="underline hover:text-gray-900">bol oryoki</a>. Il fait partie
-      de l'équipement standard lors des sesshins et retraites de méditation, où chaque pratiquant prend soin
-      de son matériel avec la même attention qu'il porte à sa pratique.
-    </p>
+  <main id="main-content" class="mt-10 px-4 max-w-5xl mx-auto pb-20">
+    <!-- Fil d'Ariane -->
+    <nav aria-label="Fil d'Ariane" class="text-xs text-gray-600 dark:text-gray-400 mb-8">
+      <ol class="flex items-center gap-2">
+        <li>
+          <a href="/" class="hover:text-gray-950 dark:hover:text-white transition">Accueil</a>
+        </li>
+        <li aria-hidden="true">/</li>
+        <li>
+          <a href="/" class="hover:text-gray-950 dark:hover:text-white transition">Créations</a>
+        </li>
+        <li aria-hidden="true">/</li>
+        <li class="font-medium text-gray-900 dark:text-white" aria-current="page">Fukusas</li>
+      </ol>
+    </nav>
 
-    <h2 class="text-2xl font-bold text-gray-800 mt-12 mb-4">Rôle dans la cérémonie zen</h2>
-    <p class="text-lg text-gray-600">
-      Lors du oryoki — le repas cérémoniel pratiqué en sesshin — le fukusa est déposé sur les genoux du pratiquant
-      pour recevoir les bols. Il protège les bols des chocs et de la saleté, tout en délimitant l'espace
-      de la cérémonie. Son pliage et son déploiement font partie intégrante du rituel.
-    </p>
-    <p class="text-lg mt-4 text-gray-600">
-      Dans la Kosen Sangha, dont relève le <a href="https://zen-montpellier.fr/" class="underline hover:text-gray-900" target="_blank" rel="noopener">dojo zen de Montpellier</a>,
-      le fukusa est rectangulaire, de dimension suffisante pour accueillir l'ensemble des bols de l'oryoki.
+    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white break-words">Fukusas artisanaux pour oryoki</h1>
+    <PriceTag price="Sur devis" />
+
+    <p class="text-lg mt-6 text-gray-700 dark:text-gray-300 leading-relaxed max-w-3xl">
+      Le fukusa est la pièce de tissu repliée avec soin, utilisée par les moines, nonnes et pratiquants zen 
+      pour protéger et transporter leur <a href="/oryokis/" class="underline hover:text-gray-950 dark:hover:text-white font-medium">bol oryoki</a>. 
+      Il fait partie intégrante de la pratique cérémonielle lors des sesshins et retraites au dojo.
     </p>
 
-    <h2 class="text-2xl font-bold text-gray-800 mt-12 mb-4">Matières et fabrication</h2>
-    <p class="text-lg text-gray-600">
-      Chaque fukusa est cousu à la main par Véronique Myokan Harruis à Montpellier. Le tissu est choisi pour
-      sa solidité et sa tenue dans le temps : coton épais ou mélange coton-lin selon les disponibilités.
-      Les bords sont soignés pour éviter l'effilochage au lavage.
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mt-12 mb-4">Rôle dans la cérémonie zen</h2>
+    <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+      Lors de l'oryoki — le repas silencieux et rituel pratiqué en sesshin — le fukusa est déployé sur les genoux 
+      du pratiquant pour accueillir la nappe et les bols. Il protège les bols précieux des chocs et délimite 
+      l'espace de la cérémonie. Le geste de pliage et de déploiement fait partie intégrante de la vigilance zen.
     </p>
-    <p class="text-lg mt-4 text-gray-600">
-      Les fukusas sont disponibles en plusieurs coloris — uni ou avec une couture contrastée — selon les
-      tissus disponibles au moment de la commande. N'hésitez pas à préciser une préférence de couleur dans
-      votre mail.
+    <p class="text-lg mt-4 text-gray-700 dark:text-gray-300 leading-relaxed">
+      Dans la Kosen Sangha, dont relève le <a href="https://zen-montpellier.fr/" class="underline hover:text-gray-950 dark:hover:text-white font-medium" target="_blank" rel="noopener">Dojo Zen de Montpellier</a>,
+      le fukusa est adapté en forme et en dimension pour accueillir commodément l'ensemble des bols d'oryoki.
     </p>
 
-    <h2 class="text-2xl font-bold text-gray-800 mt-12 mb-4">À qui s'adresse le fukusa ?</h2>
-    <p class="text-lg text-gray-600">
-      Le fukusa s'adresse à tout pratiquant zen possédant un <a href="/oryokis" class="underline hover:text-gray-900">oryoki</a>
-      et souhaitant disposer d'une pièce solide, faite selon la tradition. Il peut également être offert à
-      l'occasion d'une ordination ou d'un anniversaire de pratique.
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mt-12 mb-4">Matières et fabrication</h2>
+    <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+      Chaque fukusa est cousu à la main par Véronique Myokan Harruis à Montpellier. Les tissus sont choisis 
+      pour leur solidité, leur souplesse et leur tenue aux lavages réguliers : toile de coton épaisse ou mélange 
+      coton-lin. Les coutures et les bordures sont minutieusement renforcées pour éviter tout effilochage.
+    </p>
+    <p class="text-lg mt-4 text-gray-700 dark:text-gray-300 leading-relaxed">
+      Les fukusas sont proposés en coloris unis ou bicolores avec coutures contrastées selon les arrivages de tissu. 
+      N'hésitez pas à mentionner votre préférence lors de votre commande par e-mail.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mt-12 mb-4">À qui s'adresse le fukusa ?</h2>
+    <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+      Le fukusa s'adresse à tout pratiquant zen possédant un <a href="/oryokis/" class="underline hover:text-gray-950 dark:hover:text-white font-medium">oryoki</a>
+      et souhaitant une pièce robuste et respectueuse de la tradition. Il constitue également un cadeau traditionnel 
+      très apprécié à l'occasion d'une ordination de bodhisattva ou d'un engagement dans la sangha.
     </p>
 
     <OrderCta product="un fukusa" />
 
-    <nav aria-label="Voir aussi" class="mt-8">
-      <p class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">Voir aussi</p>
-      <div class="flex flex-wrap gap-3">
-        <a href="/oryokis" class="px-4 py-2 border border-gray-200 rounded-md text-sm text-gray-700 hover:border-gray-400 transition">Oryokis</a>
-        <a href="/kesas" class="px-4 py-2 border border-gray-200 rounded-md text-sm text-gray-700 hover:border-gray-400 transition">Sacs à kesa</a>
-        <a href="/contact" class="px-4 py-2 bg-gray-800 text-white rounded-md text-sm hover:bg-gray-700 transition">Passer commande</a>
-      </div>
-    </nav>
-
-    <!-- Galerie -->
-    <div class="mt-12">
-      <h3 class="text-2xl font-bold text-gray-800 mb-4">Galerie</h3>
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+    <!-- Galerie photos -->
+    <section class="mt-14 pt-6 border-t border-gray-200 dark:border-gray-800" aria-labelledby="fukusa-gallery-heading">
+      <h2 id="fukusa-gallery-heading" class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+        Exemples de réalisations (cliquez pour agrandir)
+      </h2>
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
         {images.map((img, index) => (
-          <img
-            src={img.src}
-            alt={img.alt}
-            class="rounded-lg shadow-md w-full object-cover cursor-pointer hover:opacity-80 transition"
-            data-index={index}
-          />
+          <div class="relative group overflow-hidden rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-800">
+            <img
+              src={img.src}
+              alt={img.alt}
+              width="400"
+              height="300"
+              class="rounded-xl w-full h-44 sm:h-52 object-cover cursor-pointer hover:opacity-90 hover:scale-105 transition duration-300 gallery-item"
+              data-index={index}
+              data-src={img.src}
+              data-alt={img.alt}
+              loading="lazy"
+            />
+          </div>
         ))}
       </div>
-    </div>
+    </section>
+
+    <nav aria-label="Voir aussi" class="mt-12 pt-6 border-t border-gray-200 dark:border-gray-800">
+      <p class="text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider mb-3">Voir aussi</p>
+      <div class="flex flex-wrap gap-3">
+        <a href="/oryokis/" class="px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg text-sm text-gray-800 dark:text-gray-200 hover:border-gray-500 transition">Oryokis artisanaux</a>
+        <a href="/kesas/" class="px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg text-sm text-gray-800 dark:text-gray-200 hover:border-gray-500 transition">Sacs à kesa</a>
+        <a href="/zafus/" class="px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg text-sm text-gray-800 dark:text-gray-200 hover:border-gray-500 transition">Zafus de méditation</a>
+        <a href="/contact/" class="px-4 py-2 bg-gray-900 dark:bg-white text-white dark:text-gray-950 rounded-lg text-sm hover:bg-gray-800 dark:hover:bg-gray-100 transition font-medium">Passer commande</a>
+      </div>
+    </nav>
   </main>
 
-  <!-- Lightbox -->
-  <div id="lightbox" class="fixed inset-0 bg-black bg-opacity-80 hidden items-center justify-center z-50">
-    <button id="prev" class="absolute left-4 text-white text-3xl top-1/2 -translate-y-1/2">&#10094;</button>
-    <img id="lightbox-img" src="" alt="Fukusa agrandi" class="max-h-[90%] max-w-[90%] rounded-lg shadow-xl" />
-    <button id="next" class="absolute right-4 text-white text-3xl top-1/2 -translate-y-1/2">&#10095;</button>
+  <!-- Lightbox accessible -->
+  <div 
+    id="lightbox" 
+    role="dialog" 
+    aria-modal="true" 
+    aria-label="Agrandissement du fukusa" 
+    class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden items-center justify-center z-50 p-4"
+  >
+    <div class="relative max-w-3xl max-h-[90vh] flex flex-col items-center">
+      <button 
+        type="button" 
+        id="lightbox-close" 
+        aria-label="Fermer la vue agrandie" 
+        class="absolute -top-12 right-0 text-white hover:text-gray-300 text-2xl font-bold p-2 focus-visible:ring-2 focus-visible:ring-white rounded-lg transition"
+      >
+        ✕
+      </button>
+      <button 
+        type="button" 
+        id="prev" 
+        aria-label="Photo précédente" 
+        class="absolute left-2 sm:-left-12 top-1/2 -translate-y-1/2 text-white hover:text-gray-300 text-3xl p-2 focus-visible:ring-2 focus-visible:ring-white rounded-lg transition"
+      >
+        &#10094;
+      </button>
+      <img id="lightbox-img" src="" alt="" class="max-h-[80vh] max-w-full rounded-lg shadow-2xl object-contain" />
+      <p id="lightbox-caption" class="text-white/90 text-sm mt-3 text-center px-4"></p>
+      <button 
+        type="button" 
+        id="next" 
+        aria-label="Photo suivante" 
+        class="absolute right-2 sm:-right-12 top-1/2 -translate-y-1/2 text-white hover:text-gray-300 text-3xl p-2 focus-visible:ring-2 focus-visible:ring-white rounded-lg transition"
+      >
+        &#10095;
+      </button>
+    </div>
   </div>
 
-  <script is:inline client:load>
-    const images = document.querySelectorAll("[data-index]");
-    const lightbox = document.getElementById("lightbox");
-    const img = document.getElementById("lightbox-img");
-    const prevBtn = document.getElementById("prev");
-    const nextBtn = document.getElementById("next");
+  <script is:inline>
+    (function () {
+      const thumbs = document.querySelectorAll(".gallery-item");
+      const lightbox = document.getElementById("lightbox");
+      const img = document.getElementById("lightbox-img");
+      const caption = document.getElementById("lightbox-caption");
+      const prevBtn = document.getElementById("prev");
+      const nextBtn = document.getElementById("next");
+      const closeBtn = document.getElementById("lightbox-close");
 
-    let currentIndex = 0;
+      let currentIndex = 0;
 
-    function showLightbox(index) {
-      currentIndex = index;
-      img.src = images[currentIndex].getAttribute("src");
-      lightbox.classList.remove("hidden");
-      lightbox.classList.add("flex");
-    }
+      function showLightbox(index) {
+        if (!lightbox || !img) return;
+        currentIndex = index;
+        const currentThumb = thumbs[currentIndex];
+        img.src = currentThumb.getAttribute("data-src") || "";
+        img.alt = currentThumb.getAttribute("data-alt") || "Fukusa agrandi";
+        if (caption) caption.textContent = img.alt;
+        lightbox.classList.remove("hidden");
+        lightbox.classList.add("flex");
+        document.body.style.overflow = "hidden";
+        closeBtn?.focus();
+      }
 
-    function hideLightbox() {
-      lightbox.classList.add("hidden");
-      lightbox.classList.remove("flex");
-    }
+      function hideLightbox() {
+        if (!lightbox) return;
+        lightbox.classList.add("hidden");
+        lightbox.classList.remove("flex");
+        document.body.style.overflow = "";
+      }
 
-    function showPrev() {
-      currentIndex = (currentIndex - 1 + images.length) % images.length;
-      img.src = images[currentIndex].getAttribute("src");
-    }
+      function showPrev() {
+        currentIndex = (currentIndex - 1 + thumbs.length) % thumbs.length;
+        showLightbox(currentIndex);
+      }
 
-    function showNext() {
-      currentIndex = (currentIndex + 1) % images.length;
-      img.src = images[currentIndex].getAttribute("src");
-    }
+      function showNext() {
+        currentIndex = (currentIndex + 1) % thumbs.length;
+        showLightbox(currentIndex);
+      }
 
-    images.forEach((image, index) => {
-      image.addEventListener("click", () => showLightbox(index));
-    });
+      thumbs.forEach((thumb, index) => {
+        thumb.addEventListener("click", () => showLightbox(index));
+      });
 
-    prevBtn.addEventListener("click", (e) => { e.stopPropagation(); showPrev(); });
-    nextBtn.addEventListener("click", (e) => { e.stopPropagation(); showNext(); });
-    lightbox.addEventListener("click", hideLightbox);
+      prevBtn?.addEventListener("click", (e) => { e.stopPropagation(); showPrev(); });
+      nextBtn?.addEventListener("click", (e) => { e.stopPropagation(); showNext(); });
+      closeBtn?.addEventListener("click", hideLightbox);
+      lightbox?.addEventListener("click", (e) => {
+        if (e.target === lightbox) hideLightbox();
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (!lightbox || lightbox.classList.contains("hidden")) return;
+        if (e.key === "Escape") hideLightbox();
+        if (e.key === "ArrowLeft") showPrev();
+        if (e.key === "ArrowRight") showNext();
+      });
+    })();
   </script>
-</Base>
+</Layout>

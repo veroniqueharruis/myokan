@@ -1,18 +1,22 @@
 ---
 const { product = "cet article" } = Astro.props;
+const mailSubject = encodeURIComponent(`Renseignement / commande : ${product}`);
+const mailBody = encodeURIComponent(
+  `Bonjour Véronique,\n\nJe souhaite vous commander ${product} confectionné à la main à Montpellier.\n\nMes souhaits (dimensions, coloris, questions) :\n...\n\nNom & Prénom :\nAdresse de livraison :\n\nMerci d'avance,\nCordialement`
+);
 ---
 
-<div class="mt-10 rounded-xl bg-gray-50 border border-gray-200 px-6 py-7 flex flex-col sm:flex-row sm:items-center gap-5">
+<div class="mt-12 rounded-2xl bg-gray-50 dark:bg-gray-900/60 border border-gray-200 dark:border-gray-800 px-6 py-7 flex flex-col sm:flex-row sm:items-center gap-5">
   <div class="flex-1">
-    <p class="font-semibold text-gray-800 text-lg">Vous souhaitez commander {product} ?</p>
-    <p class="text-sm text-gray-500 mt-1">Réponse sous quelques jours · Fait main à Montpellier · Paiement par virement</p>
+    <p class="font-bold text-gray-900 dark:text-white text-lg">Vous souhaitez commander {product} ?</p>
+    <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Réponse personnalisée sous quelques jours · Fait main à Montpellier · Paiement par virement</p>
   </div>
   <div class="flex flex-col sm:flex-row gap-3 shrink-0">
-    <a href="/contact" class="px-6 py-3.5 bg-gray-800 text-white text-sm font-medium rounded-lg hover:bg-gray-700 transition text-center">
+    <a href="/contact/" class="px-5 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-950 text-sm font-medium rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition text-center shadow-sm">
       Passer commande
     </a>
-    <a href="mailto:myokan@hotmail.fr" class="px-6 py-3.5 border border-gray-300 text-gray-700 text-sm font-medium rounded-lg hover:border-gray-500 transition text-center">
-      Écrire un mail
+    <a href={`mailto:myokan@hotmail.fr?subject=${mailSubject}&body=${mailBody}`} class="px-5 py-3 border border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-200 text-sm font-medium rounded-lg hover:border-gray-500 transition text-center">
+      Écrire un e-mail
     </a>
   </div>
 </div>

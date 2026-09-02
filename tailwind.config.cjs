@@ -6,11 +6,13 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: [
-          "Bricolage Grotesque Variable",
-          "Inter Variable",
-          "Inter",
-          ...defaultTheme.fontFamily.sans,
+        serif: [
+          "Noto Serif JP",
+          ...defaultTheme.fontFamily.serif,
+        ],
+        heading: [
+          "Cormorant Variable",
+          ...defaultTheme.fontFamily.serif,
         ],
       },
     },

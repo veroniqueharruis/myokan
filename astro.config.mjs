@@ -7,5 +7,6 @@ import icon from "astro-icon";
 // https://astro.build/config
 export default defineConfig({
   site: "https://myokan.fr",
+  trailingSlash: "always",
   integrations: [tailwind(), mdx(), sitemap(), icon()],
 });

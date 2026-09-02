@@ -8,42 +8,56 @@ import Layout from "@layouts/Layout.astro";
 ---
 
 <Layout
-  title=""
-  fullTitle="Zafus zen artisanaux — Myokan, Montpellier"
-  description="Coussins de zazen artisanaux faits main depuis 1982 : zafus, zabutons, fukusas, oryokis. Commande par mail, livraison depuis Montpellier.">
+  fullTitle="Zafus zen artisanaux faits main — Myokan, Montpellier"
+  description="Coussins de zazen et accessoires zen artisanaux faits main depuis 1982 à Montpellier : zafus sur mesure, zabutons, fukusas, oryokis. Tradition Soto Zen Deshimaru.">
   <script type="application/ld+json" slot="head" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "LocalBusiness",
+        "@type": "WebSite",
+        "@id": "https://myokan.fr/#website",
+        "url": "https://myokan.fr/",
         "name": "Myokan",
-        "description": "Zafus et accessoires zen artisanaux cousus à la main à Montpellier.",
-        "url": "https://myokan.fr",
+        "description": "Zafus de méditation et accessoires zen artisanaux faits main à Montpellier.",
+        "inLanguage": "fr-FR"
+      },
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://myokan.fr/#business",
+        "name": "Myokan",
+        "description": "Atelier artisanal de confection de zafus et accessoires de méditation zen à Montpellier.",
+        "url": "https://myokan.fr/",
         "email": "myokan@hotmail.fr",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Montpellier",
+          "addressRegion": "Occitanie",
+          "addressCountry": "FR"
+        },
+        "priceRange": "€–€€",
+        "image": "https://myokan.fr/opengraph.jpg"
+      },
+      {
+        "@type": "Person",
+        "@id": "https://myokan.fr/#veronique",
+        "name": "Véronique Myokan Harruis",
+        "jobTitle": "Nonne zen et couturière artisanale",
+        "worksFor": { "@id": "https://myokan.fr/#business" },
         "address": {
           "@type": "PostalAddress",
           "addressLocality": "Montpellier",
           "addressCountry": "FR"
         },
-        "priceRange": "€–€€"
-      },
-      {
-        "@type": "Person",
-        "name": "Véronique Myokan Harruis",
-        "jobTitle": "Nonne zen et couturière artisanale",
-        "worksFor": { "@type": "LocalBusiness", "name": "Myokan" },
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Montpellier",
-          "addressCountry": "FR"
-        }
+        "image": "https://myokan.fr/veronique.webp"
       }
     ]
   })} />
   <Container>
-    <Hero />
-    <Features />
-    <Logos />
-    <Cta />
+    <main id="main-content">
+      <Hero />
+      <Features />
+      <Logos />
+      <Cta />
+    </main>
   </Container>
 </Layout>

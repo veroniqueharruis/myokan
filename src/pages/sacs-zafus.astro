@@ -1,141 +1,204 @@
 ---
-import Base from "../layouts/Layout.astro";
-import { Icon } from "astro-icon/components";
+import Layout from "@layouts/Layout.astro";
 import OrderCta from "@components/order-cta.astro";
 import PriceTag from "@components/price-tag.astro";
 
 const images = [
-  "sac-zafu-rouge.webp",
+  { src: "/sac-zafu-rouge.webp", alt: "Sac à zafu en coton rouge artisanal cousu main à Montpellier — Atelier Myokan" },
 ];
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Accueil",
+      "item": "https://myokan.fr/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Sacs à zafu",
+      "item": "https://myokan.fr/sacs-zafus/"
+    }
+  ]
+};
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Sac à zafu en coton artisanal",
+  "description": "Sac de transport pour coussin de méditation zen en coton 100 % naturel, cousu à la main. Fermeture avec cordon coulissant, lavable en machine.",
+  "brand": { "@type": "Brand", "name": "Myokan" },
+  "material": "coton 100%",
+  "image": "https://myokan.fr/sac-zafu-rouge.webp",
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "EUR",
+    "priceValidUntil": "2027-12-31",
+    "availability": "https://schema.org/InStock",
+    "url": "https://myokan.fr/sacs-zafus/",
+    "seller": { 
+      "@type": "LocalBusiness", 
+      "name": "Myokan",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Montpellier",
+        "addressCountry": "FR"
+      }
+    }
+  }
+};
 ---
 
-<Base fullTitle="Sac à zafu en coton fait main — Myokan, Montpellier" description="Sac de transport pour zafu en coton 100 % naturel, fait main. Protégez et transportez votre coussin de méditation zen facilement.">
-  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": "Sac à zafu en coton artisanal",
-    "description": "Sac de transport pour zafu en coton 100 % naturel, cousu à la main. Fermeture cordon, lavable en machine. Disponible en plusieurs coloris.",
-    "brand": { "@type": "Brand", "name": "Myokan" },
-    "material": "coton",
-    "offers": {
-      "@type": "Offer",
-      "priceCurrency": "EUR",
-      "availability": "https://schema.org/InStock",
-      "seller": { "@type": "LocalBusiness", "name": "Myokan" }
-    },
-    "image": "https://myokan.fr/sac-zafu-rouge.webp"
-  })} />
-  <main class="mt-16 px-4 max-w-6xl mx-auto">
-    <h1 class="text-4xl lg:text-5xl font-bold text-gray-800">Sacs à zafu en coton artisanal</h1>
-    <PriceTag price="Prix sur demande" />
+<Layout 
+  fullTitle="Sac à zafu en coton fait main — Myokan, Montpellier" 
+  description="Sac de transport pour zafu en coton 100 % naturel, fait main à Montpellier. Protégez et transportez votre coussin de méditation zen lors de vos déplacements.">
+  
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(productSchema)} />
 
-    <p class="text-lg mt-6 text-gray-600">
-      Le sac à zafu est un accessoire indispensable pour tout pratiquant qui transporte régulièrement
-      son <a href="/zafus" class="underline hover:text-gray-900">coussin de zazen</a> — entre son domicile
+  <main id="main-content" class="mt-10 px-4 max-w-4xl mx-auto pb-20">
+    <!-- Fil d'Ariane -->
+    <nav aria-label="Fil d'Ariane" class="text-xs text-gray-600 dark:text-gray-400 mb-8">
+      <ol class="flex items-center gap-2">
+        <li>
+          <a href="/" class="hover:text-gray-950 dark:hover:text-white transition">Accueil</a>
+        </li>
+        <li aria-hidden="true">/</li>
+        <li>
+          <a href="/" class="hover:text-gray-950 dark:hover:text-white transition">Créations</a>
+        </li>
+        <li aria-hidden="true">/</li>
+        <li class="font-medium text-gray-900 dark:text-white" aria-current="page">Sacs à zafu</li>
+      </ol>
+    </nav>
+
+    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white break-words">Sacs à zafu en coton artisanal</h1>
+    <PriceTag price="Sur devis" />
+
+    <p class="text-lg mt-6 text-gray-700 dark:text-gray-300 leading-relaxed">
+      Le sac à zafu est l'accessoire indispensable pour tout pratiquant qui transporte régulièrement
+      son <a href="/zafus/" class="underline hover:text-gray-950 dark:hover:text-white font-medium">coussin de zazen</a> — entre son domicile
       et le dojo, lors d'un stage ou d'une sesshin, ou en voyage. Il protège le tissu du zafu des salissures
       et de l'usure tout en facilitant le portage.
     </p>
 
-    <h2 class="text-2xl font-bold text-gray-800 mt-12 mb-4">Matière et conception</h2>
-    <p class="text-lg text-gray-600">
+    <!-- Photo principale -->
+    <div class="my-8 max-w-md mx-auto text-center">
+      <div class="p-4 bg-gray-50 dark:bg-gray-900/60 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm">
+        <img
+          id="sac-main-img"
+          src="/sac-zafu-rouge.webp"
+          alt="Sac à zafu en coton rouge artisanal fait main à Montpellier — Myokan"
+          width="400"
+          height="600"
+          class="rounded-xl w-full max-h-96 object-contain mx-auto cursor-pointer hover:opacity-95 transition"
+          title="Cliquez pour agrandir"
+        />
+        <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">Cliquez sur l'image pour agrandir</p>
+      </div>
+    </div>
+
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mt-12 mb-4">Matière et conception</h2>
+    <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
       Le sac est entièrement cousu en coton 100 % naturel, épais et respirant. Le coton permet au zafu
-      de ne pas étouffer entre les utilisations, ce que les matières synthétiques ne permettent pas.
-      La fermeture se fait par un cordon coulissant, assez large pour glisser le zafu sans forcer.
+      de respirer entre les séances, ce que les housses synthétiques étanches ne permettent pas.
+      La fermeture se fait par un cordon coulissant robuste, permettant d'insérer et de retirer le coussin sans forcer.
     </p>
-    <p class="text-lg mt-4 text-gray-600">
+    <p class="text-lg mt-4 text-gray-700 dark:text-gray-300 leading-relaxed">
       Chaque sac est taillé à la main par Véronique Myokan Harruis à Montpellier, avec les mêmes
-      exigences de soin que pour les zafus eux-mêmes. Les coutures sont solides, faites pour durer.
+      exigences de soin que pour les zafus. Les coutures renforcées sont conçues pour résister aux voyages répétés.
       Le sac est lavable en machine à basse température (30 °C).
     </p>
 
-    <h2 class="text-2xl font-bold text-gray-800 mt-12 mb-4">Dimensions et coloris</h2>
-    <p class="text-lg text-gray-600">
-      Le sac est dimensionné pour accueillir un zafu standard (diamètre 35 cm environ). Si vous avez
-      commandé un zafu de taille différente — S (30 cm) ou L (40 cm) — précisez-le dans votre commande
-      afin que le sac soit adapté.
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mt-12 mb-4">Dimensions et coloris</h2>
+    <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+      Le sac standard est dimensionné pour accueillir un zafu de référence (diamètre 30 à 32 cm). 
+      Si vous possédez un zafu de taille différente — S (28 cm) ou L (32 cm rehaussé) — précisez-le lors de votre commande
+      afin que le sac soit ajusté exactement à vos dimensions.
     </p>
-    <p class="text-lg mt-4 text-gray-600">
-      Disponible en plusieurs coloris selon les stocks de tissu disponibles : naturel, noir, bordeaux,
-      bleu marine, et d'autres selon les arrivages. Vous pouvez indiquer une préférence dans votre message.
+    <p class="text-lg mt-4 text-gray-700 dark:text-gray-300 leading-relaxed">
+      Disponible en plusieurs coloris selon les arrivages de tissu : naturel écru, noir, bordeaux,
+      bleu marine, vert ou coloris assorti à votre zafu. Vous pouvez indiquer vos préférences dans votre message.
     </p>
 
-    <h2 class="text-2xl font-bold text-gray-800 mt-12 mb-4">Commander ensemble : zafu + sac</h2>
-    <p class="text-lg text-gray-600">
-      Si vous commandez un <a href="/zafus" class="underline hover:text-gray-900">zafu</a> et un sac en même
-      temps, indiquez-le dans votre mail : le sac sera dimensionné exactement à votre zafu et réalisé dans
-      un tissu coordonné ou contrasté selon votre souhait.
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mt-12 mb-4">Commander l'ensemble : zafu + sac</h2>
+    <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+      Si vous commandez un <a href="/zafus/" class="underline hover:text-gray-950 dark:hover:text-white font-medium">zafu</a> et un sac en même
+      temps, le sac sera taillé sur mesure pour votre coussin et confectionné dans une harmonie de tissu assortie ou contrastée.
     </p>
 
     <OrderCta product="un sac à zafu" />
 
-    <nav aria-label="Voir aussi" class="mt-8">
-      <p class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">Voir aussi</p>
+    <nav aria-label="Voir aussi" class="mt-12 pt-6 border-t border-gray-200 dark:border-gray-800">
+      <p class="text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider mb-3">Voir aussi</p>
       <div class="flex flex-wrap gap-3">
-        <a href="/zafus" class="px-4 py-2 border border-gray-200 rounded-md text-sm text-gray-700 hover:border-gray-400 transition">Zafus</a>
-        <a href="/zabutons" class="px-4 py-2 border border-gray-200 rounded-md text-sm text-gray-700 hover:border-gray-400 transition">Zabutons</a>
-        <a href="/contact" class="px-4 py-2 bg-gray-800 text-white rounded-md text-sm hover:bg-gray-700 transition">Passer commande</a>
+        <a href="/zafus/" class="px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg text-sm text-gray-800 dark:text-gray-200 hover:border-gray-500 transition">Zafus de méditation</a>
+        <a href="/zabutons/" class="px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg text-sm text-gray-800 dark:text-gray-200 hover:border-gray-500 transition">Zabutons</a>
+        <a href="/pratique-zazen/" class="px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg text-sm text-gray-800 dark:text-gray-200 hover:border-gray-500 transition">Guide pratique zazen</a>
+        <a href="/contact/" class="px-4 py-2 bg-gray-900 dark:bg-white text-white dark:text-gray-950 rounded-lg text-sm hover:bg-gray-800 dark:hover:bg-gray-100 transition font-medium">Passer commande</a>
       </div>
     </nav>
-
-    <!-- Galerie -->
-    <div class="mt-12">
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-        {images.map((src, index) => (
-          <img
-            src={src}
-            alt="Sac à zafu en coton artisanal fait main — Myokan"
-            class="rounded-lg shadow-md w-full object-cover cursor-pointer hover:opacity-80 transition"
-            data-index={index}
-          />
-        ))}
-      </div>
-    </div>
   </main>
 
-  <!-- Lightbox -->
-  <div id="lightbox" class="fixed inset-0 bg-black bg-opacity-80 hidden items-center justify-center z-50">
-    <button id="prev" class="absolute left-4 text-white text-3xl top-1/2 -translate-y-1/2">&#10094;</button>
-    <img id="lightbox-img" src="" alt="Sac à zafu agrandi" class="max-h-[90%] max-w-[90%] rounded-lg shadow-xl" />
-    <button id="next" class="absolute right-4 text-white text-3xl top-1/2 -translate-y-1/2">&#10095;</button>
+  <!-- Lightbox accessible -->
+  <div 
+    id="lightbox" 
+    role="dialog" 
+    aria-modal="true" 
+    aria-label="Agrandissement de la photo" 
+    class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden items-center justify-center z-50 p-4"
+  >
+    <div class="relative max-w-2xl max-h-[90vh] flex flex-col items-center">
+      <button 
+        type="button" 
+        id="lightbox-close" 
+        aria-label="Fermer la vue agrandie" 
+        class="absolute -top-12 right-0 text-white hover:text-gray-300 text-2xl font-bold p-2 focus-visible:ring-2 focus-visible:ring-white rounded-lg transition"
+      >
+        ✕
+      </button>
+      <img id="lightbox-img" src="" alt="Sac à zafu agrandi" class="max-h-[80vh] max-w-full rounded-lg shadow-2xl object-contain" />
+    </div>
   </div>
 
-  <script is:inline client:load>
-    const images = document.querySelectorAll("[data-index]");
-    const lightbox = document.getElementById("lightbox");
-    const img = document.getElementById("lightbox-img");
-    const prevBtn = document.getElementById("prev");
-    const nextBtn = document.getElementById("next");
+  <script is:inline>
+    (function () {
+      const imgTrigger = document.getElementById("sac-main-img");
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImg = document.getElementById("lightbox-img");
+      const lightboxClose = document.getElementById("lightbox-close");
 
-    let currentIndex = 0;
+      function openLightbox() {
+        if (!lightbox || !lightboxImg || !imgTrigger) return;
+        lightboxImg.src = imgTrigger.getAttribute("src");
+        lightbox.classList.remove("hidden");
+        lightbox.classList.add("flex");
+        document.body.style.overflow = "hidden";
+        lightboxClose?.focus();
+      }
 
-    function showLightbox(index) {
-      currentIndex = index;
-      img.src = images[currentIndex].getAttribute("src");
-      lightbox.classList.remove("hidden");
-      lightbox.classList.add("flex");
-    }
+      function closeLightbox() {
+        if (!lightbox) return;
+        lightbox.classList.add("hidden");
+        lightbox.classList.remove("flex");
+        document.body.style.overflow = "";
+      }
 
-    function hideLightbox() {
-      lightbox.classList.add("hidden");
-      lightbox.classList.remove("flex");
-    }
+      imgTrigger?.addEventListener("click", openLightbox);
+      lightboxClose?.addEventListener("click", closeLightbox);
+      lightbox?.addEventListener("click", (e) => {
+        if (e.target === lightbox) closeLightbox();
+      });
 
-    function showPrev() {
-      currentIndex = (currentIndex - 1 + images.length) % images.length;
-      img.src = images[currentIndex].getAttribute("src");
-    }
-
-    function showNext() {
-      currentIndex = (currentIndex + 1) % images.length;
-      img.src = images[currentIndex].getAttribute("src");
-    }
-
-    images.forEach((image, index) => {
-      image.addEventListener("click", () => showLightbox(index));
-    });
-
-    prevBtn.addEventListener("click", (e) => { e.stopPropagation(); showPrev(); });
-    nextBtn.addEventListener("click", (e) => { e.stopPropagation(); showNext(); });
-    lightbox.addEventListener("click", hideLightbox);
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && lightbox && !lightbox.classList.contains("hidden")) {
+          closeLightbox();
+        }
+      });
+    })();
   </script>
-</Base>
+</Layout>

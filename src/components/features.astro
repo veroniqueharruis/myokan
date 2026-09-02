@@ -1,108 +1,153 @@
 ---
-import { Picture } from "astro:assets";
-import { getCollection } from "astro:content";
-
-const publishedTeamMembers = await getCollection("team", ({ data }) => {
-  return !data.draft && data.publishDate < new Date();
-});
-
 const produits = [
   {
-    title: "Zafus",
-    desc: "Coussin de zazen artisanal, personnalisable en taille, coloris et remplissage.",
+    title: "Zafus de méditation",
+    desc: "Coussin de zazen traditionnel en coton et kapok naturel, personnalisable en taille, coloris et hauteur.",
     img: "/zafu-plein-violet-pois.webp",
     alt: "Zafu de méditation zen violet à pois, cousu à la main par Myokan à Montpellier",
-    path: "/zafus",
+    path: "/zafus/",
     prix: "À partir de 25 €",
+    badge: "Personnalisable",
   },
   {
     title: "Zabutons",
-    desc: "Coussin de sol rectangulaire pour la pratique du zazen. Protège genoux et chevilles.",
-    img: null,
-    alt: null,
-    path: "/zabutons",
+    desc: "Tapis de sol rectangulaire indispensable sous le zafu. Protège genoux et chevilles de la dureté du sol.",
+    img: "/zafus-pile.webp",
+    alt: "Pile de coussins de zazen artisanaux pour l'assise au sol — Atelier Myokan",
+    path: "/zabutons/",
     prix: "Prix sur demande",
+    badge: "Protection des articulations",
   },
   {
     title: "Sacs à zafu",
-    desc: "Sac de transport en coton, fermeture cordon. Plusieurs coloris disponibles.",
+    desc: "Sac de transport en coton naturel avec cordon coulissant, lavable en machine. Idéal pour dojo et sesshin.",
     img: "/sac-zafu-rouge.webp",
     alt: "Sac à zafu en coton rouge artisanal, cousu à la main — Myokan Montpellier",
-    path: "/sacs-zafus",
+    path: "/sacs-zafus/",
     prix: "Prix sur demande",
+    badge: "100 % coton",
   },
   {
     title: "Fukusas",
-    desc: "Pièce de tissu pour protéger le bol oryoki, en plusieurs coloris.",
+    desc: "Carré de tissu traditionnel pour envelopper et protéger le bol oryoki lors de la cérémonie du repas.",
     img: "/fukusa-bleu-jaune.webp",
     alt: "Fukusa zen bleu et jaune artisanal pour bol oryoki, cousu à la main — Myokan",
-    path: "/fukusas",
+    path: "/fukusas/",
     prix: "Prix sur demande",
+    badge: "Cérémonie du repas",
   },
   {
     title: "Oryokis",
-    desc: "Bol zen pour la cérémonie du repas en sesshin, selon les usages de la Kosen Sangha.",
-    img: null,
-    alt: null,
-    path: "/oryokis",
+    desc: "Accessoires pour la cérémonie du repas en sesshin, confectionnés selon les usages de la Kosen Sangha.",
+    img: "/fukusa-orange-gris.webp",
+    alt: "Accessoires pour bol oryoki cousus à la main à Montpellier — Myokan",
+    path: "/oryokis/",
     prix: "Prix sur demande",
+    badge: "Kosen Sangha",
   },
   {
-    title: "Sacs à kesa",
-    desc: "Sac de transport pour kesa et pochette de ketsumyaku, cousus à la main.",
-    img: null,
-    alt: null,
-    path: "/kesas",
+    title: "Sacs à kesa & ketsumyaku",
+    desc: "Housses sur mesure pour protéger la robe de cérémonie (kesa) et pochettes de ketsumyaku.",
+    img: "/zafus-vides-gris.webp",
+    alt: "Confection textile zen sur mesure à Montpellier — Atelier Myokan",
+    path: "/kesas/",
     prix: "Prix sur demande",
+    badge: "Sur mesure",
   },
 ];
 ---
 
-<!-- Grille produits -->
-<section class="mt-16 mx-auto max-w-5xl">
-  <h2 class="text-3xl font-bold text-gray-800 mb-8">Les créations</h2>
+<!-- Grille des créations -->
+<section class="mt-16 mx-auto max-w-5xl" aria-labelledby="creations-heading">
+  <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
+    <div>
+      <p class="text-xs uppercase tracking-wider font-semibold text-gray-600 dark:text-gray-400 mb-1">Catalogue artisanal</p>
+      <h2 id="creations-heading" class="text-3xl font-bold text-gray-900 dark:text-white">Les créations de l'atelier</h2>
+    </div>
+    <a href="/contact/" class="text-sm font-semibold text-gray-800 dark:text-gray-200 underline hover:no-underline">
+      Demander un conseil ou un devis →
+    </a>
+  </div>
+
   <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
     {produits.map((p) => (
-      <a href={p.path} class="group flex flex-col border border-gray-200 rounded-xl overflow-hidden hover:border-gray-400 hover:shadow-md transition">
-        {p.img ? (
+      <a href={p.path} class="group flex flex-col border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden hover:border-gray-400 dark:hover:border-gray-600 hover:shadow-md transition bg-white dark:bg-gray-900/60 focus-visible:ring-2">
+        <div class="relative w-full h-48 overflow-hidden bg-gray-100 dark:bg-gray-800">
           <img
             src={p.img}
             alt={p.alt}
-            class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+            width="400"
+            height="250"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
           />
-        ) : (
-          <div class="w-full h-48 bg-gray-100 flex items-center justify-center text-gray-400 text-sm">
-            Photos à venir
-          </div>
-        )}
+          <span class="absolute top-3 right-3 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm text-[11px] font-medium text-gray-800 dark:text-gray-200 px-2.5 py-1 rounded-full border border-gray-200/60 dark:border-gray-700/60">
+            {p.badge}
+          </span>
+        </div>
         <div class="p-5 flex flex-col flex-1">
-          <h3 class="font-bold text-gray-800 text-lg">{p.title}</h3>
-          <p class="text-sm text-gray-600 mt-1 flex-1">{p.desc}</p>
-          <p class="text-sm font-semibold text-gray-700 mt-3">{p.prix}</p>
+          <h3 class="font-bold text-gray-900 dark:text-white text-lg group-hover:text-gray-700 dark:group-hover:text-gray-200 transition">
+            {p.title}
+          </h3>
+          <p class="text-sm text-gray-700 dark:text-gray-300 mt-2 flex-1 leading-relaxed">
+            {p.desc}
+          </p>
+          <div class="flex items-center justify-between mt-4 pt-3 border-t border-gray-100 dark:border-gray-800">
+            <span class="text-sm font-semibold text-gray-900 dark:text-white">{p.prix}</span>
+            <span class="text-xs font-medium text-gray-600 dark:text-gray-400 group-hover:underline">Découvrir →</span>
+          </div>
         </div>
       </a>
     ))}
   </div>
 </section>
 
+<!-- Encart Débutant & Pratique du Zen -->
+<section class="mt-14 mx-auto max-w-5xl">
+  <div class="p-6 sm:p-8 bg-gray-50 dark:bg-gray-900/60 rounded-2xl border border-gray-200 dark:border-gray-800 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+    <div class="max-w-2xl">
+      <span class="text-xs uppercase tracking-wider font-semibold text-gray-600 dark:text-gray-400">Nouveau dans la pratique ?</span>
+      <h3 class="text-2xl font-bold text-gray-900 dark:text-white mt-1 mb-2">
+        Comment débuter le zazen et choisir votre coussin ?
+      </h3>
+      <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+        Découvrez notre guide complet : les principes de la posture assise, les critères pour choisir entre les tailles S, M ou L, le rôle du kapok naturel et les modalités pour participer à une première séance d'initiation au Dojo Zen de Montpellier.
+      </p>
+    </div>
+    <a 
+      href="/pratique-zazen/" 
+      class="px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-950 font-medium text-sm rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition shrink-0 whitespace-nowrap shadow-sm"
+    >
+      Consulter le guide du débutant
+    </a>
+  </div>
+</section>
+
 <!-- Bio courte -->
-<section class="mt-16 mx-auto max-w-5xl">
-  <div class="flex flex-col sm:flex-row gap-6 items-start p-6 bg-gray-50 rounded-xl border border-gray-100">
+<section class="mt-14 mx-auto max-w-5xl" aria-labelledby="bio-heading">
+  <div class="flex flex-col sm:flex-row gap-6 items-center sm:items-start p-6 bg-gray-50 dark:bg-gray-900/60 rounded-2xl border border-gray-200 dark:border-gray-800">
     <img
       src="/veronique.webp"
-      alt="Véronique Myokan Harruis, nonne zen et créatrice de zafus artisanaux à Montpellier"
-      width="80"
-      height="80"
-      class="w-20 h-20 rounded-full object-cover shrink-0"
+      alt="Véronique Myokan Harruis, nonne zen Soto et créatrice de zafus artisanaux à Montpellier"
+      width="96"
+      height="96"
+      class="w-24 h-24 rounded-full object-cover shrink-0 shadow-sm border border-gray-200 dark:border-gray-700"
       loading="lazy"
     />
     <div>
-      <p class="font-semibold text-gray-800">Véronique Myokan Harruis — Nonne zen et couturière</p>
-      <p class="text-gray-600 text-sm mt-2 leading-relaxed">
-        Je réalise des coussins et accessoires zen à la main depuis 1982, selon la méthode
-        traditionnelle transmise par maître Deshimaru. Chaque pièce est confectionnée sur
-        commande depuis <a href="https://zen-montpellier.fr/" class="underline hover:text-gray-900" target="_blank" rel="noopener">le dojo zen de Montpellier</a>.
+      <h3 id="bio-heading" class="text-lg font-bold text-gray-900 dark:text-white">
+        Véronique Myokan Harruis — Nonne zen et couturière
+      </h3>
+      <p class="text-gray-700 dark:text-gray-300 text-sm mt-2 leading-relaxed">
+        J'ai commencé la pratique de zazen en 1980 auprès de maître Taisen Deshimaru et la confection des zafus en 1982 à l'atelier du dojo de Paris (Pernety). 
+        Aujourd'hui, je continue à réaliser chaque coussin et accessoire à la main, sur commande depuis Montpellier, dans l'esprit de la transmission zen. 
+        Pour la pratique assise collective et les initiations, je pratique au <a href="https://zen-montpellier.fr/" class="underline hover:text-gray-950 dark:hover:text-white font-medium" target="_blank" rel="noopener">Dojo Zen de Montpellier</a>.
       </p>
+      <div class="mt-3">
+        <a href="/a-propos/" class="text-xs font-semibold text-gray-900 dark:text-white underline hover:no-underline">
+          Lire le parcours de Véronique →
+        </a>
+      </div>
     </div>
   </div>
 </section>

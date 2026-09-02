@@ -1,76 +1,139 @@
 ---
-import Base from "../layouts/Layout.astro";
+import Layout from "@layouts/Layout.astro";
 import OrderCta from "@components/order-cta.astro";
 import PriceTag from "@components/price-tag.astro";
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Accueil",
+      "item": "https://myokan.fr/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Zabutons",
+      "item": "https://myokan.fr/zabutons/"
+    }
+  ]
+};
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Zabuton de méditation artisanal",
+  "description": "Grand coussin rectangulaire de sol pour la pratique de la méditation assise zazen. Protège genoux et chevilles, complément indispensable du zafu.",
+  "brand": { "@type": "Brand", "name": "Myokan" },
+  "image": "https://myokan.fr/zafus-pile.webp",
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "EUR",
+    "priceValidUntil": "2027-12-31",
+    "availability": "https://schema.org/InStock",
+    "url": "https://myokan.fr/zabutons/",
+    "seller": { 
+      "@type": "LocalBusiness", 
+      "name": "Myokan",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Montpellier",
+        "addressCountry": "FR"
+      }
+    }
+  }
+};
 ---
 
-<Base
+<Layout
   fullTitle="Zabuton de méditation artisanal — Myokan, Montpellier"
-  description="Zabutons artisanaux à Montpellier : coussin rectangulaire de sol pour la méditation. Protège genoux et chevilles, complément naturel du zafu.">
-  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": "Zabuton artisanal",
-    "description": "Grand coussin rectangulaire de sol pour la pratique de la méditation. Protège genoux et chevilles, complément indispensable du zafu.",
-    "brand": { "@type": "Brand", "name": "Myokan" },
-    "offers": {
-      "@type": "Offer",
-      "priceCurrency": "EUR",
-      "availability": "https://schema.org/InStock",
-      "seller": { "@type": "LocalBusiness", "name": "Myokan" }
-    }
-  })} />
-  <main class="mt-16 px-4 max-w-3xl mx-auto">
-    <h1 class="text-4xl lg:text-5xl font-bold text-gray-800">Zabuton artisanal</h1>
-    <PriceTag price="Prix sur demande" />
+  description="Zabutons artisanaux à Montpellier : tapis de sol rectangulaire pour la méditation assise. Protège genoux et chevilles, complément naturel du zafu.">
+  
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(productSchema)} />
 
-    <p class="text-lg mt-6 text-gray-600">
-      Le zabuton est le grand coussin plat rectangulaire sur lequel repose le <a href="/zafus" class="underline hover:text-gray-900">zafu</a> pendant
+  <main id="main-content" class="mt-10 px-4 max-w-3xl mx-auto pb-20">
+    <!-- Fil d'Ariane -->
+    <nav aria-label="Fil d'Ariane" class="text-xs text-gray-600 dark:text-gray-400 mb-8">
+      <ol class="flex items-center gap-2">
+        <li>
+          <a href="/" class="hover:text-gray-950 dark:hover:text-white transition">Accueil</a>
+        </li>
+        <li aria-hidden="true">/</li>
+        <li>
+          <a href="/" class="hover:text-gray-950 dark:hover:text-white transition">Créations</a>
+        </li>
+        <li aria-hidden="true">/</li>
+        <li class="font-medium text-gray-900 dark:text-white" aria-current="page">Zabutons</li>
+      </ol>
+    </nav>
+
+    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white break-words">Zabutons de méditation artisanaux</h1>
+    <PriceTag price="Sur devis" />
+
+    <p class="text-lg mt-6 text-gray-700 dark:text-gray-300 leading-relaxed">
+      Le zabuton est le grand coussin plat rectangulaire sur lequel repose le <a href="/zafus/" class="underline hover:text-gray-950 dark:hover:text-white font-medium">zafu</a> pendant
       la pratique de la méditation. Posé directement sur le sol, il protège les genoux, les
       chevilles et le bas des jambes, et assure un ancrage stable pour toute la séance.
     </p>
 
-    <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4">Pourquoi le zabuton est indispensable</h2>
-    <p class="text-lg text-gray-600">
-      Assis en lotus ou en demi-lotus sur un zafu, les chevilles et les genoux reposent
-      directement sur le tatami ou le parquet. Sans zabuton, la pression exercée sur les
-      articulations devient rapidement inconfortable, en particulier lors des longues sessions.
-      Le zabuton absorbe cette pression et permet de maintenir une posture juste et détendue
-      pendant plusieurs périodes de méditation consécutives.
+    <div class="my-8 rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900">
+      <img
+        src="/zafus-pile.webp"
+        alt="Assise de méditation au sol avec coussins zen artisanaux — Atelier Myokan"
+        width="800"
+        height="500"
+        class="w-full h-64 sm:h-80 object-cover"
+        loading="lazy"
+      />
+      <p class="p-3 text-xs text-center text-gray-500 dark:text-gray-400">
+        Coussins et assises de méditation confectionnés dans l'atelier Myokan à Montpellier
+      </p>
+    </div>
+
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mt-10 mb-4">Pourquoi le zabuton est indispensable</h2>
+    <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+      Assis en lotus, en demi-lotus ou en tailleur sur un zafu, les chevilles et les genoux reposent
+      directement sur le sol. Sans zabuton, la pression exercée sur les
+      articulations devient rapidement inconfortable, en particulier lors des séances prolongées ou des sesshins.
+      Le zabuton absorbe cette pression et permet de maintenir une posture juste, détendue et immobile.
+      Pour approfondir les principes de l'assise, consultez notre <a href="/pratique-zazen/#posture" class="underline hover:text-gray-950 dark:hover:text-white font-medium">guide de posture zazen</a>.
     </p>
 
-    <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4">Fabrication</h2>
-    <p class="text-lg text-gray-600">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mt-10 mb-4">Matières et fabrication</h2>
+    <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
       Chaque zabuton est confectionné en tissu solide et résistant, sélectionné pour sa
-      durabilité. Le rembourrage — coton ou kapok selon la préférence — est réparti
+      durabilité. Le rembourrage — coton épais ou kapok selon votre préférence — est réparti
       uniformément pour garantir un soutien homogène sur toute la surface. Les dimensions
-      sont adaptées à la morphologie et au style de pratique de chaque personne.
+      sont adaptées à votre morphologie et à votre style de pratique.
     </p>
-    <ul class="mt-4 space-y-2 text-gray-600">
-      <li class="flex gap-2"><span class="text-gray-400">—</span> Tissu extérieur résistant, disponible en plusieurs coloris</li>
-      <li class="flex gap-2"><span class="text-gray-400">—</span> Rembourrage coton ou kapok</li>
-      <li class="flex gap-2"><span class="text-gray-400">—</span> Dimensions et coloris personnalisables sur demande</li>
-      <li class="flex gap-2"><span class="text-gray-400">—</span> Réalisé à Montpellier selon la tradition transmise par maître Deshimaru</li>
+    <ul class="mt-4 space-y-2 text-gray-700 dark:text-gray-300">
+      <li class="flex gap-2"><span class="text-gray-400 dark:text-gray-500">—</span> Tissu extérieur en coton résistant, disponible en plusieurs coloris</li>
+      <li class="flex gap-2"><span class="text-gray-400 dark:text-gray-500">—</span> Rembourrage naturel (coton ou kapok) offrant un amorti ferme</li>
+      <li class="flex gap-2"><span class="text-gray-400 dark:text-gray-500">—</span> Dimensions et finitions personnalisables sur demande</li>
+      <li class="flex gap-2"><span class="text-gray-400 dark:text-gray-500">—</span> Réalisé à la main à Montpellier selon la méthode traditionnelle</li>
     </ul>
 
-    <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4">Zabuton et zafu : un ensemble cohérent</h2>
-    <p class="text-lg text-gray-600">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mt-10 mb-4">Zabuton et zafu : un ensemble cohérent</h2>
+    <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
       Zabuton et zafu fonctionnent ensemble. Le zafu soulève le bassin et libère les hanches ;
       le zabuton protège les points d'appui au sol. Commander les deux en même temps permet
-      d'assortir les coloris et d'obtenir un ensemble harmonieux pour votre espace de pratique.
+      d'assortir les coloris et d'obtenir un ensemble harmonieux pour votre espace de pratique à domicile.
     </p>
 
     <OrderCta product="un zabuton" />
 
-    <!-- Galerie — à compléter quand les photos seront disponibles -->
-
-    <nav aria-label="Voir aussi" class="mt-12">
-      <p class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">Voir aussi</p>
+    <nav aria-label="Voir aussi" class="mt-12 pt-6 border-t border-gray-200 dark:border-gray-800">
+      <p class="text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider mb-3">Voir aussi</p>
       <div class="flex flex-wrap gap-3">
-        <a href="/zafus" class="px-4 py-2 border border-gray-200 rounded-md text-sm text-gray-700 hover:border-gray-400 transition">Zafus</a>
-        <a href="/sacs-zafus" class="px-4 py-2 border border-gray-200 rounded-md text-sm text-gray-700 hover:border-gray-400 transition">Sacs à zafu</a>
-        <a href="/fukusas" class="px-4 py-2 border border-gray-200 rounded-md text-sm text-gray-700 hover:border-gray-400 transition">Fukusas</a>
+        <a href="/zafus/" class="px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg text-sm text-gray-800 dark:text-gray-200 hover:border-gray-500 transition">Zafus de méditation</a>
+        <a href="/sacs-zafus/" class="px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg text-sm text-gray-800 dark:text-gray-200 hover:border-gray-500 transition">Sacs à zafu</a>
+        <a href="/pratique-zazen/" class="px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg text-sm text-gray-800 dark:text-gray-200 hover:border-gray-500 transition">Guide pratique zazen</a>
+        <a href="/contact/" class="px-4 py-2 bg-gray-900 dark:bg-white text-white dark:text-gray-950 rounded-lg text-sm hover:bg-gray-800 dark:hover:bg-gray-100 transition font-medium">Demander un devis</a>
       </div>
     </nav>
   </main>
-</Base>
+</Layout>

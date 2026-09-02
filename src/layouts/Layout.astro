@@ -9,34 +9,48 @@ import "@fontsource/noto-serif-jp/700.css";
 
 
 export interface Props {
-  title: string;
+  title?: string;
   fullTitle?: string;
   description?: string;
+  ogType?: "website" | "article";
 }
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
+const cleanPath = Astro.url.pathname.endsWith("/") ? Astro.url.pathname : `${Astro.url.pathname}/`;
+const canonicalURL = new URL(cleanPath, Astro.site).toString();
 
 const resolvedImageWithDomain = new URL(
   "/opengraph.jpg",
   Astro.site
 ).toString();
 
-const { title, fullTitle, description = "Zafus de méditation zen artisanaux, faits main à Montpellier. Coussins de zazen traditionnels cousus à la main par Myokan." } = Astro.props;
+const { 
+  title, 
+  fullTitle, 
+  description = "Coussins de zazen artisanaux faits main depuis 1982 à Montpellier : zafus, zabutons, fukusas, oryokis. Tradition transmise par maître Deshimaru.",
+  ogType = "website"
+} = Astro.props;
 
-const makeTitle = fullTitle
-  ? fullTitle
-  : title
-  ? title + " — Myokan"
-  : "Zafu de méditation zen artisanal — Myokan";
+let makeTitle = fullTitle;
+if (!makeTitle) {
+  if (!title) {
+    makeTitle = "Zafus zen artisanaux faits main — Myokan, Montpellier";
+  } else if (title.includes("Myokan")) {
+    makeTitle = title;
+  } else {
+    makeTitle = `${title} — Myokan, Montpellier`;
+  }
+}
 ---
 
 <!DOCTYPE html>
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#111827" media="(prefers-color-scheme: dark)" />
     <script is:inline>
       (function () {
         const saved = localStorage.getItem("theme");
@@ -55,15 +69,17 @@ const makeTitle = fullTitle
       openGraph={{
         basic: {
           url: canonicalURL,
-          type: "website",
+          type: ogType,
           title: makeTitle,
           image: resolvedImageWithDomain,
         },
         optional: {
           description: description,
+          locale: "fr_FR",
+          siteName: "Myokan",
         },
         image: {
-          alt: "Zafus de méditation zen artisanaux Myokan",
+          alt: "Zafus et accessoires de méditation zen artisanaux Myokan à Montpellier",
           width: 1200,
           height: 630,
         },
@@ -73,13 +89,21 @@ const makeTitle = fullTitle
         title: makeTitle,
         description: description,
         image: resolvedImageWithDomain,
-        imageAlt: "Zafus de méditation zen artisanaux Myokan",
+        imageAlt: "Zafus et accessoires de méditation zen artisanaux Myokan",
       }}
     />
   </head>
-  <body>
+  <body class="bg-white text-gray-900 dark:bg-gray-950 dark:text-gray-100 min-h-screen flex flex-col antialiased overflow-x-hidden">
+    <a 
+      href="#main-content" 
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2.5 focus:bg-gray-900 focus:text-white focus:rounded-md focus:shadow-xl focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 font-medium text-sm transition"
+    >
+      Aller au contenu principal
+    </a>
     <Navbar />
-    <slot />
+    <div class="flex-1">
+      <slot />
+    </div>
     <Footer />
     <style is:global>
       img {
@@ -92,27 +116,37 @@ const makeTitle = fullTitle
         font-family: "Cormorant Variable", Georgia, serif;
       }
 
-      /* Dark mode — override Tailwind gray classes globally */
-      html.dark body                { background-color: #111827; color: #f9fafb; }
-      html.dark .text-gray-800      { color: #f9fafb; }
-      html.dark .text-gray-700      { color: #f3f4f6; }
-      html.dark .text-gray-600      { color: #d1d5db; }
-      html.dark .text-gray-500      { color: #9ca3af; }
-      html.dark .text-gray-400      { color: #6b7280; }
-      html.dark .bg-gray-50         { background-color: #1f2937; }
-      html.dark .bg-gray-100        { background-color: #1f2937; }
-      html.dark .bg-white           { background-color: #111827; }
-      html.dark .border-gray-100    { border-color: #374151; }
-      html.dark .border-gray-200    { border-color: #374151; }
-      html.dark .border-gray-300    { border-color: #4b5563; }
-      html.dark .border-t           { border-color: #374151; }
+      /* Accessible focus outline */
+      :focus-visible {
+        outline: 2px solid #1f2937;
+        outline-offset: 2px;
+      }
+      html.dark :focus-visible {
+        outline: 2px solid #e5e7eb;
+        outline-offset: 2px;
+      }
+
+      /* Dark mode contrast helpers */
+      html.dark body                { background-color: #0f172a; color: #f8fafc; }
+      html.dark .text-gray-800      { color: #f8fafc; }
+      html.dark .text-gray-700      { color: #e2e8f0; }
+      html.dark .text-gray-600      { color: #cbd5e1; }
+      html.dark .text-gray-500      { color: #94a3b8; }
+      html.dark .text-gray-400      { color: #94a3b8; }
+      html.dark .bg-gray-50         { background-color: #1e293b; }
+      html.dark .bg-gray-100        { background-color: #1e293b; }
+      html.dark .bg-white           { background-color: #0f172a; }
+      html.dark .border-gray-100    { border-color: #334155; }
+      html.dark .border-gray-200    { border-color: #334155; }
+      html.dark .border-gray-300    { border-color: #475569; }
+      html.dark .border-t           { border-color: #334155; }
       html.dark select, html.dark input[type="text"] {
-        background-color: #1f2937;
-        border-color: #374151;
-        color: #f9fafb;
+        background-color: #1e293b;
+        border-color: #475569;
+        color: #f8fafc;
       }
       html.dark .bg-purple-50       { background-color: #2e1065; }
-      html.dark .text-slate-400     { color: #6b7280; }
+      html.dark .text-slate-400     { color: #94a3b8; }
     </style>
   </body>
 </html>
