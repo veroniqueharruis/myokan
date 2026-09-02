@@ -51,7 +51,7 @@ const isContactActive = currentPath === "/contact";
           
           <ul
             id="creations-dropdown-menu"
-            class="hidden absolute left-0 top-full mt-1 w-48 py-2 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg z-50 transition"
+            class="hidden absolute left-0 top-full mt-1 w-48 py-2 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg z-50 transition before:content-[''] before:block before:absolute before:-top-3 before:left-0 before:right-0 before:h-3"
             role="menu"
             aria-labelledby="creations-menu-button"
           >
@@ -288,8 +288,17 @@ const isContactActive = currentPath === "/contact";
     var dropdownBtn = document.getElementById("creations-menu-button");
     var dropdownMenu = document.getElementById("creations-dropdown-menu");
     var dropdownArrow = document.getElementById("creations-arrow");
+    var closeTimer = null;
+
+    function clearCloseTimer() {
+      if (closeTimer) {
+        clearTimeout(closeTimer);
+        closeTimer = null;
+      }
+    }
 
     function openDropdown() {
+      clearCloseTimer();
       if (!dropdownMenu) return;
       dropdownMenu.classList.remove("hidden");
       dropdownBtn?.setAttribute("aria-expanded", "true");
@@ -297,10 +306,20 @@ const isContactActive = currentPath === "/contact";
     }
 
     function closeDropdown() {
+      clearCloseTimer();
       if (!dropdownMenu) return;
       dropdownMenu.classList.add("hidden");
       dropdownBtn?.setAttribute("aria-expanded", "false");
       if (dropdownArrow) dropdownArrow.style.transform = "rotate(0deg)";
+    }
+
+    function scheduleClose() {
+      clearCloseTimer();
+      closeTimer = setTimeout(function () {
+        if (!dropdownContainer?.contains(document.activeElement)) {
+          closeDropdown();
+        }
+      }, 250);
     }
 
     if (dropdownBtn && dropdownMenu) {
@@ -314,18 +333,60 @@ const isContactActive = currentPath === "/contact";
         }
       });
 
-      // Hover fallback for desktop mouse users
+      // Hover handling with smooth grace period
       dropdownContainer?.addEventListener("mouseenter", openDropdown);
-      dropdownContainer?.addEventListener("mouseleave", closeDropdown);
+      dropdownContainer?.addEventListener("mouseleave", scheduleClose);
 
+      // Close menu when clicking outside
       document.addEventListener("click", function (e) {
         if (!dropdownContainer?.contains(e.target)) {
           closeDropdown();
         }
       });
 
+      // Close menu when a link inside is clicked
+      dropdownMenu.addEventListener("click", function (e) {
+        if (e.target.closest("a")) {
+          closeDropdown();
+        }
+      });
+
+      // Close menu when keyboard focus leaves the dropdown container
+      dropdownContainer?.addEventListener("focusout", function (e) {
+        if (!dropdownContainer.contains(e.relatedTarget)) {
+          closeDropdown();
+        }
+      });
+
+      // Keyboard navigation
+      dropdownBtn.addEventListener("keydown", function (e) {
+        if (e.key === "ArrowDown" || e.key === "Down") {
+          e.preventDefault();
+          openDropdown();
+          var firstLink = dropdownMenu.querySelector("a");
+          firstLink?.focus();
+        }
+      });
+
+      dropdownMenu.addEventListener("keydown", function (e) {
+        var links = Array.from(dropdownMenu.querySelectorAll("a"));
+        var index = links.indexOf(document.activeElement);
+        if (e.key === "ArrowDown" || e.key === "Down") {
+          e.preventDefault();
+          var nextIndex = (index + 1) % links.length;
+          links[nextIndex]?.focus();
+        } else if (e.key === "ArrowUp" || e.key === "Up") {
+          e.preventDefault();
+          if (index <= 0) {
+            dropdownBtn.focus();
+          } else {
+            links[index - 1]?.focus();
+          }
+        }
+      });
+
       document.addEventListener("keydown", function (e) {
-        if (e.key === "Escape") {
+        if (e.key === "Escape" && !dropdownMenu.classList.contains("hidden")) {
           closeDropdown();
           dropdownBtn.focus();
         }
