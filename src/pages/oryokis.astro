@@ -75,7 +75,7 @@ const productSchema = {
         </li>
         <li aria-hidden="true">/</li>
         <li>
-          <a href="/" class="hover:text-gray-950 dark:hover:text-white transition">Créations</a>
+          <a href="/#creations" class="hover:text-gray-950 dark:hover:text-white transition">Créations</a>
         </li>
         <li aria-hidden="true">/</li>
         <li class="font-medium text-gray-900 dark:text-white" aria-current="page">Oryokis</li>
@@ -149,7 +149,7 @@ const productSchema = {
             <h3 class="font-bold text-gray-900 dark:text-white text-base">Son tissu de protection (fukusa)</h3>
           </div>
           <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-            Confectionné par Véronique à Montpellier selon la méthode traditionnelle, ce tissu enveloppe et protège le bol lors du transport. Déployé sur les genoux pendant la cérémonie, il délimite l'espace du repas et sert de nappe rituelle.
+            Confectionné par <a href="/a-propos/" class="underline hover:text-gray-950 dark:hover:text-white font-medium">Véronique</a> à Montpellier selon la méthode traditionnelle, ce carré d'étoffe enveloppe et protège le bol lors du transport. Déployé sur les genoux pendant la cérémonie, il sert de nappe rituelle. Découvrez également nos <a href="/fukusas/" class="underline hover:text-gray-950 dark:hover:text-white font-medium">fukusas aux motifs japonais</a> vendus séparément.
           </p>
         </div>
 
@@ -225,7 +225,7 @@ const productSchema = {
       à la pratique contemporaine telle qu'elle se transmet en Europe depuis maître Deshimaru.
     </p>
     <p class="text-lg mt-4 text-gray-700 dark:text-gray-300 leading-relaxed">
-      Cette alliance entre le travail d'un artisan tourneur sur bois français et la confection textile selon la méthode traditionnelle garantit un équipement d'oryoki authentique, fonctionnel et solide pour les sesshins organisées dans les dojos occidentaux.
+      Cette alliance entre le travail d'un artisan tourneur sur bois français et la confection textile selon la méthode traditionnelle garantit un équipement d'oryoki authentique, fonctionnel et solide pour les sesshins organisées notamment au <a href="/pratique-zazen/#dojo-montpellier" class="underline hover:text-gray-950 dark:hover:text-white font-medium">Dojo Zen de Montpellier</a>. Pour vos déplacements en retraite, l'atelier confectionne également des <a href="/kesas/" class="underline hover:text-gray-950 dark:hover:text-white font-medium">sacs à kesa et pochettes de ketsumyaku</a>.
     </p>
 
     <h2 class="text-2xl font-bold text-gray-900 dark:text-white mt-10 mb-4">Fabrication, finitions & livraison</h2>
@@ -266,13 +266,55 @@ const productSchema = {
 
     <OrderCta product="un ensemble oryoki complet" />
 
-    <nav aria-label="Voir aussi" class="mt-12 pt-6 border-t border-gray-200 dark:border-gray-800">
-      <p class="text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider mb-3">Voir aussi</p>
-      <div class="flex flex-wrap gap-3">
-        <a href="/fukusas/" class="px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg text-sm text-gray-800 dark:text-gray-200 hover:border-gray-500 transition">Fukusas</a>
-        <a href="/kesas/" class="px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg text-sm text-gray-800 dark:text-gray-200 hover:border-gray-500 transition">Sacs à kesa</a>
-        <a href="/zafus/" class="px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg text-sm text-gray-800 dark:text-gray-200 hover:border-gray-500 transition">Zafus de méditation</a>
-        <a href="/pratique-zazen/" class="px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg text-sm text-gray-800 dark:text-gray-200 hover:border-gray-500 transition">Guide pratique zazen</a>
+    <!-- Liens connexes / Compléments -->
+    <nav aria-label="Compléments indispensables" class="mt-10 pt-6 border-t border-gray-200 dark:border-gray-800">
+      <p class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3">
+        Créations de cérémonie & Assise
+      </p>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+        <a 
+          href="/fukusas/" 
+          class="p-3.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:border-gray-400 dark:hover:border-gray-500 transition shadow-sm group flex flex-col justify-between"
+        >
+          <div>
+            <span class="block font-bold text-sm text-gray-900 dark:text-white group-hover:underline">Fukusas pour oryoki</span>
+            <span class="block text-xs text-gray-500 dark:text-gray-400 mt-1">Carrés d'étoffe traditionnels aux motifs variés</span>
+          </div>
+          <span class="text-xs font-medium text-gray-700 dark:text-gray-300 mt-2">Découvrir →</span>
+        </a>
+
+        <a 
+          href="/kesas/" 
+          class="p-3.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:border-gray-400 dark:hover:border-gray-500 transition shadow-sm group flex flex-col justify-between"
+        >
+          <div>
+            <span class="block font-bold text-sm text-gray-900 dark:text-white group-hover:underline">Sacs à kesa</span>
+            <span class="block text-xs text-gray-500 dark:text-gray-400 mt-1">Housses pour kesa et pochettes ketsumyaku</span>
+          </div>
+          <span class="text-xs font-medium text-gray-700 dark:text-gray-300 mt-2">Découvrir →</span>
+        </a>
+
+        <a 
+          href="/zafus/" 
+          class="p-3.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:border-gray-400 dark:hover:border-gray-500 transition shadow-sm group flex flex-col justify-between"
+        >
+          <div>
+            <span class="block font-bold text-sm text-gray-900 dark:text-white group-hover:underline">Zafus de méditation</span>
+            <span class="block text-xs text-gray-500 dark:text-gray-400 mt-1">Coussins traditionnels en coton et kapok</span>
+          </div>
+          <span class="text-xs font-medium text-gray-700 dark:text-gray-300 mt-2">Configurer →</span>
+        </a>
+
+        <a 
+          href="/contact/" 
+          class="p-3.5 rounded-xl bg-gray-900 dark:bg-white text-white dark:text-gray-950 hover:bg-gray-800 dark:hover:bg-gray-100 transition shadow-sm group flex flex-col justify-between"
+        >
+          <div>
+            <span class="block font-bold text-sm">Contacter l'atelier</span>
+            <span class="block text-xs opacity-80 mt-1">Devis pour ensemble complet ou bol tourné</span>
+          </div>
+          <span class="text-xs font-medium mt-2">Écrire à Véronique →</span>
+        </a>
       </div>
     </nav>
   </main>

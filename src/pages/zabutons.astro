@@ -71,7 +71,7 @@ const productSchema = {
         </li>
         <li aria-hidden="true">/</li>
         <li>
-          <a href="/" class="hover:text-gray-950 dark:hover:text-white transition">Créations</a>
+          <a href="/#creations" class="hover:text-gray-950 dark:hover:text-white transition">Créations</a>
         </li>
         <li aria-hidden="true">/</li>
         <li class="font-medium text-gray-900 dark:text-white" aria-current="page">Zabutons</li>
@@ -113,7 +113,7 @@ const productSchema = {
     <h2 class="text-2xl font-bold text-gray-900 dark:text-white mt-10 mb-4">Matières et fabrication</h2>
     <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
       Chaque zabuton est confectionné en tissu solide et résistant, sélectionné pour sa
-      durabilité. Le rembourrage — coton épais ou kapok selon votre préférence — est réparti
+      durabilité. Le rembourrage — coton épais ou <a href="/pratique-zazen/#choisir-zafu" class="underline hover:text-gray-950 dark:hover:text-white font-medium">kapok végétal</a> selon votre préférence — est réparti
       uniformément pour garantir un soutien homogène sur toute la surface. Les dimensions
       sont adaptées à votre morphologie et à votre style de pratique.
     </p>
@@ -126,9 +126,9 @@ const productSchema = {
 
     <h2 class="text-2xl font-bold text-gray-900 dark:text-white mt-10 mb-4">Zabuton et zafu&nbsp;: un ensemble cohérent</h2>
     <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-      Zabuton et zafu fonctionnent ensemble. Le zafu soulève le bassin et libère les hanches&nbsp;;
+      Zabuton et zafu fonctionnent ensemble. Le <a href="/zafus/" class="underline hover:text-gray-950 dark:hover:text-white font-medium">zafu</a> soulève le bassin et libère les hanches&nbsp;;
       le zabuton protège les points d'appui au sol. Commander les deux en même temps permet
-      d'assortir les coloris et d'obtenir un ensemble harmonieux pour votre espace de pratique à domicile.
+      d'assortir les coloris et d'obtenir un ensemble harmonieux pour votre espace de pratique à domicile. Vous pouvez <a href="/zafus/" class="underline hover:text-gray-950 dark:hover:text-white font-medium">configurer votre zafu sur mesure</a> selon votre morphologie.
     </p>
 
     <!-- Galerie photos -->
@@ -157,13 +157,55 @@ const productSchema = {
 
     <OrderCta product="un zabuton" />
 
-    <nav aria-label="Voir aussi" class="mt-12 pt-6 border-t border-gray-200 dark:border-gray-800">
-      <p class="text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider mb-3">Voir aussi</p>
-      <div class="flex flex-wrap gap-3">
-        <a href="/zafus/" class="px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg text-sm text-gray-800 dark:text-gray-200 hover:border-gray-500 transition">Zafus de méditation</a>
-        <a href="/sacs-zafus/" class="px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg text-sm text-gray-800 dark:text-gray-200 hover:border-gray-500 transition">Sacs à zafu</a>
-        <a href="/pratique-zazen/" class="px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg text-sm text-gray-800 dark:text-gray-200 hover:border-gray-500 transition">Guide pratique zazen</a>
-        <a href="/contact/" class="px-4 py-2 bg-gray-900 dark:bg-white text-white dark:text-gray-950 rounded-lg text-sm hover:bg-gray-800 dark:hover:bg-gray-100 transition font-medium">Demander un devis</a>
+    <!-- Liens connexes / Compléments -->
+    <nav aria-label="Compléments indispensables" class="mt-10 pt-6 border-t border-gray-200 dark:border-gray-800">
+      <p class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3">
+        Compléments d'assise & Découverte
+      </p>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+        <a 
+          href="/zafus/" 
+          class="p-3.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:border-gray-400 dark:hover:border-gray-500 transition shadow-sm group flex flex-col justify-between"
+        >
+          <div>
+            <span class="block font-bold text-sm text-gray-900 dark:text-white group-hover:underline">Zafus de méditation</span>
+            <span class="block text-xs text-gray-500 dark:text-gray-400 mt-1">Coussins traditionnels en kapok (tailles S, M, L)</span>
+          </div>
+          <span class="text-xs font-medium text-gray-700 dark:text-gray-300 mt-2">Configurer →</span>
+        </a>
+
+        <a 
+          href="/sacs-zafus/" 
+          class="p-3.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:border-gray-400 dark:hover:border-gray-500 transition shadow-sm group flex flex-col justify-between"
+        >
+          <div>
+            <span class="block font-bold text-sm text-gray-900 dark:text-white group-hover:underline">Sacs à zafu</span>
+            <span class="block text-xs text-gray-500 dark:text-gray-400 mt-1">Protection et transport en toile de coton</span>
+          </div>
+          <span class="text-xs font-medium text-gray-700 dark:text-gray-300 mt-2">Découvrir →</span>
+        </a>
+
+        <a 
+          href="/pratique-zazen/" 
+          class="p-3.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:border-gray-400 dark:hover:border-gray-500 transition shadow-sm group flex flex-col justify-between"
+        >
+          <div>
+            <span class="block font-bold text-sm text-gray-900 dark:text-white group-hover:underline">Guide posture zen</span>
+            <span class="block text-xs text-gray-500 dark:text-gray-400 mt-1">Conseils d'assise et bascule du bassin</span>
+          </div>
+          <span class="text-xs font-medium text-gray-700 dark:text-gray-300 mt-2">Consulter →</span>
+        </a>
+
+        <a 
+          href="/contact/" 
+          class="p-3.5 rounded-xl bg-gray-900 dark:bg-white text-white dark:text-gray-950 hover:bg-gray-800 dark:hover:bg-gray-100 transition shadow-sm group flex flex-col justify-between"
+        >
+          <div>
+            <span class="block font-bold text-sm">Contacter l'atelier</span>
+            <span class="block text-xs opacity-80 mt-1">Dimensions et confection sur mesure</span>
+          </div>
+          <span class="text-xs font-medium mt-2">Écrire à Véronique →</span>
+        </a>
       </div>
     </nav>
   </main>
