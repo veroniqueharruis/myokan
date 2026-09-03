@@ -329,7 +329,7 @@ const productSchema = {
               ))}
             </div>
             <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">
-              Taille standard recommandée pour la majorité : <strong>Taille M (30 × 15 cm)</strong>.
+              Taille standard recommandée pour la majorité&nbsp;: <strong>Taille M (30 × 15 cm)</strong>.
             </p>
           </fieldset>
 
@@ -384,7 +384,7 @@ const productSchema = {
                 <span>Choisir la couleur</span>
               </span>
               <span class="text-xs text-gray-600 dark:text-gray-400">
-                Couleur : <strong id="current-color-name" class="text-gray-900 dark:text-white font-semibold">Noir</strong>
+                Couleur&nbsp;: <strong id="current-color-name" class="text-gray-900 dark:text-white font-semibold">Noir</strong>
               </span>
             </legend>
 
@@ -505,7 +505,7 @@ const productSchema = {
               </a>
               
               <div class="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 px-1">
-                <span>Code : <code id="summary-code" class="font-mono font-bold text-gray-800 dark:text-gray-200">...</code></span>
+                <span>Code&nbsp;: <code id="summary-code" class="font-mono font-bold text-gray-800 dark:text-gray-200">...</code></span>
                 <a id="summary-email-link" href="mailto:myokan@hotmail.fr" class="underline hover:text-gray-900 dark:hover:text-white">Écrire un e-mail</a>
               </div>
 
@@ -523,7 +523,7 @@ const productSchema = {
     <section class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800" aria-labelledby="sizes-guide-heading">
       <div class="max-w-2xl">
         <h2 id="sizes-guide-heading" class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-2">
-          Comment choisir la taille de votre zafu ?
+          Comment choisir la taille de votre zafu&nbsp;?
         </h2>
         <p class="text-gray-700 dark:text-gray-300 leading-relaxed text-sm sm:text-base mb-6">
           La hauteur d'assise détermine la facilité avec laquelle vos genoux touchent le sol tout en gardant 
@@ -603,7 +603,7 @@ const productSchema = {
           Galerie de confections de l'atelier
         </h2>
         <p class="text-gray-600 dark:text-gray-400 text-xs sm:text-sm mt-1">
-          Aperçu de zafus artisanaux réalisés à Montpellier : plis traditionnels, tissu 100 % coton et finitions soignées.
+          Aperçu de zafus artisanaux réalisés à Montpellier&nbsp;: plis traditionnels, tissu 100 % coton et finitions soignées.
         </p>
       </div>
 
@@ -974,7 +974,7 @@ const productSchema = {
           selectedHex = colorPicker.value.toUpperCase();
           selectedColor = `Teinte sur mesure (${selectedHex})`;
           if (currentColorName) currentColorName.textContent = selectedColor;
-          if (customColorIndicator) customColorIndicator.textContent = `Nuance sélectionnée : ${selectedHex}`;
+          if (customColorIndicator) customColorIndicator.textContent = `Nuance sélectionnée\u00a0: ${selectedHex}`;
           if (zafuImage) {
             zafuImage.src = "/zafu-plein-violet-pois.webp";
             zafuImage.alt = `Aperçu du zafu artisanal teinte sur mesure ${selectedHex}`;
