@@ -3,11 +3,7 @@
 dist/
 
 # Node dependencies
-node_modules/.astro/
-node_modules/.vite/
-
-# Ignore specific Vite cache chunks
-node_modules/.vite/deps/
+node_modules/
 
 # Temporary/lock files (Emacs, etc.)
 src/pages/.#*
