@@ -22,9 +22,18 @@ const isContactActive = currentPath === "/contact";
   <header class="py-4 border-b border-gray-100 dark:border-gray-800">
     <!-- Desktop navigation -->
     <nav class="hidden lg:flex items-center justify-between" aria-label="Navigation principale">
-      <a href="/" class="text-xl shrink-0 flex items-baseline gap-2 group py-2 focus-visible:ring-2 rounded-md">
-        <span class="font-bold text-gray-900 dark:text-white font-heading text-2xl tracking-wide group-hover:text-gray-700 dark:group-hover:text-gray-300 transition">Myokan</span>
-        <span class="text-xs uppercase tracking-wider text-gray-600 dark:text-gray-300 font-sans border-l border-gray-300 dark:border-gray-700 pl-2">Zafus & Artisanat Zen</span>
+      <a href="/" class="text-xl shrink-0 flex items-center gap-3 group py-2 focus-visible:ring-2 rounded-md">
+        <img
+          src="/logo.jpg"
+          alt="Sceau Myokan"
+          width="40"
+          height="40"
+          class="rounded-sm object-cover transition group-hover:opacity-80"
+        />
+        <span class="flex flex-col">
+          <span class="font-bold text-gray-900 dark:text-white font-heading text-2xl tracking-wide group-hover:text-gray-700 dark:group-hover:text-gray-300 transition leading-none">Myokan</span>
+          <span class="text-xs uppercase tracking-wider text-gray-600 dark:text-gray-300 font-sans">Zafus & Artisanat Zen</span>
+        </span>
       </a>
 
       <ul class="flex items-center gap-2 text-sm font-medium">
@@ -148,9 +157,18 @@ const isContactActive = currentPath === "/contact";
     <!-- Mobile navigation bar -->
     <div class="lg:hidden">
       <div class="flex items-center justify-between">
-        <a href="/" class="flex flex-col py-1 focus-visible:ring-2 rounded-md">
-          <span class="font-bold text-gray-900 dark:text-white font-heading text-xl tracking-wide">Myokan</span>
-          <span class="text-[11px] uppercase tracking-wider text-gray-600 dark:text-gray-300 font-sans">Artisanat zen · Montpellier</span>
+        <a href="/" class="flex items-center gap-2.5 py-1 focus-visible:ring-2 rounded-md group">
+          <img
+            src="/logo.jpg"
+            alt="Sceau Myokan"
+            width="36"
+            height="36"
+            class="rounded-sm object-cover transition group-hover:opacity-80"
+          />
+          <span class="flex flex-col">
+            <span class="font-bold text-gray-900 dark:text-white font-heading text-xl tracking-wide leading-none">Myokan</span>
+            <span class="text-[11px] uppercase tracking-wider text-gray-600 dark:text-gray-300 font-sans">Artisanat zen · Montpellier</span>
+          </span>
         </a>
         
         <div class="flex items-center gap-1">
