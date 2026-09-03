@@ -2,6 +2,7 @@
 import { SEO } from "astro-seo";
 import Footer from "@components/footer.astro";
 import Navbar from "@components/navbar/navbar.astro";
+import Analytics from "@vercel/analytics/astro";
 import "@fontsource-variable/cormorant/index.css";
 import "@fontsource/noto-serif-jp/400.css";
 import "@fontsource/noto-serif-jp/700.css";
@@ -105,6 +106,7 @@ if (!makeTitle) {
       <slot />
     </div>
     <Footer />
+    <Analytics />
     <style is:global>
       img {
         content-visibility: auto;
