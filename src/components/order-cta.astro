@@ -2,14 +2,14 @@
 const { product = "cet article" } = Astro.props;
 const mailSubject = encodeURIComponent(`Renseignement / commande : ${product}`);
 const mailBody = encodeURIComponent(
-  `Bonjour Véronique,\n\nJe souhaite vous commander ${product} confectionné à la main à Montpellier.\n\nMes souhaits (dimensions, coloris, questions) :\n...\n\nNom & Prénom :\nAdresse de livraison :\n\nMerci d'avance,\nCordialement`
+  `Bonjour Véronique,\n\nJe souhaite vous commander ${product} confectionné à Montpellier selon la méthode traditionnelle.\n\nMes souhaits (dimensions, coloris, questions) :\n...\n\nNom & Prénom :\nAdresse de livraison ou point Mondial Relay souhaité :\n\nMerci d'avance,\nCordialement`
 );
 ---
 
 <div class="mt-12 rounded-2xl bg-gray-50 dark:bg-gray-900/60 border border-gray-200 dark:border-gray-800 px-6 py-7 flex flex-col sm:flex-row sm:items-center gap-5">
   <div class="flex-1">
     <p class="font-bold text-gray-900 dark:text-white text-lg">Vous souhaitez commander {product} ?</p>
-    <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Réponse personnalisée sous quelques jours · Fait main à Montpellier · Paiement par virement</p>
+    <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Réponse personnalisée sous quelques jours · Confection artisanale à Montpellier · Paiement par virement</p>
   </div>
   <div class="flex flex-col sm:flex-row gap-3 shrink-0">
     <a href="/contact/" class="px-5 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-950 text-sm font-medium rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition text-center shadow-sm">

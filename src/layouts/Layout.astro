@@ -26,14 +26,14 @@ const resolvedImageWithDomain = new URL(
 const { 
   title, 
   fullTitle, 
-  description = "Coussins de zazen artisanaux faits main depuis 1982 à Montpellier : zafus, zabutons, fukusas, oryokis. Tradition transmise par maître Deshimaru.",
+  description = "Coussins de zazen artisanaux confectionnés selon la méthode traditionnelle depuis 1982 à Montpellier : zafus, zabutons, fukusas, oryokis.",
   ogType = "website"
 } = Astro.props;
 
 let makeTitle = fullTitle;
 if (!makeTitle) {
   if (!title) {
-    makeTitle = "Zafus zen artisanaux faits main — Myokan, Montpellier";
+    makeTitle = "Zafus zen artisanaux de tradition — Myokan, Montpellier";
   } else if (title.includes("Myokan")) {
     makeTitle = title;
   } else {

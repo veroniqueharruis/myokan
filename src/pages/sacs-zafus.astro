@@ -4,7 +4,7 @@ import OrderCta from "@components/order-cta.astro";
 import PriceTag from "@components/price-tag.astro";
 
 const images = [
-  { src: "/sac-zafu-rouge.webp", alt: "Sac à zafu en coton rouge artisanal cousu main à Montpellier — Atelier Myokan" },
+  { src: "/sac-zafu-rouge.webp", alt: "Sac à zafu en coton rouge artisanal — Atelier Myokan Montpellier" },
 ];
 
 const breadcrumbSchema = {
@@ -30,7 +30,7 @@ const productSchema = {
   "@context": "https://schema.org",
   "@type": "Product",
   "name": "Sac à zafu en coton artisanal",
-  "description": "Sac de transport pour coussin de méditation zen en coton 100 % naturel, cousu à la main. Fermeture avec cordon coulissant, lavable en machine.",
+  "description": "Sac de transport pour coussin de méditation zen en coton 100 % naturel confectionné à l'atelier. Fermeture avec cordon coulissant, lavable en machine.",
   "brand": { "@type": "Brand", "name": "Myokan" },
   "material": "coton 100%",
   "image": "https://myokan.fr/sac-zafu-rouge.webp",
@@ -54,8 +54,8 @@ const productSchema = {
 ---
 
 <Layout 
-  fullTitle="Sac à zafu en coton fait main — Myokan, Montpellier" 
-  description="Sac de transport pour zafu en coton 100 % naturel, fait main à Montpellier. Protégez et transportez votre coussin de méditation zen lors de vos déplacements.">
+  fullTitle="Sac à zafu en coton artisanal — Myokan, Montpellier" 
+  description="Sac de transport pour zafu en coton 100 % naturel, confectionné à Montpellier. Protégez et transportez votre coussin de méditation zen lors de vos déplacements.">
   
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumbSchema)} />
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(productSchema)} />
@@ -92,7 +92,7 @@ const productSchema = {
         <img
           id="sac-main-img"
           src="/sac-zafu-rouge.webp"
-          alt="Sac à zafu en coton rouge artisanal fait main à Montpellier — Myokan"
+          alt="Sac à zafu en coton rouge artisanal confectionné à Montpellier — Myokan"
           width="400"
           height="600"
           class="rounded-xl w-full max-h-96 object-contain mx-auto cursor-pointer hover:opacity-95 transition"
@@ -109,7 +109,7 @@ const productSchema = {
       La fermeture se fait par un cordon coulissant robuste, permettant d'insérer et de retirer le coussin sans forcer.
     </p>
     <p class="text-lg mt-4 text-gray-700 dark:text-gray-300 leading-relaxed">
-      Chaque sac est taillé à la main par Véronique Myokan Harruis à Montpellier, avec les mêmes
+      Chaque sac est confectionné par Véronique Myokan Harruis dans son atelier à Montpellier, avec les mêmes
       exigences de soin que pour les zafus. Les coutures renforcées sont conçues pour résister aux voyages répétés.
       Le sac est lavable en machine à basse température (30 °C).
     </p>

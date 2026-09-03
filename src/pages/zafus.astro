@@ -87,7 +87,7 @@ const galleryImages = [
   },
   { 
     src: "/zafu-bleu-fonce.webp", 
-    alt: "Zafu de méditation bleu foncé cousu main à Montpellier",
+    alt: "Zafu de méditation bleu foncé artisanal confectionné à Montpellier",
     title: "Zafu bleu foncé classique",
     caption: "Tissu 100 % coton épais et coutures renforcées" 
   },
@@ -101,11 +101,11 @@ const galleryImages = [
     src: "/zafu-vide-framboise.webp", 
     alt: "Housse de zafu vide coloris framboise — Myokan",
     title: "Housse framboise à plat",
-    caption: "Plis minutieusement formés à la main" 
+    caption: "Plis minutieusement formés selon la tradition" 
   },
   { 
     src: "/zafu-plein-violet-pois.webp", 
-    alt: "Zafu de méditation violet à pois fait main",
+    alt: "Zafu de méditation violet à pois de confection artisanale",
     title: "Zafu violet à pois",
     caption: "Création originale sur mesure pour une pratiquante" 
   },
@@ -140,7 +140,7 @@ const productSchema = {
   "@context": "https://schema.org",
   "@type": "Product",
   "name": "Zafu de méditation zen artisanal",
-  "description": "Coussin de zazen traditionnel cousu à la main en coton et kapok naturel à Montpellier. Disponible en tailles S, M, L ou sur mesure, vide ou plein.",
+  "description": "Coussin de zazen traditionnel confectionné selon la méthode traditionnelle en coton et kapok naturel à Montpellier. Disponible en tailles S, M, L ou sur mesure, vide ou plein.",
   "brand": { "@type": "Brand", "name": "Myokan" },
   "image": "https://myokan.fr/zafu-plein-noir.webp",
   "offers": {
@@ -165,8 +165,8 @@ const productSchema = {
 ---
 
 <Layout 
-  fullTitle="Zafus de méditation zen artisanaux faits main — Myokan, Montpellier" 
-  description="Commandez votre zafu de méditation zen traditionnel sur mesure : taille S, M, L ou sur devis, rembourrage kapok naturel, confectionné à la main à Montpellier.">
+  fullTitle="Zafus de méditation zen artisanaux — Myokan, Montpellier" 
+  description="Commandez votre zafu de méditation zen traditionnel sur mesure : taille S, M, L ou sur devis, rembourrage kapok naturel, confectionné selon la méthode traditionnelle à Montpellier.">
   
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumbSchema)} />
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(productSchema)} />
@@ -197,9 +197,9 @@ const productSchema = {
         Zafus de méditation zen artisanaux
       </h1>
       <p class="text-base sm:text-lg text-gray-700 dark:text-gray-300 mt-3 leading-relaxed max-w-2xl">
-        Le zafu est le coussin d'assise traditionnel du zazen. Cousu à la main en tissu 100 % coton 
-        et rembourré de kapok végétal, il assure la bascule naturelle du bassin et l'alignement stable 
-        de la colonne vertébrale.
+        Le zafu est le coussin d'assise traditionnel du zazen. Cousu à la machine dans le strict respect 
+        de la méthode traditionnelle, en tissu 100 % coton et rembourré de kapok végétal, il assure 
+        la bascule naturelle du bassin et l'alignement stable de la colonne vertébrale.
       </p>
     </header>
 
@@ -215,7 +215,7 @@ const productSchema = {
           </p>
         </div>
         <span class="text-xs text-gray-500 dark:text-gray-400 shrink-0 font-medium">
-          Fait main à Montpellier
+          Atelier artisanal à Montpellier
         </span>
       </div>
 
@@ -851,7 +851,7 @@ const productSchema = {
 
           const mailSubject = encodeURIComponent(`Commande zafu artisanal : ${code}`);
           const mailBody = encodeURIComponent(
-            `Bonjour Véronique,\n\nJe souhaite vous commander un zafu artisanal confectionné à Montpellier :\n\n- Taille : ${selectedSize}\n- Remplissage : ${selectedType}\n- Couleur : ${selectedColor}\n- Code : ${code}\n- Prix indicatif : ${priceText} (hors frais de port)\n\nPourriez-vous me confirmer la disponibilité, le délai de réalisation et les modalités de paiement par virement ?\n\nNom & Prénom :\nAdresse de livraison :\nTéléphone (facultatif) :\n\nMerci d'avance,\nCordialement`
+            `Bonjour Véronique,\n\nJe souhaite vous commander un zafu artisanal confectionné à Montpellier :\n\n- Taille : ${selectedSize}\n- Remplissage : ${selectedType}\n- Couleur : ${selectedColor}\n- Code : ${code}\n- Prix indicatif : ${priceText} (hors frais de port)\n\nPourriez-vous me confirmer la disponibilité, le délai de réalisation et les modalités de paiement par virement ?\n\nNom & Prénom :\nAdresse de livraison ou point Mondial Relay souhaité :\nTéléphone (facultatif) :\n\nMerci d'avance,\nCordialement`
           );
           const mailtoUrl = `mailto:myokan@hotmail.fr?subject=${mailSubject}&body=${mailBody}`;
 

@@ -4,12 +4,12 @@ import OrderCta from "@components/order-cta.astro";
 import PriceTag from "@components/price-tag.astro";
 
 const images = [
-  { src: "/fukusa-FB_IMG_1756283080119.webp", alt: "Fukusa zen artisanal cousu main coloris uni — Myokan Montpellier" },
+  { src: "/fukusa-FB_IMG_1756283080119.webp", alt: "Fukusa zen artisanal coloris uni — Myokan Montpellier" },
   { src: "/fukusa-bleu-jaune.webp", alt: "Fukusa zen bleu et jaune artisanal pour bol oryoki — Myokan Montpellier" },
-  { src: "/fukusa-FB_IMG_1756283086911.webp", alt: "Fukusa zen artisanal pour oryoki en tissu résistant cousu main" },
+  { src: "/fukusa-FB_IMG_1756283086911.webp", alt: "Fukusa zen artisanal pour oryoki en tissu résistant — Myokan" },
   { src: "/fukusa-FB_IMG_1756283090242.webp", alt: "Fukusa de protection pour bol oryoki, couture artisanale — Myokan" },
-  { src: "/fukusa-orange-gris.webp", alt: "Fukusa zen orange et gris artisanal cousu à la main — Myokan" },
-  { src: "/fukusa-FB_IMG_1756283102483.webp", alt: "Fukusa zen fait main, coloris personnalisables sur commande — Myokan" },
+  { src: "/fukusa-orange-gris.webp", alt: "Fukusa zen orange et gris artisanal — Myokan" },
+  { src: "/fukusa-FB_IMG_1756283102483.webp", alt: "Fukusa zen de confection artisanale, coloris personnalisables sur commande — Myokan" },
 ];
 
 const breadcrumbSchema = {
@@ -35,7 +35,7 @@ const productSchema = {
   "@context": "https://schema.org",
   "@type": "Product",
   "name": "Fukusa zen artisanal pour oryoki",
-  "description": "Pièce de tissu traditionnelle utilisée par les pratiquants zen pour envelopper et protéger leur bol oryoki lors des repas cérémoniels en sesshin. Cousu main à Montpellier.",
+  "description": "Pièce de tissu traditionnelle utilisée par les pratiquants zen pour envelopper et protéger leur bol oryoki lors des repas cérémoniels en sesshin. Confectionné selon la méthode traditionnelle à Montpellier.",
   "brand": { "@type": "Brand", "name": "Myokan" },
   "image": "https://myokan.fr/fukusa-bleu-jaune.webp",
   "offers": {
@@ -59,7 +59,7 @@ const productSchema = {
 
 <Layout 
   fullTitle="Fukusa zen artisanal pour oryoki — Myokan, Montpellier" 
-  description="Fukusas artisanaux cousus main à Montpellier, utilisés pour protéger les bols oryoki lors des repas cérémoniels en sesshin. Tissu résistant, coloris variés.">
+  description="Fukusas artisanaux confectionnés à Montpellier selon la méthode traditionnelle, utilisés pour protéger les bols oryoki lors des repas cérémoniels en sesshin. Tissu résistant, coloris variés.">
   
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumbSchema)} />
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(productSchema)} />
@@ -102,7 +102,7 @@ const productSchema = {
 
     <h2 class="text-2xl font-bold text-gray-900 dark:text-white mt-12 mb-4">Matières et fabrication</h2>
     <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-      Chaque fukusa est cousu à la main par Véronique Myokan Harruis à Montpellier. Les tissus sont choisis 
+      Chaque fukusa est cousu à la machine par Véronique Myokan Harruis à Montpellier, dans le respect de la méthode traditionnelle. Les tissus sont choisis 
       pour leur solidité, leur souplesse et leur tenue aux lavages réguliers : toile de coton épaisse ou mélange 
       coton-lin. Les coutures et les bordures sont minutieusement renforcées pour éviter tout effilochage.
     </p>
@@ -113,9 +113,11 @@ const productSchema = {
 
     <h2 class="text-2xl font-bold text-gray-900 dark:text-white mt-12 mb-4">À qui s'adresse le fukusa ?</h2>
     <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-      Le fukusa s'adresse à tout pratiquant zen possédant un <a href="/oryokis/" class="underline hover:text-gray-950 dark:hover:text-white font-medium">oryoki</a>
-      et souhaitant une pièce robuste et respectueuse de la tradition. Il constitue également un cadeau traditionnel 
+      Le fukusa s'adresse à tout pratiquant zen possédant déjà un bol et souhaitant une pièce robuste et respectueuse de la tradition. Il constitue également un cadeau traditionnel 
       très apprécié à l'occasion d'une ordination de bodhisattva ou d'un engagement dans la sangha.
+    </p>
+    <p class="text-sm mt-3 text-gray-600 dark:text-gray-400 leading-relaxed">
+      Si vous ne possédez pas encore de bol, découvrez notre <a href="/oryokis/" class="underline hover:text-gray-950 dark:hover:text-white font-medium">ensemble complet oryoki artisanal</a> (bol en bois tourné en Côte-d'Or en érable sycomore ou bouleau, tissu de protection fukusa, cuillère en bois dans son étui et serviette).
     </p>
 
     <OrderCta product="un fukusa" />
