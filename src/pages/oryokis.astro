@@ -23,6 +23,8 @@ const breadcrumbSchema = {
 };
 
 const images = [
+  { src: "/oryoki-service-deplie.webp", alt: "Ensemble complet oryoki déplié pour le rituel : bol en bois sur fukusa, étui à cuillère et serviette de cérémonie" },
+  { src: "/bols-oryoki-bois.webp", alt: "Empilement de 4 bols d'oryoki façonnés par un artisan tourneur sur bois en érable sycomore et bouleau" },
   { src: "/oryokis-trio.webp", alt: "Trois ensembles d'oryokis enveloppés dans leurs fukusas traditionnels — Atelier Myokan" },
   { src: "/oryokis-etagere.webp", alt: "Étagère de présentation des oryokis et fukusas artisanaux à l'atelier" },
   { src: "/fukusa-motif-floral.webp", alt: "Ensemble oryoki protégé par un fukusa japonais à motifs floraux noir, écru et beige" },
@@ -171,6 +173,47 @@ const productSchema = {
           <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
             Une serviette en tissu naturel, douce et très résistante aux lavages fréquents, indispensable au rituel pour sécher et prendre soin respectueusement des ustensiles en fin de repas.
           </p>
+        </div>
+      </div>
+
+      <!-- Présentation visuelle : le bol tourné & le service rituel déplié -->
+      <div class="grid sm:grid-cols-2 gap-6 mt-8">
+        <div class="rounded-xl overflow-hidden border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 flex flex-col justify-between">
+          <div class="aspect-[4/3] overflow-hidden bg-gray-100 dark:bg-gray-800">
+            <img
+              src="/bols-oryoki-bois.webp"
+              alt="Empilement de bols d'oryoki façonnés par un artisan tourneur sur bois en érable sycomore et bouleau"
+              width="600"
+              height="450"
+              class="w-full h-full object-cover object-center hover:scale-105 transition duration-300"
+              loading="lazy"
+            />
+          </div>
+          <div class="p-4">
+            <h3 class="font-bold text-gray-900 dark:text-white text-base mb-1">Les bols en bois tourné</h3>
+            <p class="text-xs text-gray-600 dark:text-gray-400">
+              Façonnés en Côte-d'Or en érable sycomore ou bouleau, sélectionnés pour leur grain fin et leur toucher doux.
+            </p>
+          </div>
+        </div>
+
+        <div class="rounded-xl overflow-hidden border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 flex flex-col justify-between">
+          <div class="aspect-[4/3] overflow-hidden bg-gray-100 dark:bg-gray-800">
+            <img
+              src="/oryoki-service-deplie.webp"
+              alt="Ensemble complet oryoki déplié pour le rituel : bol rituel sur nappe fukusa, cuillère en bois dans son étui et serviette"
+              width="600"
+              height="450"
+              class="w-full h-full object-cover object-center hover:scale-105 transition duration-300"
+              loading="lazy"
+            />
+          </div>
+          <div class="p-4">
+            <h3 class="font-bold text-gray-900 dark:text-white text-base mb-1">Le service complet déployé</h3>
+            <p class="text-xs text-gray-600 dark:text-gray-400">
+              Disposition traditionnelle lors du repas en sesshin&nbsp;: bol, tissu protecteur, étui à cuillère et linge de cérémonie.
+            </p>
+          </div>
         </div>
       </div>
     </section>
