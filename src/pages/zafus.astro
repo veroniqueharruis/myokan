@@ -510,7 +510,7 @@ const productSchema = {
               </div>
 
               <p class="text-[11px] text-gray-500 dark:text-gray-400 text-center leading-relaxed">
-                Le clic prépare votre e-mail prêt à envoyer avec tous les détails. Paiement par virement bancaire après confirmation de faisabilité.
+                Le clic prépare votre e-mail prêt à envoyer avec tous les détails. Paiement par virement bancaire ou PayPal après confirmation de faisabilité.
               </p>
             </div>
           </div>
@@ -857,7 +857,7 @@ const productSchema = {
 
           const mailSubject = encodeURIComponent(`Commande zafu artisanal : ${code}`);
           const mailBody = encodeURIComponent(
-            `Bonjour Véronique,\n\nJe souhaite vous commander un zafu artisanal confectionné à Montpellier :\n\n- Taille : ${selectedSize}\n- Remplissage : ${selectedType}\n- Couleur : ${selectedColor}\n- Code : ${code}\n- Prix indicatif : ${priceText} (hors frais de port)\n\nPourriez-vous me confirmer la disponibilité, le délai de réalisation et les modalités de paiement par virement ?\n\nNom & Prénom :\nAdresse de livraison ou point Mondial Relay souhaité :\nTéléphone (facultatif) :\n\nMerci d'avance,\nCordialement`
+            `Bonjour Véronique,\n\nJe souhaite vous commander un zafu artisanal confectionné à Montpellier :\n\n- Taille : ${selectedSize}\n- Remplissage : ${selectedType}\n- Couleur : ${selectedColor}\n- Code : ${code}\n- Prix indicatif : ${priceText} (hors frais de port)\n\nPourriez-vous me confirmer la disponibilité, le délai de réalisation et les modalités de paiement (virement bancaire ou PayPal) ?\n\nNom & Prénom :\nAdresse de livraison ou point Mondial Relay souhaité :\nTéléphone (facultatif) :\n\nMerci d'avance,\nCordialement`
           );
           const mailtoUrl = `mailto:myokan@hotmail.fr?subject=${mailSubject}&body=${mailBody}`;
 
