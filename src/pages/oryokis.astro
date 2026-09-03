@@ -22,13 +22,22 @@ const breadcrumbSchema = {
   ]
 };
 
+const images = [
+  { src: "/oryokis-trio.webp", alt: "Trois ensembles d'oryokis enveloppés dans leurs fukusas traditionnels — Atelier Myokan" },
+  { src: "/oryokis-etagere.webp", alt: "Étagère de présentation des oryokis et fukusas artisanaux à l'atelier" },
+  { src: "/fukusa-motif-floral.webp", alt: "Ensemble oryoki protégé par un fukusa japonais à motifs floraux noir, écru et beige" },
+  { src: "/fukusa-motif-indigo.webp", alt: "Bol d'oryoki enveloppé dans un tissu fukusa bleu indigo traditionnel" },
+  { src: "/fukusa-motif-marron.webp", alt: "Oryoki avec fukusa artisanal aux motifs géométriques marron et ocre" },
+  { src: "/fukusa-orange-gris.webp", alt: "Ensemble complet oryoki déplié : bol tourné, étui à cuillère et serviette de cérémonie" },
+];
+
 const productSchema = {
   "@context": "https://schema.org",
   "@type": "Product",
   "name": "Ensemble oryoki artisanal zen — bol en bois tourné & accessoires",
   "description": "Ensemble complet oryoki pour la cérémonie du repas en sesshin : bol façonné par un artisan tourneur sur bois en Côte-d'Or (érable sycomore, bouleau), tissu de protection fukusa, cuillère en bois dans son étui et serviette confectionnés à Montpellier selon la méthode traditionnelle.",
   "brand": { "@type": "Brand", "name": "Myokan" },
-  "image": "https://myokan.fr/fukusa-orange-gris.webp",
+  "image": "https://myokan.fr/oryokis-trio.webp",
   "offers": {
     "@type": "Offer",
     "priceCurrency": "EUR",
@@ -96,15 +105,15 @@ const productSchema = {
 
     <div class="my-8 rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900">
       <img
-        src="/fukusa-orange-gris.webp"
-        alt="Ensemble complet pour bol oryoki artisanal : bol en bois et confections textiles — Atelier Myokan"
+        src="/oryokis-trio.webp"
+        alt="Trois ensembles oryoki complets : bols en bois et fukusas traditionnels confectionnés par l'Atelier Myokan"
         width="800"
         height="500"
         class="w-full h-64 sm:h-80 object-cover"
         loading="lazy"
       />
       <p class="p-3 text-xs text-center text-gray-500 dark:text-gray-400">
-        Ensemble complet oryoki : bol façonné par un artisan tourneur sur bois et accessoires textiles confectionnés dans l'atelier Myokan à Montpellier
+        Ensembles complets oryoki : bols façonnés par un artisan tourneur sur bois et confections textiles artisanales de l'atelier Myokan à Montpellier
       </p>
     </div>
 
@@ -188,6 +197,30 @@ const productSchema = {
       <li class="flex gap-2"><span class="text-gray-400 dark:text-gray-500">—</span> <strong>Livraison Mondial Relay :</strong> expédition soignée en point relais ou à domicile</li>
     </ul>
 
+    <!-- Galerie photos -->
+    <section class="mt-14 pt-6 border-t border-gray-200 dark:border-gray-800" aria-labelledby="oryoki-gallery-heading">
+      <h2 id="oryoki-gallery-heading" class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+        Exemples de réalisations (cliquez pour agrandir)
+      </h2>
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+        {images.map((img, index) => (
+          <div class="relative group overflow-hidden rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-800">
+            <img
+              src={img.src}
+              alt={img.alt}
+              width="400"
+              height="300"
+              class="rounded-xl w-full h-44 sm:h-52 object-cover cursor-pointer hover:opacity-90 hover:scale-105 transition duration-300 gallery-item"
+              data-index={index}
+              data-src={img.src}
+              data-alt={img.alt}
+              loading="lazy"
+            />
+          </div>
+        ))}
+      </div>
+    </section>
+
     <OrderCta product="un ensemble oryoki complet" />
 
     <nav aria-label="Voir aussi" class="mt-12 pt-6 border-t border-gray-200 dark:border-gray-800">
@@ -200,4 +233,104 @@ const productSchema = {
       </div>
     </nav>
   </main>
+
+  <!-- Lightbox accessible -->
+  <div 
+    id="lightbox" 
+    role="dialog" 
+    aria-modal="true" 
+    aria-label="Agrandissement de l'oryoki" 
+    class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden items-center justify-center z-50 p-4"
+  >
+    <div class="relative max-w-3xl max-h-[90vh] flex flex-col items-center">
+      <button 
+        type="button" 
+        id="lightbox-close" 
+        aria-label="Fermer la vue agrandie" 
+        class="absolute -top-12 right-0 text-white hover:text-gray-300 text-2xl font-bold p-2 focus-visible:ring-2 focus-visible:ring-white rounded-lg transition"
+      >
+        ✕
+      </button>
+      <button 
+        type="button" 
+        id="prev" 
+        aria-label="Photo précédente" 
+        class="absolute left-2 sm:-left-12 top-1/2 -translate-y-1/2 text-white hover:text-gray-300 text-3xl p-2 focus-visible:ring-2 focus-visible:ring-white rounded-lg transition"
+      >
+        &#10094;
+      </button>
+      <img id="lightbox-img" src="" alt="" class="max-h-[80vh] max-w-full rounded-lg shadow-2xl object-contain" />
+      <p id="lightbox-caption" class="text-white/90 text-sm mt-3 text-center px-4"></p>
+      <button 
+        type="button" 
+        id="next" 
+        aria-label="Photo suivante" 
+        class="absolute right-2 sm:-right-12 top-1/2 -translate-y-1/2 text-white hover:text-gray-300 text-3xl p-2 focus-visible:ring-2 focus-visible:ring-white rounded-lg transition"
+      >
+        &#10095;
+      </button>
+    </div>
+  </div>
+
+  <script is:inline>
+    (function () {
+      const thumbs = document.querySelectorAll(".gallery-item");
+      const lightbox = document.getElementById("lightbox");
+      const img = document.getElementById("lightbox-img");
+      const caption = document.getElementById("lightbox-caption");
+      const prevBtn = document.getElementById("prev");
+      const nextBtn = document.getElementById("next");
+      const closeBtn = document.getElementById("lightbox-close");
+
+      let currentIndex = 0;
+
+      function showLightbox(index) {
+        if (!lightbox || !img) return;
+        currentIndex = index;
+        const currentThumb = thumbs[currentIndex];
+        img.src = currentThumb.getAttribute("data-src") || "";
+        img.alt = currentThumb.getAttribute("data-alt") || "Oryoki agrandi";
+        if (caption) caption.textContent = img.alt;
+        lightbox.classList.remove("hidden");
+        lightbox.classList.add("flex");
+        document.body.style.overflow = "hidden";
+        closeBtn?.focus();
+      }
+
+      function hideLightbox() {
+        if (!lightbox) return;
+        lightbox.classList.add("hidden");
+        lightbox.classList.remove("flex");
+        document.body.style.overflow = "";
+      }
+
+      function showPrev() {
+        currentIndex = (currentIndex - 1 + thumbs.length) % thumbs.length;
+        showLightbox(currentIndex);
+      }
+
+      function showNext() {
+        currentIndex = (currentIndex + 1) % thumbs.length;
+        showLightbox(currentIndex);
+      }
+
+      thumbs.forEach((thumb, index) => {
+        thumb.addEventListener("click", () => showLightbox(index));
+      });
+
+      prevBtn?.addEventListener("click", (e) => { e.stopPropagation(); showPrev(); });
+      nextBtn?.addEventListener("click", (e) => { e.stopPropagation(); showNext(); });
+      closeBtn?.addEventListener("click", hideLightbox);
+      lightbox?.addEventListener("click", (e) => {
+        if (e.target === lightbox) hideLightbox();
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (!lightbox || lightbox.classList.contains("hidden")) return;
+        if (e.key === "Escape") hideLightbox();
+        if (e.key === "ArrowLeft") showPrev();
+        if (e.key === "ArrowRight") showNext();
+      });
+    })();
+  </script>
 </Layout>
