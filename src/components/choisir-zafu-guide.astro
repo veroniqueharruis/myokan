@@ -1,0 +1,855 @@
+---
+import { sizes, pricing } from "@data/zafus";
+
+interface Props {
+  class?: string;
+}
+
+const { class: className = "" } = Astro.props;
+---
+
+<div class:list={["w-full max-w-3xl mx-auto", className]} id="zafu-guide-app">
+  <!-- En-tête du questionnaire avec jauge d'avancement -->
+  <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl sm:rounded-3xl p-5 sm:p-8 shadow-sm">
+    
+    <!-- Barre de progression -->
+    <div id="guide-progress-container" class="mb-6">
+      <div class="flex items-center justify-between text-xs font-semibold text-gray-600 dark:text-gray-400 mb-2">
+        <span id="guide-step-label">Étape 1 sur 5</span>
+        <span id="guide-step-pct" class="font-mono">20%</span>
+      </div>
+      <div 
+        class="w-full bg-gray-100 dark:bg-gray-800 rounded-full h-2 overflow-hidden" 
+        role="progressbar" 
+        id="guide-progress-bar"
+        aria-valuenow="1" 
+        aria-valuemin="1" 
+        aria-valuemax="5"
+        aria-valuetext="Étape 1 sur 5 : Votre expérience"
+      >
+        <div 
+          id="guide-progress-fill" 
+          class="bg-amber-600 dark:bg-amber-500 h-2 rounded-full transition-all duration-300 ease-out" 
+          style="width: 20%;"
+        ></div>
+      </div>
+    </div>
+
+    <!-- Conteneur dynamique des étapes -->
+    <div id="guide-steps-wrapper">
+      
+      <!-- ÉTAPE 1 : Expérience -->
+      <section class="guide-step-view" data-step="1" aria-labelledby="q1-title">
+        <div class="mb-5">
+          <span class="text-xs uppercase tracking-wider font-semibold text-amber-700 dark:text-amber-400">
+            Repère 1 · Votre pratique
+          </span>
+          <h2 id="q1-title" class="text-xl sm:text-2xl font-bold font-heading text-gray-900 dark:text-white mt-1">
+            Depuis combien de temps pratiquez-vous ?
+          </h2>
+          <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-1">
+            Chaque coussin Myokan est pensé pour vous soutenir sans fatigue, que vous débutiez ou pratiquiez régulièrement en dojo.
+          </p>
+        </div>
+
+        <fieldset class="space-y-3">
+          <legend class="sr-only">Choisissez votre niveau de pratique</legend>
+
+          <label class="guide-option-card flex items-start p-4 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-800/40 hover:bg-amber-50/40 dark:hover:bg-amber-950/20 hover:border-amber-300 dark:hover:border-amber-800 cursor-pointer transition focus-within:ring-2 focus-within:ring-amber-500">
+            <input type="radio" name="experience" value="debutant" class="sr-only" />
+            <span class="guide-indicator w-5 h-5 rounded-full border-2 border-gray-300 dark:border-gray-600 mr-3.5 mt-0.5 shrink-0 flex items-center justify-center transition">
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-600 dark:bg-amber-500 hidden"></span>
+            </span>
+            <div class="flex-1">
+              <span class="block font-semibold text-sm sm:text-base text-gray-900 dark:text-white">
+                Je débute
+              </span>
+              <span class="block text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-0.5">
+                Je découvre la posture assise et je recherche un coussin polyvalent, stable et rassurant pour commencer.
+              </span>
+            </div>
+          </label>
+
+          <label class="guide-option-card flex items-start p-4 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-800/40 hover:bg-amber-50/40 dark:hover:bg-amber-950/20 hover:border-amber-300 dark:hover:border-amber-800 cursor-pointer transition focus-within:ring-2 focus-within:ring-amber-500">
+            <input type="radio" name="experience" value="quelque_temps" class="sr-only" />
+            <span class="guide-indicator w-5 h-5 rounded-full border-2 border-gray-300 dark:border-gray-600 mr-3.5 mt-0.5 shrink-0 flex items-center justify-center transition">
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-600 dark:bg-amber-500 hidden"></span>
+            </span>
+            <div class="flex-1">
+              <span class="block font-semibold text-sm sm:text-base text-gray-900 dark:text-white">
+                Je pratique depuis quelque temps
+              </span>
+              <span class="block text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-0.5">
+                Je ressens mieux les besoins de mon corps et je souhaite un véritable zafu traditionnel pérenne.
+              </span>
+            </div>
+          </label>
+
+          <label class="guide-option-card flex items-start p-4 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-800/40 hover:bg-amber-50/40 dark:hover:bg-amber-950/20 hover:border-amber-300 dark:hover:border-amber-800 cursor-pointer transition focus-within:ring-2 focus-within:ring-amber-500">
+            <input type="radio" name="experience" value="regulier" class="sr-only" />
+            <span class="guide-indicator w-5 h-5 rounded-full border-2 border-gray-300 dark:border-gray-600 mr-3.5 mt-0.5 shrink-0 flex items-center justify-center transition">
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-600 dark:bg-amber-500 hidden"></span>
+            </span>
+            <div class="flex-1">
+              <span class="block font-semibold text-sm sm:text-base text-gray-900 dark:text-white">
+                Je pratique régulièrement
+              </span>
+              <span class="block text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-0.5">
+                Assise quotidienne établie en dojo ou chez moi, j'ai des repères précis de hauteur et de fermeté.
+              </span>
+            </div>
+          </label>
+
+          <label class="guide-option-card flex items-start p-4 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-800/40 hover:bg-amber-50/40 dark:hover:bg-amber-950/20 hover:border-amber-300 dark:hover:border-amber-800 cursor-pointer transition focus-within:ring-2 focus-within:ring-amber-500">
+            <input type="radio" name="experience" value="ne_sais_pas" class="sr-only" />
+            <span class="guide-indicator w-5 h-5 rounded-full border-2 border-gray-300 dark:border-gray-600 mr-3.5 mt-0.5 shrink-0 flex items-center justify-center transition">
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-600 dark:bg-amber-500 hidden"></span>
+            </span>
+            <div class="flex-1">
+              <span class="block font-semibold text-sm sm:text-base text-gray-900 dark:text-white">
+                Je ne sais pas / je préfère être conseillé
+              </span>
+              <span class="block text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-0.5">
+                Je recherche une assise confortable pour méditer sans a priori technique.
+              </span>
+            </div>
+          </label>
+        </fieldset>
+      </section>
+
+      <!-- ÉTAPE 2 : Posture -->
+      <section class="guide-step-view hidden" data-step="2" aria-labelledby="q2-title">
+        <div class="mb-5">
+          <span class="text-xs uppercase tracking-wider font-semibold text-amber-700 dark:text-amber-400">
+            Repère 2 · Posture d'assise
+          </span>
+          <h2 id="q2-title" class="text-xl sm:text-2xl font-bold font-heading text-gray-900 dark:text-white mt-1">
+            Dans quelle posture pratiquez-vous principalement ?
+          </h2>
+          <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-1">
+            La position des jambes détermine l'angle du bassin et la hauteur nécessaire pour relâcher le ventre.
+          </p>
+        </div>
+
+        <fieldset class="space-y-3">
+          <legend class="sr-only">Choisissez votre posture de méditation</legend>
+
+          <label class="guide-option-card flex items-start p-4 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-800/40 hover:bg-amber-50/40 dark:hover:bg-amber-950/20 hover:border-amber-300 dark:hover:border-amber-800 cursor-pointer transition focus-within:ring-2 focus-within:ring-amber-500">
+            <input type="radio" name="posture" value="demi_lotus" class="sr-only" />
+            <span class="guide-indicator w-5 h-5 rounded-full border-2 border-gray-300 dark:border-gray-600 mr-3.5 mt-0.5 shrink-0 flex items-center justify-center transition">
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-600 dark:bg-amber-500 hidden"></span>
+            </span>
+            <div class="flex-1">
+              <div class="flex items-center gap-2">
+                <span class="font-semibold text-sm sm:text-base text-gray-900 dark:text-white">Demi-lotus (Hanka-fusa)</span>
+                <span class="text-[11px] px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-900/60 text-amber-800 dark:text-amber-300 font-medium">Posture la plus courante</span>
+              </div>
+              <span class="block text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-0.5">
+                Un pied repose sur la cuisse opposée, l'autre sous la jambe. Équilibre naturel et stable pour la plupart des pratiquants.
+              </span>
+            </div>
+          </label>
+
+          <label class="guide-option-card flex items-start p-4 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-800/40 hover:bg-amber-50/40 dark:hover:bg-amber-950/20 hover:border-amber-300 dark:hover:border-amber-800 cursor-pointer transition focus-within:ring-2 focus-within:ring-amber-500">
+            <input type="radio" name="posture" value="lotus" class="sr-only" />
+            <span class="guide-indicator w-5 h-5 rounded-full border-2 border-gray-300 dark:border-gray-600 mr-3.5 mt-0.5 shrink-0 flex items-center justify-center transition">
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-600 dark:bg-amber-500 hidden"></span>
+            </span>
+            <div class="flex-1">
+              <span class="block font-semibold text-sm sm:text-base text-gray-900 dark:text-white">
+                Lotus (Kekka-fusa)
+              </span>
+              <span class="block text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-0.5">
+                Chaque pied repose sur la cuisse opposée. Très grande stabilité mais requiert une excellente souplesse des hanches.
+              </span>
+            </div>
+          </label>
+
+          <label class="guide-option-card flex items-start p-4 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-800/40 hover:bg-amber-50/40 dark:hover:bg-amber-950/20 hover:border-amber-300 dark:hover:border-amber-800 cursor-pointer transition focus-within:ring-2 focus-within:ring-amber-500">
+            <input type="radio" name="posture" value="birmane_tailleur" class="sr-only" />
+            <span class="guide-indicator w-5 h-5 rounded-full border-2 border-gray-300 dark:border-gray-600 mr-3.5 mt-0.5 shrink-0 flex items-center justify-center transition">
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-600 dark:bg-amber-500 hidden"></span>
+            </span>
+            <div class="flex-1">
+              <span class="block font-semibold text-sm sm:text-base text-gray-900 dark:text-white">
+                Posture birmane ou tailleur simple
+              </span>
+              <span class="block text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-0.5">
+                Les jambes sont croisées au sol sans croiser les pieds sur les cuisses. Mollets et pieds reposent à plat sur le zabuton.
+              </span>
+            </div>
+          </label>
+
+          <label class="guide-option-card flex items-start p-4 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-800/40 hover:bg-amber-50/40 dark:hover:bg-amber-950/20 hover:border-amber-300 dark:hover:border-amber-800 cursor-pointer transition focus-within:ring-2 focus-within:ring-amber-500">
+            <input type="radio" name="posture" value="seiza" class="sr-only" />
+            <span class="guide-indicator w-5 h-5 rounded-full border-2 border-gray-300 dark:border-gray-600 mr-3.5 mt-0.5 shrink-0 flex items-center justify-center transition">
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-600 dark:bg-amber-500 hidden"></span>
+            </span>
+            <div class="flex-1">
+              <span class="block font-semibold text-sm sm:text-base text-gray-900 dark:text-white">
+                Seiza (À genoux)
+              </span>
+              <span class="block text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-0.5">
+                Genoux pliés vers l'avant, le zafu calé verticalement ou horizontalement entre les jambes pour décharger le poids des chevilles.
+              </span>
+            </div>
+          </label>
+
+          <label class="guide-option-card flex items-start p-4 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-800/40 hover:bg-amber-50/40 dark:hover:bg-amber-950/20 hover:border-amber-300 dark:hover:border-amber-800 cursor-pointer transition focus-within:ring-2 focus-within:ring-amber-500">
+            <input type="radio" name="posture" value="ne_sais_pas" class="sr-only" />
+            <span class="guide-indicator w-5 h-5 rounded-full border-2 border-gray-300 dark:border-gray-600 mr-3.5 mt-0.5 shrink-0 flex items-center justify-center transition">
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-600 dark:bg-amber-500 hidden"></span>
+            </span>
+            <div class="flex-1">
+              <span class="block font-semibold text-sm sm:text-base text-gray-900 dark:text-white">
+                Je ne sais pas
+              </span>
+              <span class="block text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-0.5">
+                Je souhaite le modèle de référence universel pour découvrir sereinement la posture.
+              </span>
+            </div>
+          </label>
+        </fieldset>
+      </section>
+
+      <!-- ÉTAPE 3 : Morphologie -->
+      <section class="guide-step-view hidden" data-step="3" aria-labelledby="q3-title">
+        <div class="mb-5">
+          <span class="text-xs uppercase tracking-wider font-semibold text-amber-700 dark:text-amber-400">
+            Repère 3 · Morphologie & Souplesse
+          </span>
+          <h2 id="q3-title" class="text-xl sm:text-2xl font-bold font-heading text-gray-900 dark:text-white mt-1">
+            Quelle est votre morphologie ?
+          </h2>
+          <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-1">
+            Dans le zazen, le bassin bascule vers l'avant et les deux genoux pressent le sol. La stature et l'ouverture du bassin guident la hauteur.
+          </p>
+        </div>
+
+        <fieldset class="space-y-3">
+          <legend class="sr-only">Choisissez votre morphologie</legend>
+
+          <label class="guide-option-card flex items-start p-4 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-800/40 hover:bg-amber-50/40 dark:hover:bg-amber-950/20 hover:border-amber-300 dark:hover:border-amber-800 cursor-pointer transition focus-within:ring-2 focus-within:ring-amber-500">
+            <input type="radio" name="morphologie" value="standard" class="sr-only" />
+            <span class="guide-indicator w-5 h-5 rounded-full border-2 border-gray-300 dark:border-gray-600 mr-3.5 mt-0.5 shrink-0 flex items-center justify-center transition">
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-600 dark:bg-amber-500 hidden"></span>
+            </span>
+            <div class="flex-1">
+              <div class="flex items-center gap-2">
+                <span class="font-semibold text-sm sm:text-base text-gray-900 dark:text-white">Stature standard (jusqu'à 1m80) et souplesse normale</span>
+                <span class="text-[11px] px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-900/60 text-amber-800 dark:text-amber-300 font-medium">85% des adultes</span>
+              </div>
+              <span class="block text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-0.5">
+                Mes genoux se rapprochent facilement du sol une fois assis sur un coussin classique.
+              </span>
+            </div>
+          </label>
+
+          <label class="guide-option-card flex items-start p-4 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-800/40 hover:bg-amber-50/40 dark:hover:bg-amber-950/20 hover:border-amber-300 dark:hover:border-amber-800 cursor-pointer transition focus-within:ring-2 focus-within:ring-amber-500">
+            <input type="radio" name="morphologie" value="tres_souple" class="sr-only" />
+            <span class="guide-indicator w-5 h-5 rounded-full border-2 border-gray-300 dark:border-gray-600 mr-3.5 mt-0.5 shrink-0 flex items-center justify-center transition">
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-600 dark:bg-amber-500 hidden"></span>
+            </span>
+            <div class="flex-1">
+              <span class="block font-semibold text-sm sm:text-base text-gray-900 dark:text-white">
+                Très souple des hanches (genoux au sol sans effort)
+              </span>
+              <span class="block text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-0.5">
+                Mes hanches s'ouvrent naturellement sans tension dans les aines. Un coussin trop haut cambrerait mon dos.
+              </span>
+            </div>
+          </label>
+
+          <label class="guide-option-card flex items-start p-4 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-800/40 hover:bg-amber-50/40 dark:hover:bg-amber-950/20 hover:border-amber-300 dark:hover:border-amber-800 cursor-pointer transition focus-within:ring-2 focus-within:ring-amber-500">
+            <input type="radio" name="morphologie" value="grand_gabarit" class="sr-only" />
+            <span class="guide-indicator w-5 h-5 rounded-full border-2 border-gray-300 dark:border-gray-600 mr-3.5 mt-0.5 shrink-0 flex items-center justify-center transition">
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-600 dark:bg-amber-500 hidden"></span>
+            </span>
+            <div class="flex-1">
+              <span class="block font-semibold text-sm sm:text-base text-gray-900 dark:text-white">
+                Grand gabarit (plus de 1m80) ou hanches peu mobiles
+              </span>
+              <span class="block text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-0.5">
+                Mes genoux restent surélevés au-dessus du sol, mon dos a tendance à s'arrondir sans surélévation.
+              </span>
+            </div>
+          </label>
+
+          <label class="guide-option-card flex items-start p-4 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-800/40 hover:bg-amber-50/40 dark:hover:bg-amber-950/20 hover:border-amber-300 dark:hover:border-amber-800 cursor-pointer transition focus-within:ring-2 focus-within:ring-amber-500">
+            <input type="radio" name="morphologie" value="specifique" class="sr-only" />
+            <span class="guide-indicator w-5 h-5 rounded-full border-2 border-gray-300 dark:border-gray-600 mr-3.5 mt-0.5 shrink-0 flex items-center justify-center transition">
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-600 dark:bg-amber-500 hidden"></span>
+            </span>
+            <div class="flex-1">
+              <span class="block font-semibold text-sm sm:text-base text-gray-900 dark:text-white">
+                Je préfère être conseillé / Confection sur mesure
+              </span>
+              <span class="block text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-0.5">
+                Stature particulière (&lt; 1m50 ou &gt; 1m90), genoux sensibles ou demande sur mesure : échangez avec Véronique.
+              </span>
+            </div>
+          </label>
+        </fieldset>
+      </section>
+
+      <!-- ÉTAPE 4 : Hauteur -->
+      <section class="guide-step-view hidden" data-step="4" aria-labelledby="q4-title">
+        <div class="mb-5">
+          <span class="text-xs uppercase tracking-wider font-semibold text-amber-700 dark:text-amber-400">
+            Repère 4 · Hauteur recherchée
+          </span>
+          <h2 id="q4-title" class="text-xl sm:text-2xl font-bold font-heading text-gray-900 dark:text-white mt-1">
+            Quelle hauteur recherchez-vous ?
+          </h2>
+          <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-1">
+            La hauteur du zafu influence notamment l'inclinaison du bassin et la position des jambes.
+          </p>
+        </div>
+
+        <fieldset class="space-y-3">
+          <legend class="sr-only">Choisissez la hauteur de zafu souhaitée</legend>
+
+          <label class="guide-option-card flex items-start p-4 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-800/40 hover:bg-amber-50/40 dark:hover:bg-amber-950/20 hover:border-amber-300 dark:hover:border-amber-800 cursor-pointer transition focus-within:ring-2 focus-within:ring-amber-500">
+            <input type="radio" name="hauteur" value="intermediaire" class="sr-only" />
+            <span class="guide-indicator w-5 h-5 rounded-full border-2 border-gray-300 dark:border-gray-600 mr-3.5 mt-0.5 shrink-0 flex items-center justify-center transition">
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-600 dark:bg-amber-500 hidden"></span>
+            </span>
+            <div class="flex-1">
+              <div class="flex items-center gap-2">
+                <span class="font-semibold text-sm sm:text-base text-gray-900 dark:text-white">Hauteur intermédiaire (~15 cm — Taille M)</span>
+                <span class="text-[11px] px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-900/60 text-amber-800 dark:text-amber-300 font-medium">Standard recommandé</span>
+              </div>
+              <span class="block text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-0.5">
+                Le gabarit traditionnel transmis par maître Deshimaru. Convient à la très grande majorité des pratiquants.
+              </span>
+            </div>
+          </label>
+
+          <label class="guide-option-card flex items-start p-4 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-800/40 hover:bg-amber-50/40 dark:hover:bg-amber-950/20 hover:border-amber-300 dark:hover:border-amber-800 cursor-pointer transition focus-within:ring-2 focus-within:ring-amber-500">
+            <input type="radio" name="hauteur" value="basse" class="sr-only" />
+            <span class="guide-indicator w-5 h-5 rounded-full border-2 border-gray-300 dark:border-gray-600 mr-3.5 mt-0.5 shrink-0 flex items-center justify-center transition">
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-600 dark:bg-amber-500 hidden"></span>
+            </span>
+            <div class="flex-1">
+              <span class="block font-semibold text-sm sm:text-base text-gray-900 dark:text-white">
+                Plutôt bas (~13 cm — Taille S)
+              </span>
+              <span class="block text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-0.5">
+                Idéal pour les personnes très souples en plein lotus, petits gabarits ou pour emporter en voyage et sesshin.
+              </span>
+            </div>
+          </label>
+
+          <label class="guide-option-card flex items-start p-4 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-800/40 hover:bg-amber-50/40 dark:hover:bg-amber-950/20 hover:border-amber-300 dark:hover:border-amber-800 cursor-pointer transition focus-within:ring-2 focus-within:ring-amber-500">
+            <input type="radio" name="hauteur" value="haute" class="sr-only" />
+            <span class="guide-indicator w-5 h-5 rounded-full border-2 border-gray-300 dark:border-gray-600 mr-3.5 mt-0.5 shrink-0 flex items-center justify-center transition">
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-600 dark:bg-amber-500 hidden"></span>
+            </span>
+            <div class="flex-1">
+              <span class="block font-semibold text-sm sm:text-base text-gray-900 dark:text-white">
+                Plutôt haut (~17 cm — Taille L)
+              </span>
+              <span class="block text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-0.5">
+                Surélévation confortable pour grands gabarits (> 1m80), hanches serrées ou posture seiza à genoux.
+              </span>
+            </div>
+          </label>
+
+          <label class="guide-option-card flex items-start p-4 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-800/40 hover:bg-amber-50/40 dark:hover:bg-amber-950/20 hover:border-amber-300 dark:hover:border-amber-800 cursor-pointer transition focus-within:ring-2 focus-within:ring-amber-500">
+            <input type="radio" name="hauteur" value="ne_sais_pas" class="sr-only" />
+            <span class="guide-indicator w-5 h-5 rounded-full border-2 border-gray-300 dark:border-gray-600 mr-3.5 mt-0.5 shrink-0 flex items-center justify-center transition">
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-600 dark:bg-amber-500 hidden"></span>
+            </span>
+            <div class="flex-1">
+              <span class="block font-semibold text-sm sm:text-base text-gray-900 dark:text-white">
+                Je ne sais pas
+              </span>
+              <span class="block text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-0.5">
+                Laissez le guide déterminer la hauteur la plus harmonieuse d'après votre posture et votre morphologie.
+              </span>
+            </div>
+          </label>
+        </fieldset>
+      </section>
+
+      <!-- ÉTAPE 5 : Rembourrage -->
+      <section class="guide-step-view hidden" data-step="5" aria-labelledby="q5-title">
+        <div class="mb-5">
+          <span class="text-xs uppercase tracking-wider font-semibold text-amber-700 dark:text-amber-400">
+            Repère 5 · Garnissage & Rembourrage
+          </span>
+          <h2 id="q5-title" class="text-xl sm:text-2xl font-bold font-heading text-gray-900 dark:text-white mt-1">
+            Quel type de rembourrage souhaitez-vous ?
+          </h2>
+          <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-1">
+            À l'atelier Myokan, nous utilisons exclusivement le <strong>kapok naturel végétal</strong>, fibre soyeuse et imputrescible extraite de l'arbre kapokier qui offre un soutien dense et ferme ne s'affaissant pas.
+          </p>
+        </div>
+
+        <fieldset class="space-y-3">
+          <legend class="sr-only">Choisissez la formule de garnissage</legend>
+
+          <label class="guide-option-card flex items-start p-4 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-800/40 hover:bg-amber-50/40 dark:hover:bg-amber-950/20 hover:border-amber-300 dark:hover:border-amber-800 cursor-pointer transition focus-within:ring-2 focus-within:ring-amber-500">
+            <input type="radio" name="rembourrage" value="plein" class="sr-only" />
+            <span class="guide-indicator w-5 h-5 rounded-full border-2 border-gray-300 dark:border-gray-600 mr-3.5 mt-0.5 shrink-0 flex items-center justify-center transition">
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-600 dark:bg-amber-500 hidden"></span>
+            </span>
+            <div class="flex-1">
+              <div class="flex items-center gap-2">
+                <span class="font-semibold text-sm sm:text-base text-gray-900 dark:text-white">Zafu plein garni de kapok (Prêt à l'assise)</span>
+                <span class="text-[11px] px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-900/60 text-amber-800 dark:text-amber-300 font-medium">Recommandé</span>
+              </div>
+              <span class="block text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-0.5">
+                Rempli et tassé à l'atelier avec le dosage traditionnel. Prêt à méditer dès réception.
+              </span>
+            </div>
+          </label>
+
+          <label class="guide-option-card flex items-start p-4 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-800/40 hover:bg-amber-50/40 dark:hover:bg-amber-950/20 hover:border-amber-300 dark:hover:border-amber-800 cursor-pointer transition focus-within:ring-2 focus-within:ring-amber-500">
+            <input type="radio" name="rembourrage" value="vide" class="sr-only" />
+            <span class="guide-indicator w-5 h-5 rounded-full border-2 border-gray-300 dark:border-gray-600 mr-3.5 mt-0.5 shrink-0 flex items-center justify-center transition">
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-600 dark:bg-amber-500 hidden"></span>
+            </span>
+            <div class="flex-1">
+              <span class="block font-semibold text-sm sm:text-base text-gray-900 dark:text-white">
+                Housse vide seule (à garnir vous-même)
+              </span>
+              <span class="block text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-0.5">
+                Housse en coton avec fente intérieure protégée. Idéal si vous disposez déjà de kapok ou pour un envoi allégé.
+              </span>
+            </div>
+          </label>
+
+          <label class="guide-option-card flex items-start p-4 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-800/40 hover:bg-amber-50/40 dark:hover:bg-amber-950/20 hover:border-amber-300 dark:hover:border-amber-800 cursor-pointer transition focus-within:ring-2 focus-within:ring-amber-500">
+            <input type="radio" name="rembourrage" value="conseil" class="sr-only" />
+            <span class="guide-indicator w-5 h-5 rounded-full border-2 border-gray-300 dark:border-gray-600 mr-3.5 mt-0.5 shrink-0 flex items-center justify-center transition">
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-600 dark:bg-amber-500 hidden"></span>
+            </span>
+            <div class="flex-1">
+              <span class="block font-semibold text-sm sm:text-base text-gray-900 dark:text-white">
+                Je préfère être conseillé
+              </span>
+              <span class="block text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-0.5">
+                Nous préciserons la quantité de garniture et la fermeté adaptées à votre dos avec l'artisane.
+              </span>
+            </div>
+          </label>
+        </fieldset>
+      </section>
+
+      <!-- ÉTAPE RÉSULTAT : RECOMMANDATION PERSONNALISÉE -->
+      <section class="guide-step-view hidden" data-step="result" aria-labelledby="result-title">
+        
+        <!-- En-tête orientation -->
+        <div class="mb-6 pb-5 border-b border-gray-200 dark:border-gray-800">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 dark:bg-amber-950/50 text-amber-900 dark:text-amber-300 text-xs font-semibold mb-2.5">
+            <span>✓ Orientation personnalisée</span>
+          </div>
+          <h2 id="result-title" class="text-2xl sm:text-3xl font-bold font-heading text-gray-900 dark:text-white">
+            Votre orientation
+          </h2>
+          <p id="result-subtitle" class="text-sm sm:text-base text-gray-700 dark:text-gray-300 mt-1 font-medium">
+            Ce modèle semble correspondre à vos critères.
+          </p>
+        </div>
+
+        <!-- Fiche produit recommandée -->
+        <div class="bg-gray-50 dark:bg-gray-800/60 rounded-2xl border border-gray-200 dark:border-gray-700/80 p-5 sm:p-7 mb-6">
+          <div class="flex flex-col md:flex-row gap-6 items-center md:items-start">
+            
+            <!-- Visuel -->
+            <div class="w-full md:w-52 shrink-0 text-center">
+              <div class="bg-white dark:bg-gray-900 p-3 rounded-xl border border-gray-200 dark:border-gray-800 shadow-xs">
+                <img 
+                  id="result-image" 
+                  src="/zafu-plein-noir.webp" 
+                  alt="Zafu artisanal recommandé" 
+                  class="w-40 sm:w-44 h-auto mx-auto rounded-lg object-contain"
+                  width="200"
+                  height="160"
+                />
+              </div>
+              <span id="result-size-badge" class="inline-block mt-2 text-xs font-mono font-bold px-2.5 py-1 rounded-md bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
+                Taille M · 30 × 15 cm
+              </span>
+            </div>
+
+            <!-- Détails et explications -->
+            <div class="flex-1 space-y-4 w-full">
+              <div>
+                <h3 id="result-name" class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">
+                  Zafu traditionnel — Taille M
+                </h3>
+                <p id="result-price" class="text-base font-semibold text-amber-700 dark:text-amber-400 mt-0.5">
+                  45 € plein (avec kapok) · 27 € vide
+                </p>
+              </div>
+
+              <!-- Bloc Pourquoi ce choix ? -->
+              <div class="p-4 rounded-xl bg-white dark:bg-gray-900 border border-amber-200/70 dark:border-amber-900/40">
+                <h4 class="text-xs uppercase font-bold tracking-wider text-amber-800 dark:text-amber-300 mb-1 flex items-center gap-1.5">
+                  <span>💡</span> Pourquoi ce choix ?
+                </h4>
+                <p id="result-why" class="text-xs sm:text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                  <!-- Injecté dynamiquement par JS -->
+                </p>
+              </div>
+
+              <!-- Caractéristiques clés -->
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs">
+                <div class="p-2.5 rounded-lg bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800">
+                  <span class="text-gray-500 dark:text-gray-400 block">Dimensions</span>
+                  <strong id="result-dimensions" class="text-gray-900 dark:text-white text-xs sm:text-sm font-semibold">30 × 15 cm</strong>
+                </div>
+                <div class="p-2.5 rounded-lg bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800">
+                  <span class="text-gray-500 dark:text-gray-400 block">Hauteur</span>
+                  <strong id="result-height" class="text-gray-900 dark:text-white text-xs sm:text-sm font-semibold">15 cm</strong>
+                </div>
+                <div class="p-2.5 rounded-lg bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800">
+                  <span class="text-gray-500 dark:text-gray-400 block">Rembourrage</span>
+                  <strong id="result-filling" class="text-gray-900 dark:text-white text-xs sm:text-sm font-semibold">Kapok naturel plein</strong>
+                </div>
+              </div>
+
+              <div class="text-xs text-gray-600 dark:text-gray-400 pt-1">
+                <strong>Options disponibles :</strong> toiles 100 % coton (noir dojo, bordeaux, bleu nuit, vert, marron...), poignée de transport en pur lin ou confection sur mesure.
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Escape Hatch : Vous hésitez encore ? -->
+        <div class="p-5 sm:p-6 rounded-2xl bg-amber-50/70 dark:bg-amber-950/25 border border-amber-200/80 dark:border-amber-900/40 mb-6">
+          <div class="space-y-2">
+            <h4 class="font-bold text-gray-900 dark:text-white text-base">
+              Vous hésitez encore ?
+            </h4>
+            <p class="text-xs sm:text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+              Chaque pratique et chaque morphologie sont différentes. Véronique Myokan Harruis peut vous conseiller directement avant la confection de votre zafu.
+            </p>
+          </div>
+
+          <div class="mt-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+            <a 
+              id="result-cta-contact"
+              href="mailto:myokan@hotmail.fr" 
+              class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-amber-800 hover:bg-amber-900 text-white dark:bg-amber-600 dark:hover:bg-amber-500 text-xs sm:text-sm font-semibold transition text-center shadow-xs"
+            >
+              <span>Demander conseil à Myokan</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+            </a>
+
+            <a 
+              id="result-cta-configurator"
+              href="/zafus/" 
+              class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-gray-900 hover:bg-gray-800 text-white dark:bg-white dark:text-gray-950 dark:hover:bg-gray-100 text-xs sm:text-sm font-semibold transition shadow-xs text-center"
+            >
+              <span>Configurer ce modèle & commander</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Récapitulatif modifiable des critères -->
+        <div class="p-4 rounded-xl bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800 text-xs text-gray-600 dark:text-gray-400 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div class="space-y-1">
+            <span class="font-semibold text-gray-800 dark:text-gray-200">Vos critères enregistrés :</span>
+            <p id="result-answers-summary" class="leading-relaxed">
+              Expérience : Débutant · Posture : Demi-lotus · Morphologie : Standard · Hauteur : 15 cm · Remplissage : Plein
+            </p>
+          </div>
+          <button 
+            type="button" 
+            id="guide-restart-btn"
+            class="self-start sm:self-auto shrink-0 px-3 py-1.5 rounded-lg text-xs font-semibold text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+          >
+            Modifier mes réponses
+          </button>
+        </div>
+
+      </section>
+
+    </div>
+
+    <!-- Pied de formulaire : Boutons Précédent / Suivant -->
+    <div id="guide-nav-bar" class="mt-6 pt-5 border-t border-gray-100 dark:border-gray-800 flex items-center justify-between">
+      <button 
+        type="button" 
+        id="guide-prev-btn" 
+        class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs sm:text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition disabled:opacity-30 disabled:pointer-events-none"
+        disabled
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        <span>← Modifier ma réponse</span>
+      </button>
+
+      <span class="text-xs text-gray-500 dark:text-gray-400 hidden sm:inline">
+        Cliquez sur une option pour avancer
+      </span>
+
+      <button 
+        type="button" 
+        id="guide-next-btn" 
+        class="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-gray-900 hover:bg-gray-800 text-white dark:bg-white dark:text-gray-950 dark:hover:bg-gray-100 text-xs sm:text-sm font-semibold transition shadow-xs disabled:opacity-40 disabled:pointer-events-none"
+        disabled
+      >
+        <span id="guide-next-text">Continuer</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+    </div>
+
+  </div>
+
+  <!-- Note de réassurance sous le questionnaire -->
+  <div class="mt-4 px-2 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-gray-500 dark:text-gray-400">
+    <div class="flex items-center gap-2">
+      <span>🌿 100 % kapok végétal naturel</span>
+      <span>·</span>
+      <span>🧵 Fabrication artisanale à Montpellier</span>
+    </div>
+    <a href="#guide-detaille" class="underline hover:text-gray-700 dark:hover:text-gray-300">
+      Consulter notre guide écrit complet ci-dessous ↓
+    </a>
+  </div>
+</div>
+
+<script>
+  import { evaluateZafuRecommendation, type UserAnswers } from "@data/zafus";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const root = document.getElementById("zafu-guide-app");
+    if (!root) return;
+
+    let currentStep = 1;
+    const totalSteps = 5;
+    const answers: UserAnswers = {};
+
+    const progressFill = document.getElementById("guide-progress-fill") as HTMLElement;
+    const progressBar = document.getElementById("guide-progress-bar") as HTMLElement;
+    const stepLabel = document.getElementById("guide-step-label") as HTMLElement;
+    const stepPct = document.getElementById("guide-step-pct") as HTMLElement;
+    const prevBtn = document.getElementById("guide-prev-btn") as HTMLButtonElement;
+    const nextBtn = document.getElementById("guide-next-btn") as HTMLButtonElement;
+    const nextText = document.getElementById("guide-next-text") as HTMLElement;
+    const navBar = document.getElementById("guide-nav-bar") as HTMLElement;
+    const restartBtn = document.getElementById("guide-restart-btn") as HTMLButtonElement;
+
+    const stepViews = root.querySelectorAll<HTMLElement>(".guide-step-view");
+
+    // Écoute des clics sur les cartes d'options
+    const optionCards = root.querySelectorAll<HTMLLabelElement>(".guide-option-card");
+    optionCards.forEach((card) => {
+      const input = card.querySelector<HTMLInputElement>("input[type='radio']");
+      if (!input) return;
+
+      card.addEventListener("click", () => {
+        const groupName = input.name;
+        const allInGroup = root.querySelectorAll<HTMLInputElement>(`input[name='${groupName}']`);
+        
+        allInGroup.forEach((otherInput) => {
+          const parentCard = otherInput.closest<HTMLLabelElement>(".guide-option-card");
+          const dot = parentCard?.querySelector<HTMLElement>(".guide-indicator span");
+          if (parentCard) {
+            parentCard.classList.remove("border-amber-600", "dark:border-amber-400", "bg-amber-50/70", "dark:bg-amber-950/30", "ring-1", "ring-amber-500");
+          }
+          if (dot) dot.classList.add("hidden");
+        });
+
+        input.checked = true;
+        card.classList.add("border-amber-600", "dark:border-amber-400", "bg-amber-50/70", "dark:bg-amber-950/30", "ring-1", "ring-amber-500");
+        const activeDot = card.querySelector<HTMLElement>(".guide-indicator span");
+        if (activeDot) activeDot.classList.remove("hidden");
+
+        // Enregistrer la réponse
+        // @ts-ignore
+        answers[groupName as keyof UserAnswers] = input.value;
+
+        // Activer le bouton continuer
+        nextBtn.disabled = false;
+
+        // Analytics (safe)
+        if (typeof window !== "undefined" && (window as any).va) {
+          (window as any).va("event", { name: "guide_option_selected", step: currentStep, option: input.value });
+        }
+
+        // Avancer doucement vers la question suivante
+        setTimeout(() => {
+          if (currentStep <= totalSteps) {
+            goToStep(currentStep + 1);
+          }
+        }, 250);
+      });
+    });
+
+    function updateStepUI() {
+      // Masquer toutes les étapes
+      stepViews.forEach((view) => {
+        const stepNum = view.getAttribute("data-step");
+        if (currentStep <= totalSteps && stepNum === String(currentStep)) {
+          view.classList.remove("hidden");
+        } else if (currentStep > totalSteps && stepNum === "result") {
+          view.classList.remove("hidden");
+        } else {
+          view.classList.add("hidden");
+        }
+      });
+
+      // Gestion de la barre de progression
+      if (currentStep <= totalSteps) {
+        navBar.classList.remove("hidden");
+        const pct = Math.round((currentStep / totalSteps) * 100);
+        progressFill.style.width = `${pct}%`;
+        stepLabel.textContent = `Étape ${currentStep} sur ${totalSteps}`;
+        stepPct.textContent = `${pct}%`;
+        progressBar.setAttribute("aria-valuenow", String(currentStep));
+        progressBar.setAttribute("aria-valuetext", `Étape ${currentStep} sur ${totalSteps}`);
+
+        prevBtn.disabled = currentStep === 1;
+        nextText.textContent = currentStep === totalSteps ? "Voir mon résultat" : "Continuer";
+
+        // Vérifier si cette étape a déjà une réponse
+        const currentField = getFieldForStep(currentStep);
+        // @ts-ignore
+        const hasAnswer = Boolean(answers[currentField]);
+        nextBtn.disabled = !hasAnswer;
+      } else {
+        // Mode résultat
+        navBar.classList.add("hidden");
+        progressFill.style.width = "100%";
+        stepLabel.textContent = "Orientation personnalisée";
+        stepPct.textContent = "100%";
+        renderRecommendation();
+
+        // Analytics (safe)
+        if (typeof window !== "undefined" && (window as any).va) {
+          (window as any).va("event", { name: "guide_completed", answers: JSON.stringify(answers) });
+        }
+      }
+
+      // Scroll doux vers le haut du composant
+      root.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+
+    function getFieldForStep(step: number): keyof UserAnswers {
+      switch (step) {
+        case 1: return "experience";
+        case 2: return "posture";
+        case 3: return "morphologie";
+        case 4: return "hauteur";
+        case 5: return "rembourrage";
+        default: return "experience";
+      }
+    }
+
+    function goToStep(step: number) {
+      if (step < 1) step = 1;
+      currentStep = step;
+      updateStepUI();
+    }
+
+    function renderRecommendation() {
+      const rec = evaluateZafuRecommendation(answers);
+
+      const resultImage = document.getElementById("result-image") as HTMLImageElement;
+      const resultName = document.getElementById("result-name") as HTMLElement;
+      const resultPrice = document.getElementById("result-price") as HTMLElement;
+      const resultSizeBadge = document.getElementById("result-size-badge") as HTMLElement;
+      const resultWhy = document.getElementById("result-why") as HTMLElement;
+      const resultDimensions = document.getElementById("result-dimensions") as HTMLElement;
+      const resultHeight = document.getElementById("result-height") as HTMLElement;
+      const resultFilling = document.getElementById("result-filling") as HTMLElement;
+      const resultAnswersSummary = document.getElementById("result-answers-summary") as HTMLElement;
+      const ctaConfigurator = document.getElementById("result-cta-configurator") as HTMLAnchorElement;
+      const ctaContact = document.getElementById("result-cta-contact") as HTMLAnchorElement;
+
+      // Affichage visuel & textes
+      resultImage.src = rec.sizeData.img;
+      resultImage.alt = rec.sizeData.alt;
+      resultName.textContent = `Zafu traditionnel — Taille ${rec.size}`;
+      resultSizeBadge.textContent = rec.size === "Sur mesure" ? "Sur mesure" : `Taille ${rec.size} · ${rec.sizeData.detail}`;
+
+      if (rec.size === "Sur mesure") {
+        resultPrice.textContent = "Tarif sur devis selon confection";
+      } else {
+        const fullPrice = rec.price.plein ? `${rec.price.plein} € plein (avec kapok)` : "";
+        const emptyPrice = rec.price.vide ? `${rec.price.vide} € vide` : "";
+        resultPrice.textContent = `${fullPrice} · ${emptyPrice}`;
+      }
+
+      resultWhy.textContent = rec.whyExplanation;
+      resultDimensions.textContent = rec.dimensionsSummary;
+      resultHeight.textContent = rec.heightSummary;
+      resultFilling.textContent = rec.fillingSummary;
+
+      // Résumé lisible des réponses
+      const expMap: Record<string, string> = {
+        debutant: "Débutant",
+        quelque_temps: "Quelque temps",
+        regulier: "Régulier",
+        ne_sais_pas: "Je préfère être conseillé",
+      };
+      const postMap: Record<string, string> = {
+        demi_lotus: "Demi-lotus",
+        lotus: "Plein lotus",
+        birmane_tailleur: "Birmane / Tailleur",
+        seiza: "Seiza (À genoux)",
+        ne_sais_pas: "En découverte",
+      };
+      const morphMap: Record<string, string> = {
+        standard: "Standard (jusqu'à 1m80)",
+        tres_souple: "Très souple",
+        grand_gabarit: "Grand gabarit (> 1m80)",
+        specifique: "Sur mesure / Conseil",
+      };
+
+      const expText = answers.experience ? expMap[answers.experience] || answers.experience : "Non précisé";
+      const postText = answers.posture ? postMap[answers.posture] || answers.posture : "Non précisé";
+      const morphText = answers.morphologie ? morphMap[answers.morphologie] || answers.morphologie : "Non précisé";
+      const fillText = answers.rembourrage === "vide" ? "Housse vide seule" : "Zafu plein (kapok naturel)";
+
+      resultAnswersSummary.textContent = `Expérience : ${expText} · Posture : ${postText} · Morphologie : ${morphText} · Garnissage : ${fillText}`;
+
+      // URL configurateur pré-paramétrée
+      const configUrl = new URL("/zafus/", window.location.origin);
+      if (rec.size) configUrl.searchParams.set("taille", rec.size);
+      configUrl.searchParams.set("type", rec.fillingType);
+      ctaConfigurator.href = configUrl.toString();
+
+      // Email pré-rempli pour échanger avec Véronique
+      const mailSubject = encodeURIComponent(`Demande de conseil : Zafu Taille ${rec.size}`);
+      const mailBody = encodeURIComponent(
+        `Bonjour Véronique,\n\nJ'ai suivi le guide de choix sur le site Myokan. Voici les repères de ma pratique :\n- Expérience : ${expText}\n- Posture : ${postText}\n- Morphologie : ${morphText}\n- Garnissage souhaité : ${fillText}\n\nLe guide m'oriente vers le Zafu Taille ${rec.size} (${rec.dimensionsSummary}).\n\nPouvez-vous me confirmer si ce modèle est bien adapté ou m'éclairer sur mon choix ?\n\nMerci beaucoup pour vos conseils,\n`
+      );
+      ctaContact.href = `mailto:myokan@hotmail.fr?subject=${mailSubject}&body=${mailBody}`;
+    }
+
+    // Gestion des boutons de navigation
+    prevBtn.addEventListener("click", () => {
+      if (currentStep > 1) {
+        goToStep(currentStep - 1);
+      }
+    });
+
+    nextBtn.addEventListener("click", () => {
+      if (currentStep <= totalSteps) {
+        goToStep(currentStep + 1);
+      }
+    });
+
+    restartBtn?.addEventListener("click", () => {
+      goToStep(1);
+    });
+
+    // Initialisation
+    updateStepUI();
+  });
+</script>

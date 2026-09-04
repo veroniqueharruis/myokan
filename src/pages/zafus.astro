@@ -2,120 +2,7 @@
 import Layout from "@layouts/Layout.astro";
 import OrderCta from "@components/order-cta.astro";
 
-// Source unique de vérité pour les tarifs
-const pricing = {
-  "S": { vide: 25, plein: 40 },
-  "M": { vide: 27, plein: 45 },
-  "L": { vide: 30, plein: 50 },
-  "Sur mesure": { vide: null, plein: null },
-};
-
-const sizes = [
-  { 
-    name: "S", 
-    width: 28, 
-    height: 13, 
-    desc: "Souplesse ou voyage", 
-    detail: "28 × 13 cm",
-    guideDesc: "Recommandée pour les personnes souples, assises en plein lotus, ou pour emporter en voyage et sesshin grâce à son encombrement réduit.",
-    isStandard: false,
-  },
-  { 
-    name: "M", 
-    width: 30, 
-    height: 15, 
-    desc: "Standard recommandé", 
-    detail: "30 × 15 cm",
-    guideDesc: "La taille de référence transmise par maître Deshimaru. Convient à la grande majorité des gabarits adultes pour une assise quotidienne stable.",
-    isStandard: true,
-  },
-  { 
-    name: "L", 
-    width: 32, 
-    height: 17, 
-    desc: "Assise haute / grand gabarit", 
-    detail: "32 × 17 cm",
-    guideDesc: "Recommandée pour les personnes de grande taille (> 1m80) ou ressentant une raideur dans les hanches nécessitant une surélévation.",
-    isStandard: false,
-  },
-  { 
-    name: "Sur mesure", 
-    width: null, 
-    height: null, 
-    desc: "Dimensions au choix", 
-    detail: "Sur mesure",
-    guideDesc: "Confection personnalisée selon vos indications morphologiques ou votre pratique. Précisez vos souhaits lors de votre message.",
-    isStandard: false,
-  },
-];
-
-const types = [
-  { 
-    label: "Plein (avec kapok)", 
-    val: "Plein", 
-    sublabel: "Prêt à l'assise",
-    note: "Rembourrage végétal naturel en kapok, dense et traditionnel." 
-  },
-  { 
-    label: "Vide (à remplir)", 
-    val: "Vide", 
-    sublabel: "Housse seule",
-    note: "Housse en pur coton avec fente intérieure si vous possédez du kapok." 
-  },
-];
-
-const baseColors = [
-  { name: "Noir", hex: "#000000", img: "/zafu-plein-noir.webp", checkColor: "#FFFFFF" },
-  { name: "Rouge", hex: "#B91C1C", img: "/zafu-plein-rouge.webp", checkColor: "#FFFFFF" },
-  { name: "Vert", hex: "#15803D", img: "/zafu-plein-vert.webp", checkColor: "#FFFFFF" },
-  { name: "Bleu", hex: "#1D4ED8", img: "/zafu-plein-bleu.webp", checkColor: "#FFFFFF" },
-  { name: "Marron", hex: "#4B2E1E", img: "/zafu-plein-marron.webp", checkColor: "#FFFFFF" },
-];
-
-const galleryImages = [
-  { 
-    src: "/zafus-pile.webp", 
-    alt: "Pile de zafus artisanaux multicolores — Atelier Myokan Montpellier",
-    title: "Pile de zafus artisanaux",
-    caption: "Confections multicolores empilées à l'atelier" 
-  },
-  { 
-    src: "/zafu-noir-lin.webp", 
-    alt: "Zafu de méditation zen noir avec poignée en lin naturel — Atelier Myokan Montpellier",
-    title: "Zafu noir & lin naturel",
-    caption: "Confection traditionnelle en coton noir avec poignée en pur lin" 
-  },
-  { 
-    src: "/zafus-vides-gris.webp", 
-    alt: "Zafus de méditation zen gris prêts à être remplis de kapok",
-    title: "Housses grises traditionnelles",
-    caption: "Prêtes à recevoir le kapok naturel" 
-  },
-  { 
-    src: "/zafu-bleu-fonce.webp", 
-    alt: "Zafu de méditation bleu foncé artisanal confectionné à Montpellier",
-    title: "Zafu bleu foncé classique",
-    caption: "Tissu 100 % coton épais et coutures renforcées" 
-  },
-  { 
-    src: "/zafu-plein-orange.webp", 
-    alt: "Zafu artisanal orange en tissu 100% coton",
-    title: "Zafu orange plein",
-    caption: "Plis réguliers et maintien ferme de l'assise" 
-  },
-  { 
-    src: "/zafu-vide-framboise.webp", 
-    alt: "Housse de zafu vide coloris framboise — Myokan",
-    title: "Housse framboise à plat",
-    caption: "Plis minutieusement formés selon la tradition" 
-  },
-  { 
-    src: "/zafu-plein-violet-pois.webp", 
-    alt: "Zafu de méditation violet à pois de confection artisanale",
-    title: "Zafu violet à pois",
-    caption: "Création originale sur mesure pour une pratiquante" 
-  },
-];
+import { pricing, sizes, types, baseColors, galleryImages } from "@data/zafus";
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",
@@ -198,6 +85,32 @@ const productSchema = {
         la bascule naturelle du bassin et l'alignement stable de la colonne vertébrale. Posé sur un <a href="/zabutons/" class="underline hover:text-gray-950 dark:hover:text-white font-medium">zabuton</a>, il protège les genoux et les chevilles lors de l'assise (consultez notre <a href="/pratique-zazen/#posture" class="underline hover:text-gray-950 dark:hover:text-white font-medium">guide de posture zazen</a>).
       </p>
     </header>
+
+    <!-- Bannière d'aide au choix -->
+    <aside class="mb-8 p-4 sm:p-5 rounded-xl bg-amber-50/80 dark:bg-amber-950/20 border border-amber-200/80 dark:border-amber-900/40 flex flex-col sm:flex-row sm:items-center justify-between gap-4" aria-label="Aide au choix du zafu">
+      <div class="flex items-start gap-3">
+        <span class="p-2 rounded-lg bg-amber-100 dark:bg-amber-900/50 text-amber-900 dark:text-amber-200 shrink-0 text-base leading-none" aria-hidden="true">
+          🧭
+        </span>
+        <div>
+          <p class="font-semibold text-gray-900 dark:text-white text-sm sm:text-base">
+            Vous hésitez sur la taille ou la hauteur ?
+          </p>
+          <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-300 mt-0.5">
+            Répondez à 4 questions simples pour identifier le coussin adapté à votre posture et votre souplesse.
+          </p>
+        </div>
+      </div>
+      <a 
+        href="/choisir-son-zafu/" 
+        class="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 text-xs sm:text-sm font-semibold rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border border-amber-300 dark:border-amber-700/60 hover:bg-amber-50 dark:hover:bg-amber-900/30 transition-colors shrink-0 shadow-xs"
+      >
+        <span>Quel zafu choisir ?</span>
+        <svg class="w-4 h-4 text-amber-700 dark:text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+    </aside>
 
     <!-- Configurateur interactif -->
     <section class="p-5 sm:p-7 bg-gray-50 dark:bg-gray-900/60 rounded-2xl border border-gray-200 dark:border-gray-800" aria-labelledby="configurator-heading">

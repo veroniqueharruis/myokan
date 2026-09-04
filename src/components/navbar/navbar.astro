@@ -4,6 +4,7 @@ import Container from "@components/container.astro";
 const currentPath = Astro.url.pathname.replace(/\/$/, "");
 
 const isZafusActive = currentPath === "/zafus";
+const isChoisirActive = currentPath === "/choisir-son-zafu";
 
 const accessoires = [
   { title: "Zabutons (tapis de sol)", path: "/zabutons/" },
@@ -54,13 +55,19 @@ const isContactActive = currentPath === "/contact";
           </a>
         </li>
 
-        <!-- 2. Bien choisir son zafu (Secondary) -->
+        <!-- 2. Quel zafu choisir ? (Secondary) -->
         <li>
           <a
-            href="/zafus/#sizes-guide-heading"
-            class="px-3 py-2 rounded-md transition focus-visible:ring-2 text-gray-700 dark:text-gray-300 hover:text-gray-950 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800"
+            href="/choisir-son-zafu/"
+            aria-current={isChoisirActive ? "page" : undefined}
+            class:list={[
+              "px-3 py-2 rounded-md transition focus-visible:ring-2",
+              isChoisirActive
+                ? "text-gray-950 dark:text-white font-semibold underline underline-offset-4 decoration-2"
+                : "text-gray-700 dark:text-gray-300 hover:text-gray-950 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800"
+            ]}
           >
-            Choisir son zafu
+            Quel zafu choisir ?
           </a>
         </li>
 
@@ -259,10 +266,16 @@ const isContactActive = currentPath === "/contact";
             </li>
             <li>
               <a
-                href="/zafus/#sizes-guide-heading"
-                class="block px-3 py-2 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800/60 transition"
+                href="/choisir-son-zafu/"
+                aria-current={isChoisirActive ? "page" : undefined}
+                class:list={[
+                  "block px-3 py-2 rounded-lg text-sm transition",
+                  isChoisirActive
+                    ? "text-gray-950 dark:text-white font-semibold bg-gray-100 dark:bg-gray-800"
+                    : "text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800/60"
+                ]}
               >
-                Bien choisir son zafu (Guide des tailles)
+                Quel zafu choisir ? (Guide interactif)
               </a>
             </li>
           </ul>

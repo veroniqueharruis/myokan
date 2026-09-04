@@ -1,0 +1,423 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/container.astro";
+import ChoisirZafuGuide from "@components/choisir-zafu-guide.astro";
+import OrderCta from "@components/order-cta.astro";
+import { sizes, pricing } from "@data/zafus";
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Accueil",
+      "item": "https://myokan.fr/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Quel zafu choisir ?",
+      "item": "https://myokan.fr/choisir-son-zafu/"
+    }
+  ]
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Quelle taille de zafu choisir si je débute la méditation ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pour un adulte débutant de stature moyenne (jusqu'à 1m80), la Taille M (30 cm de diamètre et 15 cm de hauteur) est le choix de référence recommandé. Transmise par maître Deshimaru, cette dimension offre le juste équilibre de hauteur pour permettre au bassin de basculer vers l'avant sans forcer sur les genoux ni cambrer exagérément les lombaires."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Comment savoir si mon zafu est trop haut ou trop bas ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Si votre zafu est trop bas par rapport à la souplesse de vos hanches, vos genoux restent suspendus en l'air sans toucher le sol, votre bassin bascule en arrière et votre dos s'arrondit rapidement en provoquant des tensions entre les omoplates. À l'inverse, si votre zafu est trop haut, vous ressentirez une cambrure lombaire excessive et vos aines seront comprimées vers l'avant."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Pourquoi choisir un zafu garni de kapok naturel plutôt que des balles d'épeautre ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Le kapok est une fibre végétale soyeuse, imputrescible et légère extraite des gousses de l'arbre kapokier. Dans la tradition Soto Zen, il est le matériau d'élection car il forme une masse dense et ferme qui ne s'écrase pas avec les années et conserve son ressort naturel. Les balles d'épeautre ou de sarrasin ont tendance à fuir sur les côtés sous le poids du corps et s'effritent en poussière avec le temps."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quelle est la différence entre un zafu et un zabuton ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Le zafu est le coussin d'assise rond qui surélève le bassin pour créer la bascule vers l'avant. Le zabuton est un grand tapis de sol rectangulaire et épais rembourré de coton, placé sous le zafu. Il protège les malléoles et les genoux de la dureté du sol et isole le pratiquant du froid pendant les longues assises."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Est-il possible de commander un zafu sur mesure ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Oui. À l'atelier Myokan, Véronique Myokan Harruis confectionne des zafus sur mesure pour les pratiquants ayant des besoins spécifiques : statures particulières (moins de 1m50 ou plus de 1m90), raideurs ou suites articulaires nécessitant une hauteur ou un diamètre particulier. Il vous suffit de nous contacter pour échanger directement."
+      }
+    }
+  ]
+};
+---
+
+<Layout
+  fullTitle="Quel zafu choisir ? Guide taille, hauteur et posture | Myokan"
+  description="Comment choisir son zafu de méditation zen ? Suivez notre guide de consultation selon votre posture, votre souplesse et votre morphologie pour trouver le zafu artisanal adapté.">
+  
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)} />
+
+  <main id="main-content" class="px-4 max-w-5xl mx-auto pt-8 pb-20">
+    
+    <!-- Fil d'Ariane -->
+    <nav aria-label="Fil d'Ariane" class="text-xs text-gray-500 dark:text-gray-400 mb-6">
+      <ol class="flex items-center gap-2">
+        <li>
+          <a href="/" class="hover:text-gray-900 dark:hover:text-white transition underline hover:no-underline">Accueil</a>
+        </li>
+        <li aria-hidden="true">/</li>
+        <li>
+          <a href="/zafus/" class="hover:text-gray-900 dark:hover:text-white transition underline hover:no-underline">Zafus</a>
+        </li>
+        <li aria-hidden="true">/</li>
+        <li class="text-gray-800 dark:text-gray-200 font-medium" aria-current="page">Quel zafu choisir ?</li>
+      </ol>
+    </nav>
+
+    <!-- En-tête de page -->
+    <header class="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100 dark:bg-amber-950/60 text-amber-900 dark:text-amber-300 text-xs font-semibold mb-4">
+        <span>Guide d'assise & morphologie · Confection artisanale</span>
+      </div>
+
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold font-heading text-gray-900 dark:text-white tracking-tight">
+        Quel zafu choisir ?
+      </h1>
+
+      <p class="text-base sm:text-lg text-gray-700 dark:text-gray-300 mt-4 leading-relaxed">
+        Le bon zafu dépend de votre posture, de votre morphologie et de votre pratique. Ce guide vous aide à identifier les caractéristiques qui vous conviennent avant de passer commande.
+      </p>
+
+      <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-2">
+        Vous hésitez encore ? Vous pouvez également nous contacter pour bénéficier d'un conseil personnalisé.
+      </p>
+
+      <!-- CTAs Hero -->
+      <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
+        <a 
+          href="#zafu-guide-app" 
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gray-900 hover:bg-gray-800 text-white dark:bg-white dark:text-gray-950 dark:hover:bg-gray-100 font-semibold text-sm sm:text-base shadow-sm transition"
+        >
+          <span>Commencer le guide</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          </svg>
+        </a>
+
+        <a 
+          href="/zafus/" 
+          class="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-750 text-gray-800 dark:text-gray-200 font-semibold text-sm sm:text-base transition"
+        >
+          <span>Voir tous les zafus</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Outil interactif : Consultation guidée -->
+    <section class="mb-16 sm:mb-20 scroll-mt-6" id="zafu-guide-app" aria-label="Questionnaire d'orientation pour zafu">
+      <ChoisirZafuGuide />
+    </section>
+
+    <!-- Guide éditorial approfondi & indexable pour le SEO -->
+    <article id="guide-detaille" class="border-t border-gray-200 dark:border-gray-800 pt-12 sm:pt-16 space-y-16">
+      
+      <!-- Section 1 : Les critères fondamentaux -->
+      <section aria-labelledby="criteres-title">
+        <div class="max-w-3xl">
+          <span class="text-xs uppercase tracking-wider font-semibold text-amber-700 dark:text-amber-400">
+            Repères anatomiques & tradition
+          </span>
+          <h2 id="criteres-title" class="text-2xl sm:text-3xl font-bold font-heading text-gray-900 dark:text-white mt-1">
+            Les critères essentiels pour bien choisir son zafu
+          </h2>
+          <p class="text-gray-700 dark:text-gray-300 mt-2.5 text-sm sm:text-base leading-relaxed">
+            Dans la tradition du bouddhisme Soto Zen, le zafu n'est pas un simple coussin de salon : c'est l'instrument fondamental qui permet l'assise immobile et stable pendant de longues périodes (zazen). Un zafu bien ajusté soulage les articulations et verticalise le tronc sans tension musculaire inutile.
+          </p>
+        </div>
+
+        <div class="mt-8 grid sm:grid-cols-2 gap-6">
+          
+          <div class="p-6 rounded-2xl bg-gray-50 dark:bg-gray-900/60 border border-gray-200 dark:border-gray-800">
+            <div class="w-8 h-8 rounded-lg bg-amber-100 dark:bg-amber-900/50 text-amber-900 dark:text-amber-300 flex items-center justify-center font-bold text-sm mb-3">
+              1
+            </div>
+            <h3 class="font-bold text-lg text-gray-900 dark:text-white">
+              La hauteur d'assise et la bascule du bassin
+            </h3>
+            <p class="text-xs sm:text-sm text-gray-700 dark:text-gray-300 mt-2 leading-relaxed">
+              La hauteur du zafu est déterminante : elle influence directement l'inclinaison du bassin et la position des jambes. En s'asseyant sur le tiers avant du coussin, le bassin bascule vers l'avant à hauteur de la 5<sup>e</sup> vertèbre lombaire. Si le zafu est trop bas, le bas du dos s'arrondit ; s'il est trop haut, les lombaires se cambrent excessivement.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-gray-50 dark:bg-gray-900/60 border border-gray-200 dark:border-gray-800">
+            <div class="w-8 h-8 rounded-lg bg-amber-100 dark:bg-amber-900/50 text-amber-900 dark:text-amber-300 flex items-center justify-center font-bold text-sm mb-3">
+              2
+            </div>
+            <h3 class="font-bold text-lg text-gray-900 dark:text-white">
+              Votre posture : lotus, demi-lotus ou seiza
+            </h3>
+            <p class="text-xs sm:text-sm text-gray-700 dark:text-gray-300 mt-2 leading-relaxed">
+              En <em>plein lotus</em>, le bassin est très proche du sol et les genoux s'ancrent naturellement (hauteur basse de 13 cm conseillée). En <em>demi-lotus</em> ou en tailleur, la hauteur standard de 15 cm offre la surélévation idéale. Pour la posture à genoux (<em>seiza</em>), un coussin de 17 cm posé verticalement ou horizontalement entre les talons décharge les chevilles.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-gray-50 dark:bg-gray-900/60 border border-gray-200 dark:border-gray-800">
+            <div class="w-8 h-8 rounded-lg bg-amber-100 dark:bg-amber-900/50 text-amber-900 dark:text-amber-300 flex items-center justify-center font-bold text-sm mb-3">
+              3
+            </div>
+            <h3 class="font-bold text-lg text-gray-900 dark:text-white">
+              Votre morphologie et la mobilité pelvienne
+            </h3>
+            <p class="text-xs sm:text-sm text-gray-700 dark:text-gray-300 mt-2 leading-relaxed">
+              Les personnes mesurant plus de 1m80 ou ayant des fémurs longs ont besoin d'un diamètre plus large et d'une hauteur d'assise plus conséquente (Taille L, 32 × 17 cm) pour permettre aux genoux d'atteindre le sol. Les personnes très souples privilégieront la Taille S (28 × 13 cm).
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-gray-50 dark:bg-gray-900/60 border border-gray-200 dark:border-gray-800">
+            <div class="w-8 h-8 rounded-lg bg-amber-100 dark:bg-amber-900/50 text-amber-900 dark:text-amber-300 flex items-center justify-center font-bold text-sm mb-3">
+              4
+            </div>
+            <h3 class="font-bold text-lg text-gray-900 dark:text-white">
+              Le kapok végétal naturel : fermeté & durabilité
+            </h3>
+            <p class="text-xs sm:text-sm text-gray-700 dark:text-gray-300 mt-2 leading-relaxed">
+              Tous nos zafus pleins sont garnis à 100 % de kapok naturel. Contrairement aux mousses synthétiques ou aux billes de polystyrène qui s'affaissent irrémédiablement, cette fibre issue du kapokier offre un soutien ferme, dense et pérenne qui conserve sa résilience pendant des décennies.
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Section 2 : Tableau comparatif des dimensions Myokan -->
+      <section aria-labelledby="tableau-tailles-title">
+        <div class="max-w-3xl mb-6">
+          <span class="text-xs uppercase tracking-wider font-semibold text-amber-700 dark:text-amber-400">
+            Gabarits d'atelier
+          </span>
+          <h2 id="tableau-tailles-title" class="text-2xl sm:text-3xl font-bold font-heading text-gray-900 dark:text-white mt-1">
+            Tableau comparatif des zafus Myokan
+          </h2>
+          <p class="text-gray-700 dark:text-gray-300 mt-2 text-sm sm:text-base leading-relaxed">
+            Chaque modèle est confectionné selon un patron précis issu de la méthode traditionnelle. Voici le détail des caractéristiques techniques de chaque format.
+          </p>
+        </div>
+
+        <div class="overflow-x-auto rounded-2xl border border-gray-200 dark:border-gray-800 shadow-xs">
+          <table class="w-full text-left border-collapse text-xs sm:text-sm">
+            <thead>
+              <tr class="bg-gray-100/70 dark:bg-gray-800/70 text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-800">
+                <th scope="col" class="p-3.5 sm:p-4 font-bold">Modèle</th>
+                <th scope="col" class="p-3.5 sm:p-4 font-bold">Dimensions (Ø × H)</th>
+                <th scope="col" class="p-3.5 sm:p-4 font-bold">Profil recommandé</th>
+                <th scope="col" class="p-3.5 sm:p-4 font-bold">Postures adaptées</th>
+                <th scope="col" class="p-3.5 sm:p-4 font-bold">Tarif indicatif</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200 dark:divide-gray-800 bg-white dark:bg-gray-900">
+              {sizes.map((s) => (
+                <tr class:list={[s.isStandard ? "bg-amber-50/40 dark:bg-amber-950/20" : ""]}>
+                  <td class="p-3.5 sm:p-4 font-semibold text-gray-900 dark:text-white">
+                    <div class="flex items-center gap-2">
+                      <span>Taille {s.name}</span>
+                      {s.isStandard && (
+                        <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-200 dark:bg-amber-900 text-amber-900 dark:text-amber-200">
+                          Standard
+                        </span>
+                      )}
+                    </div>
+                    <span class="block text-[11px] text-gray-500 dark:text-gray-400 font-normal mt-0.5">{s.desc}</span>
+                  </td>
+                  <td class="p-3.5 sm:p-4 font-mono text-gray-800 dark:text-gray-200 whitespace-nowrap">
+                    {s.detail}
+                  </td>
+                  <td class="p-3.5 sm:p-4 text-gray-700 dark:text-gray-300">
+                    {s.guideDesc}
+                  </td>
+                  <td class="p-3.5 sm:p-4 text-gray-700 dark:text-gray-300">
+                    {s.recommendedFor}
+                  </td>
+                  <td class="p-3.5 sm:p-4 font-semibold text-gray-900 dark:text-white whitespace-nowrap">
+                    {pricing[s.name].plein 
+                      ? `${pricing[s.name].plein} € plein / ${pricing[s.name].vide} € vide`
+                      : "Sur devis"}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Section 3 : Zafu et Zabuton, le duo indispensable -->
+      <section aria-labelledby="zafu-zabuton-title" class="p-6 sm:p-8 rounded-3xl bg-amber-50/60 dark:bg-amber-950/20 border border-amber-200/80 dark:border-amber-900/40">
+        <div class="flex flex-col md:flex-row gap-6 items-center">
+          <div class="w-full md:w-1/3 shrink-0 text-center">
+            <img 
+              src="/zabuton-plie-rouge.webp" 
+              alt="Zabuton artisanal rouge et zafu de méditation zen" 
+              class="w-56 h-auto mx-auto rounded-xl object-cover shadow-sm"
+              width="240"
+              height="200"
+              loading="lazy"
+            />
+          </div>
+          <div class="flex-1 space-y-3">
+            <span class="text-xs uppercase tracking-wider font-semibold text-amber-800 dark:text-amber-300">
+              Protection articulaire & isolation
+            </span>
+            <h2 id="zafu-zabuton-title" class="text-xl sm:text-2xl font-bold font-heading text-gray-900 dark:text-white">
+              Pourquoi zafu et zabuton sont-ils indissociables ?
+            </h2>
+            <p class="text-xs sm:text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+              Le <strong>zafu</strong> élève le bassin pour basculer le sacrum vers l'avant. Mais sans <strong>zabuton</strong> (tapis de sol épais en coton), le contact direct des genoux, des tibias et des malléoles osseuses contre un sol dur devient douloureux après quelques minutes et brise la concentration.
+            </p>
+            <p class="text-xs sm:text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+              Ensemble, ils composent le <em>trépied postural</em> stable (fesses sur le zafu, deux genoux pressant le zabuton) garantissant une immobilité confortable et bienfaisante.
+            </p>
+            <div class="pt-2">
+              <a 
+                href="/zabutons/" 
+                class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-amber-900 dark:text-amber-300 underline hover:no-underline"
+              >
+                <span>Découvrir les zabutons artisanaux Myokan</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4 : FAQ détaillée -->
+      <section aria-labelledby="faq-title">
+        <div class="max-w-3xl mb-8">
+          <span class="text-xs uppercase tracking-wider font-semibold text-amber-700 dark:text-amber-400">
+            Foire aux questions
+          </span>
+          <h2 id="faq-title" class="text-2xl sm:text-3xl font-bold font-heading text-gray-900 dark:text-white mt-1">
+            Questions fréquentes sur le choix d'un zafu
+          </h2>
+          <p class="text-gray-700 dark:text-gray-300 mt-2 text-sm sm:text-base leading-relaxed">
+            Retrouvez les réponses aux interrogations les plus fréquentes pour choisir sereinement votre coussin de méditation.
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          <details class="p-5 rounded-xl bg-gray-50 dark:bg-gray-900/60 border border-gray-200 dark:border-gray-800 group">
+            <summary class="font-bold text-gray-900 dark:text-white cursor-pointer list-none flex items-center justify-between gap-3 text-sm sm:text-base">
+              <span>Quelle taille choisir si je débute totalement la méditation ou le zazen ?</span>
+              <span class="text-amber-600 group-open:rotate-180 transition-transform font-mono text-lg shrink-0">↓</span>
+            </summary>
+            <p class="text-xs sm:text-sm text-gray-700 dark:text-gray-300 mt-3 leading-relaxed">
+              Pour un adulte débutant de stature moyenne (jusqu'à 1m80), la <strong>Taille M (30 × 15 cm)</strong> est le choix de référence recommandé. Transmise par maître Deshimaru lors de l'implantation du zen en Europe, cette proportion offre le juste compromis pour basculer naturellement le bassin sans cambrure excessive. Si vous mesurez plus de 1m80 ou avez les hanches raides, optez pour la <strong>Taille L (32 × 17 cm)</strong>.
+            </p>
+          </details>
+
+          <details class="p-5 rounded-xl bg-gray-50 dark:bg-gray-900/60 border border-gray-200 dark:border-gray-800 group">
+            <summary class="font-bold text-gray-900 dark:text-white cursor-pointer list-none flex items-center justify-between gap-3 text-sm sm:text-base">
+              <span>Comment savoir si mon zafu est à la bonne hauteur ?</span>
+              <span class="text-amber-600 group-open:rotate-180 transition-transform font-mono text-lg shrink-0">↓</span>
+            </summary>
+            <p class="text-xs sm:text-sm text-gray-700 dark:text-gray-300 mt-3 leading-relaxed">
+              Lorsque vous êtes assis sur le premier tiers du coussin, vos deux genoux doivent être en contact avec le sol (sur le zabuton) sans que vous ayez à forcer. Le bas du dos doit conserver son incurvation naturelle (lordose lombaire légère) et votre menton doit être rentré, colonne étirée vers le ciel. Si votre dos s'arrondit ou si vous ressentez une tension aiguë dans les aines, l'assise est trop basse.
+            </p>
+          </details>
+
+          <details class="p-5 rounded-xl bg-gray-50 dark:bg-gray-900/60 border border-gray-200 dark:border-gray-800 group">
+            <summary class="font-bold text-gray-900 dark:text-white cursor-pointer list-none flex items-center justify-between gap-3 text-sm sm:text-base">
+              <span>Pourquoi le kapok végétal est-il supérieur aux balles d'épeautre ou au sarrasin ?</span>
+              <span class="text-amber-600 group-open:rotate-180 transition-transform font-mono text-lg shrink-0">↓</span>
+            </summary>
+            <p class="text-xs sm:text-sm text-gray-700 dark:text-gray-300 mt-3 leading-relaxed">
+              Le kapok est une fibre végétale très légère, soyeuse et naturellement imputrescible issue de l'arbre kapokier. Contrairement aux balles d'épeautre qui fuient sous le poids du corps, font du bruit et s'effritent en poussière au fil des années, le kapok forme un bloc dense, ferme et douillet qui conserve une mémoire de forme remarquable. Il est le seul rembourrage reconnu dans la tradition vivante des monastères zen.
+            </p>
+          </details>
+
+          <details class="p-5 rounded-xl bg-gray-50 dark:bg-gray-900/60 border border-gray-200 dark:border-gray-800 group">
+            <summary class="font-bold text-gray-900 dark:text-white cursor-pointer list-none flex items-center justify-between gap-3 text-sm sm:text-base">
+              <span>Peut-on ajuster la fermeté ou vider un zafu avec le temps ?</span>
+              <span class="text-amber-600 group-open:rotate-180 transition-transform font-mono text-lg shrink-0">↓</span>
+            </summary>
+            <p class="text-xs sm:text-sm text-gray-700 dark:text-gray-300 mt-3 leading-relaxed">
+              Oui. Tous nos zafus comportent une fente intérieure sous un pli traditionnel. Cette ouverture sécurisée vous permet, au fil des mois ou selon l'évolution de votre souplesse, de retirer ou d'ajouter une poignée de kapok pour ajuster très précisément la hauteur et la densité du coussin.
+            </p>
+          </details>
+
+          <details class="p-5 rounded-xl bg-gray-50 dark:bg-gray-900/60 border border-gray-200 dark:border-gray-800 group">
+            <summary class="font-bold text-gray-900 dark:text-white cursor-pointer list-none flex items-center justify-between gap-3 text-sm sm:text-base">
+              <span>Proposez-vous du sur-mesure pour des statures particulières ?</span>
+              <span class="text-amber-600 group-open:rotate-180 transition-transform font-mono text-lg shrink-0">↓</span>
+            </summary>
+            <p class="text-xs sm:text-sm text-gray-700 dark:text-gray-300 mt-3 leading-relaxed">
+              Absolument. Si vous mesurez moins de 1m50, plus de 1m90, ou si vous avez des antécédents de hanche, de genou ou de cheville nécessitant un gabarit adapté, Véronique Myokan Harruis peut confectionner un zafu aux cotes exactes de votre anatomie. Écrivez-nous pour un conseil personnalisé.
+            </p>
+          </details>
+        </div>
+      </section>
+
+      <!-- Section 5 : Contact & Conseil personnalisé de l'artisane -->
+      <section aria-labelledby="contact-atelier-title" class="p-6 sm:p-10 rounded-3xl bg-gray-900 text-white dark:bg-gray-850 border border-gray-800 shadow-sm">
+        <div class="max-w-2xl">
+          <span class="text-xs uppercase tracking-wider font-semibold text-amber-400">
+            Atelier artisanal Myokan · Montpellier
+          </span>
+          <h2 id="contact-atelier-title" class="text-2xl sm:text-3xl font-bold font-heading text-white mt-2">
+            Besoin d'un conseil direct avec Véronique ?
+          </h2>
+          <p class="text-gray-300 mt-3 text-sm sm:text-base leading-relaxed">
+            Pratiquante de zazen et artisane depuis 1982, Véronique Myokan Harruis vous répond personnellement pour vous aider à affiner votre choix, ajuster la densité de kapok ou commander un ensemble coordonné zafu et zabuton.
+          </p>
+          
+          <div class="mt-6 flex flex-wrap items-center gap-4">
+            <a 
+              href="/contact/" 
+              class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white text-gray-950 hover:bg-gray-100 font-semibold text-sm sm:text-base transition shadow-xs"
+            >
+              <span>Contacter l'atelier</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </a>
+
+            <a 
+              href="/zafus/" 
+              class="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-gray-700 hover:border-gray-500 text-gray-200 hover:text-white font-semibold text-sm sm:text-base transition"
+            >
+              <span>Accéder au configurateur</span>
+            </a>
+          </div>
+
+          <div class="mt-6 pt-6 border-t border-gray-800 text-xs text-gray-400 flex flex-col sm:flex-row gap-2 sm:items-center justify-between">
+            <span>Atelier situé à Montpellier (Occitanie) · Envoi soigné en France et Europe</span>
+            <a href="mailto:myokan@hotmail.fr" class="underline hover:text-white">myokan@hotmail.fr</a>
+          </div>
+        </div>
+      </section>
+
+    </article>
+
+  </main>
+</Layout>
