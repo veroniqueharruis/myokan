@@ -1,0 +1,184 @@
+---
+const zafuModels = [
+  {
+    name: "Zafu Standard — Taille M",
+    tagline: "Le modèle de référence traditionnel",
+    desc: "Le gabarit d'assise transmis par maître Deshimaru. Hauteur équilibrée pour basculer naturellement le bassin et libérer la respiration abdominale.",
+    detail: "30 cm de diamètre · 15 cm de hauteur",
+    price: "27 € vide · 45 € plein",
+    img: "/zafu-plein-noir.webp",
+    alt: "Zafu de méditation zen artisanal noir traditionnel taille M — Atelier Myokan",
+    badge: "Recommandé pour débuter",
+    featured: true,
+    cta: "Configurer ce zafu (Taille M)",
+    path: "/zafus/",
+  },
+  {
+    name: "Zafu Souplesse — Taille S",
+    tagline: "Assise basse ou pratique nomade",
+    desc: "Recommandé pour les personnes très souples pratiquant en plein lotus, ou comme coussin de voyage compact et léger pour les stages et sesshins.",
+    detail: "28 cm de diamètre · 13 cm de hauteur",
+    price: "25 € vide · 40 € plein",
+    img: "/zafu-bleu-fonce.webp",
+    alt: "Zafu de méditation zen artisanal bleu foncé taille S — Atelier Myokan",
+    badge: "Lotus & voyage",
+    featured: false,
+    cta: "Découvrir le zafu Taille S",
+    path: "/zafus/",
+  },
+  {
+    name: "Zafu Assise Haute — Taille L",
+    tagline: "Grand gabarit ou hanches raides",
+    desc: "Surélévation accrue facilitant le redressement du dos si vous mesurez plus de 1m80 ou si vous ressentez une raideur au niveau des hanches et genoux.",
+    detail: "32 cm de diamètre · 17 cm de hauteur",
+    price: "30 € vide · 50 € plein",
+    img: "/zafu-plein-marron.webp",
+    alt: "Zafu de méditation zen artisanal marron taille L — Atelier Myokan",
+    badge: "Grand gabarit (> 1m80)",
+    featured: false,
+    cta: "Découvrir le zafu Taille L",
+    path: "/zafus/",
+  },
+  {
+    name: "Zafu Sur Mesure & Housse",
+    tagline: "Dimensions et coloris au choix",
+    desc: "Confection personnalisée adaptée à votre morphologie exacte, ou housse vide avec fente intérieure pour garnir vous-même votre kapok.",
+    detail: "Mensurations libres · Toile coton ou lin",
+    price: "Dès 25 € vide · Sur devis",
+    img: "/zafus-pile.webp",
+    alt: "Pile de zafus artisanaux de méditation multicolores — Atelier Myokan",
+    badge: "Sur mesure",
+    featured: false,
+    cta: "Créer mon zafu sur mesure",
+    path: "/zafus/",
+  },
+];
+---
+
+<section id="zafus-section" class="mt-14 sm:mt-20 mx-auto max-w-5xl" aria-labelledby="zafus-heading">
+  <!-- En-tête de section avec sémantique zafu affirmée -->
+  <div class="max-w-3xl mb-10">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold tracking-wide bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 mb-3">
+      <span class="w-1.5 h-1.5 rounded-full bg-amber-600 dark:bg-amber-400" aria-hidden="true"></span>
+      <span>La création centrale de l'atelier</span>
+    </div>
+    
+    <h2 id="zafus-heading" class="text-3xl sm:text-4xl lg:text-[2.65rem] font-bold text-gray-900 dark:text-white font-heading tracking-tight leading-tight">
+      Zafus artisanaux
+    </h2>
+    
+    <p class="mt-4 text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+      Le <strong>zafu</strong> (座蒲) est le coussin d'assise traditionnel japonais, pierre angulaire de la méditation <em>zazen</em>. 
+      En surélevant le bassin au tiers antérieur, il permet aux genoux de s'enraciner au sol pour former un trépied anatomique stable, 
+      déclenchant la bascule naturelle de la cinquième vertèbre lombaire et un dos droit sans contraction musculaire.
+    </p>
+
+    <p class="mt-3 text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
+      Confectionné à Montpellier selon la méthode transmise en 1982 par madame Deshimaru, chaque zafu Myokan réunit 
+      des <strong>plis d'aisance latéraux réguliers</strong>, une toile 100&nbsp;% coton robuste et un <strong>rembourrage en kapok végétal naturel</strong> 
+      offrant une fermeté pérenne qui ne s'affaisse pas avec les années.
+    </p>
+  </div>
+
+  <!-- Grille des modèles de Zafus : Traitement visuel prioritaire et dominant -->
+  <div class="grid sm:grid-cols-2 gap-6 lg:gap-8">
+    {zafuModels.map((m) => (
+      <article 
+        class:list={[
+          "group relative flex flex-col rounded-2xl border transition-all duration-200 overflow-hidden bg-white dark:bg-gray-900/80 shadow-sm hover:shadow-md",
+          m.featured 
+            ? "border-gray-900 dark:border-gray-300 ring-1 ring-gray-900/10 dark:ring-white/20" 
+            : "border-gray-200 dark:border-gray-800 hover:border-gray-400 dark:hover:border-gray-600"
+        ]}
+      >
+        <!-- Image Produit Haute Définition avec ratio 16:10 -->
+        <div class="relative w-full aspect-[16/10] overflow-hidden bg-gray-100 dark:bg-gray-800">
+          <img
+            src={m.img}
+            alt={m.alt}
+            width="600"
+            height="375"
+            class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+          
+          <!-- Badge distinctif -->
+          <span 
+            class:list={[
+              "absolute top-3.5 right-3.5 text-xs font-semibold px-3 py-1 rounded-full shadow-sm backdrop-blur-md border",
+              m.featured
+                ? "bg-gray-900/95 text-white dark:bg-white dark:text-gray-950 border-transparent"
+                : "bg-white/90 text-gray-800 dark:bg-gray-900/90 dark:text-gray-200 border-gray-200/60 dark:border-gray-700/60"
+            ]}
+          >
+            {m.badge}
+          </span>
+        </div>
+
+        <!-- Contenu descriptif structuré -->
+        <div class="p-6 sm:p-7 flex flex-col flex-1 justify-between">
+          <div>
+            <div class="flex items-baseline justify-between gap-2">
+              <h3 class="font-bold text-xl text-gray-900 dark:text-white font-heading tracking-tight group-hover:text-gray-700 dark:group-hover:text-gray-300 transition">
+                {m.name}
+              </h3>
+            </div>
+            
+            <p class="text-xs font-medium uppercase tracking-wider text-amber-800 dark:text-amber-400 mt-1">
+              {m.tagline}
+            </p>
+
+            <p class="text-xs font-mono font-semibold text-gray-600 dark:text-gray-400 mt-2 bg-gray-50 dark:bg-gray-800/60 px-2.5 py-1 rounded-md inline-block">
+              {m.detail}
+            </p>
+
+            <p class="text-sm text-gray-700 dark:text-gray-300 mt-3 leading-relaxed">
+              {m.desc}
+            </p>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-gray-100 dark:border-gray-800 flex items-center justify-between gap-4">
+            <div>
+              <span class="block text-[11px] uppercase tracking-wider text-gray-500 dark:text-gray-400">Tarif indicatif</span>
+              <span class="font-bold text-base sm:text-lg text-gray-900 dark:text-white tracking-tight">
+                {m.price}
+              </span>
+            </div>
+
+            <a
+              href={m.path}
+              class:list={[
+                "inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg text-sm font-semibold transition focus-visible:ring-2",
+                m.featured
+                  ? "bg-gray-900 hover:bg-gray-800 text-white dark:bg-white dark:text-gray-950 dark:hover:bg-gray-100 shadow-sm"
+                  : "bg-gray-100 hover:bg-gray-200 text-gray-900 dark:bg-gray-800 dark:text-gray-100 dark:hover:bg-gray-700"
+              ]}
+            >
+              <span>{m.cta}</span>
+              <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+      </article>
+    ))}
+  </div>
+
+  <!-- Reassurance & Lien Galerie Zafus -->
+  <div class="mt-8 p-4 sm:p-5 rounded-xl bg-gray-50 dark:bg-gray-900/60 border border-gray-200 dark:border-gray-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm text-gray-700 dark:text-gray-300">
+    <div class="flex items-center gap-2.5">
+      <svg class="w-5 h-5 text-gray-800 dark:text-gray-200 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+      <span>
+        Toile 100&nbsp;% coton épais · Fente intérieure avec rabat de protection · Poignée de transport en pur lin sur demande
+      </span>
+    </div>
+    
+    <a 
+      href="/zafus/#gallery-heading" 
+      class="font-semibold text-gray-900 dark:text-white underline hover:no-underline shrink-0 whitespace-nowrap"
+    >
+      Voir la galerie de confections zafus →
+    </a>
+  </div>
+</section>

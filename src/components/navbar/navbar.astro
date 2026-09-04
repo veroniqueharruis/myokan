@@ -3,18 +3,19 @@ import Container from "@components/container.astro";
 
 const currentPath = Astro.url.pathname.replace(/\/$/, "");
 
-const produits = [
-  { title: "Zafus", path: "/zafus/" },
-  { title: "Zabutons", path: "/zabutons/" },
-  { title: "Sacs à zafu", path: "/sacs-zafus/" },
-  { title: "Fukusas", path: "/fukusas/" },
-  { title: "Oryokis", path: "/oryokis/" },
-  { title: "Sacs à kesa", path: "/kesas/" },
+const isZafusActive = currentPath === "/zafus";
+
+const accessoires = [
+  { title: "Zabutons (tapis de sol)", path: "/zabutons/" },
+  { title: "Sacs à zafu en coton", path: "/sacs-zafus/" },
+  { title: "Fukusas pour oryoki", path: "/fukusas/" },
+  { title: "Oryokis (service complet)", path: "/oryokis/" },
+  { title: "Sacs à kesa & ketsumyaku", path: "/kesas/" },
 ];
 
-const isCreationsActive = produits.some(p => currentPath === p.path.replace(/\/$/, ""));
+const isAccessoiresActive = accessoires.some(a => currentPath === a.path.replace(/\/$/, ""));
 const isPratiqueActive = currentPath === "/pratique-zazen";
-const isAProposActive = currentPath === "/a-propos";
+const isAtelierActive = currentPath === "/a-propos";
 const isContactActive = currentPath === "/contact";
 ---
 
@@ -36,50 +37,76 @@ const isContactActive = currentPath === "/contact";
         </span>
       </a>
 
-      <ul class="flex items-center gap-2 text-sm font-medium">
-        <!-- Dropdown Créations -->
-        <li class="relative" id="creations-dropdown-container">
-          <button
-            type="button"
-            id="creations-menu-button"
-            aria-expanded="false"
-            aria-haspopup="true"
-            aria-controls="creations-dropdown-menu"
+      <ul class="flex items-center gap-1.5 xl:gap-2 text-sm font-medium">
+        <!-- 1. Zafus (Primary Product) -->
+        <li>
+          <a
+            href="/zafus/"
+            aria-current={isZafusActive ? "page" : undefined}
             class:list={[
-              "flex items-center gap-1.5 px-3 py-2 rounded-md transition focus-visible:ring-2",
-              isCreationsActive 
-                ? "text-gray-950 dark:text-white font-semibold underline underline-offset-4 decoration-2" 
-                : "text-gray-700 dark:text-gray-200 hover:text-gray-950 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800"
+              "px-3 py-2 rounded-md transition focus-visible:ring-2 font-semibold",
+              isZafusActive 
+                ? "text-gray-950 dark:text-white underline underline-offset-4 decoration-2" 
+                : "text-gray-900 dark:text-gray-100 hover:text-gray-950 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800"
             ]}
           >
-            <span>Créations</span>
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 transition-transform duration-200" id="creations-arrow" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" aria-hidden="true">
+            Zafus
+          </a>
+        </li>
+
+        <!-- 2. Bien choisir son zafu (Secondary) -->
+        <li>
+          <a
+            href="/zafus/#sizes-guide-heading"
+            class="px-3 py-2 rounded-md transition focus-visible:ring-2 text-gray-700 dark:text-gray-300 hover:text-gray-950 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800"
+          >
+            Choisir son zafu
+          </a>
+        </li>
+
+        <!-- 3. Accessoires (Other creations dropdown) -->
+        <li class="relative" id="accessoires-dropdown-container">
+          <button
+            type="button"
+            id="accessoires-menu-button"
+            aria-expanded="false"
+            aria-haspopup="true"
+            aria-controls="accessoires-dropdown-menu"
+            class:list={[
+              "flex items-center gap-1.5 px-3 py-2 rounded-md transition focus-visible:ring-2",
+              isAccessoiresActive 
+                ? "text-gray-950 dark:text-white font-semibold underline underline-offset-4 decoration-2" 
+                : "text-gray-700 dark:text-gray-300 hover:text-gray-950 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800"
+            ]}
+          >
+            <span>Accessoires</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 transition-transform duration-200" id="accessoires-arrow" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
             </svg>
           </button>
           
           <ul
-            id="creations-dropdown-menu"
-            class="hidden absolute left-0 top-full mt-1 w-48 py-2 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg z-50 transition before:content-[''] before:block before:absolute before:-top-3 before:left-0 before:right-0 before:h-3"
+            id="accessoires-dropdown-menu"
+            class="hidden absolute left-0 top-full mt-1 w-56 py-2 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg z-50 transition before:content-[''] before:block before:absolute before:-top-3 before:left-0 before:right-0 before:h-3"
             role="menu"
-            aria-labelledby="creations-menu-button"
+            aria-labelledby="accessoires-menu-button"
           >
-            {produits.map((p) => {
-              const active = currentPath === p.path.replace(/\/$/, "");
+            {accessoires.map((a) => {
+              const active = currentPath === a.path.replace(/\/$/, "");
               return (
                 <li role="none">
                   <a
-                    href={p.path}
+                    href={a.path}
                     role="menuitem"
                     aria-current={active ? "page" : undefined}
                     class:list={[
-                      "block px-4 py-2.5 text-sm transition focus-visible:bg-gray-100 dark:focus-visible:bg-gray-800",
+                      "block px-4 py-2 text-sm transition focus-visible:bg-gray-100 dark:focus-visible:bg-gray-800",
                       active 
                         ? "text-gray-950 dark:text-white font-semibold bg-gray-50 dark:bg-gray-800/60" 
-                        : "text-gray-700 dark:text-gray-200 hover:text-gray-950 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800"
+                        : "text-gray-700 dark:text-gray-300 hover:text-gray-950 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800"
                     ]}
                   >
-                    {p.title}
+                    {a.title}
                   </a>
                 </li>
               );
@@ -87,7 +114,7 @@ const isContactActive = currentPath === "/contact";
           </ul>
         </li>
 
-        <!-- Pratique & Zazen -->
+        <!-- 4. Pratique & Zazen (Supporting) -->
         <li>
           <a
             href="/pratique-zazen/"
@@ -96,39 +123,39 @@ const isContactActive = currentPath === "/contact";
               "px-3 py-2 rounded-md transition focus-visible:ring-2",
               isPratiqueActive 
                 ? "text-gray-950 dark:text-white font-semibold underline underline-offset-4 decoration-2" 
-                : "text-gray-700 dark:text-gray-200 hover:text-gray-950 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800"
+                : "text-gray-700 dark:text-gray-300 hover:text-gray-950 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800"
             ]}
           >
-            Pratique & Zazen
+            Pratique du zazen
           </a>
         </li>
 
-        <!-- À propos -->
+        <!-- 5. L'atelier (Brand / Trust) -->
         <li>
           <a
             href="/a-propos/"
-            aria-current={isAProposActive ? "page" : undefined}
+            aria-current={isAtelierActive ? "page" : undefined}
             class:list={[
               "px-3 py-2 rounded-md transition focus-visible:ring-2",
-              isAProposActive 
+              isAtelierActive 
                 ? "text-gray-950 dark:text-white font-semibold underline underline-offset-4 decoration-2" 
-                : "text-gray-700 dark:text-gray-200 hover:text-gray-950 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800"
+                : "text-gray-700 dark:text-gray-300 hover:text-gray-950 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800"
             ]}
           >
-            À propos
+            L'atelier
           </a>
         </li>
 
-        <!-- Contact & Commande -->
+        <!-- 6. Commander (Conversion CTA) -->
         <li>
           <a
             href="/contact/"
             aria-current={isContactActive ? "page" : undefined}
             class:list={[
-              "px-3 py-2 rounded-md transition focus-visible:ring-2",
+              "px-3.5 py-2 rounded-md transition focus-visible:ring-2 font-medium",
               isContactActive 
                 ? "text-gray-950 dark:text-white font-semibold underline underline-offset-4 decoration-2" 
-                : "text-gray-700 dark:text-gray-200 hover:text-gray-950 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800"
+                : "text-gray-700 dark:text-gray-300 hover:text-gray-950 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800"
             ]}
           >
             Commander
@@ -141,7 +168,7 @@ const isContactActive = currentPath === "/contact";
             type="button"
             id="theme-toggle"
             aria-label="Basculer entre thème clair et sombre"
-            class="ml-2 p-2.5 rounded-lg text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition min-w-[44px] min-h-[44px] flex items-center justify-center focus-visible:ring-2"
+            class="ml-1 p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition min-w-[40px] min-h-[40px] flex items-center justify-center focus-visible:ring-2"
           >
             <svg id="icon-sun" class="w-5 h-5 hidden" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
@@ -210,65 +237,99 @@ const isContactActive = currentPath === "/contact";
         class="hidden mt-4 border-t border-gray-200 dark:border-gray-800 pt-4 pb-2"
         aria-label="Navigation mobile"
       >
-        <p class="px-3 pb-1 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Créations artisanales</p>
-        <ul class="mb-3 space-y-0.5">
-          {produits.map((p) => {
-            const active = currentPath === p.path.replace(/\/$/, "");
-            return (
-              <li>
-                <a
-                  href={p.path}
-                  aria-current={active ? "page" : undefined}
-                  class:list={[
-                    "block px-3 py-2.5 rounded-md text-base transition",
-                    active 
-                      ? "text-gray-950 dark:text-white font-semibold bg-gray-100 dark:bg-gray-800" 
-                      : "text-gray-700 dark:text-gray-200 hover:text-gray-950 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800/60"
-                  ]}
-                >
-                  {p.title}
-                </a>
-              </li>
-            );
-          })}
-        </ul>
+        <!-- 1. Zafus (Primary) -->
+        <div class="mb-4">
+          <p class="px-3 pb-1 text-xs font-bold text-gray-900 dark:text-white uppercase tracking-wider">
+            Zafus artisanaux (Principal)
+          </p>
+          <ul class="space-y-1">
+            <li>
+              <a
+                href="/zafus/"
+                aria-current={isZafusActive ? "page" : undefined}
+                class:list={[
+                  "block px-3 py-2.5 rounded-lg text-base font-semibold transition",
+                  isZafusActive 
+                    ? "text-gray-950 dark:text-white bg-gray-100 dark:bg-gray-800" 
+                    : "text-gray-800 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800/60"
+                ]}
+              >
+                Nos Zafus & Configurateur
+              </a>
+            </li>
+            <li>
+              <a
+                href="/zafus/#sizes-guide-heading"
+                class="block px-3 py-2 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800/60 transition"
+              >
+                Bien choisir son zafu (Guide des tailles)
+              </a>
+            </li>
+          </ul>
+        </div>
 
-        <div class="border-t border-gray-200 dark:border-gray-800 pt-3 space-y-0.5">
+        <!-- 2. Accessoires (Other creations) -->
+        <div class="border-t border-gray-200 dark:border-gray-800 pt-3 mb-4">
+          <p class="px-3 pb-1 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+            Accessoires pour le zazen
+          </p>
+          <ul class="space-y-0.5">
+            {accessoires.map((a) => {
+              const active = currentPath === a.path.replace(/\/$/, "");
+              return (
+                <li>
+                  <a
+                    href={a.path}
+                    aria-current={active ? "page" : undefined}
+                    class:list={[
+                      "block px-3 py-2 rounded-md text-sm transition",
+                      active 
+                        ? "text-gray-950 dark:text-white font-semibold bg-gray-100 dark:bg-gray-800" 
+                        : "text-gray-700 dark:text-gray-300 hover:text-gray-950 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800/60"
+                    ]}
+                  >
+                    {a.title}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+
+        <!-- 3. Pratique, Atelier & Commande -->
+        <div class="border-t border-gray-200 dark:border-gray-800 pt-3 space-y-1">
           <a
             href="/pratique-zazen/"
             aria-current={isPratiqueActive ? "page" : undefined}
             class:list={[
-              "block px-3 py-2.5 rounded-md text-base transition",
+              "block px-3 py-2 rounded-md text-sm transition",
               isPratiqueActive 
                 ? "text-gray-950 dark:text-white font-semibold bg-gray-100 dark:bg-gray-800" 
-                : "text-gray-700 dark:text-gray-200 hover:text-gray-950 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800/60"
+                : "text-gray-700 dark:text-gray-300 hover:text-gray-950 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800/60"
             ]}
           >
-            Pratique & Zazen (Guide débutant)
+            Pratique du zazen & Posture
           </a>
           <a
             href="/a-propos/"
-            aria-current={isAProposActive ? "page" : undefined}
+            aria-current={isAtelierActive ? "page" : undefined}
             class:list={[
-              "block px-3 py-2.5 rounded-md text-base transition",
-              isAProposActive 
+              "block px-3 py-2 rounded-md text-sm transition",
+              isAtelierActive 
                 ? "text-gray-950 dark:text-white font-semibold bg-gray-100 dark:bg-gray-800" 
-                : "text-gray-700 dark:text-gray-200 hover:text-gray-950 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800/60"
+                : "text-gray-700 dark:text-gray-300 hover:text-gray-950 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800/60"
             ]}
           >
-            À propos de Véronique Harruis
+            L'atelier & Véronique Harruis
           </a>
           <a
             href="/contact/"
             aria-current={isContactActive ? "page" : undefined}
             class:list={[
-              "block px-3 py-2.5 rounded-md text-base transition font-medium",
-              isContactActive 
-                ? "text-gray-950 dark:text-white font-semibold bg-gray-100 dark:bg-gray-800" 
-                : "text-gray-700 dark:text-gray-200 hover:text-gray-950 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800/60"
+              "block px-3 py-2.5 rounded-lg text-sm font-semibold transition mt-2 bg-gray-900 text-white dark:bg-white dark:text-gray-950 text-center shadow-sm",
             ]}
           >
-            Passer commande / Contact
+            Passer commande / Devis atelier
           </a>
         </div>
       </nav>
@@ -301,11 +362,11 @@ const isContactActive = currentPath === "/contact";
     if (btn) btn.addEventListener("click", toggleTheme);
     if (btnMobile) btnMobile.addEventListener("click", toggleTheme);
 
-    // Desktop Dropdown
-    var dropdownContainer = document.getElementById("creations-dropdown-container");
-    var dropdownBtn = document.getElementById("creations-menu-button");
-    var dropdownMenu = document.getElementById("creations-dropdown-menu");
-    var dropdownArrow = document.getElementById("creations-arrow");
+    // Desktop Dropdown pour Accessoires
+    var dropdownContainer = document.getElementById("accessoires-dropdown-container");
+    var dropdownBtn = document.getElementById("accessoires-menu-button");
+    var dropdownMenu = document.getElementById("accessoires-dropdown-menu");
+    var dropdownArrow = document.getElementById("accessoires-arrow");
     var closeTimer = null;
 
     function clearCloseTimer() {

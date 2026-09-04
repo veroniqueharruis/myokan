@@ -1,62 +1,99 @@
 ---
 import Container from "@components/container.astro";
-import Cta from "@components/cta.astro";
-import Features from "@components/features.astro";
 import Hero from "@components/hero.astro";
-import Logos from "@components/logos.astro";
+import ZafusSection from "@components/zafus-section.astro";
+import ChoisirZafu from "@components/choisir-zafu.astro";
+import PourquoiArtisanal from "@components/pourquoi-artisanal.astro";
+import AccessoiresSection from "@components/accessoires-section.astro";
+import AtelierBio from "@components/atelier-bio.astro";
+import Cta from "@components/cta.astro";
 import Layout from "@layouts/Layout.astro";
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://myokan.fr/#website",
+      "url": "https://myokan.fr/",
+      "name": "Myokan",
+      "description": "Zafus artisanaux et coussins de méditation pour la pratique du zazen confectionnés à Montpellier selon la méthode traditionnelle.",
+      "inLanguage": "fr-FR"
+    },
+    {
+      "@type": "Product",
+      "@id": "https://myokan.fr/#zafu",
+      "name": "Zafu artisanal pour la pratique du zazen",
+      "description": "Coussin de méditation zazen traditionnel confectionné sur commande à Montpellier depuis 1982. Rembourrage en kapok végétal naturel, tailles S, M, L ou sur mesure.",
+      "brand": {
+        "@type": "Brand",
+        "name": "Myokan"
+      },
+      "image": "https://myokan.fr/zafu-noir-lin.webp",
+      "offers": {
+        "@type": "AggregateOffer",
+        "priceCurrency": "EUR",
+        "lowPrice": 25,
+        "highPrice": 50,
+        "offerCount": 8,
+        "priceValidUntil": "2027-12-31",
+        "availability": "https://schema.org/InStock",
+        "seller": {
+          "@type": "LocalBusiness",
+          "name": "Myokan",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Montpellier",
+            "addressCountry": "FR"
+          }
+        }
+      }
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://myokan.fr/#business",
+      "name": "Myokan",
+      "description": "Atelier artisanal de confection de zafus et accessoires de méditation zen à Montpellier.",
+      "url": "https://myokan.fr/",
+      "email": "myokan@hotmail.fr",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Montpellier",
+        "addressRegion": "Occitanie",
+        "addressCountry": "FR"
+      },
+      "priceRange": "€–€€",
+      "image": "https://myokan.fr/opengraph.jpg"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://myokan.fr/#veronique",
+      "name": "Véronique Myokan Harruis",
+      "jobTitle": "Nonne zen et couturière artisanale",
+      "worksFor": { "@id": "https://myokan.fr/#business" },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Montpellier",
+        "addressCountry": "FR"
+      },
+      "image": "https://myokan.fr/veronique.webp"
+    }
+  ]
+};
 ---
 
 <Layout
-  fullTitle="Zafus zen artisanaux de tradition — Myokan, Montpellier"
-  description="Coussins de zazen et accessoires zen artisanaux confectionnés à Montpellier selon la méthode traditionnelle : zafus sur mesure, zabutons, fukusas, oryokis. Tradition Soto Zen Deshimaru.">
-  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebSite",
-        "@id": "https://myokan.fr/#website",
-        "url": "https://myokan.fr/",
-        "name": "Myokan",
-        "description": "Zafus de méditation et accessoires zen artisanaux confectionnés à Montpellier selon la méthode traditionnelle.",
-        "inLanguage": "fr-FR"
-      },
-      {
-        "@type": "LocalBusiness",
-        "@id": "https://myokan.fr/#business",
-        "name": "Myokan",
-        "description": "Atelier artisanal de confection de zafus et accessoires de méditation zen à Montpellier.",
-        "url": "https://myokan.fr/",
-        "email": "myokan@hotmail.fr",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Montpellier",
-          "addressRegion": "Occitanie",
-          "addressCountry": "FR"
-        },
-        "priceRange": "€–€€",
-        "image": "https://myokan.fr/opengraph.jpg"
-      },
-      {
-        "@type": "Person",
-        "@id": "https://myokan.fr/#veronique",
-        "name": "Véronique Myokan Harruis",
-        "jobTitle": "Nonne zen et couturière artisanale",
-        "worksFor": { "@id": "https://myokan.fr/#business" },
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Montpellier",
-          "addressCountry": "FR"
-        },
-        "image": "https://myokan.fr/veronique.webp"
-      }
-    ]
-  })} />
+  fullTitle="Zafu artisanal & coussin de méditation | Myokan"
+  description="Zafus de méditation traditionnels confectionnés sur commande à Montpellier depuis 1982. Rembourrage en kapok naturel végétal, dimensions adaptées à votre posture et pratique du zazen.">
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(structuredData)} />
   <Container>
     <main id="main-content">
       <Hero />
-      <Features />
-      <Logos />
+      <ZafusSection />
+      <ChoisirZafu />
+      <PourquoiArtisanal />
+      <AccessoiresSection />
+      <AtelierBio />
       <Cta />
     </main>
   </Container>
