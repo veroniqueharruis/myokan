@@ -1,0 +1,324 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/container.astro";
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Accueil",
+      "item": "https://myokan.fr/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Accessoires",
+      "item": "https://myokan.fr/accessoires/"
+    }
+  ]
+};
+
+const collectionSchema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Accessoires de méditation zen artisanaux — Myokan",
+  "description": "Accessoires artisanaux confectionnés à Montpellier pour accompagner le zafu et la pratique du zazen : zabutons, sacs de transport, fukusas, oryokis et sacs à kesa.",
+  "url": "https://myokan.fr/accessoires/",
+  "mainEntity": {
+    "@type": "ItemList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Zabuton de méditation artisanal",
+        "url": "https://myokan.fr/zabutons/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Sac à zafu en coton artisanal",
+        "url": "https://myokan.fr/sacs-zafus/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Fukusa zen artisanal pour oryoki",
+        "url": "https://myokan.fr/fukusas/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "Oryoki zen artisanal",
+        "url": "https://myokan.fr/oryokis/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 5,
+        "name": "Sac à kesa et pochette ketsumyaku",
+        "url": "https://myokan.fr/kesas/"
+      }
+    ]
+  }
+};
+
+const accessoriesList = [
+  {
+    title: "Zabutons (tapis de sol)",
+    category: "Complément d'assise indispensable",
+    role: "Protection des genoux et des chevilles sous le zafu",
+    desc: "Grand tapis rectangulaire rembourré de coton ou de kapok. Posé directement sur le sol, il absorbe la pression osseuse et assure l'ancrage du trépied postural.",
+    image: "/zabutons-empiles.webp",
+    alt: "Zabutons de méditation artisanaux empilés — Atelier Myokan Montpellier",
+    path: "/zabutons/",
+    price: "Sur devis",
+    primary: true,
+  },
+  {
+    title: "Sacs à zafu en coton",
+    category: "Transport & protection",
+    role: "Emporter votre coussin au dojo ou en stage",
+    desc: "Confectionné en toile de coton solide avec cordon coulissant robuste. Protège votre zafu de la poussière et facilite son transport quotidien.",
+    image: "/sac-zafu-rouge.webp",
+    alt: "Sac à zafu artisanal rouge avec cordon de serrage — Atelier Myokan",
+    path: "/sacs-zafus/",
+    price: "Dès 25 €",
+    primary: false,
+  },
+  {
+    title: "Fukusas pour oryoki",
+    category: "Cérémonie & rituel",
+    role: "Tissu d'enveloppement pour le repas cérémoniel",
+    desc: "Carré de coton doublé respectant les dimensions traditionnelles. Utilisé lors des sesshins pour manipuler et protéger les bols précieux.",
+    image: "/fukusa-motif-floral.webp",
+    alt: "Fukusa zen artisanal à motif floral pour bol oryoki — Myokan",
+    path: "/fukusas/",
+    price: "Dès 20 €",
+    primary: false,
+  },
+  {
+    title: "Oryokis (service complet)",
+    category: "Pratique monastique",
+    role: "Ensemble traditionnel pour le repas en sesshin",
+    desc: "Bol principal en bois noble tourné en France (érable sycomore, bouleau), accompagné de son fukusa, d'une cuillère en bois sous étui et d'une serviette.",
+    image: "/oryokis-trio.webp",
+    alt: "Bols oryokis en bois tourné artisanal et leurs fukusas — Myokan",
+    path: "/oryokis/",
+    price: "Dès 80 €",
+    primary: false,
+  },
+  {
+    title: "Sacs à kesa & ketsumyaku",
+    category: "Transmission & ordination",
+    role: "Préservation des robes et documents de lignée",
+    desc: "Pochettes et sacs de transport confectionnés sur mesure pour protéger la robe monastique (kesa), le rakusu ou le lignage d'ordination (ketsumyaku).",
+    image: "/sac-kesa-bandouliere.webp",
+    alt: "Sac à kesa avec bandoulière et motifs zen traditionnels — Myokan",
+    path: "/kesas/",
+    price: "Sur devis",
+    primary: false,
+  },
+];
+---
+
+<Layout
+  fullTitle="Accessoires de méditation zen artisanaux — Zabutons, sacs, oryokis | Myokan"
+  description="Accessoires artisanaux confectionnés à Montpellier pour accompagner le zafu et la pratique du zazen : zabutons (tapis de sol), sacs à zafu, fukusas, oryokis et sacs à kesa."
+  image="/zabutons-empiles.webp"
+  imageAlt="Accessoires de méditation zen artisanaux confectionnés à Montpellier par Myokan"
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(collectionSchema)} />
+
+  <Container>
+    <main id="main-content" class="max-w-5xl mx-auto pt-8 sm:pt-10 pb-20">
+      <!-- Fil d'Ariane -->
+      <nav aria-label="Fil d'Ariane" class="text-xs text-gray-500 dark:text-gray-400 mb-6">
+        <ol class="flex items-center gap-1.5 flex-wrap">
+          <li>
+            <a href="/" class="hover:text-gray-950 dark:hover:text-white transition underline hover:no-underline">Accueil</a>
+          </li>
+          <li aria-hidden="true" class="text-gray-400 dark:text-gray-600">/</li>
+          <li class="font-medium text-gray-900 dark:text-white" aria-current="page">Accessoires</li>
+        </ol>
+      </nav>
+
+      <!-- En-tête -->
+      <header class="max-w-3xl mb-12 sm:mb-16">
+        <p class="text-xs uppercase tracking-wider font-semibold text-gray-500 dark:text-gray-400 mb-2">
+          Compléments d'assise & objets de pratique
+        </p>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold font-heading text-gray-900 dark:text-white tracking-tight">
+          Accessoires pour la pratique du zazen
+        </h1>
+        <p class="text-base sm:text-lg text-gray-700 dark:text-gray-300 mt-4 leading-relaxed">
+          Si le <a href="/zafus/" class="underline font-semibold hover:text-gray-950 dark:hover:text-white">zafu artisanal</a> constitue l'assise centrale de la méditation, 
+          ces accessoires traditionnels ont été pensés pour protéger votre corps, transporter votre matériel et équiper vos retraites (sesshins).
+        </p>
+      </header>
+
+      <!-- Bloc Prioritaire : Le duo Zafu + Zabuton -->
+      <section class="mb-14 sm:mb-20 p-6 sm:p-8 rounded-2xl bg-gray-50 dark:bg-gray-900/70 border border-gray-200 dark:border-gray-800" aria-labelledby="duo-zafu-zabuton-heading">
+        <div class="grid md:grid-cols-12 gap-8 items-center">
+          <div class="md:col-span-7">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-amber-100 text-amber-900 dark:bg-amber-950/70 dark:text-amber-300 mb-3">
+              <span>Le duo d'assise fondamental</span>
+            </span>
+            <h2 id="duo-zafu-zabuton-heading" class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white tracking-tight">
+              Le Zabuton&nbsp;: le complément indissociable du zafu
+            </h2>
+            <p class="mt-3 text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed">
+              En zazen, la posture s'établit sur un trépied anatomique&nbsp;: le bassin repose sur le zafu, tandis que les deux genoux prennent appui au sol. 
+              Posé sous le zafu, le <strong>zabuton</strong> protège la peau et les articulations des genoux et des chevilles de la dureté du plancher.
+            </p>
+            <div class="mt-4 flex flex-wrap gap-4 text-xs sm:text-sm">
+              <a 
+                href="/zabutons/" 
+                class="inline-flex items-center gap-1.5 font-semibold text-gray-900 dark:text-white underline hover:no-underline"
+              >
+                <span>Découvrir nos zabutons de méditation</span>
+                <span aria-hidden="true">&rarr;</span>
+              </a>
+              <a 
+                href="/zafus/" 
+                class="inline-flex items-center gap-1.5 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white underline hover:no-underline"
+              >
+                <span>Voir nos zafus artisanaux</span>
+                <span aria-hidden="true">&rarr;</span>
+              </a>
+            </div>
+          </div>
+          <div class="md:col-span-5">
+            <div class="rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 shadow-sm">
+              <img
+                src="/zabutons-empiles.webp"
+                alt="Zabutons artisanaux de méditation empilés à l'atelier Myokan"
+                width="600"
+                height="400"
+                class="w-full h-52 sm:h-60 object-cover"
+                loading="eager"
+              />
+              <p class="p-2.5 text-center text-[11px] text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800">
+                Zabutons confectionnés à Montpellier, rembourrage coton ou kapok
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Grille des accessoires -->
+      <section aria-labelledby="all-accessories-heading">
+        <div class="mb-8">
+          <h2 id="all-accessories-heading" class="text-2xl sm:text-3xl font-bold font-heading text-gray-900 dark:text-white tracking-tight">
+            Tous les accessoires Myokan
+          </h2>
+          <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+            Chaque pièce est confectionnée à la main dans notre atelier de Montpellier, dans le respect de la méthode traditionnelle.
+          </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {accessoriesList.map((item) => (
+            <article class="flex flex-col border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden bg-white dark:bg-gray-900/60 hover:border-gray-400 dark:hover:border-gray-600 transition group shadow-xs">
+              <div class="relative w-full h-48 overflow-hidden bg-gray-100 dark:bg-gray-800">
+                <img
+                  src={item.image}
+                  alt={item.alt}
+                  width="500"
+                  height="300"
+                  class="w-full h-full object-cover group-hover:scale-103 transition-transform duration-300"
+                  loading="lazy"
+                />
+                <span class="absolute top-3 left-3 px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-white/95 dark:bg-gray-900/90 text-gray-800 dark:text-gray-200 border border-gray-200/80 dark:border-gray-700/80 backdrop-blur-xs">
+                  {item.category}
+                </span>
+                <span class="absolute top-3 right-3 px-2 py-0.5 rounded-md text-[11px] font-bold bg-gray-900/90 text-white dark:bg-white/95 dark:text-gray-950 backdrop-blur-xs">
+                  {item.price}
+                </span>
+              </div>
+
+              <div class="p-5 flex flex-col flex-1 justify-between">
+                <div>
+                  <h3 class="text-lg font-bold text-gray-900 dark:text-white group-hover:text-gray-700 dark:group-hover:text-gray-300 transition">
+                    <a href={item.path} class="focus:outline-hidden">
+                      <span class="absolute inset-0" aria-hidden="true"></span>
+                      {item.title}
+                    </a>
+                  </h3>
+                  <p class="text-xs font-medium text-amber-800 dark:text-amber-400 mt-0.5">
+                    {item.role}
+                  </p>
+                  <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-2.5 leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
+
+                <div class="mt-5 pt-3.5 border-t border-gray-100 dark:border-gray-800 flex items-center justify-between text-xs">
+                  <span class="text-gray-500 dark:text-gray-400 font-mono">Confection atelier</span>
+                  <span class="font-semibold text-gray-900 dark:text-white flex items-center gap-1 group-hover:underline">
+                    <span>Consulter la fiche</span>
+                    <span aria-hidden="true">&rarr;</span>
+                  </span>
+                </div>
+              </div>
+            </article>
+          ))}
+
+          <!-- Carte conseils commande coordonnée -->
+          <div class="p-6 rounded-xl border border-dashed border-gray-300 dark:border-gray-700 bg-gray-50/50 dark:bg-gray-900/40 flex flex-col justify-between">
+            <div>
+              <span class="text-[10px] uppercase font-bold tracking-wider text-amber-800 dark:text-amber-400">
+                Commande sur mesure
+              </span>
+              <h3 class="font-bold text-lg text-gray-900 dark:text-white mt-1">
+                Assortir votre équipement
+              </h3>
+              <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-2 leading-relaxed">
+                Vous souhaitez un zafu, un sac et un zabuton taillés dans la même toile ou dans des teintes harmonisées&nbsp;? 
+                Chaque commande est traitée directement par l'artisane.
+              </p>
+            </div>
+
+            <div class="mt-6 pt-3.5 border-t border-gray-200/80 dark:border-gray-800">
+              <a
+                href="/commander/"
+                class="inline-flex items-center gap-1.5 text-xs font-semibold text-gray-900 dark:text-white underline hover:no-underline"
+              >
+                <span>Consulter la page de commande & tarifs</span>
+                <span aria-hidden="true">&rarr;</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Échappatoire / Retour au pilier Zafus -->
+      <section class="mt-16 pt-8 border-t border-gray-200 dark:border-gray-800 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-6" aria-label="Orientation vers les zafus">
+        <div>
+          <h2 class="text-xl font-bold text-gray-900 dark:text-white">
+            Vous n'avez pas encore choisi votre zafu&nbsp;?
+          </h2>
+          <p class="text-sm text-gray-600 dark:text-gray-400 mt-1 max-w-xl">
+            Découvrez nos tailles S, M, L ou notre outil d'orientation selon votre souplesse et votre morphologie.
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-3 shrink-0">
+          <a
+            href="/choisir-son-zafu/"
+            class="px-4 py-2.5 rounded-lg text-xs sm:text-sm font-semibold border border-gray-300 dark:border-gray-700 hover:border-gray-500 text-gray-800 dark:text-gray-200 transition"
+          >
+            Quel zafu choisir ?
+          </a>
+          <a
+            href="/zafus/"
+            class="px-4 py-2.5 rounded-lg text-xs sm:text-sm font-semibold bg-gray-900 text-white dark:bg-white dark:text-gray-950 hover:bg-gray-800 dark:hover:bg-gray-100 transition shadow-xs"
+          >
+            Tous les zafus artisanaux &rarr;
+          </a>
+        </div>
+      </section>
+    </main>
+  </Container>
+</Layout>

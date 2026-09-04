@@ -519,11 +519,11 @@ const productSchema = {
       </div>
     </section>
 
-    <!-- Guide des tailles (Aide au choix & réassurance) -->
-    <section class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800" aria-labelledby="sizes-guide-heading">
-      <div class="max-w-2xl">
+    <!-- Guide des tailles, hauteurs et dimensions (Aide au choix & réassurance) -->
+    <section id="dimensions" class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800 scroll-mt-20" aria-labelledby="sizes-guide-heading">
+      <div id="hauteur" class="max-w-2xl scroll-mt-20">
         <h2 id="sizes-guide-heading" class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-2">
-          Comment choisir la taille de votre zafu&nbsp;?
+          Tailles, hauteurs et dimensions de votre zafu
         </h2>
         <p class="text-gray-700 dark:text-gray-300 leading-relaxed text-sm sm:text-base mb-6">
           La hauteur d'assise détermine la facilité avec laquelle vos genoux touchent le sol tout en gardant 
@@ -572,32 +572,94 @@ const productSchema = {
       </div>
 
       <!-- Option Sur mesure -->
-      <div class="mt-5 p-4 bg-gray-50 dark:bg-gray-900/60 rounded-xl border border-gray-200 dark:border-gray-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-sm">
+      <div id="sur-mesure" class="mt-5 p-5 bg-gray-50 dark:bg-gray-900/60 rounded-xl border border-gray-200 dark:border-gray-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-sm scroll-mt-20">
         <div>
-          <h3 class="font-bold text-gray-900 dark:text-white">Confection sur mesure disponible</h3>
-          <p class="text-xs text-gray-600 dark:text-gray-400 mt-0.5">
-            Dimensions adaptées à votre morphologie (moins d'1m50, plus d'1m90) ou assise spéciale.
+          <span class="text-[10px] uppercase font-bold tracking-wider text-amber-800 dark:text-amber-400">Atelier artisanal</span>
+          <h3 class="font-bold text-gray-900 dark:text-white text-base mt-0.5">Confection personnalisée sur mesure</h3>
+          <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-1 max-w-xl">
+            Morphologie atypique (moins d'1m50, plus d'1m90), raideurs articulaires particulières ou commande pour un dojo : 
+            Véronique adapte le diamètre et la hauteur à votre posture assise.
           </p>
         </div>
         <button
           type="button"
           data-select-size="Sur mesure"
-          class="shrink-0 px-3.5 py-2 border border-gray-300 dark:border-gray-700 rounded-lg text-xs font-semibold text-gray-800 dark:text-gray-200 hover:border-gray-500 transition text-center"
+          class="shrink-0 px-4 py-2.5 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg text-xs font-semibold text-gray-900 dark:text-white hover:border-gray-500 transition text-center shadow-2xs"
         >
           Configurer sur mesure ↑
         </button>
       </div>
 
-      <div class="mt-4 text-xs text-gray-500 dark:text-gray-400">
-        <p>
-          Pour en savoir plus sur l'alignement corporel, consultez notre 
-          <a href="/pratique-zazen/#choisir-zafu" class="underline hover:text-gray-900 dark:hover:text-white font-medium">guide complet de posture et d'assise zazen</a>.
-        </p>
+      <!-- Bloc Kapok Végétal -->
+      <div id="kapok" class="mt-8 p-5 sm:p-6 rounded-xl bg-white dark:bg-gray-800/80 border border-gray-200 dark:border-gray-700 shadow-xs scroll-mt-20">
+        <div class="grid sm:grid-cols-12 gap-5 items-center">
+          <div class="sm:col-span-8">
+            <span class="text-[10px] uppercase font-bold tracking-wider text-amber-800 dark:text-amber-400">Matière première noble</span>
+            <h3 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mt-0.5">
+              Rembourrage 100 % kapok naturel végétal
+            </h3>
+            <p class="text-xs sm:text-sm text-gray-700 dark:text-gray-300 mt-2 leading-relaxed">
+              Le kapok est une fibre végétale soyeuse issue des coques du kapokier. Imputrescible et hypoallergénique, il offre une fermeté dense et stable 
+              qui ne s'affaisse pas avec le temps, contrairement aux mousses synthétiques ou aux balles d'épeautre.
+            </p>
+            <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">
+              L'ouverture traditionnelle sous la poignée vous permet d'ajuster vous-même la fermeté en retirant ou ajoutant de la fibre au fil des années.
+            </p>
+          </div>
+          <div class="sm:col-span-4 overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700">
+            <img
+              src="/kapokier-arbre.webp"
+              alt="Coque et arbre à kapok naturel végétal pour garnissage de zafus traditionnels"
+              width="300"
+              height="200"
+              class="w-full h-36 object-cover"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Bloc Complément : Le duo Zafu & Zabuton -->
+      <div id="duo-zabuton" class="mt-6 p-5 sm:p-6 rounded-xl bg-amber-50/70 dark:bg-amber-950/20 border border-amber-200/80 dark:border-amber-900/50 flex flex-col sm:flex-row sm:items-center justify-between gap-5 scroll-mt-20">
+        <div>
+          <span class="inline-flex items-center gap-1 text-[10px] uppercase font-bold tracking-wider text-amber-900 dark:text-amber-300">
+            <span>Compléter votre assise</span>
+          </span>
+          <h3 class="text-base sm:text-lg font-bold text-gray-900 dark:text-white mt-0.5">
+            Zafu & Zabuton&nbsp;: le duo de protection des genoux
+          </h3>
+          <p class="text-xs sm:text-sm text-gray-700 dark:text-gray-300 mt-1 max-w-xl leading-relaxed">
+            Pendant l'assise zazen, le bassin repose sur le zafu et les genoux touchent le sol. 
+            Le <strong>zabuton</strong> protège les articulations des genoux et des malléoles contre la dureté du plancher.
+          </p>
+        </div>
+        <a
+          href="/zabutons/"
+          class="shrink-0 inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg text-xs font-semibold bg-white dark:bg-gray-800 text-gray-900 dark:text-white border border-amber-300 dark:border-amber-700 hover:bg-amber-50 dark:hover:bg-amber-900/40 transition shadow-2xs"
+        >
+          <span>Découvrir les zabutons</span>
+          <span aria-hidden="true">&rarr;</span>
+        </a>
+      </div>
+
+      <div class="mt-4 flex flex-wrap gap-4 text-xs text-gray-500 dark:text-gray-400">
+        <a href="/choisir-son-zafu/" class="underline hover:text-gray-900 dark:hover:text-white font-medium">
+          Guide pas à pas : Quel zafu choisir ?
+        </a>
+        <span>·</span>
+        <a href="/pratique-zazen/#posture" class="underline hover:text-gray-900 dark:hover:text-white font-medium">
+          Comprendre la posture assise en zazen
+        </a>
+        <span>·</span>
+        <a href="/a-propos/" class="underline hover:text-gray-900 dark:hover:text-white font-medium">
+          L'histoire de l'atelier Myokan depuis 1982
+        </a>
       </div>
     </section>
 
     <!-- Explication du processus de commande -->
     <CommentCommander class="mt-12" />
+
 
     <!-- Galerie de confections de l'atelier -->
     <section class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800" aria-labelledby="gallery-heading">

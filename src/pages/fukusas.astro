@@ -29,6 +29,12 @@ const breadcrumbSchema = {
     {
       "@type": "ListItem",
       "position": 2,
+      "name": "Accessoires",
+      "item": "https://myokan.fr/accessoires/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
       "name": "Fukusas",
       "item": "https://myokan.fr/fukusas/"
     }
@@ -75,11 +81,11 @@ const productSchema = {
     <nav aria-label="Fil d'Ariane" class="text-xs text-gray-600 dark:text-gray-400 mb-8">
       <ol class="flex items-center gap-2">
         <li>
-          <a href="/" class="hover:text-gray-950 dark:hover:text-white transition">Accueil</a>
+          <a href="/" class="hover:text-gray-950 dark:hover:text-white transition underline hover:no-underline">Accueil</a>
         </li>
         <li aria-hidden="true">/</li>
         <li>
-          <a href="/#accessoires" class="hover:text-gray-950 dark:hover:text-white transition">Accessoires</a>
+          <a href="/accessoires/" class="hover:text-gray-950 dark:hover:text-white transition underline hover:no-underline">Accessoires</a>
         </li>
         <li aria-hidden="true">/</li>
         <li class="font-medium text-gray-900 dark:text-white" aria-current="page">Fukusas</li>

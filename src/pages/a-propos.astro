@@ -15,7 +15,7 @@ const breadcrumbSchema = {
     {
       "@type": "ListItem",
       "position": 2,
-      "name": "À propos",
+      "name": "L'atelier",
       "item": "https://myokan.fr/a-propos/"
     }
   ]
@@ -43,7 +43,7 @@ const personSchema = {
 ---
 
 <Layout
-  fullTitle="À propos de Véronique Myokan Harruis — Nonne zen et couturière à Montpellier"
+  fullTitle="L'atelier Myokan & Véronique Harruis — Confection artisanale depuis 1982 | Montpellier"
   description="Véronique Myokan Harruis pratique le zazen depuis 1980 et confectionne des zafus artisanaux depuis 1982 à Montpellier selon la tradition transmise par maître Deshimaru."
   image="/veronique.webp"
   imageAlt="Véronique Myokan Harruis, nonne zen Soto et couturière artisanale à Montpellier">
@@ -58,14 +58,14 @@ const personSchema = {
       <nav aria-label="Fil d'Ariane" class="text-xs text-gray-600 dark:text-gray-400 mb-8">
         <ol class="flex items-center gap-2">
           <li>
-            <a href="/" class="hover:text-gray-950 dark:hover:text-white transition">Accueil</a>
+            <a href="/" class="hover:text-gray-950 dark:hover:text-white transition underline hover:no-underline">Accueil</a>
           </li>
           <li aria-hidden="true">/</li>
-          <li class="font-medium text-gray-900 dark:text-white" aria-current="page">À propos</li>
+          <li class="font-medium text-gray-900 dark:text-white" aria-current="page">L'atelier</li>
         </ol>
       </nav>
 
-      <div class="flex flex-col sm:flex-row gap-6 sm:gap-8 items-center sm:items-start text-center sm:text-left">
+      <div id="veronique" class="flex flex-col sm:flex-row gap-6 sm:gap-8 items-center sm:items-start text-center sm:text-left scroll-mt-20">
         <img
           src="/veronique.webp"
           alt="Véronique Myokan Harruis, nonne zen et créatrice de zafus artisanaux à Montpellier"
@@ -105,7 +105,8 @@ const personSchema = {
         Si vous souhaitez découvrir la méditation au dojo, consultez également notre <a href="/pratique-zazen/" class="underline hover:text-gray-950 dark:hover:text-white">guide de la pratique et du débutant</a>.
       </p>
 
-      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mt-12 mb-4">La confection des zafus depuis 1982</h2>
+      <h2 id="artisanat" class="text-2xl font-bold text-gray-900 dark:text-white mt-12 mb-4 scroll-mt-20">La confection des zafus depuis 1982</h2>
+
       <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
         C'est en 1982, à l'atelier du dojo de Paris à Pernety, que j'ai appris à confectionner
         les premiers zafus. On m'a expliqué que cette méthode traditionnelle avait été transmise

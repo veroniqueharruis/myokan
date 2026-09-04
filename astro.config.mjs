@@ -8,5 +8,8 @@ import icon from "astro-icon";
 export default defineConfig({
   site: "https://myokan.fr",
   trailingSlash: "always",
+  redirects: {
+    "/l-atelier/": "/a-propos/",
+  },
   integrations: [tailwind(), mdx(), sitemap(), icon()],
 });
