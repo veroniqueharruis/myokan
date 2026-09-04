@@ -1,6 +1,7 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
+import ContextualCta from "@components/contextual-cta.astro";
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",
@@ -264,12 +265,13 @@ const faqSchema = {
             Confectionné selon la tradition transmise par maître Deshimaru, le zafu comporte des plis latéraux réguliers permettant l'expansion naturelle du kapok végétal lors de l'assise, assurant ainsi fermeté et confort dans la durée.
           </p>
           <div class="flex flex-wrap items-center gap-3 pt-1">
-            <a href="/choisir-son-zafu/" class="inline-flex items-center gap-1 text-sm font-semibold text-gray-900 dark:text-white underline hover:no-underline">
-              Quel zafu choisir ? Consulter le guide d'assise →
+            <a href="/choisir-son-zafu/" class="inline-flex items-center gap-1.5 text-sm font-semibold text-gray-900 dark:text-white underline hover:no-underline">
+              <span>Choisir un zafu adapté à votre pratique</span>
+              <span aria-hidden="true">&rarr;</span>
             </a>
             <span class="text-xs text-gray-400 hidden sm:inline" aria-hidden="true">·</span>
-            <a href="/zafus/" class="inline-flex items-center gap-1 text-sm text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white underline">
-              Configurateur en ligne
+            <a href="/zafus/" class="inline-flex items-center gap-1 text-sm text-gray-700 dark:text-gray-300 hover:text-gray-950 dark:hover:text-white underline">
+              Découvrir les zafus
             </a>
           </div>
         </div>
@@ -549,23 +551,22 @@ const faqSchema = {
       </div>
     </nav>
 
-    <!-- Encart contact & commande -->
-    <div class="mt-14 p-8 bg-gray-50 dark:bg-gray-900/60 rounded-2xl border border-gray-200 dark:border-gray-800 text-center">
-      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-        Une question sur la pratique ou un article sur mesure&nbsp;?
-      </h2>
-      <p class="text-gray-700 dark:text-gray-300 max-w-xl mx-auto mb-6">
-        Véronique Myokan Harruis répond personnellement à vos demandes de confection et de conseils.
-      </p>
-      <div class="flex flex-wrap justify-center gap-4">
-        <a href="/contact/" class="px-6 py-3 bg-gray-900 dark:bg-white dark:text-gray-950 text-white font-medium rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition">
-          Écrire à Véronique
-        </a>
-        <a href="mailto:myokan@hotmail.fr" class="px-6 py-3 border border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-200 font-medium rounded-lg hover:border-gray-500 transition">
-          myokan@hotmail.fr
-        </a>
-      </div>
-    </div>
+    <!-- Prochaine étape logique : Choisir son zafu ou demander conseil -->
+    <ContextualCta
+      eyebrow="Posture & Assise stable"
+      title="Prêt à choisir le zafu adapté à votre pratique ?"
+      description="Chaque morphologie demande une hauteur et une fermeté d'assise appropriées pour libérer les vertèbres lombaires sans tension. Suivez notre guide ou échangez directement avec l'artisane."
+      primaryCta={{
+        label: "Choisir un zafu adapté à votre pratique",
+        href: "/choisir-son-zafu/"
+      }}
+      secondaryCta={{
+        label: "Demander conseil à Véronique",
+        href: "/contact/"
+      }}
+      variant="highlight"
+      class="mt-14"
+    />
 
   </main>
 </Layout>

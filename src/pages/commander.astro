@@ -2,6 +2,7 @@
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
 import CommandeForm from "@components/commande-form.astro";
+import ContextualCta from "@components/contextual-cta.astro";
 import { sizes, pricing, pricingExplanation, orderingSteps, customizationHierarchy } from "@data/zafus";
 
 const breadcrumbSchema = {
@@ -400,7 +401,23 @@ const faqSchema = {
           </details>
         </div>
       </section>
-
+ 
+      <!-- Prochaine étape : Soumettre sa demande -->
+      <ContextualCta
+        eyebrow="Commande artisanale directe"
+        title="Prêt à transmettre votre projet d'assise ?"
+        description="Remplissez le formulaire de commande ci-dessus pour recevoir un devis gratuit et personnalisé sous 48h, ou contactez directement l'artisane par e-mail."
+        primaryCta={{
+          label: "Remplir le formulaire de commande",
+          href: "#formulaire-commande"
+        }}
+        secondaryCta={{
+          label: "Écrire par e-mail à Véronique",
+          href: "mailto:myokan@hotmail.fr"
+        }}
+        variant="highlight"
+        class="mt-12"
+      />
     </main>
   </Container>
 </Layout>
