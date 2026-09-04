@@ -2,42 +2,63 @@
 ---
 
 <section 
-  class="relative pt-8 pb-12 sm:pt-12 sm:pb-16 lg:pt-16 lg:pb-24 overflow-hidden" 
+  class="relative pt-6 pb-10 sm:pt-10 sm:pb-14 lg:pt-12 lg:pb-20 overflow-hidden" 
   aria-labelledby="hero-title"
 >
-  <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 xl:gap-16 items-center">
+  <div class="grid lg:grid-cols-12 gap-y-8 lg:gap-y-0 gap-x-8 lg:gap-x-12 xl:gap-x-16 items-center">
     
-    <!-- Colonne Texte & Actions -->
-    <div class="lg:col-span-7 flex flex-col text-left">
-      
-      <!-- Eyebrow / Kicker artisanal -->
-      <div class="inline-flex items-center gap-2 self-start px-3.5 py-1.5 rounded-full text-xs font-medium tracking-wide bg-gray-100 dark:bg-gray-800/80 text-gray-800 dark:text-gray-200 border border-gray-200/80 dark:border-gray-700/80 mb-4 sm:mb-5">
-        <span class="w-1.5 h-1.5 rounded-full bg-amber-600 dark:bg-amber-400 shrink-0" aria-hidden="true"></span>
-        <span>Atelier d'artisanat zen · Montpellier depuis 1982</span>
-      </div>
-
-      <!-- Titre principal H1 -->
-      <h1 
-        id="hero-title" 
-        class="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] xl:text-[3.5rem] font-bold tracking-tight text-gray-900 dark:text-white leading-[1.12] break-words"
-      >
-        Zafus artisanaux pour la pratique du zazen
-      </h1>
-
-      <!-- Message d'accompagnement -->
-      <p class="mt-4 sm:mt-5 text-base sm:text-lg lg:text-xl text-gray-700 dark:text-gray-300 leading-relaxed max-w-2xl">
-        Cousus à la main depuis 1982, les zafus Myokan sont réalisés sur commande et adaptés à votre pratique, votre posture et votre morphologie.
+    <!-- Zone 1 : En-tête (Eyebrow, H1, Texte) -->
+    <header class="order-1 lg:col-span-7 lg:row-start-1 flex flex-col text-left">
+      <!-- Eyebrow secondaire -->
+      <p class="text-xs uppercase tracking-widest font-semibold text-amber-800 dark:text-amber-400 mb-3 sm:mb-4">
+        Zafus artisanaux · Myokan
       </p>
 
+      <!-- Titre principal H1 unique -->
+      <h1 
+        id="hero-title" 
+        class="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] xl:text-[3.5rem] font-bold font-heading tracking-tight text-gray-900 dark:text-white leading-[1.12] max-w-xl break-words"
+      >
+        Zafu de méditation artisanal, fabriqué en France
+      </h1>
+
+      <!-- Texte introductif -->
+      <p class="mt-4 sm:mt-5 text-base sm:text-lg lg:text-xl text-gray-700 dark:text-gray-300 leading-relaxed max-w-xl">
+        Cousu à la main à Montpellier depuis 1982, chaque zafu Myokan est réalisé sur commande et peut être adapté à votre posture, votre morphologie et votre pratique du zazen.
+      </p>
+    </header>
+
+    <!-- Zone 2 : Image du zafu artisanal -->
+    <div class="order-2 lg:order-none lg:col-span-5 lg:col-start-8 lg:row-start-1 lg:row-span-2 flex justify-center w-full">
+      <figure class="w-full max-w-md lg:max-w-none">
+        <div class="overflow-hidden rounded-2xl bg-gray-100 dark:bg-gray-800 border border-gray-200/80 dark:border-gray-800 shadow-sm aspect-[4/3] sm:aspect-[5/4] lg:aspect-[4/3] xl:aspect-[5/4]">
+          <img
+            src="/zafu-noir-lin.webp"
+            alt="Zafu de méditation artisanal noir traditionnel avec poignée en pur lin et plis d'aisance — Confection Atelier Myokan"
+            width="1080"
+            height="1920"
+            class="w-full h-full object-cover object-[center_32%]"
+            loading="eager"
+            fetchpriority="high"
+          />
+        </div>
+        <figcaption class="mt-2.5 text-center lg:text-left text-xs text-gray-500 dark:text-gray-400">
+          Zafu traditionnel en toile de coton noire · Poignée en lin pur · Rembourrage kapok végétal
+        </figcaption>
+      </figure>
+    </div>
+
+    <!-- Zone 3 : Actions principales & Réassurance -->
+    <div class="order-3 lg:order-none lg:col-span-7 lg:row-start-2 flex flex-col text-left">
       <!-- Actions principales (CTAs) -->
       <div class="mt-6 sm:mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 sm:gap-4">
         <a 
           href="/choisir-son-zafu/" 
-          class="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 bg-gray-900 hover:bg-gray-800 text-white dark:bg-white dark:text-gray-950 dark:hover:bg-gray-100 rounded-lg transition-colors font-medium text-base shadow-sm focus-visible:ring-2 focus-visible:ring-offset-2 group text-center"
+          class="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 bg-gray-900 hover:bg-gray-800 text-white dark:bg-white dark:text-gray-950 dark:hover:bg-gray-100 rounded-xl transition font-semibold text-base shadow-sm focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-hidden group text-center"
         >
-          <span>Choisir mon zafu</span>
+          <span>Trouver mon zafu</span>
           <svg 
-            class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" 
+            class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1 shrink-0" 
             fill="none" 
             viewBox="0 0 24 24" 
             stroke="currentColor" 
@@ -50,93 +71,46 @@
 
         <a 
           href="/zafus/" 
-          class="inline-flex items-center justify-center px-6 py-3.5 border border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-200 hover:text-gray-950 dark:hover:text-white hover:border-gray-500 dark:hover:border-gray-500 rounded-lg transition-colors font-medium text-base focus-visible:ring-2 text-center"
+          class="inline-flex items-center justify-center px-6 py-3.5 border border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-200 hover:text-gray-950 dark:hover:text-white hover:border-gray-500 dark:hover:border-gray-500 bg-transparent rounded-xl transition font-semibold text-base focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-hidden text-center"
         >
-          Découvrir les zafus
+          Voir les zafus
         </a>
       </div>
 
-      <!-- Précision sur le mode de commande sans paiement en ligne -->
-      <p class="mt-3 text-xs sm:text-[13px] text-gray-600 dark:text-gray-400">
-        Conseils de posture & devis direct avec l'atelier · Sans paiement automatisé en ligne
-      </p>
-
-      <!-- Ligne de réassurance / Micro-bénéfices -->
-      <div class="mt-6 sm:mt-7 pt-5 sm:pt-6 border-t border-gray-200/70 dark:border-gray-800">
-        <ul class="flex flex-wrap items-center gap-y-2 gap-x-3 sm:gap-x-4 text-xs sm:text-sm text-gray-700 dark:text-gray-300" aria-label="Engagements et garanties de l'atelier">
-          <li class="inline-flex items-center gap-1.5 font-medium">
-            <svg class="w-4 h-4 text-gray-800 dark:text-gray-200 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <!-- Ligne de réassurance sobre -->
+      <div class="mt-6 sm:mt-7 pt-5 sm:pt-6 border-t border-gray-200/70 dark:border-gray-800 max-w-xl">
+        <ul class="flex flex-wrap items-center gap-y-2 gap-x-3 sm:gap-x-4 text-xs sm:text-sm text-gray-600 dark:text-gray-400" aria-label="Engagements et caractéristiques de l'atelier">
+          <li class="inline-flex items-center gap-1.5 font-medium text-gray-700 dark:text-gray-300">
+            <svg class="w-4 h-4 text-amber-700 dark:text-amber-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
             </svg>
             <span>Fabrication artisanale</span>
           </li>
           <li class="text-gray-300 dark:text-gray-600 select-none" aria-hidden="true">·</li>
-          <li class="inline-flex items-center gap-1.5 font-medium">
-            <svg class="w-4 h-4 text-gray-800 dark:text-gray-200 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <li class="inline-flex items-center gap-1.5 font-medium text-gray-700 dark:text-gray-300">
+            <svg class="w-4 h-4 text-amber-700 dark:text-amber-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
             </svg>
             <span>Kapok naturel</span>
           </li>
           <li class="text-gray-300 dark:text-gray-600 select-none" aria-hidden="true">·</li>
-          <li class="inline-flex items-center gap-1.5 font-medium">
-            <svg class="w-4 h-4 text-gray-800 dark:text-gray-200 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <li class="inline-flex items-center gap-1.5 font-medium text-gray-700 dark:text-gray-300">
+            <svg class="w-4 h-4 text-amber-700 dark:text-amber-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
             </svg>
-            <span>Sur mesure</span>
+            <span>Sur commande</span>
           </li>
           <li class="text-gray-300 dark:text-gray-600 select-none" aria-hidden="true">·</li>
-          <li class="inline-flex items-center gap-1.5 font-medium">
-            <svg class="w-4 h-4 text-gray-800 dark:text-gray-200 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <li class="inline-flex items-center gap-1.5 font-medium text-gray-700 dark:text-gray-300">
+            <svg class="w-4 h-4 text-amber-700 dark:text-amber-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
             </svg>
-            <span>Depuis 1982</span>
+            <span>Conseil personnalisé</span>
           </li>
         </ul>
       </div>
-
-    </div>
-
-    <!-- Colonne Visuel Produit & Savoir-faire -->
-    <div class="lg:col-span-5 flex justify-center w-full mt-4 lg:mt-0">
-      <figure class="relative w-full max-w-md lg:max-w-none">
-        
-        <!-- Conteneur d'image avec ratio maîtrisé et finition soignée -->
-        <div class="relative overflow-hidden rounded-2xl bg-gray-100 dark:bg-gray-800 border border-gray-200/80 dark:border-gray-800 shadow-sm aspect-[4/3] sm:aspect-[5/4] lg:aspect-[4/3] xl:aspect-[5/4]">
-          <img
-            src="/zafu-noir-lin.webp"
-            alt="Zafu artisanal noir traditionnel avec plis d'aisance et poignée en pur lin, rembourré de kapok naturel — Atelier Myokan"
-            width="1080"
-            height="1920"
-            class="w-full h-full object-cover object-[center_32%]"
-            loading="eager"
-            fetchpriority="high"
-          />
-
-          <!-- Badge Artisan / Confection locale -->
-          <div class="absolute bottom-3 left-3 right-3 sm:bottom-4 sm:left-4 sm:right-auto sm:max-w-[280px] bg-white/95 dark:bg-gray-900/95 backdrop-blur-md p-2.5 sm:p-3 rounded-xl border border-gray-200/90 dark:border-gray-700/80 shadow-md">
-            <div class="flex items-center gap-2.5 sm:gap-3">
-              <img
-                src="/veronique.webp"
-                alt="Véronique Myokan Harruis, couturière et nonne zen"
-                width="40"
-                height="40"
-                class="w-9 h-9 sm:w-10 sm:h-10 rounded-full object-cover shrink-0 border border-gray-200 dark:border-gray-700 shadow-inner"
-                loading="eager"
-              />
-              <div class="text-xs leading-snug">
-                <p class="font-semibold text-gray-900 dark:text-white">Véronique Myokan Harruis</p>
-                <p class="text-gray-700 dark:text-gray-300 text-[11px] sm:text-xs">Nonne zen & couturière artisanale</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Légende textuelle discrète sous l'image -->
-        <figcaption class="mt-2.5 text-center lg:text-left text-xs text-gray-600 dark:text-gray-400">
-          Zafu traditionnel en toile de coton noire · Poignée en lin naturel · Rembourrage kapok végétal
-        </figcaption>
-      </figure>
     </div>
 
   </div>
 </section>
+
