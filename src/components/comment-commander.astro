@@ -1,99 +1,216 @@
 ---
-import { orderingSteps } from "@data/zafus";
-
 interface Props {
   class?: string;
   title?: string;
   subtitle?: string;
-  showAllSteps?: boolean;
 }
 
 const {
   class: className = "",
-  title = "Comment commander un zafu artisanal ?",
-  subtitle = "Myokan est un atelier d'artisanat : chaque pièce est confectionnée avec soin après un échange direct avec l'artisane.",
-  showAllSteps = false,
+  title = "Comment commander votre zafu ?",
+  subtitle = "Chaque zafu Myokan est fabriqué sur commande. Nous prenons le temps de vérifier avec vous le modèle, la hauteur et les éventuelles personnalisations avant de lancer la fabrication.",
 } = Astro.props;
 
-// 3 étapes synthétiques pour affichage compact ou 5 étapes complètes
-const displaySteps = showAllSteps ? orderingSteps : orderingSteps.slice(0, 3);
+const steps = [
+  {
+    num: "01",
+    title: "Choisissez votre zafu",
+    desc: "Comparez les formats S, M et L ou utilisez notre guide d'assise pour trouver le modèle adapté à votre pratique.",
+    ctaPrimary: {
+      label: "Trouver mon zafu",
+      href: "/choisir-son-zafu/#zafu-guide-app",
+    },
+    ctaSecondary: {
+      label: "Voir les zafus",
+      href: "/zafus/",
+    },
+    note: "Vous savez déjà lequel choisir ? Consultez directement nos modèles.",
+  },
+  {
+    num: "02",
+    title: "Échangez avec Myokan",
+    desc: "Vous pouvez nous contacter pour vérifier votre choix, parler de votre posture ou discuter d'une réalisation sur mesure.",
+    ctaPrimary: {
+      label: "Demander conseil",
+      href: "/contact/",
+    },
+    note: "Conseil direct et sans engagement avec l'artisane.",
+  },
+  {
+    num: "03",
+    title: "Validez votre commande",
+    desc: "Après échange, nous vous confirmons le modèle, les éventuelles personnalisations, le prix total et les modalités de commande.",
+    points: [
+      "Prix confirmé avant fabrication",
+      "Règlement par virement bancaire ou PayPal",
+      "Aucun paiement à l'aveugle",
+    ],
+  },
+  {
+    num: "04",
+    title: "Votre zafu est fabriqué",
+    desc: "Une fois votre commande confirmée, votre zafu est confectionné à la main à Montpellier selon la méthode traditionnelle transmise depuis 1982.",
+    points: [
+      "Fabrication artisanale",
+      "Sur commande à Montpellier",
+      "Expédition Mondial Relay ou domicile",
+    ],
+  },
+];
 ---
 
-<section class:list={["rounded-3xl bg-gray-50 dark:bg-gray-900/70 border border-gray-200 dark:border-gray-800 p-6 sm:p-10", className]} aria-labelledby="comment-commander-heading">
-  <div class="max-w-3xl mb-8">
-    <span class="text-xs uppercase tracking-wider font-semibold text-amber-700 dark:text-amber-400">
-      Processus de confection & commande
+<section 
+  class:list={["rounded-3xl bg-gray-50 dark:bg-gray-900/70 border border-gray-200 dark:border-gray-800 p-6 sm:p-10 lg:p-12 scroll-mt-20", className]} 
+  aria-labelledby="comment-commander-heading"
+>
+  <!-- En-tête de section -->
+  <header class="max-w-3xl mb-8 sm:mb-10">
+    <span class="text-xs uppercase tracking-widest font-semibold text-amber-800 dark:text-amber-400 block mb-2">
+      Parcours de commande artisanale
     </span>
-    <h2 id="comment-commander-heading" class="text-2xl sm:text-3xl lg:text-4xl font-bold font-heading text-gray-900 dark:text-white mt-1 tracking-tight">
+    <h2 id="comment-commander-heading" class="text-2xl sm:text-3xl lg:text-4xl font-bold font-heading text-gray-900 dark:text-white tracking-tight leading-tight">
       {title}
     </h2>
-    <p class="text-sm sm:text-base text-gray-700 dark:text-gray-300 mt-2.5 leading-relaxed">
+    <p class="mt-3 text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed font-normal">
       {subtitle}
     </p>
-  </div>
+  </header>
 
-  <!-- Étapes du processus -->
-  <div class="grid sm:grid-cols-3 gap-6 relative">
-    {displaySteps.map((step) => (
-      <div class="p-5 rounded-2xl bg-white dark:bg-gray-800/80 border border-gray-200/80 dark:border-gray-700/80 shadow-xs flex flex-col justify-between">
+  <!-- Processus séquentiel en 4 étapes (Desktop : 4 colonnes avec progression · Mobile : vertical) -->
+  <ol class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 list-none p-0 m-0">
+    {steps.map((step, idx) => (
+      <li class="p-5 sm:p-6 rounded-2xl bg-white dark:bg-gray-850 border border-gray-200/90 dark:border-gray-700/80 shadow-xs flex flex-col justify-between relative group">
         <div>
-          <div class="flex items-center gap-3 mb-3">
-            <span class="w-8 h-8 rounded-full bg-gray-900 dark:bg-white text-white dark:text-gray-950 text-sm font-bold flex items-center justify-center shrink-0">
-              {step.number}
+          <!-- Numérotation & connecteur discret -->
+          <div class="flex items-center justify-between gap-3 mb-3">
+            <span class="w-9 h-9 rounded-xl bg-gray-900 dark:bg-white text-white dark:text-gray-950 font-bold font-mono text-sm flex items-center justify-center shrink-0 shadow-xs">
+              {step.num}
             </span>
-            <h3 class="font-bold text-base sm:text-lg text-gray-900 dark:text-white">
-              {step.title}
-            </h3>
+            <span class="text-xs font-semibold text-amber-800 dark:text-amber-400 font-mono">
+              Étape {idx + 1}
+            </span>
           </div>
-          
-          <p class="text-xs font-semibold text-amber-800 dark:text-amber-400 mb-2">
-            {step.subtitle}
-          </p>
 
-          <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+          <h3 class="font-bold text-base sm:text-lg text-gray-900 dark:text-white font-heading tracking-tight leading-snug">
+            {step.title}
+          </h3>
+
+          <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-300 mt-2 leading-relaxed">
             {step.desc}
           </p>
 
-          {step.details && (
-            <ul class="mt-3 pt-3 border-t border-gray-100 dark:border-gray-700/60 space-y-1 text-xs text-gray-500 dark:text-gray-400">
-              {step.details.map((item) => (
-                <li class="flex items-center gap-1.5">
-                  <span class="text-amber-600 dark:text-amber-400">·</span>
-                  <span>{item}</span>
+          {step.points && (
+            <ul class="mt-3.5 pt-3 border-t border-gray-100 dark:border-gray-750 space-y-1.5 text-xs text-gray-600 dark:text-gray-400">
+              {step.points.map((pt) => (
+                <li class="flex items-center gap-2">
+                  <span class="text-amber-700 dark:text-amber-400 font-bold">✓</span>
+                  <span>{pt}</span>
                 </li>
               ))}
             </ul>
           )}
         </div>
-      </div>
-    ))}
-  </div>
 
-  <!-- Éléments de réassurance clairs et non manipulatoires -->
-  <div class="mt-8 pt-6 border-t border-gray-200/80 dark:border-gray-800 flex flex-wrap items-center justify-between gap-4 text-xs text-gray-600 dark:text-gray-400">
-    <div class="flex flex-wrap items-center gap-y-2 gap-x-4">
-      <span class="flex items-center gap-1.5 text-gray-800 dark:text-gray-200 font-medium">
-        <svg class="w-4 h-4 text-emerald-600 dark:text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-        </svg>
-        Prix confirmé avant fabrication
-      </span>
-      <span class="flex items-center gap-1.5 text-gray-800 dark:text-gray-200 font-medium">
-        <svg class="w-4 h-4 text-emerald-600 dark:text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-        </svg>
-        Conseil personnalisé direct
-      </span>
-      <span class="flex items-center gap-1.5 text-gray-800 dark:text-gray-200 font-medium">
-        <svg class="w-4 h-4 text-emerald-600 dark:text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-        </svg>
-        Fabrication artisanale à Montpellier
-      </span>
+        {step.ctaPrimary && (
+          <div class="mt-5 pt-4 border-t border-gray-100 dark:border-gray-750 space-y-2">
+            <a 
+              href={step.ctaPrimary.href} 
+              class="inline-flex items-center justify-center gap-1.5 w-full py-2.5 px-3 rounded-xl bg-gray-900 hover:bg-gray-800 text-white dark:bg-white dark:text-gray-950 dark:hover:bg-gray-100 text-xs sm:text-sm font-semibold transition text-center shadow-xs focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-hidden"
+            >
+              <span>{step.ctaPrimary.label}</span>
+              <span aria-hidden="true">→</span>
+            </a>
+
+            {step.ctaSecondary ? (
+              <p class="text-[11px] text-gray-500 dark:text-gray-400 text-center leading-normal">
+                Vous savez déjà ? <a href={step.ctaSecondary.href} class="underline font-semibold text-gray-800 dark:text-gray-200 hover:text-gray-950 dark:hover:text-white">{step.ctaSecondary.label}</a>
+              </p>
+            ) : step.note ? (
+              <p class="text-[11px] text-gray-500 dark:text-gray-400 text-center leading-normal">
+                {step.note}
+              </p>
+            ) : null}
+          </div>
+        )}
+      </li>
+    ))}
+  </ol>
+
+  <!-- Éléments de confiance & Pas de panier (Sections 7 & 8) -->
+  <div class="mt-8 sm:mt-10 grid sm:grid-cols-2 gap-5 sm:gap-6">
+    <div class="p-5 sm:p-6 rounded-2xl bg-white dark:bg-gray-850 border border-gray-200/80 dark:border-gray-750">
+      <h3 class="text-base font-bold text-gray-900 dark:text-white flex items-center gap-2">
+        <span class="text-amber-800 dark:text-amber-400 text-lg" aria-hidden="true">💡</span>
+        <span>Pourquoi commander ainsi ?</span>
+      </h3>
+      <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-300 mt-2 leading-relaxed">
+        Un zafu n'est pas simplement un coussin. Sa hauteur, sa fermeté et sa forme influencent directement votre posture en assise zazen. L'échange avec Myokan permet de vérifier que le modèle choisi correspond réellement à votre pratique et à votre morphologie.
+      </p>
     </div>
 
-    <a href="/commander/" class="font-semibold text-gray-900 dark:text-white underline hover:no-underline shrink-0">
-      Tout savoir sur la commande et les délais →
+    <div class="p-5 sm:p-6 rounded-2xl bg-white dark:bg-gray-850 border border-gray-200/80 dark:border-gray-750">
+      <h3 class="text-base font-bold text-gray-900 dark:text-white flex items-center gap-2">
+        <span class="text-amber-800 dark:text-amber-400 text-lg" aria-hidden="true">🧵</span>
+        <span>Pas de panier, pas de choix à l'aveugle</span>
+      </h3>
+      <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-300 mt-2 leading-relaxed">
+        Chaque zafu étant fabriqué sur commande, nous privilégions un échange personnalisé avant fabrication. Le modèle, la hauteur et les finitions sont validés ensemble avant de lancer la confection, avec un devis clair et sans débit automatique.
+      </p>
+    </div>
+  </div>
+
+  <!-- CTA Principal de section & Deux Parcours Distincts (Sections 9, 10, 16) -->
+  <div class="mt-8 p-6 sm:p-8 rounded-2xl bg-amber-50/80 dark:bg-amber-950/30 border border-amber-200/80 dark:border-amber-900/50 flex flex-col md:flex-row md:items-center justify-between gap-6">
+    <div class="space-y-1.5 max-w-xl">
+      <h3 class="text-lg sm:text-xl font-bold font-heading text-gray-900 dark:text-white tracking-tight">
+        Vous savez déjà quel zafu vous souhaitez ?
+      </h3>
+      <p class="text-xs sm:text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+        Transmettez votre demande en précisant votre modèle ou vos questions. Nous vous répondrons avec soin et confirmation du devis.
+      </p>
+      <p class="text-[11px] text-gray-600 dark:text-gray-400 font-medium">
+        Depuis 1982 · Fabriqué à la main à Montpellier · Kapok naturel · Conseil personnalisé
+      </p>
+    </div>
+
+    <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 shrink-0">
+      <!-- Parcours B : Je sais déjà ce que je veux -->
+      <div class="flex flex-col items-center">
+        <a 
+          href="/commander/#formulaire-commande" 
+          class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gray-900 hover:bg-gray-800 text-white dark:bg-white dark:text-gray-950 dark:hover:bg-gray-100 font-semibold text-sm transition shadow-sm w-full text-center focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-hidden"
+        >
+          <span>Demander mon zafu</span>
+          <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </a>
+        <span class="text-[10px] text-gray-500 dark:text-gray-400 mt-1">
+          Réponse personnalisée · Fabrication sur commande
+        </span>
+      </div>
+
+      <!-- Parcours A : Je ne sais pas lequel choisir -->
+      <a 
+        href="/choisir-son-zafu/#zafu-guide-app" 
+        class="inline-flex items-center justify-center gap-1.5 px-5 py-3.5 rounded-xl border border-gray-300 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-500 bg-white dark:bg-gray-850 text-gray-800 dark:text-gray-200 hover:text-gray-950 dark:hover:text-white font-semibold text-xs sm:text-sm transition text-center"
+      >
+        <span>Trouver mon zafu</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Note d'accès complet au guide de commande -->
+  <div class="mt-6 pt-5 border-t border-gray-200/80 dark:border-gray-800 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-600 dark:text-gray-400">
+    <div class="flex items-center gap-2">
+      <span class="text-amber-700 dark:text-amber-400">✓</span>
+      <span>Expédition suivie en France métropolitaine et Europe (Mondial Relay ou Colissimo)</span>
+    </div>
+    <a 
+      href="/commander/" 
+      class="font-semibold text-gray-900 dark:text-white underline hover:no-underline shrink-0"
+    >
+      Consulter tous les détails sur la commande et les tarifs →
     </a>
   </div>
 </section>

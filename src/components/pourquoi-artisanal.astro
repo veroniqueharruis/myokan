@@ -1,124 +1,56 @@
 ---
+const piliers = [
+  {
+    title: "Cousu à la main",
+    desc: "Chaque zafu est confectionné à la commande dans l'atelier de Montpellier.",
+    icon: "🧵",
+  },
+  {
+    title: "Kapok naturel",
+    desc: "Un rembourrage végétal ferme et durable, adapté à la pratique du zazen.",
+    icon: "🌿",
+  },
+  {
+    title: "Un conseil direct",
+    desc: "Vous échangez directement avec Véronique pour choisir votre zafu.",
+    icon: "💬",
+  },
+];
 ---
 
-<section class="mt-14 sm:mt-20 mx-auto max-w-5xl" aria-labelledby="pourquoi-heading">
-  <div class="mb-8 max-w-2xl">
-    <p class="text-xs uppercase tracking-wider font-semibold text-gray-500 dark:text-gray-400 mb-1">
+<section class="mt-14 sm:mt-20 mx-auto max-w-5xl scroll-mt-20" aria-labelledby="pourquoi-heading">
+  <div class="text-center max-w-2xl mx-auto mb-10">
+    <p class="text-xs uppercase tracking-widest font-semibold text-amber-800 dark:text-amber-400 mb-1.5">
       Savoir-faire & Authenticité
     </p>
     <h2 id="pourquoi-heading" class="text-2xl sm:text-3xl lg:text-4xl font-bold font-heading text-gray-900 dark:text-white tracking-tight">
-      Pourquoi choisir un zafu artisanal&nbsp;?
+      Pourquoi Myokan&nbsp;?
     </h2>
-    <p class="mt-2 text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
-      Un bon coussin de méditation est un compagnon de pratique pour des décennies. Voici ce qui distingue une confection traditionnelle Myokan d'un produit industriel standardisé.
-    </p>
   </div>
 
-  <div class="grid sm:grid-cols-3 gap-6">
-    
-    <!-- Pilier 1 : Kapok -->
-    <div class="overflow-hidden bg-gray-50 dark:bg-gray-900/60 rounded-2xl border border-gray-200/80 dark:border-gray-800 flex flex-col justify-between shadow-xs">
-      <div>
-        <div class="aspect-[16/10] w-full overflow-hidden bg-gray-100 dark:bg-gray-800">
-          <img 
-            src="/kapokier-arbre.webp" 
-            alt="Fruits et fibres végétales de kapok naturel sur l'arbre kapokier" 
-            width="500" 
-            height="332" 
-            class="w-full h-full object-cover object-center"
-            loading="lazy"
-          />
-        </div>
-        <div class="p-5 sm:p-6">
-          <div class="inline-flex items-center gap-2 mb-2">
-            <span class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-amber-100 dark:bg-amber-950/60 text-amber-900 dark:text-amber-300">01</span>
-            <span class="text-xs text-gray-500 dark:text-gray-400 font-medium">Matière première végétale</span>
-          </div>
-          <h3 class="font-bold text-gray-900 dark:text-white text-lg mb-2">
-            Le kapok 100&nbsp;% naturel
+  <div class="grid sm:grid-cols-3 gap-5 lg:gap-6">
+    {piliers.map((p) => (
+      <div class="p-6 sm:p-7 rounded-2xl bg-gray-50/70 dark:bg-gray-900/60 border border-gray-200/80 dark:border-gray-800 flex flex-col justify-between shadow-xs">
+        <div>
+          <span class="text-2xl mb-3 block" aria-hidden="true">{p.icon}</span>
+          <h3 class="font-bold text-gray-900 dark:text-white text-lg mb-2 font-heading">
+            {p.title}
           </h3>
           <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-            Contrairement aux mousses synthétiques qui s'affaissent après quelques mois ou aux coques d'épeautre/sarrasin très lourdes et bruyantes, le <a href="/pratique-zazen/#choisir-zafu" class="underline hover:text-gray-950 dark:hover:text-white font-medium">kapok végétal</a> offre une assise ferme, légère, respirante et imputrescible.
+            {p.desc}
           </p>
         </div>
       </div>
-      <div class="px-5 pb-5 sm:px-6 sm:pb-6 pt-0 text-[11px] text-gray-500 dark:text-gray-400">
-        <span class="block pt-3 border-t border-gray-200/60 dark:border-gray-800">Fibre végétale renouvelable & saine</span>
-      </div>
-    </div>
-
-    <!-- Pilier 2 : Plis traditionnels -->
-    <div class="overflow-hidden bg-gray-50 dark:bg-gray-900/60 rounded-2xl border border-gray-200/80 dark:border-gray-800 flex flex-col justify-between shadow-xs">
-      <div>
-        <div class="aspect-[16/10] w-full overflow-hidden bg-gray-100 dark:bg-gray-800">
-          <img 
-            src="/zafu-vide-framboise.webp" 
-            alt="Plis d'aisance accordéon et rabat intérieur d'une housse de zafu artisanale" 
-            width="800" 
-            height="450" 
-            class="w-full h-full object-cover object-center"
-            loading="lazy"
-          />
-        </div>
-        <div class="p-5 sm:p-6">
-          <div class="inline-flex items-center gap-2 mb-2">
-            <span class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-amber-100 dark:bg-amber-950/60 text-amber-900 dark:text-amber-300">02</span>
-            <span class="text-xs text-gray-500 dark:text-gray-400 font-medium">Patronage traditionnel</span>
-          </div>
-          <h3 class="font-bold text-gray-900 dark:text-white text-lg mb-2">
-            La coupe traditionnelle à plis
-          </h3>
-          <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-            Les plis d'aisance latéraux réguliers, formés et cousus selon la méthode apprise à l'atelier du dojo de Paris en 1982, permettent au coussin de s'élargir sous le poids sans déchirer les coutures et de maintenir une cambrure lombaire stable.
-          </p>
-        </div>
-      </div>
-      <div class="px-5 pb-5 sm:px-6 sm:pb-6 pt-0 text-[11px] text-gray-500 dark:text-gray-400">
-        <span class="block pt-3 border-t border-gray-200/60 dark:border-gray-800">Coutures renforcées & toile 100% coton</span>
-      </div>
-    </div>
-
-    <!-- Pilier 3 : Pratiquante zen -->
-    <div class="overflow-hidden bg-gray-50 dark:bg-gray-900/60 rounded-2xl border border-gray-200/80 dark:border-gray-800 flex flex-col justify-between shadow-xs">
-      <div>
-        <div class="aspect-[16/10] w-full overflow-hidden bg-gray-100 dark:bg-gray-800">
-          <img 
-            src="/veronique.webp" 
-            alt="Véronique Myokan Harruis, couturière artisanale et nonne zen Soto" 
-            width="364" 
-            height="364" 
-            class="w-full h-full object-cover object-[center_20%]"
-            loading="lazy"
-          />
-        </div>
-        <div class="p-5 sm:p-6">
-          <div class="inline-flex items-center gap-2 mb-2">
-            <span class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-amber-100 dark:bg-amber-950/60 text-amber-900 dark:text-amber-300">03</span>
-            <span class="text-xs text-gray-500 dark:text-gray-400 font-medium">Transmission vivante</span>
-          </div>
-          <h3 class="font-bold text-gray-900 dark:text-white text-lg mb-2">
-            Cousu par une pratiquante
-          </h3>
-          <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-            <a href="/a-propos/" class="underline hover:text-gray-950 dark:hover:text-white font-medium">Véronique Myokan Harruis</a> pratique le zazen quotidiennement depuis 1980. Elle connaît l'exigence du corps lors d'assises longues et adapte chaque conseil à votre morphologie réelle.
-          </p>
-        </div>
-      </div>
-      <div class="px-5 pb-5 sm:px-6 sm:pb-6 pt-0 text-[11px] text-gray-500 dark:text-gray-400">
-        <span class="block pt-3 border-t border-gray-200/60 dark:border-gray-800">Conseils directs sans intermédiaire</span>
-      </div>
-    </div>
-
+    ))}
   </div>
 
-  <!-- Précision prix & expédition -->
-  <div class="mt-6 p-4 rounded-xl bg-white dark:bg-gray-800/80 border border-gray-200/80 dark:border-gray-700/80 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-600 dark:text-gray-400">
-    <div>
-      <span class="font-semibold text-gray-900 dark:text-white">Tarifs clairs & expédition soignée&nbsp;:</span>
-      <span> Zafus à partir de 25 € (vide) et 40 € (plein avec kapok). Expédition depuis Montpellier via Mondial Relay, règlement par virement ou PayPal.</span>
-    </div>
-    <a href="/contact/" class="font-semibold text-gray-900 dark:text-white underline hover:no-underline shrink-0">
-      Demander un devis détaillé →
+  <div class="mt-8 text-center">
+    <a 
+      href="/a-propos/" 
+      class="inline-flex items-center gap-1 text-xs sm:text-sm font-semibold text-gray-800 dark:text-gray-200 hover:text-gray-950 dark:hover:text-white underline hover:no-underline transition"
+    >
+      <span>Découvrir le savoir-faire de l'atelier</span>
+      <span aria-hidden="true">→</span>
     </a>
   </div>
 </section>

@@ -1,225 +1,172 @@
 ---
-import { pricing } from "@data/zafus";
+interface ZafuCardModel {
+  size: "S" | "M" | "L" | "Sur mesure";
+  name: string;
+  badge?: string;
+  featured?: boolean;
+  isCustom?: boolean;
+  img: string;
+  alt: string;
+  dimensions: string;
+  useCase: string;
+  price: string;
+  ctaText: string;
+  ctaUrl: string;
+}
 
-const zafuModels = [
+const models: ZafuCardModel[] = [
   {
-    name: "Zafu Standard — Taille M",
-    tagline: "Le modèle de référence traditionnel",
-    desc: "Le gabarit d'assise transmis par maître Deshimaru. Hauteur équilibrée pour basculer naturellement le bassin et libérer la respiration abdominale.",
-    detail: "30 cm de diamètre · 15 cm de hauteur",
-    priceLead: "À partir de 45 €",
-    priceDetail: "45 € plein garni de kapok · 27 € housse vide",
-    priceNote: "Coussin prêt à l'assise ou housse en coton à garnir",
-    img: "/zafu-plein-noir.webp",
-    alt: "Zafu de méditation zen artisanal noir traditionnel taille M — Atelier Myokan",
-    badge: "Recommandé pour débuter",
-    featured: true,
-    cta: "Configurer ce zafu (Taille M)",
-    path: "/zafus/?taille=M",
-    customization: "Toile 100% coton robuste · Plis d'aisance traditionnels · Coloris au choix",
-  },
-  {
-    name: "Zafu Souplesse — Taille S",
-    tagline: "Assise basse ou pratique nomade",
-    desc: "Recommandé pour les personnes très souples pratiquant en plein lotus, ou comme coussin de voyage compact et léger pour les stages et sesshins.",
-    detail: "28 cm de diamètre · 13 cm de hauteur",
-    priceLead: "À partir de 40 €",
-    priceDetail: "40 € plein garni de kapok · 25 € housse vide",
-    priceNote: "Idéal plein lotus ou déplacement",
+    size: "S",
+    name: "Zafu Souplesse — S",
     img: "/zafu-bleu-fonce.webp",
-    alt: "Zafu de méditation zen artisanal bleu foncé taille S — Atelier Myokan",
-    badge: "Lotus & voyage",
-    featured: false,
-    cta: "Choisir ce zafu (Taille S)",
-    path: "/zafus/?taille=S",
-    customization: "Format compact · Toile coton épaisse · Poignée lin sur demande",
+    alt: "Zafu artisanal de méditation taille S (28 × 13 cm) en kapok naturel — Myokan",
+    dimensions: "28 cm · 13 cm",
+    useCase: "Assise basse pour pratiquants très souples ou assise en lotus.",
+    price: "À partir de 40 €",
+    ctaText: "Découvrir",
+    ctaUrl: "/zafus/?taille=S",
   },
   {
-    name: "Zafu Assise Haute — Taille L",
-    tagline: "Grand gabarit ou hanches raides",
-    desc: "Surélévation accrue facilitant le redressement du dos si vous mesurez plus de 1m80 ou si vous ressentez une raideur au niveau des hanches et genoux.",
-    detail: "32 cm de diamètre · 17 cm de hauteur",
-    priceLead: "À partir de 50 €",
-    priceDetail: "50 € plein garni de kapok · 30 € housse vide",
-    priceNote: "Dégagement du bassin pour gabarit > 1m80",
+    size: "M",
+    name: "Zafu Standard — M",
+    badge: "Standard",
+    featured: true,
+    img: "/zafu-plein-noir.webp",
+    alt: "Zafu artisanal de méditation taille M (30 × 15 cm) en kapok naturel — Myokan",
+    dimensions: "30 cm · 15 cm",
+    useCase: "Le modèle traditionnel, adapté à la majorité des pratiquants.",
+    price: "À partir de 45 €",
+    ctaText: "Découvrir",
+    ctaUrl: "/zafus/?taille=M",
+  },
+  {
+    size: "L",
+    name: "Zafu Assise Haute — L",
     img: "/zafu-plein-marron.webp",
-    alt: "Zafu de méditation zen artisanal marron taille L — Atelier Myokan",
-    badge: "Grand gabarit (> 1m80)",
-    featured: false,
-    cta: "Choisir ce zafu (Taille L)",
-    path: "/zafus/?taille=L",
-    customization: "Assise haute 17 cm · Maintien ferme en kapok végétal · Surélévation lombaire",
+    alt: "Zafu artisanal de méditation taille L (32 × 17 cm) pour grand gabarit — Myokan",
+    dimensions: "32 cm · 17 cm",
+    useCase: "Pour les grands gabarits ou en cas de raideur du bassin.",
+    price: "À partir de 50 €",
+    ctaText: "Découvrir",
+    ctaUrl: "/zafus/?taille=L",
   },
   {
-    name: "Zafu Sur Mesure & Accessoires",
-    tagline: "Dimensions et coloris personnalisés",
-    desc: "Confection personnalisée adaptée à votre morphologie exacte, ou housse vide avec fente intérieure pour garnir vous-même votre propre kapok.",
-    detail: "Mensurations libres · Toile coton ou lin",
-    priceLead: "Prix sur demande",
-    priceDetail: "Devis personnalisé gratuit",
-    priceNote: "Le prix dépend des dimensions, du tissu et du garnissage choisis",
+    size: "Sur mesure",
+    name: "Zafu Sur mesure",
+    isCustom: true,
     img: "/zafus-pile.webp",
-    alt: "Pile de zafus artisanaux de méditation multicolores — Atelier Myokan",
-    badge: "Sur mesure",
-    featured: false,
-    cta: "Demander un devis sur mesure",
-    path: "/commander/?produit=zafu-sur-mesure",
-    customization: "Cotes anatomiques spécifiques · Choix des toiles · Conseil direct artisane",
+    alt: "Zafu confectionné sur mesure selon votre morphologie — Atelier Myokan",
+    dimensions: "Dimensions au choix",
+    useCase: "Confection personnalisée selon votre morphologie ou votre posture.",
+    price: "Sur devis",
+    ctaText: "Demander conseil",
+    ctaUrl: "/commander/?produit=zafu-sur-mesure",
   },
 ];
 ---
 
-<section id="zafus-section" class="mt-14 sm:mt-20 mx-auto max-w-5xl" aria-labelledby="zafus-heading">
-  <!-- En-tête de section avec sémantique zafu affirmée -->
-  <div class="max-w-3xl mb-10">
-    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold tracking-wide bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 mb-3">
-      <span class="w-1.5 h-1.5 rounded-full bg-amber-600 dark:bg-amber-400" aria-hidden="true"></span>
-      <span>La création centrale de l'atelier</span>
-    </div>
-    
-    <h2 id="zafus-heading" class="text-3xl sm:text-4xl lg:text-[2.65rem] font-bold text-gray-900 dark:text-white font-heading tracking-tight leading-tight">
-      Zafus artisanaux
+<section 
+  id="zafus-section" 
+  class="mt-14 sm:mt-20 mx-auto max-w-6xl scroll-mt-20" 
+  aria-labelledby="zafu-models-title"
+>
+  <!-- En-tête de section -->
+  <header class="max-w-2xl mb-8">
+    <p class="text-xs uppercase tracking-widest font-semibold text-amber-800 dark:text-amber-400 mb-1.5">
+      Confections artisanales Myokan
+    </p>
+
+    <h2 id="zafu-models-title" class="text-2xl sm:text-3xl lg:text-4xl font-bold font-heading text-gray-900 dark:text-white tracking-tight">
+      Nos zafus
     </h2>
-    
-    <p class="mt-4 text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-      Le <strong>zafu</strong> (座蒲) est le coussin d'assise traditionnel japonais, pierre angulaire de la méditation <em>zazen</em>. 
-      En surélevant le bassin au tiers antérieur, il permet aux genoux de s'enraciner au sol pour former un trépied anatomique stable, 
-      déclenchant la bascule naturelle de la cinquième vertèbre lombaire et un dos droit sans contraction musculaire.
-    </p>
 
-    <p class="mt-3 text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
-      Confectionné à Montpellier selon la méthode transmise en 1982 par madame Deshimaru, chaque zafu Myokan réunit 
-      des <strong>plis d'aisance latéraux réguliers</strong>, une toile 100&nbsp;% coton robuste et un <strong>rembourrage en kapok végétal naturel</strong> 
-      offrant une fermeté pérenne qui ne s'affaisse pas avec les années.
+    <p class="mt-2 text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
+      Quatre formats pensés pour trouver l'assise naturelle adaptée à votre corps.
     </p>
-  </div>
+  </header>
 
-  <!-- Grille des modèles de Zafus avec hiérarchie de prix claire -->
-  <div class="grid sm:grid-cols-2 gap-6 lg:gap-8">
-    {zafuModels.map((m) => (
+  <!-- Grille épurée des 4 modèles -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 xl:gap-5 items-stretch">
+    {models.map((m) => (
       <article 
         class:list={[
-          "group relative flex flex-col rounded-2xl border transition-all duration-200 overflow-hidden bg-white dark:bg-gray-900/80 shadow-sm hover:shadow-md",
+          "group relative flex flex-col justify-between rounded-2xl border transition-all duration-200 overflow-hidden shadow-xs",
           m.featured 
-            ? "border-gray-900 dark:border-gray-300 ring-1 ring-gray-900/10 dark:ring-white/20" 
-            : "border-gray-200 dark:border-gray-800 hover:border-gray-400 dark:hover:border-gray-600"
+            ? "bg-white dark:bg-gray-900 border-gray-900 dark:border-gray-300 ring-1 ring-gray-900/10 dark:ring-white/20 sm:-translate-y-1 shadow-sm" 
+            : m.isCustom
+              ? "bg-amber-50/40 dark:bg-gray-900/80 border-dashed border-amber-300 dark:border-amber-800/80 hover:border-amber-500 dark:hover:border-amber-600"
+              : "bg-white dark:bg-gray-900 border-gray-200/90 dark:border-gray-800 hover:border-gray-400 dark:hover:border-gray-600"
         ]}
       >
-        <!-- Image Produit Haute Définition avec ratio 16:10 -->
-        <div class="relative w-full aspect-[16/10] overflow-hidden bg-gray-100 dark:bg-gray-800">
-          <img
-            src={m.img}
-            alt={m.alt}
-            width="600"
-            height="375"
-            class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
-            loading="lazy"
-          />
-          
-          <!-- Badge distinctif -->
-          <span 
-            class:list={[
-              "absolute top-3.5 right-3.5 text-xs font-semibold px-3 py-1 rounded-full shadow-sm backdrop-blur-md border",
-              m.featured
-                ? "bg-gray-900/95 text-white dark:bg-white dark:text-gray-950 border-transparent"
-                : "bg-white/90 text-gray-800 dark:bg-gray-900/90 dark:text-gray-200 border-gray-200/60 dark:border-gray-700/60"
-            ]}
-          >
-            {m.badge}
-          </span>
-        </div>
+        <div>
+          <!-- Image -->
+          <div class="p-4 pb-0">
+            <div class="w-full aspect-[4/3] rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-800 relative">
+              <img
+                src={m.img}
+                alt={m.alt}
+                width="600"
+                height="450"
+                class="w-full h-full object-cover object-center group-hover:scale-103 transition-transform duration-300"
+                loading="lazy"
+                decoding="async"
+              />
+              {m.badge && (
+                <span class="absolute top-2.5 right-2.5 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-gray-900/90 text-white dark:bg-white/90 dark:text-gray-950 backdrop-blur-xs">
+                  {m.badge}
+                </span>
+              )}
+            </div>
+          </div>
 
-        <!-- Contenu descriptif structuré -->
-        <div class="p-6 sm:p-7 flex flex-col flex-1 justify-between">
-          <div>
-            <div class="flex items-baseline justify-between gap-2">
-              <h3 class="font-bold text-xl text-gray-900 dark:text-white font-heading tracking-tight group-hover:text-gray-700 dark:group-hover:text-gray-300 transition">
+          <!-- Détails -->
+          <div class="p-4 pt-3.5 space-y-2">
+            <div>
+              <h3 class="font-bold text-base sm:text-lg text-gray-900 dark:text-white font-heading tracking-tight">
                 {m.name}
               </h3>
+              <p class="text-xs font-mono font-medium text-gray-500 dark:text-gray-400 mt-0.5">
+                {m.dimensions}
+              </p>
             </div>
-            
-            <p class="text-xs font-medium uppercase tracking-wider text-amber-800 dark:text-amber-400 mt-1">
-              {m.tagline}
-            </p>
 
-            <p class="text-xs font-mono font-semibold text-gray-600 dark:text-gray-400 mt-2 bg-gray-50 dark:bg-gray-800/60 px-2.5 py-1 rounded-md inline-block">
-              {m.detail}
+            <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed min-h-[2.5rem]">
+              {m.useCase}
             </p>
-
-            <p class="text-sm text-gray-700 dark:text-gray-300 mt-3 leading-relaxed">
-              {m.desc}
-            </p>
-
-            <div class="mt-3 pt-2.5 border-t border-gray-100 dark:border-gray-800/60 text-xs text-gray-500 dark:text-gray-400">
-              <span class="font-medium text-gray-700 dark:text-gray-300">Options :</span> {m.customization}
-            </div>
           </div>
+        </div>
 
-          <!-- Bloc Tarification & Action -->
-          <div class="mt-6 pt-4 border-t border-gray-100 dark:border-gray-800 flex flex-col gap-3">
-            <div class="flex items-baseline justify-between gap-2">
-              <div>
-                <span class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white font-heading tracking-tight block">
-                  {m.priceLead}
-                </span>
-                <span class="text-xs text-gray-600 dark:text-gray-400 block mt-0.5">
-                  {m.priceDetail}
-                </span>
-              </div>
+        <!-- Prix & CTA -->
+        <div class="p-4 pt-2 border-t border-gray-100 dark:border-gray-800/80 flex items-center justify-between gap-2">
+          <span class="text-xs sm:text-sm font-bold text-gray-900 dark:text-white">
+            {m.price}
+          </span>
 
-              <span class="text-[11px] text-gray-400 dark:text-gray-500 text-right shrink-0">
-                Hors frais de port
-              </span>
-            </div>
-
-            <!-- Explication du prix -->
-            <p class="text-[11px] text-gray-500 dark:text-gray-400 leading-normal">
-              {m.priceNote} · Prix confirmé avant fabrication.
-            </p>
-
-            <div class="pt-1 flex items-center justify-between gap-3">
-              <a
-                href={m.path}
-                class:list={[
-                  "inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition focus-visible:ring-2 flex-1 text-center",
-                  m.featured
-                    ? "bg-gray-900 hover:bg-gray-800 text-white dark:bg-white dark:text-gray-950 dark:hover:bg-gray-100 shadow-sm"
-                    : "bg-gray-100 hover:bg-gray-200 text-gray-900 dark:bg-gray-800 dark:text-gray-100 dark:hover:bg-gray-700"
-                ]}
-              >
-                <span>{m.cta}</span>
-                <span aria-hidden="true">→</span>
-              </a>
-
-              <a 
-                href="/commander/" 
-                class="text-xs font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white underline shrink-0 px-1"
-              >
-                Comment commander ?
-              </a>
-            </div>
-          </div>
+          <a
+            href={m.ctaUrl}
+            class:list={[
+              "inline-flex items-center gap-1 py-1.5 px-3 rounded-lg text-xs font-semibold transition text-center",
+              m.featured
+                ? "bg-gray-900 hover:bg-gray-800 text-white dark:bg-white dark:text-gray-950 dark:hover:bg-gray-100 shadow-2xs"
+                : "border border-gray-300 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-500 text-gray-800 dark:text-gray-200 hover:text-gray-950 dark:hover:text-white bg-white dark:bg-gray-850"
+            ]}
+          >
+            <span>{m.ctaText}</span>
+            <span aria-hidden="true">→</span>
+          </a>
         </div>
       </article>
     ))}
   </div>
 
-  <!-- Reassurance & Lien Galerie Zafus -->
-  <div class="mt-8 p-4 sm:p-5 rounded-xl bg-gray-50 dark:bg-gray-900/60 border border-gray-200 dark:border-gray-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm text-gray-700 dark:text-gray-300">
-    <div class="flex items-center gap-2.5">
-      <svg class="w-5 h-5 text-gray-800 dark:text-gray-200 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-      </svg>
-      <span>
-        Toile 100&nbsp;% coton épais · Fente intérieure avec rabat de protection · Poignée de transport en pur lin sur demande
-      </span>
-    </div>
-    
+  <!-- CTA compact d'orientation unique -->
+  <div class="mt-8 text-center">
     <a 
-      href="/zafus/#gallery-heading" 
-      class="font-semibold text-gray-900 dark:text-white underline hover:no-underline shrink-0 whitespace-nowrap"
+      href="/choisir-son-zafu/" 
+      class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300 hover:text-gray-950 dark:hover:text-white transition"
     >
-      Voir la galerie de confections zafus →
+      <span>Vous hésitez entre plusieurs tailles ?</span>
+      <span class="text-amber-800 dark:text-amber-400 font-bold underline hover:no-underline">Quel zafu choisir ? →</span>
     </a>
   </div>
 </section>

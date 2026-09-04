@@ -590,6 +590,65 @@ const productSchema = {
         </button>
       </div>
 
+      <!-- Comparatif synthétique des formats -->
+      <div class="mt-8 overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-800">
+        <table class="w-full text-left border-collapse text-xs sm:text-sm">
+          <thead>
+            <tr class="bg-gray-100/70 dark:bg-gray-800/70 text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-700">
+              <th scope="col" class="p-3 font-bold">Modèle</th>
+              <th scope="col" class="p-3 font-bold">Hauteur</th>
+              <th scope="col" class="p-3 font-bold">Diamètre</th>
+              <th scope="col" class="p-3 font-bold">Usage recommandé</th>
+              <th scope="col" class="p-3 font-bold">Garnissage</th>
+              <th scope="col" class="p-3 font-bold whitespace-nowrap">Prix plein</th>
+              <th scope="col" class="p-3 font-bold whitespace-nowrap">Housse vide</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200/70 dark:divide-gray-800 bg-white dark:bg-gray-900">
+            <tr>
+              <td class="p-3 font-semibold text-gray-900 dark:text-white">Taille S</td>
+              <td class="p-3 font-mono">13 cm</td>
+              <td class="p-3 font-mono">28 cm</td>
+              <td class="p-3 text-gray-600 dark:text-gray-400">Assise basse, lotus complet, voyage</td>
+              <td class="p-3 text-gray-600 dark:text-gray-400">Kapok végétal 100 %</td>
+              <td class="p-3 font-semibold text-gray-900 dark:text-white whitespace-nowrap">40 €</td>
+              <td class="p-3 text-gray-600 dark:text-gray-400 whitespace-nowrap">25 €</td>
+            </tr>
+            <tr class="bg-amber-50/40 dark:bg-amber-950/20">
+              <td class="p-3 font-semibold text-gray-900 dark:text-white">
+                <div class="flex items-center gap-1.5">
+                  <span>Taille M</span>
+                  <span class="text-[9px] font-bold px-1.5 py-0.2 rounded bg-amber-200 dark:bg-amber-900 text-amber-900 dark:text-amber-200">Standard</span>
+                </div>
+              </td>
+              <td class="p-3 font-mono font-semibold">15 cm</td>
+              <td class="p-3 font-mono">30 cm</td>
+              <td class="p-3 text-gray-700 dark:text-gray-300">Format polyvalent pour la majorité des pratiquants</td>
+              <td class="p-3 text-gray-600 dark:text-gray-400">Kapok végétal 100 %</td>
+              <td class="p-3 font-semibold text-gray-900 dark:text-white whitespace-nowrap">45 €</td>
+              <td class="p-3 text-gray-600 dark:text-gray-400 whitespace-nowrap">27 €</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-gray-900 dark:text-white">Taille L</td>
+              <td class="p-3 font-mono">17 cm</td>
+              <td class="p-3 font-mono">32 cm</td>
+              <td class="p-3 text-gray-600 dark:text-gray-400">Grand gabarit (&gt; 1m80) ou hanches raides</td>
+              <td class="p-3 text-gray-600 dark:text-gray-400">Kapok végétal 100 %</td>
+              <td class="p-3 font-semibold text-gray-900 dark:text-white whitespace-nowrap">50 €</td>
+              <td class="p-3 text-gray-600 dark:text-gray-400 whitespace-nowrap">30 €</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-gray-900 dark:text-white">Sur mesure</td>
+              <td class="p-3 text-gray-600 dark:text-gray-400">Personnalisée</td>
+              <td class="p-3 text-gray-600 dark:text-gray-400">Personnalisé</td>
+              <td class="p-3 text-gray-600 dark:text-gray-400">Besoins spécifiques, cotes anatomiques particulières</td>
+              <td class="p-3 text-gray-600 dark:text-gray-400">Kapok ou housse seule</td>
+              <td class="p-3 font-semibold text-gray-900 dark:text-white whitespace-nowrap" colspan="2">Sur devis</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
       <!-- Bloc Kapok Végétal -->
       <div id="kapok" class="mt-8 p-5 sm:p-6 rounded-xl bg-white dark:bg-gray-800/80 border border-gray-200 dark:border-gray-700 shadow-xs scroll-mt-20">
         <div class="grid sm:grid-cols-12 gap-5 items-center">
@@ -937,7 +996,7 @@ const productSchema = {
             summaryOrderBtn.href = mailtoUrl;
           }
 
-          const summaryFormLink = document.getElementById("summary-form-link") as HTMLAnchorElement;
+          const summaryFormLink = document.getElementById("summary-form-link");
           if (summaryFormLink) {
             summaryFormLink.href = formUrl;
           }

@@ -2,145 +2,96 @@
 const accessoires = [
   {
     title: "Zabutons",
-    role: "Sous le zafu · Protection articulaire",
-    desc: "Grand coussin rectangulaire posé sous le zafu. Amortit la pression sur les genoux et les chevilles lors de l'assise prolongée.",
+    desc: "Le complément du zafu pour une assise confortable.",
     img: "/zabutons-empiles.webp",
     alt: "Zabutons artisanaux de méditation empilés — Atelier Myokan",
     path: "/zabutons/",
-    cta: "Découvrir les zabutons",
-    badge: "Complément d'assise",
   },
   {
     title: "Sacs à zafu",
-    role: "Transport & protection du coussin",
-    desc: "Sac en toile de coton résistante avec cordon de serrage coulissant. Pratique pour emporter votre zafu au dojo ou en stage.",
+    desc: "Pour transporter et protéger votre coussin.",
     img: "/sac-zafu-rouge.webp",
     alt: "Sac à zafu en toile rouge avec cordon — Atelier Myokan",
     path: "/sacs-zafus/",
-    cta: "Découvrir les sacs à zafu",
-    badge: "Transport",
   },
   {
     title: "Fukusas",
-    role: "Pour bol oryoki · Cérémonie du repas",
-    desc: "Carré de tissu doublé utilisé pour envelopper et manipuler les bols précieux lors du rituel du repas en retraite zen.",
+    desc: "Étoffes doublées pour envelopper les bols précieux.",
     img: "/fukusa-bleu-jaune.webp",
     alt: "Fukusa zen bleu et jaune traditionnel pour bol oryoki — Myokan",
     path: "/fukusas/",
-    cta: "Découvrir les fukusas",
-    badge: "Rituel",
   },
   {
     title: "Oryokis",
-    role: "Service de repas traditionnel complet",
-    desc: "Ensemble pour la cérémonie du repas en sesshin : bol en bois noble tourné en France, cuillère sous étui, fukusa et serviette.",
+    desc: "Ensemble traditionnel pour le repas en sesshin.",
     img: "/oryokis-trio.webp",
     alt: "Bols oryoki en bois tourné et fukusas confectionnés à Montpellier — Myokan",
     path: "/oryokis/",
-    cta: "Découvrir les oryokis",
-    badge: "Service complet",
   },
   {
     title: "Sacs à kesa & ketsumyaku",
-    role: "Protection des robes de cérémonie",
-    desc: "Housses sur mesure avec bandoulière et finitions soignées pour ranger et préserver le kesa, le rakusu et le ketsumyaku.",
+    desc: "Protection des robes de cérémonie zen.",
     img: "/sac-kesa-bandouliere.webp",
     alt: "Sac à kesa artisanal avec bandoulière et motifs traditionnels — Myokan",
     path: "/kesas/",
-    cta: "Découvrir les sacs à kesa",
-    badge: "Sur mesure",
   },
 ];
 ---
 
-<section id="accessoires" class="mt-14 sm:mt-20 mx-auto max-w-5xl" aria-labelledby="accessoires-heading">
-  <!-- En-tête : hiérarchie visuelle volontairement plus légère que la section zafu -->
+<section id="accessoires" class="mt-14 sm:mt-20 mx-auto max-w-6xl scroll-mt-20" aria-labelledby="accessoires-heading">
   <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4 pb-4 border-b border-gray-200/80 dark:border-gray-800">
     <div>
-      <p class="text-xs uppercase tracking-wider font-semibold text-gray-500 dark:text-gray-400 mb-1">
-        Compléments d'assise & accessoires zen
+      <p class="text-xs uppercase tracking-widest font-semibold text-amber-800 dark:text-amber-400 mb-1.5">
+        Compléments & confections zen
       </p>
-      <h2 id="accessoires-heading" class="text-2xl sm:text-3xl font-bold font-heading text-gray-900 dark:text-white tracking-tight">
-        Accessoires pour la pratique du zazen
+      <h2 id="accessoires-heading" class="text-2xl sm:text-3xl lg:text-4xl font-bold font-heading text-gray-900 dark:text-white tracking-tight">
+        Accessoires pour la pratique
       </h2>
-      <p class="text-sm text-gray-600 dark:text-gray-400 mt-1 max-w-2xl">
-        Confectionnés sur commande à l'atelier pour accompagner votre zafu, préserver votre posture et équiper vos séjours en sesshin.
+      <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-1.5">
+        Il existe aussi d'autres confections pour accompagner votre pratique.
       </p>
     </div>
-    <div class="flex items-center gap-3 shrink-0">
-      <a 
-        href="/accessoires/" 
-        class="text-xs sm:text-sm font-semibold text-gray-800 dark:text-gray-200 hover:text-gray-950 dark:hover:text-white underline hover:no-underline"
-      >
-        Voir tous les accessoires &rarr;
-      </a>
-    </div>
+    <a 
+      href="/accessoires/" 
+      class="text-xs sm:text-sm font-semibold text-gray-800 dark:text-gray-200 hover:text-gray-950 dark:hover:text-white underline hover:no-underline shrink-0"
+    >
+      Voir tous les accessoires →
+    </a>
   </div>
 
-  <!-- Grille plus compacte et discrète (5 éléments, cartes plus légères) -->
-  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+  <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
     {accessoires.map((a) => (
-      <article class="group flex flex-col border border-gray-200/80 dark:border-gray-800 rounded-xl overflow-hidden hover:border-gray-400 dark:hover:border-gray-600 hover:shadow-xs transition bg-white dark:bg-gray-900/60">
-        <div class="relative w-full h-40 overflow-hidden bg-gray-100 dark:bg-gray-800">
+      <a 
+        href={a.path}
+        class="group flex flex-col rounded-2xl border border-gray-200/80 dark:border-gray-800 overflow-hidden hover:border-gray-400 dark:hover:border-gray-600 transition bg-white dark:bg-gray-900/60 shadow-2xs hover:shadow-xs"
+      >
+        <div class="w-full aspect-[4/3] overflow-hidden bg-gray-100 dark:bg-gray-800">
           <img
             src={a.img}
             alt={a.alt}
             width="400"
-            height="220"
+            height="300"
             class="w-full h-full object-cover group-hover:scale-103 transition-transform duration-300"
             loading="lazy"
           />
-          <span class="absolute top-2.5 right-2.5 bg-white/90 dark:bg-gray-900/90 text-[10px] font-semibold text-gray-700 dark:text-gray-300 px-2.5 py-0.5 rounded-full border border-gray-200/60 dark:border-gray-700/60">
-            {a.badge}
-          </span>
         </div>
 
-        <div class="p-4 sm:p-5 flex flex-col flex-1 justify-between">
+        <div class="p-3.5 sm:p-4 flex flex-col flex-1 justify-between gap-2">
           <div>
-            <h3 class="font-bold text-gray-900 dark:text-white text-base group-hover:text-gray-700 dark:group-hover:text-gray-300 transition">
+            <h3 class="font-bold text-sm sm:text-base text-gray-900 dark:text-white group-hover:underline">
               {a.title}
             </h3>
-            <p class="text-[11px] font-medium text-amber-800 dark:text-amber-400 mt-0.5">
-              {a.role}
-            </p>
-            <p class="text-xs text-gray-600 dark:text-gray-400 mt-2 leading-relaxed">
+            <p class="text-xs text-gray-500 dark:text-gray-400 mt-1 leading-snug">
               {a.desc}
             </p>
           </div>
 
-          <div class="mt-4 pt-3 border-t border-gray-100 dark:border-gray-800 flex items-center justify-between text-xs">
-            <span class="text-gray-500 dark:text-gray-400 text-[11px]">Prix sur demande</span>
-            <a 
-              href={a.path} 
-              class="font-semibold text-gray-800 dark:text-gray-200 hover:text-gray-950 dark:hover:text-white underline hover:no-underline"
-            >
-              {a.cta} →
-            </a>
-          </div>
+          <span class="text-xs font-semibold text-amber-800 dark:text-amber-400 group-hover:translate-x-0.5 transition-transform inline-flex items-center gap-1 mt-1">
+            <span>Découvrir</span>
+            <span aria-hidden="true">→</span>
+          </span>
         </div>
-      </article>
+      </a>
     ))}
-
-    <!-- Carte explicative ensemble combiné -->
-    <div class="p-5 rounded-xl border border-dashed border-gray-300 dark:border-gray-700 bg-gray-50/50 dark:bg-gray-900/40 flex flex-col justify-between">
-      <div>
-        <span class="text-[10px] uppercase font-bold tracking-wider text-gray-500 dark:text-gray-400">Assortiment d'atelier</span>
-        <h3 class="font-bold text-base text-gray-900 dark:text-white mt-1">
-          Assortir zafu & zabuton
-        </h3>
-        <p class="text-xs text-gray-600 dark:text-gray-400 mt-2 leading-relaxed">
-          Pour harmoniser votre espace de méditation, votre zabuton peut être confectionné dans le même tissu et coloris que votre zafu. Précisez votre souhait lors de votre demande.
-        </p>
-      </div>
-
-      <div class="mt-4 pt-3 border-t border-gray-200/60 dark:border-gray-800">
-        <a 
-          href="/contact/" 
-          class="text-xs font-semibold text-gray-900 dark:text-white underline hover:no-underline"
-        >
-          Demander un ensemble coordonné →
-        </a>
-      </div>
-    </div>
   </div>
 </section>

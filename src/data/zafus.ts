@@ -41,7 +41,7 @@ export interface ZafuGalleryImage {
   alt: string;
   title: string;
   caption: string;
-  category?: "Produit" | "Savoir-faire" | "Matière" | "Pratique";
+  category?: "Produit" | "Savoir-faire" | "Matière" | "Pratique" | "Atelier";
 }
 
 // Tarifs indicatifs en euros (hors frais de port)
@@ -69,38 +69,31 @@ export interface OrderingStep {
 export const orderingSteps: OrderingStep[] = [
   {
     number: 1,
-    title: "Votre besoin",
-    subtitle: "Sélectionnez votre modèle ou vos repères",
-    desc: "Parcourez nos modèles (S, M, L ou Sur mesure), configurez votre zafu en ligne ou suivez notre guide d'assise selon votre posture et votre morphologie.",
-    details: ["Modèle & dimensions", "Formule plein kapok ou housse seule", "Coloris de toile (noir, bordeaux, bleu, etc.)"],
+    title: "Choisissez votre zafu",
+    subtitle: "Sélectionnez votre modèle ou utilisez le guide",
+    desc: "Comparez les formats S, M et L ou utilisez notre guide d'assise pour trouver le modèle adapté à votre pratique et à votre morphologie.",
+    details: ["Formats S, M, L ou Sur mesure", "Garni de kapok naturel ou housse seule", "Coloris de toile (noir, rouge, bleu, etc.)"],
   },
   {
     number: 2,
-    title: "Conseil personnalisé",
-    subtitle: "Échange direct avec l'artisane",
-    desc: "Transmettez votre demande via le formulaire ou par e-mail. Véronique Myokan Harruis étudie vos indications et vous conseille en cas de doute sur la hauteur.",
+    title: "Échangez avec Myokan",
+    subtitle: "Conseil direct avec l'artisane",
+    desc: "Vous pouvez nous contacter pour vérifier votre choix, parler de votre posture ou discuter d'une réalisation sur mesure sans engagement.",
     details: ["Questions d'assise ou de posture", "Demandes particulières ou sur mesure", "Pas d'obligation d'achat à cette étape"],
   },
   {
     number: 3,
-    title: "Confirmation & Devis",
-    subtitle: "Prix total validé avant confection",
-    desc: "Véronique vous confirme le délai de fabrication et le montant exact comprenant les frais d'expédition (Mondial Relay ou domicile). Aucun paiement n'est exigé sans accord préalable.",
+    title: "Validez votre commande",
+    subtitle: "Devis clair & prix confirmé avant fabrication",
+    desc: "Après échange, nous vous confirmons le modèle, les éventuelles personnalisations, le montant exact et les modalités de commande.",
     details: ["Devis transparent sans frais cachés", "Règlement par virement bancaire ou PayPal", "Validation formelle de votre commande"],
   },
   {
     number: 4,
-    title: "Fabrication artisanale",
-    subtitle: "Confection soignée à Montpellier",
-    desc: "Votre zafu est découpé, assemblé à la machine et garni de kapok végétal dans le respect scrupuleux de la méthode traditionnelle transmise depuis 1982.",
-    details: ["Toile 100 % coton robuste", "Plis d'aisance réguliers traditionnels", "Tassage dense du kapok naturel"],
-  },
-  {
-    number: 5,
-    title: "Expédition & Suivi",
-    subtitle: "Envoi soigné en France & Europe",
-    desc: "Votre colis est préparé à l'atelier et expédié vers le point relais Mondial Relay de votre choix ou directement à votre adresse postale.",
-    details: ["Numéro de suivi transmis par e-mail", "Emballage protecteur", "Disponible aussi pour retrait à Montpellier"],
+    title: "Votre zafu est fabriqué",
+    subtitle: "Confection artisanale à Montpellier",
+    desc: "Une fois votre commande confirmée, votre zafu est confectionné à la main à l'atelier de Montpellier selon la méthode traditionnelle transmise depuis 1982, puis expédié avec suivi.",
+    details: ["Fabrication artisanale sur commande", "Kapok végétal 100 % naturel", "Expédition Mondial Relay ou domicile avec suivi"],
   },
 ];
 
@@ -383,3 +376,6 @@ export function evaluateZafuRecommendation(answers: UserAnswers): Recommendation
     optionsSummary: "Standard dojo Soto Zen, coutures renforcées, choix de coloris",
   };
 }
+
+// Ré-export du moteur de recommandation moderne pour l'assistant de choix
+export { recommendZafu, type GuideAnswers, type RecommendationResult as AssistantRecommendationResult } from "../utils/zafu-recommendation";
