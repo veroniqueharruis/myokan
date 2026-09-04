@@ -1,9 +1,48 @@
 ---
-const { price } = Astro.props;
+interface Props {
+  price?: string;
+  explanation?: string;
+  productName?: string;
+}
+
+const {
+  price = "Sur devis",
+  explanation = "Le prix dépend des dimensions, du tissu et des finitions choisies. Le montant exact vous est confirmé avant confection.",
+  productName = "cet article",
+} = Astro.props;
+
+const isDevis = price.toLowerCase().includes("devis") || price.toLowerCase().includes("demande");
 ---
 
-<div class="mt-4 inline-flex items-center gap-2 flex-wrap">
-  <span class="text-2xl font-bold text-gray-900 dark:text-white font-heading">{price}</span>
-  <span class="text-sm text-gray-600 dark:text-gray-400">· hors frais de port · <a href="/contact/" class="underline hover:text-gray-950 dark:hover:text-white font-medium">demander un devis</a></span>
-</div>
+<div class="mt-5 p-4 rounded-2xl bg-gray-50 dark:bg-gray-900/60 border border-gray-200 dark:border-gray-800">
+  <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
+    <div>
+      <span class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 block font-medium">
+        Tarification artisanale
+      </span>
+      <span class="text-2xl font-bold text-gray-900 dark:text-white font-heading tracking-tight">
+        {price}
+      </span>
+    </div>
+    
+    <span class="text-xs text-gray-500 dark:text-gray-400">
+      Hors frais de port · Aucun paiement en ligne
+    </span>
+  </div>
 
+  <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-300 mt-2 leading-relaxed">
+    {explanation}
+  </p>
+
+  <div class="mt-3 pt-3 border-t border-gray-200/60 dark:border-gray-800 flex items-center justify-between gap-3 text-xs">
+    <span class="text-gray-500 dark:text-gray-400">
+      Réponse personnalisée sous quelques jours
+    </span>
+    <a 
+      href={`/commander/?produit=${encodeURIComponent(productName)}`} 
+      class="font-semibold text-gray-900 dark:text-white underline hover:no-underline shrink-0"
+    >
+      Demander un devis gratuit →
+    </a>
+  </div>
+</div>

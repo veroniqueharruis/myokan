@@ -51,6 +51,74 @@ export const pricing: Record<string, ZafuPricing> = {
   "Sur mesure": { vide: null, plein: null },
 };
 
+export const pricingExplanation = {
+  summary: "À partir de 40 € plein (avec kapok) · dès 25 € en housse vide",
+  detail: "Le tarif d'un zafu dépend uniquement de sa taille (S, M ou L) et de sa formule de garnissage (coussin plein garni de kapok végétal naturel ou housse seule à garnir par vos soins). Pour les dimensions spéciales, le tarif est confirmé sur devis avant confection.",
+  whyVariation: "Pourquoi le prix varie-t-il ? La quantité de tissu de coton épais, le volume de kapok végétal naturel (environ 1 kg de fibre soyeuse tassée à la main) et les éventuelles mensurations personnalisées déterminent le temps d'atelier.",
+};
+
+export interface OrderingStep {
+  number: number;
+  title: string;
+  subtitle: string;
+  desc: string;
+  details?: string[];
+}
+
+export const orderingSteps: OrderingStep[] = [
+  {
+    number: 1,
+    title: "Votre besoin",
+    subtitle: "Sélectionnez votre modèle ou vos repères",
+    desc: "Parcourez nos modèles (S, M, L ou Sur mesure), configurez votre zafu en ligne ou suivez notre guide d'assise selon votre posture et votre morphologie.",
+    details: ["Modèle & dimensions", "Formule plein kapok ou housse seule", "Coloris de toile (noir, bordeaux, bleu, etc.)"],
+  },
+  {
+    number: 2,
+    title: "Conseil personnalisé",
+    subtitle: "Échange direct avec l'artisane",
+    desc: "Transmettez votre demande via le formulaire ou par e-mail. Véronique Myokan Harruis étudie vos indications et vous conseille en cas de doute sur la hauteur.",
+    details: ["Questions d'assise ou de posture", "Demandes particulières ou sur mesure", "Pas d'obligation d'achat à cette étape"],
+  },
+  {
+    number: 3,
+    title: "Confirmation & Devis",
+    subtitle: "Prix total validé avant confection",
+    desc: "Véronique vous confirme le délai de fabrication et le montant exact comprenant les frais d'expédition (Mondial Relay ou domicile). Aucun paiement n'est exigé sans accord préalable.",
+    details: ["Devis transparent sans frais cachés", "Règlement par virement bancaire ou PayPal", "Validation formelle de votre commande"],
+  },
+  {
+    number: 4,
+    title: "Fabrication artisanale",
+    subtitle: "Confection soignée à Montpellier",
+    desc: "Votre zafu est découpé, assemblé à la machine et garni de kapok végétal dans le respect scrupuleux de la méthode traditionnelle transmise depuis 1982.",
+    details: ["Toile 100 % coton robuste", "Plis d'aisance réguliers traditionnels", "Tassage dense du kapok naturel"],
+  },
+  {
+    number: 5,
+    title: "Expédition & Suivi",
+    subtitle: "Envoi soigné en France & Europe",
+    desc: "Votre colis est préparé à l'atelier et expédié vers le point relais Mondial Relay de votre choix ou directement à votre adresse postale.",
+    details: ["Numéro de suivi transmis par e-mail", "Emballage protecteur", "Disponible aussi pour retrait à Montpellier"],
+  },
+];
+
+export interface CustomizationOption {
+  level: string;
+  title: string;
+  choices: string;
+  adviceRequired: boolean;
+}
+
+export const customizationHierarchy: CustomizationOption[] = [
+  { level: "1", title: "Modèle", choices: "Taille S, M, L ou Sur mesure", adviceRequired: false },
+  { level: "2", title: "Dimensions", choices: "28 × 13 cm, 30 × 15 cm, 32 × 17 cm, ou sur mesure", adviceRequired: false },
+  { level: "3", title: "Hauteur d'assise", choices: "13 cm (basse), 15 cm (standard), 17 cm (haute), ou personnalisée", adviceRequired: false },
+  { level: "4", title: "Toile & Coloris", choices: "Noir traditionnel de dojo, Rouge bordeaux, Bleu nuit, Vert, Marron ou toiles atelier", adviceRequired: false },
+  { level: "5", title: "Rembourrage", choices: "Plein en kapok végétal naturel (ferme) ou housse vide seule", adviceRequired: false },
+  { level: "6", title: "Options spéciales", choices: "Poignée en lin naturel, broderie de dojo, gabarit morphologique atypique", adviceRequired: true },
+];
+
 // Dimensions et caractéristiques des gabarits
 export const sizes: ZafuSize[] = [
   { 

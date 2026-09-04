@@ -1,6 +1,7 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import OrderCta from "@components/order-cta.astro";
+import CommentCommander from "@components/comment-commander.astro";
 
 import { pricing, sizes, types, baseColors, galleryImages } from "@data/zafus";
 
@@ -395,26 +396,34 @@ const productSchema = {
             </div>
 
             <!-- Actions de commande contextuelle (s'affichent quand complet) -->
-            <div id="summary-actions" class="mt-4 space-y-3 hidden">
+            <div id="summary-actions" class="mt-4 space-y-2.5 hidden">
               <a 
                 id="summary-order-btn" 
                 href="#"
-                class="w-full py-3.5 px-6 bg-gray-900 dark:bg-white text-white dark:text-gray-950 font-semibold text-sm rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition shadow-sm flex items-center justify-center gap-2"
+                class="w-full py-3.5 px-6 bg-gray-900 dark:bg-white text-white dark:text-gray-950 font-semibold text-sm rounded-xl hover:bg-gray-800 dark:hover:bg-gray-100 transition shadow-sm flex items-center justify-center gap-2 text-center"
               >
-                <span>Passer commande</span>
+                <span>Commander ce zafu</span>
                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
               </a>
+
+              <a 
+                id="summary-form-link"
+                href="/commander/"
+                class="w-full py-2.5 px-4 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs font-semibold transition text-center block"
+              >
+                Remplir le formulaire en ligne →
+              </a>
               
-              <div class="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 px-1">
+              <div class="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 px-1 pt-0.5">
                 <span>Code&nbsp;: <code id="summary-code" class="font-mono font-bold text-gray-800 dark:text-gray-200">...</code></span>
-                <a id="summary-email-link" href="mailto:myokan@hotmail.fr" class="underline hover:text-gray-900 dark:hover:text-white">Écrire un e-mail</a>
+                <a id="summary-email-link" href="mailto:myokan@hotmail.fr" class="underline hover:text-gray-900 dark:hover:text-white">myokan@hotmail.fr</a>
               </div>
 
-              <p class="text-[11px] text-gray-500 dark:text-gray-400 text-center leading-relaxed">
-                Le clic prépare votre e-mail prêt à envoyer avec tous les détails. Paiement par virement bancaire ou PayPal après confirmation de faisabilité.
-              </p>
+              <div class="p-2.5 rounded-lg bg-gray-100/70 dark:bg-gray-800/60 text-[11px] text-gray-600 dark:text-gray-400 text-center leading-relaxed">
+                <span class="font-medium text-gray-800 dark:text-gray-200">Aucun débit en ligne :</span> tarif et délai confirmés par Véronique avant confection.
+              </div>
             </div>
           </div>
 
@@ -498,6 +507,9 @@ const productSchema = {
         </p>
       </div>
     </section>
+
+    <!-- Explication du processus de commande -->
+    <CommentCommander class="mt-12" />
 
     <!-- Galerie de confections de l'atelier -->
     <section class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800" aria-labelledby="gallery-heading">
@@ -614,7 +626,7 @@ const productSchema = {
       href="#"
       class="px-4 py-2.5 bg-gray-900 dark:bg-white text-white dark:text-gray-950 font-semibold text-xs rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition shadow-sm flex items-center gap-1.5 shrink-0"
     >
-      <span>Passer commande</span>
+      <span>Commander ce zafu</span>
       <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
         <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
       </svg>
@@ -763,15 +775,21 @@ const productSchema = {
             `Bonjour Véronique,\n\nJe souhaite vous commander un zafu artisanal confectionné à Montpellier :\n\n- Taille : ${selectedSize}\n- Remplissage : ${selectedType}\n- Couleur : ${selectedColor}\n- Code : ${code}\n- Prix indicatif : ${priceText} (hors frais de port)\n\nPourriez-vous me confirmer la disponibilité, le délai de réalisation et les modalités de paiement (virement bancaire ou PayPal) ?\n\nNom & Prénom :\nAdresse de livraison ou point Mondial Relay souhaité :\nTéléphone (facultatif) :\n\nMerci d'avance,\nCordialement`
           );
           const mailtoUrl = `mailto:myokan@hotmail.fr?subject=${mailSubject}&body=${mailBody}`;
+          const formUrl = `/commander/?taille=${encodeURIComponent(selectedSize)}&type=${encodeURIComponent(selectedType)}&couleur=${encodeURIComponent(selectedColor)}&config=${encodeURIComponent(code)}`;
 
           if (summaryOrderBtn) {
             summaryOrderBtn.href = mailtoUrl;
           }
 
+          const summaryFormLink = document.getElementById("summary-form-link") as HTMLAnchorElement;
+          if (summaryFormLink) {
+            summaryFormLink.href = formUrl;
+          }
+
           if (mobileStickyCta) {
             if (mobileStickyPrice) mobileStickyPrice.textContent = priceText;
             if (mobileStickyDesc) mobileStickyDesc.textContent = `${selectedSize === "Sur mesure" ? "Sur mesure" : "Taille " + selectedSize} · ${selectedType} · ${selectedColor}`;
-            if (mobileStickyBtn) mobileStickyBtn.href = mailtoUrl;
+            if (mobileStickyBtn) mobileStickyBtn.href = formUrl;
             mobileStickyCta.classList.remove("translate-y-full");
           }
         } else {

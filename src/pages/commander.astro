@@ -1,0 +1,404 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/container.astro";
+import CommandeForm from "@components/commande-form.astro";
+import { sizes, pricing, pricingExplanation, orderingSteps, customizationHierarchy } from "@data/zafus";
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Accueil",
+      "item": "https://myokan.fr/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Commander un zafu",
+      "item": "https://myokan.fr/commander/"
+    }
+  ]
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Combien coûte un zafu artisanal Myokan ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Le prix d'un zafu traditionnel dépend de sa taille et de son rembourrage. Un zafu plein garni de kapok naturel coûte 40 € (Taille S), 45 € (Taille M standard) ou 50 € (Taille L). La housse vide seule en pur coton coûte 25 € (S), 27 € (M) ou 30 € (L). Pour une confection sur mesure ou des options spécifiques, le tarif est établi sur devis gratuit sans mauvaise surprise."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Pourquoi le prix varie-t-il entre le modèle plein et la housse vide ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Le zafu plein comprend environ 1 kg de fibre végétale naturelle de kapok, extraite de l'arbre kapokier, minutieusement tassée à la main à l'atelier pour garantir une densité ferme qui ne s'affaisse pas. La housse vide permet aux personnes disposant déjà de kapok de confectionner leur coussin tout en réduisant les frais de port."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Pourquoi certains prix sont-ils sur devis ou sur demande ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pour les zafus sur mesure, les zabutons, fukusas ou ensembles d'oryokis, le prix dépend précisément des dimensions demandées, du type de toile (coton épais, lin naturel) et du travail d'atelier nécessaire. Aucun prix n'est imposé : Véronique vous confirme le devis exact avant tout lancement de fabrication."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Peut-on demander conseil avant de passer commande ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Oui, absolument. C'est même la vocation première de l'atelier Myokan. Si vous hésitez entre deux hauteurs, si vous débutez la pratique ou si vous avez des sensibilités aux genoux ou aux hanches, indiquez votre pratique dans votre message. Véronique vous orientera en toute franchise."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Le prix est-il confirmé avant fabrication ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Oui. Aucun paiement n'a lieu sur le site internet. Vous recevez par e-mail une proposition détaillée récapitulant vos dimensions, la couleur, le montant de l'article et les frais de port précis. Vous ne réglez qu'après avoir validé ce récapitulatif."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quels sont les modes de paiement et de livraison acceptés ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Le règlement s'effectue par virement bancaire ou PayPal après confirmation de la commande. L'expédition s'effectue avec suivi par Mondial Relay (en point relais au tarif avantageux) ou par envoi postal à domicile depuis Montpellier vers toute la France métropolitaine et l'Europe."
+      }
+    }
+  ]
+};
+---
+
+<Layout
+  fullTitle="Comment commander un zafu artisanal ? Prix & Devis | Myokan"
+  description="Tarifs transparents (dès 40 € plein / 25 € vide) et processus de commande en 5 étapes pour votre zafu de méditation artisanal à Montpellier. Conseil direct avec l'artisane avant fabrication.">
+  
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)} />
+
+  <Container>
+    <main id="main-content" class="max-w-4xl mx-auto pt-8 pb-20">
+      
+      <!-- Fil d'Ariane -->
+      <nav aria-label="Fil d'Ariane" class="text-xs text-gray-500 dark:text-gray-400 mb-6">
+        <ol class="flex items-center gap-2">
+          <li>
+            <a href="/" class="hover:text-gray-900 dark:hover:text-white transition underline hover:no-underline">Accueil</a>
+          </li>
+          <li aria-hidden="true">/</li>
+          <li class="font-medium text-gray-800 dark:text-gray-200" aria-current="page">Comment commander</li>
+        </ol>
+      </nav>
+
+      <!-- En-tête principal -->
+      <header class="mb-12">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100 dark:bg-amber-950/60 text-amber-900 dark:text-amber-300 text-xs font-semibold mb-3">
+          <span>Artisanat zen sur commande · Atelier à Montpellier depuis 1982</span>
+        </div>
+
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold font-heading text-gray-900 dark:text-white tracking-tight">
+          Comment commander votre zafu artisanal ?
+        </h1>
+
+        <p class="text-base sm:text-lg text-gray-700 dark:text-gray-300 mt-4 leading-relaxed max-w-3xl">
+          Chez Myokan, il n'y a pas de panier d'achat anonyme ni de débit bancaire automatique : chaque coussin de méditation est confectionné sur commande à l'atelier de Montpellier selon votre morphologie et votre pratique.
+        </p>
+
+        <p class="text-sm sm:text-base text-gray-600 dark:text-gray-400 mt-2 leading-relaxed max-w-3xl">
+          Vous échangez directement avec Véronique Myokan Harruis avant la moindre fabrication pour valider votre modèle, les dimensions et le montant exact.
+        </p>
+
+        <!-- Boutons de saut rapide -->
+        <div class="mt-6 flex flex-wrap items-center gap-3">
+          <a 
+            href="#formulaire-commande" 
+            class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gray-900 hover:bg-gray-800 text-white dark:bg-white dark:text-gray-950 dark:hover:bg-gray-100 font-semibold text-sm transition shadow-sm"
+          >
+            <span>Envoyer ma demande à l'artisane</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+          </a>
+
+          <a 
+            href="#tarifs-zafus" 
+            class="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-750 text-gray-800 dark:text-gray-200 font-semibold text-sm transition"
+          >
+            <span>Consulter la grille des tarifs</span>
+          </a>
+        </div>
+      </header>
+
+      <!-- SECTION 1 : PRIX D'UN ZAFU ARTISANAL -->
+      <section id="tarifs-zafus" class="mb-14 scroll-mt-8" aria-labelledby="prix-heading">
+        <div class="max-w-2xl mb-6">
+          <span class="text-xs uppercase tracking-wider font-semibold text-amber-700 dark:text-amber-400">
+            Transparence tarifaire
+          </span>
+          <h2 id="prix-heading" class="text-2xl sm:text-3xl font-bold font-heading text-gray-900 dark:text-white mt-1">
+            Prix d'un zafu artisanal
+          </h2>
+          <p class="text-sm text-gray-700 dark:text-gray-300 mt-2 leading-relaxed">
+            {pricingExplanation.detail}
+          </p>
+        </div>
+
+        <!-- Grille des 4 modèles et tarifs -->
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {sizes.map((s) => (
+            <div class:list={[
+              "p-5 rounded-2xl border flex flex-col justify-between transition",
+              s.isStandard 
+                ? "bg-white dark:bg-gray-900 border-2 border-gray-900 dark:border-amber-400 shadow-sm relative" 
+                : "bg-gray-50 dark:bg-gray-900/60 border-gray-200 dark:border-gray-800"
+            ]}>
+              <div>
+                {s.isStandard && (
+                  <span class="inline-block text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-amber-100 dark:bg-amber-950/80 text-amber-900 dark:text-amber-300 mb-2">
+                    Standard dojo
+                  </span>
+                )}
+                
+                <h3 class="font-bold text-lg text-gray-900 dark:text-white">
+                  Taille {s.name}
+                </h3>
+                <p class="text-xs font-semibold text-amber-800 dark:text-amber-400 mt-0.5">
+                  {s.detail}
+                </p>
+                <p class="text-xs text-gray-600 dark:text-gray-400 mt-2 leading-relaxed">
+                  {s.desc}
+                </p>
+              </div>
+
+              <div class="mt-4 pt-3 border-t border-gray-200/60 dark:border-gray-800">
+                {s.name === "Sur mesure" ? (
+                  <div>
+                    <span class="block text-base font-bold text-gray-900 dark:text-white">
+                      Prix sur demande
+                    </span>
+                    <span class="block text-[11px] text-gray-500 dark:text-gray-400 mt-0.5">
+                      Selon vos dimensions & options
+                    </span>
+                  </div>
+                ) : (
+                  <div>
+                    <div class="flex items-baseline justify-between">
+                      <span class="text-xs text-gray-500 dark:text-gray-400">Plein (kapok) :</span>
+                      <strong class="text-sm font-bold text-gray-900 dark:text-white">{pricing[s.name].plein} €</strong>
+                    </div>
+                    <div class="flex items-baseline justify-between mt-1">
+                      <span class="text-xs text-gray-500 dark:text-gray-400">Housse seule :</span>
+                      <span class="text-sm font-semibold text-gray-700 dark:text-gray-300">{pricing[s.name].vide} €</span>
+                    </div>
+                  </div>
+                )}
+
+                <a 
+                  href={`#formulaire-commande`}
+                  class="mt-3 block text-center text-xs font-semibold py-2 px-3 rounded-lg bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-900 dark:text-white transition"
+                >
+                  Choisir ce zafu
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <!-- Note explicative sur le "À partir de" et la variation de prix -->
+        <div class="mt-5 p-4 rounded-xl bg-gray-50 dark:bg-gray-900/60 border border-gray-200 dark:border-gray-800 text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
+          <p>
+            <strong>Pourquoi le prix peut-il varier ?</strong> {pricingExplanation.whyVariation} Les frais d'expédition (généralement 5 à 7 € via Mondial Relay avec suivi) sont calculés au plus juste selon le poids total de votre colis.
+          </p>
+        </div>
+      </section>
+
+      <!-- SECTION 2 : LE PROCESSUS DE COMMANDE EN 5 ÉTAPES -->
+      <section class="mb-14" aria-labelledby="etapes-commande-heading">
+        <div class="max-w-2xl mb-8">
+          <span class="text-xs uppercase tracking-wider font-semibold text-amber-700 dark:text-amber-400">
+            Ce qui se passe après votre message
+          </span>
+          <h2 id="etapes-commande-heading" class="text-2xl sm:text-3xl font-bold font-heading text-gray-900 dark:text-white mt-1">
+            Les 5 étapes de votre commande
+          </h2>
+          <p class="text-sm text-gray-700 dark:text-gray-300 mt-2 leading-relaxed">
+            De votre premier message jusqu'à la réception de votre coussin, tout est clair, serein et sans surprise.
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          {orderingSteps.map((step) => (
+            <div class="p-5 sm:p-6 rounded-2xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-xs flex flex-col sm:flex-row items-start gap-4">
+              <div class="w-10 h-10 rounded-full bg-gray-900 dark:bg-white text-white dark:text-gray-950 font-bold text-base flex items-center justify-center shrink-0">
+                {step.number}
+              </div>
+              
+              <div class="flex-1">
+                <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+                  <h3 class="font-bold text-lg text-gray-900 dark:text-white">
+                    {step.title}
+                  </h3>
+                  <span class="text-xs font-semibold text-amber-800 dark:text-amber-400">
+                    {step.subtitle}
+                  </span>
+                </div>
+
+                <p class="text-xs sm:text-sm text-gray-700 dark:text-gray-300 mt-1.5 leading-relaxed">
+                  {step.desc}
+                </p>
+
+                {step.details && (
+                  <div class="mt-3 flex flex-wrap items-center gap-2">
+                    {step.details.map((item) => (
+                      <span class="px-2.5 py-1 rounded-md text-[11px] bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300">
+                        ✓ {item}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- SECTION 3 : PERSONNALISATION CLAIRE DU ZAFU -->
+      <section class="mb-14 p-6 sm:p-8 rounded-3xl bg-gray-50 dark:bg-gray-900/60 border border-gray-200 dark:border-gray-800" aria-labelledby="customization-heading">
+        <div class="max-w-2xl mb-6">
+          <span class="text-xs uppercase tracking-wider font-semibold text-amber-700 dark:text-amber-400">
+            Confection personnalisée
+          </span>
+          <h2 id="customization-heading" class="text-2xl sm:text-3xl font-bold font-heading text-gray-900 dark:text-white mt-1">
+            Un zafu adapté à votre pratique
+          </h2>
+          <p class="text-xs sm:text-sm text-gray-700 dark:text-gray-300 mt-2 leading-relaxed">
+            Voici les différents critères que vous pouvez choisir ou définir avec Véronique pour un coussin parfaitement ajusté à votre morphologie.
+          </p>
+        </div>
+
+        <div class="space-y-3">
+          {customizationHierarchy.map((c) => (
+            <div class="p-3.5 sm:p-4 rounded-xl bg-white dark:bg-gray-900 border border-gray-200/80 dark:border-gray-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <div class="flex items-center gap-3">
+                <span class="w-6 h-6 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 text-xs font-bold font-mono flex items-center justify-center shrink-0">
+                  {c.level}
+                </span>
+                <span class="font-bold text-sm text-gray-900 dark:text-white min-w-[120px]">
+                  {c.title}
+                </span>
+              </div>
+
+              <div class="flex items-center justify-between sm:justify-end gap-3 flex-1 text-xs pl-9 sm:pl-0">
+                <span class="text-gray-700 dark:text-gray-300">
+                  {c.choices}
+                </span>
+                {c.adviceRequired && (
+                  <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-amber-100 dark:bg-amber-950/80 text-amber-900 dark:text-amber-300 shrink-0">
+                    À définir avec Myokan
+                  </span>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <p class="text-xs text-gray-500 dark:text-gray-400 mt-4 text-center">
+          Vous hésitez ? Utilisez notre <a href="/choisir-son-zafu/" class="underline font-semibold hover:text-gray-900 dark:hover:text-white">guide d'aide au choix interactif</a> ou écrivez simplement vos interrogations ci-dessous.
+        </p>
+      </section>
+
+      <!-- SECTION 4 : FORMULAIRE DE COMMANDE & CONTACT -->
+      <section id="formulaire-commande" class="mb-14 scroll-mt-8" aria-labelledby="form-heading">
+        <div class="max-w-2xl mb-6">
+          <span class="text-xs uppercase tracking-wider font-semibold text-amber-700 dark:text-amber-400">
+            Prise de contact & commande
+          </span>
+          <h2 id="form-heading" class="text-2xl sm:text-3xl font-bold font-heading text-gray-900 dark:text-white mt-1">
+            Demander un devis ou commander
+          </h2>
+          <p class="text-xs sm:text-sm text-gray-700 dark:text-gray-300 mt-1.5 leading-relaxed">
+            Remplissez les champs ci-dessous pour transmettre votre demande. Véronique vous répondra avec attention sous quelques jours ouvrés.
+          </p>
+        </div>
+
+        <CommandeForm />
+      </section>
+
+      <!-- SECTION 5 : FAQ PRIX & COMMANDE -->
+      <section class="mb-14" aria-labelledby="faq-order-heading">
+        <div class="max-w-2xl mb-6">
+          <span class="text-xs uppercase tracking-wider font-semibold text-amber-700 dark:text-amber-400">
+            Foire aux questions
+          </span>
+          <h2 id="faq-order-heading" class="text-2xl sm:text-3xl font-bold font-heading text-gray-900 dark:text-white mt-1">
+            Questions fréquentes sur les prix et la commande
+          </h2>
+        </div>
+
+        <div class="space-y-3">
+          <details class="p-5 rounded-xl bg-gray-50 dark:bg-gray-900/60 border border-gray-200 dark:border-gray-800 group">
+            <summary class="font-bold text-gray-900 dark:text-white cursor-pointer list-none flex items-center justify-between gap-3 text-sm sm:text-base">
+              <span>Combien coûte un zafu artisanal chez Myokan ?</span>
+              <span class="text-amber-600 group-open:rotate-180 transition-transform font-mono text-lg shrink-0">↓</span>
+            </summary>
+            <p class="text-xs sm:text-sm text-gray-700 dark:text-gray-300 mt-3 leading-relaxed">
+              Le prix dépend de la taille et de la formule. Un coussin plein garni de kapok naturel coûte <strong>40 € (Taille S)</strong>, <strong>45 € (Taille M standard)</strong> ou <strong>50 € (Taille L)</strong>. La housse vide seule coûte <strong>25 € (S)</strong>, <strong>27 € (M)</strong> ou <strong>30 € (L)</strong>. Les modèles personnalisés sur mesure font l'objet d'un devis gratuit validé ensemble avant confection.
+            </p>
+          </details>
+
+          <details class="p-5 rounded-xl bg-gray-50 dark:bg-gray-900/60 border border-gray-200 dark:border-gray-800 group">
+            <summary class="font-bold text-gray-900 dark:text-white cursor-pointer list-none flex items-center justify-between gap-3 text-sm sm:text-base">
+              <span>Pourquoi certains prix sont-ils « sur devis » ?</span>
+              <summary-desc class="sr-only">Explication sur les prix sur devis</summary-desc>
+              <span class="text-amber-600 group-open:rotate-180 transition-transform font-mono text-lg shrink-0">↓</span>
+            </summary>
+            <p class="text-xs sm:text-sm text-gray-700 dark:text-gray-300 mt-3 leading-relaxed">
+              Pour les fabrications sur mesure, les zabutons, sacs, fukusas ou sets d'oryokis, le travail dépend des dimensions exactes, de la toile choisie et des finitions spécifiques. Plutôt que d'appliquer des forfaits imprécis, nous calculons le tarif réel au plus juste et vous le confirmons en amont.
+            </p>
+          </details>
+
+          <details class="p-5 rounded-xl bg-gray-50 dark:bg-gray-900/60 border border-gray-200 dark:border-gray-800 group">
+            <summary class="font-bold text-gray-900 dark:text-white cursor-pointer list-none flex items-center justify-between gap-3 text-sm sm:text-base">
+              <span>Peut-on demander conseil avant de commander ?</span>
+              <span class="text-amber-600 group-open:rotate-180 transition-transform font-mono text-lg shrink-0">↓</span>
+            </summary>
+            <p class="text-xs sm:text-sm text-gray-700 dark:text-gray-300 mt-3 leading-relaxed">
+              Oui, tout à fait. Pratiquante de zazen et artisane depuis plus de 40 ans, Véronique est à votre disposition pour vous orienter sur la hauteur d'assise la plus adaptée à vos hanches et genoux. Écrivez simplement vos questions via le formulaire ou par e-mail.
+            </p>
+          </details>
+
+          <details class="p-5 rounded-xl bg-gray-50 dark:bg-gray-900/60 border border-gray-200 dark:border-gray-800 group">
+            <summary class="font-bold text-gray-900 dark:text-white cursor-pointer list-none flex items-center justify-between gap-3 text-sm sm:text-base">
+              <span>Le prix est-il confirmé avant la fabrication ?</span>
+              <span class="text-amber-600 group-open:rotate-180 transition-transform font-mono text-lg shrink-0">↓</span>
+            </summary>
+            <p class="text-xs sm:text-sm text-gray-700 dark:text-gray-300 mt-3 leading-relaxed">
+              Oui, systématiquement. Nous vous adressons une confirmation écrite comprenant le montant de l'article, les frais d'expédition exacts et le délai prévisionnel. Aucun débit n'est effectué à l'aveugle.
+            </p>
+          </details>
+
+          <details class="p-5 rounded-xl bg-gray-50 dark:bg-gray-900/60 border border-gray-200 dark:border-gray-800 group">
+            <summary class="font-bold text-gray-900 dark:text-white cursor-pointer list-none flex items-center justify-between gap-3 text-sm sm:text-base">
+              <span>Quels sont les moyens de paiement et d'expédition ?</span>
+              <span class="text-amber-600 group-open:rotate-180 transition-transform font-mono text-lg shrink-0">↓</span>
+            </summary>
+            <p class="text-xs sm:text-sm text-gray-700 dark:text-gray-300 mt-3 leading-relaxed">
+              Le paiement est réalisé par virement bancaire ou PayPal. L'envoi s'effectue par Mondial Relay (point relais) ou par la Poste à domicile depuis notre atelier de Montpellier, avec suivi fourni dès l'expédition.
+            </p>
+          </details>
+        </div>
+      </section>
+
+    </main>
+  </Container>
+</Layout>

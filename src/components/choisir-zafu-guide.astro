@@ -553,6 +553,17 @@ const { class: className = "" } = Astro.props;
               </svg>
             </a>
           </div>
+
+          <div class="mt-3 text-center sm:text-left">
+            <a 
+              id="result-cta-order" 
+              href="/commander/" 
+              class="inline-flex items-center text-xs font-semibold text-gray-700 dark:text-gray-300 hover:text-gray-950 dark:hover:text-white underline underline-offset-4 gap-1"
+            >
+              <span>Accéder directement au formulaire de commande avec ces choix</span>
+              <span aria-hidden="true">&rarr;</span>
+            </a>
+          </div>
         </div>
 
         <!-- Récapitulatif modifiable des critères -->
@@ -770,6 +781,7 @@ const { class: className = "" } = Astro.props;
       const resultAnswersSummary = document.getElementById("result-answers-summary") as HTMLElement;
       const ctaConfigurator = document.getElementById("result-cta-configurator") as HTMLAnchorElement;
       const ctaContact = document.getElementById("result-cta-contact") as HTMLAnchorElement;
+      const ctaOrder = document.getElementById("result-cta-order") as HTMLAnchorElement;
 
       // Affichage visuel & textes
       resultImage.src = rec.sizeData.img;
@@ -823,6 +835,14 @@ const { class: className = "" } = Astro.props;
       if (rec.size) configUrl.searchParams.set("taille", rec.size);
       configUrl.searchParams.set("type", rec.fillingType);
       ctaConfigurator.href = configUrl.toString();
+
+      // URL commande pré-paramétrée
+      if (ctaOrder) {
+        const orderUrl = new URL("/commander/", window.location.origin);
+        if (rec.size) orderUrl.searchParams.set("taille", rec.size);
+        orderUrl.searchParams.set("type", rec.fillingType);
+        ctaOrder.href = orderUrl.toString();
+      }
 
       // Email pré-rempli pour échanger avec Véronique
       const mailSubject = encodeURIComponent(`Demande de conseil : Zafu Taille ${rec.size}`);

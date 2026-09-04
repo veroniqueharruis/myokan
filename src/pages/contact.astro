@@ -1,6 +1,7 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
+import CommandeForm from "@components/commande-form.astro";
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",
@@ -15,7 +16,7 @@ const breadcrumbSchema = {
     {
       "@type": "ListItem",
       "position": 2,
-      "name": "Commander & Contact",
+      "name": "Contact & Devis",
       "item": "https://myokan.fr/contact/"
     }
   ]
@@ -28,118 +29,107 @@ const prefilledGeneralBody = encodeURIComponent(
 ---
 
 <Layout
-  fullTitle="Commander un zafu artisanal & Contact — Myokan, Montpellier"
-  description="Passez commande par e-mail pour un zafu, zabuton, sac ou fukusa artisanal. Confection à Montpellier et réponse personnalisée sous quelques jours.">
+  fullTitle="Contact & Devis artisan — Atelier Myokan, Montpellier"
+  description="Contactez Véronique Myokan Harruis à Montpellier pour toute demande de devis, conseil sur la posture zazen ou commande de zafu et accessoires de méditation.">
   
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumbSchema)} />
 
   <Container>
-    <main id="main-content" class="max-w-2xl mx-auto mt-10 mb-20">
+    <main id="main-content" class="max-w-3xl mx-auto mt-8 mb-20">
       
       <!-- Fil d'Ariane -->
-      <nav aria-label="Fil d'Ariane" class="text-xs text-gray-600 dark:text-gray-400 mb-8">
+      <nav aria-label="Fil d'Ariane" class="text-xs text-gray-500 dark:text-gray-400 mb-6">
         <ol class="flex items-center gap-2">
           <li>
-            <a href="/" class="hover:text-gray-950 dark:hover:text-white transition">Accueil</a>
+            <a href="/" class="hover:text-gray-950 dark:hover:text-white transition underline hover:no-underline">Accueil</a>
           </li>
           <li aria-hidden="true">/</li>
-          <li class="font-medium text-gray-900 dark:text-white" aria-current="page">Commander & Contact</li>
+          <li class="font-medium text-gray-800 dark:text-gray-200" aria-current="page">Contact & Devis</li>
         </ol>
       </nav>
 
-      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white break-words">Passer commande & Nous contacter</h1>
-      <p class="text-lg text-gray-700 dark:text-gray-300 mt-4 leading-relaxed">
-        Toutes les créations sont réalisées sur mesure et à la demande. 
-        Véronique Myokan Harruis répond personnellement à chaque message sous quelques jours ouvrés depuis Montpellier.
-      </p>
-
-      <!-- Bouton mailto direct -->
-      <a
-        href={`mailto:myokan@hotmail.fr?subject=${prefilledGeneralSubject}&body=${prefilledGeneralBody}`}
-        class="mt-8 flex items-center gap-4 p-6 bg-gray-50 dark:bg-gray-900/70 border border-gray-200 dark:border-gray-700 rounded-2xl hover:border-gray-400 dark:hover:border-gray-500 transition group shadow-sm focus-visible:ring-2"
-        aria-label="Envoyer un e-mail à myokan@hotmail.fr avec le modèle pré-rempli"
-      >
-        <div class="shrink-0 w-12 h-12 bg-gray-900 dark:bg-white text-white dark:text-gray-950 rounded-full flex items-center justify-center text-xl font-bold">
-          @
+      <div class="mb-8">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 dark:bg-amber-950/60 text-amber-900 dark:text-amber-300 text-xs font-semibold mb-3">
+          <span>Atelier artisanal à Montpellier · Depuis 1982</span>
         </div>
-        <div class="flex-1">
-          <p class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-0.5">Écrire directement à</p>
-          <p class="text-xl font-bold text-gray-900 dark:text-white group-hover:underline">myokan@hotmail.fr</p>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold font-heading text-gray-900 dark:text-white tracking-tight">
+          Contacter l'atelier Myokan
+        </h1>
+        <p class="text-base sm:text-lg text-gray-700 dark:text-gray-300 mt-3 leading-relaxed">
+          Toutes les confections sont réalisées à la demande. Véronique Myokan Harruis répond personnellement à chaque message sous quelques jours ouvrés pour vous conseiller et établir votre devis.
+        </p>
+
+        <!-- Lien vers la page explicative de commande -->
+        <div class="mt-4 p-4 rounded-xl bg-gray-50 dark:bg-gray-900/60 border border-gray-200 dark:border-gray-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs sm:text-sm">
+          <span class="text-gray-700 dark:text-gray-300">
+            Vous souhaitez connaître nos tarifs détaillés et les étapes de fabrication ?
+          </span>
+          <a href="/commander/" class="font-semibold text-gray-900 dark:text-white underline hover:no-underline shrink-0">
+            Comment commander un zafu →
+          </a>
         </div>
-        <span class="hidden sm:inline text-xs font-semibold text-gray-600 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white">
-          Ouvrir l'e-mail →
-        </span>
-      </a>
+      </div>
 
-      <!-- Comment commander -->
-      <div class="mt-14">
-        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Les étapes de votre commande</h2>
-        <ol class="space-y-6">
-          <li class="flex gap-4">
-            <span class="shrink-0 w-8 h-8 bg-gray-900 dark:bg-white text-white dark:text-gray-950 rounded-full flex items-center justify-center text-sm font-bold">1</span>
-            <div>
-              <h3 class="font-bold text-gray-900 dark:text-white text-base">Choisissez votre article</h3>
-              <p class="text-gray-700 dark:text-gray-300 text-sm mt-1 leading-relaxed">
-                Définissez votre <a href="/zafus/" class="underline hover:text-gray-950 dark:hover:text-white font-semibold">zafu artisanal</a> (taille S, M, L ou sur mesure, garni en kapok naturel ou housse seule, coloris au choix) et vos accessoires complémentaires éventuels — <a href="/zabutons/" class="underline hover:text-gray-950 dark:hover:text-white font-medium">zabuton</a>, <a href="/sacs-zafus/" class="underline hover:text-gray-950 dark:hover:text-white font-medium">sac à zafu</a>, <a href="/fukusas/" class="underline hover:text-gray-950 dark:hover:text-white font-medium">fukusa</a>, <a href="/oryokis/" class="underline hover:text-gray-950 dark:hover:text-white font-medium">oryoki</a> ou <a href="/kesas/" class="underline hover:text-gray-950 dark:hover:text-white font-medium">sac à kesa</a>.
-              </p>
-            </div>
-          </li>
+      <!-- Formulaire structuré de commande et contact -->
+      <div class="mb-12">
+        <CommandeForm />
+      </div>
 
-          <li class="flex gap-4">
-            <span class="shrink-0 w-8 h-8 bg-gray-900 dark:bg-white text-white dark:text-gray-950 rounded-full flex items-center justify-center text-sm font-bold">2</span>
-            <div>
-              <h3 class="font-bold text-gray-900 dark:text-white text-base">Envoyez votre message</h3>
-              <p class="text-gray-700 dark:text-gray-300 text-sm mt-1 leading-relaxed">
-                Écrivez à <a href="mailto:myokan@hotmail.fr" class="underline font-medium hover:text-gray-950 dark:hover:text-white">myokan@hotmail.fr</a>. 
-                Si vous avez configuré un coussin sur notre <a href="/zafus/" class="underline hover:text-gray-950 dark:hover:text-white font-medium">configurateur de zafus</a>, vous pouvez simplement inclure le code généré (ex. <code>ZAFU-M-Plein-Noir</code>) ou nous exposer vos questions d'assise.
-              </p>
-            </div>
-          </li>
-
-          <li class="flex gap-4">
-            <span class="shrink-0 w-8 h-8 bg-gray-900 dark:bg-white text-white dark:text-gray-950 rounded-full flex items-center justify-center text-sm font-bold">3</span>
-            <div>
-              <h3 class="font-bold text-gray-900 dark:text-white text-base">Confirmation & Réalisation</h3>
-              <p class="text-gray-700 dark:text-gray-300 text-sm mt-1 leading-relaxed">
-                Véronique vous confirme la faisabilité, le délai de confection et le montant avec les frais d'expédition (livraison Mondial Relay ou à domicile). Le règlement s'effectue par virement bancaire ou PayPal avant l'envoi soigné depuis Montpellier.
-              </p>
-            </div>
-          </li>
-        </ol>
+      <!-- Bouton mailto direct alternatif -->
+      <div class="mb-12">
+        <h2 class="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          Ou écrivez-nous directement par e-mail
+        </h2>
+        <a
+          href={`mailto:myokan@hotmail.fr?subject=${prefilledGeneralSubject}&body=${prefilledGeneralBody}`}
+          class="flex items-center gap-4 p-5 bg-gray-50 dark:bg-gray-900/70 border border-gray-200 dark:border-gray-800 rounded-2xl hover:border-gray-400 dark:hover:border-gray-600 transition group shadow-xs focus-visible:ring-2"
+          aria-label="Envoyer un e-mail à myokan@hotmail.fr avec le modèle pré-rempli"
+        >
+          <div class="shrink-0 w-11 h-11 bg-gray-900 dark:bg-white text-white dark:text-gray-950 rounded-full flex items-center justify-center text-lg font-bold">
+            @
+          </div>
+          <div class="flex-1">
+            <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-0.5">Adresse e-mail de l'atelier</p>
+            <p class="text-lg font-bold text-gray-900 dark:text-white group-hover:underline">myokan@hotmail.fr</p>
+          </div>
+          <span class="hidden sm:inline text-xs font-semibold text-gray-600 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white">
+            Ouvrir ma messagerie →
+          </span>
+        </a>
       </div>
 
       <!-- Informations pratiques -->
-      <div class="mt-12">
-        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Informations pratiques</h2>
-        <div class="grid sm:grid-cols-2 gap-4 text-sm text-gray-700 dark:text-gray-300">
+      <div class="mb-12">
+        <h2 class="text-lg font-bold text-gray-900 dark:text-white mb-3">Informations pratiques</h2>
+        <div class="grid sm:grid-cols-2 gap-4 text-xs sm:text-sm text-gray-700 dark:text-gray-300">
           <div class="p-4 bg-gray-50 dark:bg-gray-900/60 rounded-xl border border-gray-200 dark:border-gray-800">
             <h3 class="font-bold text-gray-900 dark:text-white mb-1">Délai de réponse</h3>
-            <p>Quelques jours ouvrés.</p>
+            <p class="text-gray-600 dark:text-gray-400">Quelques jours ouvrés selon la charge d'atelier.</p>
           </div>
           <div class="p-4 bg-gray-50 dark:bg-gray-900/60 rounded-xl border border-gray-200 dark:border-gray-800">
-            <h3 class="font-bold text-gray-900 dark:text-white mb-1">Livraison</h3>
-            <p>Livraison par Mondial Relay (en point relais) ou à domicile. Expédition soignée depuis Montpellier en France métropolitaine et en Europe.</p>
+            <h3 class="font-bold text-gray-900 dark:text-white mb-1">Livraison & Suivi</h3>
+            <p class="text-gray-600 dark:text-gray-400">Mondial Relay en point relais ou domicile. Envoi soigné en France et Europe.</p>
           </div>
           <div class="p-4 bg-gray-50 dark:bg-gray-900/60 rounded-xl border border-gray-200 dark:border-gray-800">
             <h3 class="font-bold text-gray-900 dark:text-white mb-1">Paiement</h3>
-            <p>Virement bancaire ou PayPal à la validation de commande.</p>
+            <p class="text-gray-600 dark:text-gray-400">Virement bancaire ou PayPal validé après acceptation du devis.</p>
           </div>
           <div class="p-4 bg-gray-50 dark:bg-gray-900/60 rounded-xl border border-gray-200 dark:border-gray-800">
-            <h3 class="font-bold text-gray-900 dark:text-white mb-1">Sur mesure</h3>
-            <p>Tailles, hauteurs et harmonies de couleurs personnalisables sur simple demande.</p>
+            <h3 class="font-bold text-gray-900 dark:text-white mb-1">Retrait local</h3>
+            <p class="text-gray-600 dark:text-gray-400">Possibilité de remise en main propre à Montpellier sur rendez-vous.</p>
           </div>
         </div>
       </div>
 
-      <!-- Vous souhaitez pratiquer le zazen ? -->
-      <div class="mt-14 p-6 sm:p-8 bg-gray-50 dark:bg-gray-900/60 rounded-2xl border border-gray-200 dark:border-gray-800">
-        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
+      <!-- Pratique du zazen au dojo -->
+      <div class="p-6 sm:p-7 bg-gray-50 dark:bg-gray-900/60 rounded-2xl border border-gray-200 dark:border-gray-800">
+        <h2 class="text-lg font-bold text-gray-900 dark:text-white mb-2">
           Vous souhaitez pratiquer le Zazen à Montpellier&nbsp;?
         </h2>
-        <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-          Pour appréhender la posture assise et les bases de la méditation zen avant votre venue, vous pouvez consulter notre <a href="/pratique-zazen/" class="underline hover:text-gray-950 dark:hover:text-white font-medium">guide complet de la pratique du zazen</a>. Pour assister à une séance ou participer à une initiation au dojo, contactez directement l'équipe&nbsp;:
+        <p class="text-xs sm:text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+          Pour appréhender la posture assise et les bases de la méditation zen avant votre venue, consultez notre <a href="/pratique-zazen/" class="underline hover:text-gray-950 dark:hover:text-white font-medium">guide de pratique du zazen</a>. Pour assister à une séance d'initiation au dojo, contactez l'équipe du dojo :
         </p>
-        <div class="mt-4 p-4 bg-white dark:bg-gray-800/80 rounded-xl border border-gray-200 dark:border-gray-700 text-sm space-y-1.5">
+        <div class="mt-3 p-3.5 bg-white dark:bg-gray-800/80 rounded-xl border border-gray-200 dark:border-gray-700 text-xs sm:text-sm space-y-1">
           <p class="font-semibold text-gray-900 dark:text-white">Dojo Zen de Montpellier (Kosen Sangha)</p>
           <p class="text-gray-600 dark:text-gray-400">34, rue Bourrely — 34000 Montpellier</p>
           <p class="text-gray-600 dark:text-gray-400">Téléphone&nbsp;: <a href="tel:+33624531820" class="underline hover:text-gray-900 dark:hover:text-white">06 24 53 18 20</a></p>

@@ -17,6 +17,7 @@ const accessoires = [
 const isAccessoiresActive = accessoires.some(a => currentPath === a.path.replace(/\/$/, ""));
 const isPratiqueActive = currentPath === "/pratique-zazen";
 const isAtelierActive = currentPath === "/a-propos";
+const isCommanderActive = currentPath === "/commander";
 const isContactActive = currentPath === "/contact";
 ---
 
@@ -156,12 +157,12 @@ const isContactActive = currentPath === "/contact";
         <!-- 6. Commander (Conversion CTA) -->
         <li>
           <a
-            href="/contact/"
-            aria-current={isContactActive ? "page" : undefined}
+            href="/commander/"
+            aria-current={isCommanderActive ? "page" : undefined}
             class:list={[
-              "px-3.5 py-2 rounded-md transition focus-visible:ring-2 font-medium",
-              isContactActive 
-                ? "text-gray-950 dark:text-white font-semibold underline underline-offset-4 decoration-2" 
+              "px-3.5 py-2 rounded-md transition focus-visible:ring-2 font-semibold",
+              isCommanderActive 
+                ? "text-gray-950 dark:text-white underline underline-offset-4 decoration-2" 
                 : "text-gray-700 dark:text-gray-300 hover:text-gray-950 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800"
             ]}
           >
@@ -339,10 +340,22 @@ const isContactActive = currentPath === "/contact";
             href="/contact/"
             aria-current={isContactActive ? "page" : undefined}
             class:list={[
-              "block px-3 py-2.5 rounded-lg text-sm font-semibold transition mt-2 bg-gray-900 text-white dark:bg-white dark:text-gray-950 text-center shadow-sm",
+              "block px-3 py-2 rounded-md text-sm transition",
+              isContactActive 
+                ? "text-gray-950 dark:text-white font-semibold bg-gray-100 dark:bg-gray-800" 
+                : "text-gray-700 dark:text-gray-300 hover:text-gray-950 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800/60"
             ]}
           >
-            Passer commande / Devis atelier
+            Contact & Atelier
+          </a>
+          <a
+            href="/commander/"
+            aria-current={isCommanderActive ? "page" : undefined}
+            class:list={[
+              "block px-3 py-2.5 rounded-lg text-sm font-semibold transition mt-2 bg-gray-900 text-white dark:bg-white dark:text-gray-950 text-center shadow-sm hover:bg-gray-800 dark:hover:bg-gray-100",
+            ]}
+          >
+            Commander un zafu / Devis
           </a>
         </div>
       </nav>

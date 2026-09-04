@@ -1,0 +1,281 @@
+---
+import { sizes } from "@data/zafus";
+
+interface Props {
+  class?: string;
+  defaultProduct?: string;
+  defaultSize?: string;
+}
+
+const {
+  class: className = "",
+  defaultProduct = "zafu",
+  defaultSize = "M",
+} = Astro.props;
+---
+
+<div class:list={["bg-white dark:bg-gray-900 rounded-3xl border border-gray-200 dark:border-gray-800 p-6 sm:p-8 shadow-sm", className]} id="commande-form-wrapper">
+  
+  <div class="mb-6">
+    <span class="text-xs uppercase tracking-wider font-semibold text-amber-700 dark:text-amber-400">
+      Échange direct avec l'artisane
+    </span>
+    <h3 class="text-xl sm:text-2xl font-bold font-heading text-gray-900 dark:text-white mt-1">
+      Préparer votre demande ou commande
+    </h3>
+    <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-1 leading-relaxed">
+      Remplissez ce formulaire pour composer votre message. Nous validerons ensemble la faisabilité, les dimensions et le montant exact avant toute fabrication.
+    </p>
+  </div>
+
+  <!-- Note de réassurance visible en haut du formulaire -->
+  <div class="mb-6 p-3.5 rounded-xl bg-amber-50/70 dark:bg-amber-950/25 border border-amber-200/60 dark:border-amber-900/40 flex items-start gap-2.5 text-xs text-amber-900 dark:text-amber-200">
+    <svg class="w-4 h-4 text-amber-700 dark:text-amber-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
+    </svg>
+    <span>
+      <strong>Aucun paiement en ligne immédiat :</strong> chaque commande fait l'objet d'une confirmation de devis préalable avec Véronique Myokan Harruis.
+    </span>
+  </div>
+
+  <form id="artisan-order-form" class="space-y-4">
+    
+    <div class="grid sm:grid-cols-2 gap-4">
+      <div>
+        <label for="order-name" class="block text-xs font-semibold text-gray-700 dark:text-gray-300 mb-1">
+          Votre nom & prénom <span class="text-amber-600">*</span>
+        </label>
+        <input 
+          type="text" 
+          id="order-name" 
+          name="name" 
+          required 
+          placeholder="Ex. Camille Martin" 
+          class="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white text-sm focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition"
+        />
+      </div>
+
+      <div>
+        <label for="order-email" class="block text-xs font-semibold text-gray-700 dark:text-gray-300 mb-1">
+          Votre adresse e-mail <span class="text-amber-600">*</span>
+        </label>
+        <input 
+          type="email" 
+          id="order-email" 
+          name="email" 
+          required 
+          placeholder="votre-email@exemple.fr" 
+          class="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white text-sm focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition"
+        />
+      </div>
+    </div>
+
+    <div class="grid sm:grid-cols-2 gap-4">
+      <div>
+        <label for="order-product" class="block text-xs font-semibold text-gray-700 dark:text-gray-300 mb-1">
+          Article souhaité
+        </label>
+        <select 
+          id="order-product" 
+          name="product" 
+          class="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white text-sm focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition"
+        >
+          <optgroup label="Zafus de méditation">
+            <option value="zafu-m" selected={defaultSize === "M"}>Zafu Standard — Taille M (30 × 15 cm)</option>
+            <option value="zafu-s" selected={defaultSize === "S"}>Zafu Souplesse — Taille S (28 × 13 cm)</option>
+            <option value="zafu-l" selected={defaultSize === "L"}>Zafu Assise haute — Taille L (32 × 17 cm)</option>
+            <option value="zafu-sur-mesure">Zafu confectionné Sur mesure</option>
+          </optgroup>
+          <optgroup label="Accessoires pour le zazen">
+            <option value="zabuton">Zabuton (tapis de sol épais)</option>
+            <option value="ensemble-zafu-zabuton">Ensemble coordonné Zafu + Zabuton</option>
+            <option value="sac-zafu">Sac à zafu en pur coton</option>
+            <option value="fukusa">Fukusa pour oryoki</option>
+            <option value="oryoki">Service d'oryoki complet</option>
+            <option value="kesa">Sac à kesa ou ketsumyaku</option>
+            <option value="autre">Autre demande ou conseil</option>
+          </optgroup>
+        </select>
+      </div>
+
+      <div>
+        <label for="order-filling" class="block text-xs font-semibold text-gray-700 dark:text-gray-300 mb-1">
+          Formule de garnissage (si zafu)
+        </label>
+        <select 
+          id="order-filling" 
+          name="filling" 
+          class="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white text-sm focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition"
+        >
+          <option value="plein" selected>Plein en kapok végétal naturel (Prêt à l'assise)</option>
+          <option value="vide">Housse vide seule (à garnir soi-même)</option>
+          <option value="conseil">À définir avec Véronique (besoin de conseil)</option>
+        </select>
+      </div>
+    </div>
+
+    <div>
+      <div class="flex items-center justify-between mb-1">
+        <label for="order-message" class="block text-xs font-semibold text-gray-700 dark:text-gray-300">
+          Votre message & préférences <span class="text-amber-600">*</span>
+        </label>
+        <span class="text-[11px] text-gray-500 dark:text-gray-400">
+          Posture, couleur, questions...
+        </span>
+      </div>
+      <textarea 
+        id="order-message" 
+        name="message" 
+        rows="4" 
+        required 
+        placeholder="Indiquez vos souhaits : coloris préféré (noir, rouge, bleu, marron...), votre pratique (lotus, demi-lotus, tailleur), ou vos éventuelles questions sur la hauteur..." 
+        class="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white text-sm focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition leading-relaxed font-sans"
+      ></textarea>
+      <p class="text-[11px] text-gray-500 dark:text-gray-400 mt-1">
+        💡 <em>Vous hésitez sur le modèle ou les dimensions ? Indiquez simplement votre pratique dans votre message : nous pourrons vous conseiller.</em>
+      </p>
+    </div>
+
+    <!-- Actions du formulaire -->
+    <div class="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+      <button 
+        type="submit" 
+        id="order-submit-btn" 
+        class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gray-900 hover:bg-gray-800 text-white dark:bg-white dark:text-gray-950 dark:hover:bg-gray-100 font-semibold text-sm transition shadow-sm"
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+        <span>Envoyer ma demande par e-mail</span>
+      </button>
+
+      <button 
+        type="button" 
+        id="order-copy-btn" 
+        class="inline-flex items-center justify-center gap-1.5 px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 text-gray-800 dark:text-gray-200 text-xs font-semibold transition"
+      >
+        <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+        </svg>
+        <span id="order-copy-text">Copier le texte (Webmail)</span>
+      </button>
+    </div>
+
+    <!-- Notification de copie -->
+    <div id="copy-notification" class="hidden p-2 text-center text-xs text-emerald-800 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/50 rounded-lg">
+      ✓ Message copié dans le presse-papiers ! Vous pouvez le coller directement dans votre messagerie.
+    </div>
+
+  </form>
+
+  <!-- Réassurance sous le formulaire -->
+  <div class="mt-6 pt-5 border-t border-gray-100 dark:border-gray-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs text-gray-500 dark:text-gray-400">
+    <span>Atelier Myokan · Véronique Harruis · Montpellier</span>
+    <a href="mailto:myokan@hotmail.fr" class="underline hover:text-gray-900 dark:hover:text-white">
+      myokan@hotmail.fr
+    </a>
+  </div>
+
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("artisan-order-form") as HTMLFormElement;
+    if (!form) return;
+
+    const nameInput = document.getElementById("order-name") as HTMLInputElement;
+    const emailInput = document.getElementById("order-email") as HTMLInputElement;
+    const productSelect = document.getElementById("order-product") as HTMLSelectElement;
+    const fillingSelect = document.getElementById("order-filling") as HTMLSelectElement;
+    const messageTextarea = document.getElementById("order-message") as HTMLTextAreaElement;
+    const copyBtn = document.getElementById("order-copy-btn") as HTMLButtonElement;
+    const copyText = document.getElementById("order-copy-text") as HTMLElement;
+    const copyNotification = document.getElementById("copy-notification") as HTMLElement;
+
+    // Pré-remplissage via paramètres d'URL (?produit=...&taille=...&rembourrage=...&couleur=...&config=...)
+    const urlParams = new URLSearchParams(window.location.search);
+    const paramProduit = urlParams.get("produit");
+    const paramTaille = urlParams.get("taille");
+    const paramRembourrage = urlParams.get("type") || urlParams.get("rembourrage");
+    const paramCouleur = urlParams.get("couleur");
+    const paramConfig = urlParams.get("config");
+
+    if (paramTaille) {
+      const matchKey = `zafu-${paramTaille.toLowerCase()}`;
+      for (let i = 0; i < productSelect.options.length; i++) {
+        if (productSelect.options[i].value === matchKey) {
+          productSelect.selectedIndex = i;
+          break;
+        }
+      }
+    } else if (paramProduit) {
+      for (let i = 0; i < productSelect.options.length; i++) {
+        if (productSelect.options[i].value.includes(paramProduit.toLowerCase())) {
+          productSelect.selectedIndex = i;
+          break;
+        }
+      }
+    }
+
+    if (paramRembourrage) {
+      const isVide = paramRembourrage.toLowerCase().includes("vide");
+      fillingSelect.value = isVide ? "vide" : "plein";
+    }
+
+    // Pré-remplissage du texte de message si configuration transmise
+    if (paramConfig || paramTaille || paramCouleur) {
+      let initialMsg = "Bonjour Véronique,\n\nJe souhaite échanger au sujet d'une commande :\n";
+      if (paramTaille) initialMsg += `- Modèle : Zafu Taille ${paramTaille}\n`;
+      if (paramRembourrage) initialMsg += `- Formule : ${paramRembourrage}\n`;
+      if (paramCouleur) initialMsg += `- Couleur souhaitée : ${paramCouleur}\n`;
+      if (paramConfig) initialMsg += `- Code configuration : ${paramConfig}\n`;
+      initialMsg += "\nPourriez-vous me confirmer la faisabilité, le délai et le montant avec les frais d'expédition ?\n\nMerci d'avance,";
+      messageTextarea.value = initialMsg;
+    }
+
+    function buildMessageBody(): string {
+      const name = nameInput.value.trim() || "[Votre nom]";
+      const email = emailInput.value.trim() || "[Votre email]";
+      const product = productSelect.options[productSelect.selectedIndex]?.text || "Non précisé";
+      const filling = fillingSelect.options[fillingSelect.selectedIndex]?.text || "Non précisé";
+      const userMsg = messageTextarea.value.trim();
+
+      return `Bonjour Véronique,
+
+Je vous contacte au sujet d'une création Myokan :
+- Article : ${product}
+- Formule : ${filling}
+
+Détails & message :
+${userMsg}
+
+Mes coordonnées :
+- Nom : ${name}
+- E-mail : ${email}
+
+Merci de m'indiquer la disponibilité et les modalités de confection.`;
+    }
+
+    // Soumission du formulaire -> ouverture du client mail
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const product = productSelect.options[productSelect.selectedIndex]?.text || "Demande";
+      const subject = encodeURIComponent(`Demande de commande : ${product}`);
+      const body = encodeURIComponent(buildMessageBody());
+      window.location.href = `mailto:myokan@hotmail.fr?subject=${subject}&body=${body}`;
+    });
+
+    // Copie du message pour webmail
+    copyBtn?.addEventListener("click", () => {
+      const textToCopy = buildMessageBody();
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        copyText.textContent = "Copié !";
+        copyNotification.classList.remove("hidden");
+        setTimeout(() => {
+          copyText.textContent = "Copier le texte (Webmail)";
+          copyNotification.classList.add("hidden");
+        }, 4000);
+      });
+    });
+  });
+</script>
