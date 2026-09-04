@@ -14,22 +14,26 @@ export interface Props {
   fullTitle?: string;
   description?: string;
   ogType?: "website" | "article";
+  image?: string;
+  imageAlt?: string;
 }
 
 const cleanPath = Astro.url.pathname.endsWith("/") ? Astro.url.pathname : `${Astro.url.pathname}/`;
 const canonicalURL = new URL(cleanPath, Astro.site).toString();
 
-const resolvedImageWithDomain = new URL(
-  "/opengraph.jpg",
-  Astro.site
-).toString();
-
 const { 
   title, 
   fullTitle, 
   description = "Coussins de zazen artisanaux confectionnés selon la méthode traditionnelle depuis 1982 à Montpellier : zafus, zabutons, fukusas, oryokis.",
-  ogType = "website"
+  ogType = "website",
+  image = "/opengraph.jpg",
+  imageAlt = "Zafus et accessoires de méditation zen artisanaux Myokan à Montpellier",
 } = Astro.props;
+
+const resolvedImageWithDomain = new URL(
+  image,
+  Astro.site
+).toString();
 
 let makeTitle = fullTitle;
 if (!makeTitle) {
@@ -80,7 +84,7 @@ if (!makeTitle) {
           siteName: "Myokan",
         },
         image: {
-          alt: "Zafus et accessoires de méditation zen artisanaux Myokan à Montpellier",
+          alt: imageAlt,
           width: 1200,
           height: 630,
         },
@@ -90,7 +94,7 @@ if (!makeTitle) {
         title: makeTitle,
         description: description,
         image: resolvedImageWithDomain,
-        imageAlt: "Zafus et accessoires de méditation zen artisanaux Myokan",
+        imageAlt: imageAlt,
       }}
     />
   </head>

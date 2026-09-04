@@ -50,7 +50,9 @@ const productSchema = {
 
 <Layout
   fullTitle="Sac à kesa et pochette ketsumyaku — Myokan, Montpellier"
-  description="Sacs pour kesa (robe monastique zen) et pochettes de ketsumyaku confectionnés à Montpellier. Couture traditionnelle sur commande, respect des dimensions.">
+  description="Sacs pour kesa (robe monastique zen) et pochettes de ketsumyaku confectionnés à Montpellier. Couture traditionnelle sur commande, respect des dimensions."
+  image="/sac-kesa-bandouliere.webp"
+  imageAlt="Sac à kesa en bandoulière artisanal confectionné à Montpellier — Atelier Myokan">
   
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumbSchema)} />
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(productSchema)} />
@@ -90,6 +92,7 @@ const productSchema = {
           height="800"
           class="w-full h-80 sm:h-96 md:h-[450px] object-cover object-[center_35%]"
           loading="eager"
+          fetchpriority="high"
         />
       </div>
       <p class="p-3 text-xs text-center text-gray-500 dark:text-gray-400">

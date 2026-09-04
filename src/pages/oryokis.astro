@@ -61,7 +61,9 @@ const productSchema = {
 
 <Layout
   fullTitle="Oryoki zen artisanal — bol en bois tourné & accessoires — Myokan, Montpellier"
-  description="Ensemble complet oryoki pour le repas zen en sesshin : bol en bois tourné en Côte-d'Or (érable sycomore, bouleau), fukusa, cuillère en bois dans son étui et serviette. Livraison Mondial Relay.">
+  description="Ensemble complet oryoki pour le repas zen en sesshin : bol en bois tourné en Côte-d'Or (érable sycomore, bouleau), fukusa, cuillère en bois dans son étui et serviette. Livraison Mondial Relay."
+  image="/oryokis-trio.webp"
+  imageAlt="Trois ensembles oryoki complets : bols en bois et fukusas traditionnels — Atelier Myokan Montpellier">
   
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumbSchema)} />
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(productSchema)} />
@@ -112,7 +114,8 @@ const productSchema = {
         width="800"
         height="500"
         class="w-full h-64 sm:h-80 object-cover"
-        loading="lazy"
+        loading="eager"
+        fetchpriority="high"
       />
       <p class="p-3 text-xs text-center text-gray-500 dark:text-gray-400">
         Ensembles complets oryoki&nbsp;: bols façonnés par un artisan tourneur sur bois et confections textiles artisanales de l'atelier Myokan à Montpellier

@@ -57,7 +57,9 @@ const productSchema = {
 
 <Layout
   fullTitle="Zabuton de méditation artisanal — Myokan, Montpellier"
-  description="Zabutons artisanaux à Montpellier : tapis de sol rectangulaire pour la méditation assise. Protège genoux et chevilles, complément naturel du zafu.">
+  description="Zabutons artisanaux à Montpellier : tapis de sol rectangulaire pour la méditation assise. Protège genoux et chevilles, complément naturel du zafu."
+  image="/zabutons-empiles.webp"
+  imageAlt="Zabutons de méditation artisanaux empilés — Atelier Myokan Montpellier">
   
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumbSchema)} />
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(productSchema)} />
@@ -94,7 +96,8 @@ const productSchema = {
         width="800"
         height="500"
         class="w-full h-64 sm:h-80 object-cover"
-        loading="lazy"
+        loading="eager"
+        fetchpriority="high"
       />
       <p class="p-3 text-xs text-center text-gray-500 dark:text-gray-400">
         Zabutons de méditation artisanaux confectionnés selon la méthode traditionnelle dans l'atelier Myokan à Montpellier

@@ -41,6 +41,7 @@ export interface ZafuGalleryImage {
   alt: string;
   title: string;
   caption: string;
+  category?: "Produit" | "Savoir-faire" | "Matière" | "Pratique";
 }
 
 // Tarifs indicatifs en euros (hors frais de port)
@@ -196,49 +197,63 @@ export const baseColors: ZafuColor[] = [
   { name: "Marron", hex: "#4B2E1E", img: "/zafu-plein-marron.webp", checkColor: "#FFFFFF" },
 ];
 
-// Galerie photo
+// Galerie photo du savoir-faire et des confections
 export const galleryImages: ZafuGalleryImage[] = [
   { 
-    src: "/zafus-pile.webp", 
-    alt: "Pile de zafus artisanaux multicolores — Atelier Myokan Montpellier",
-    title: "Pile de zafus artisanaux",
-    caption: "Confections multicolores empilées à l'atelier" 
-  },
-  { 
     src: "/zafu-noir-lin.webp", 
-    alt: "Zafu de méditation zen noir avec poignée en lin naturel — Atelier Myokan Montpellier",
-    title: "Zafu noir & lin naturel",
-    caption: "Confection traditionnelle en coton noir avec poignée en pur lin" 
+    alt: "Zafu noir traditionnel en toile de coton avec plis latéraux réguliers et poignée de transport en pur lin",
+    title: "Poignée en lin pur & toile noire",
+    caption: "Finition soignée avec poignée en pur lin naturel sur demande pour le transport en dojo et sesshin.",
+    category: "Produit"
   },
   { 
-    src: "/zafus-vides-gris.webp", 
-    alt: "Zafus de méditation zen gris prêts à être remplis de kapok",
-    title: "Housses grises traditionnelles",
-    caption: "Prêtes à recevoir le kapok naturel" 
-  },
-  { 
-    src: "/zafu-bleu-fonce.webp", 
-    alt: "Zafu de méditation bleu foncé artisanal confectionné à Montpellier",
-    title: "Zafu bleu foncé classique",
-    caption: "Tissu 100 % coton épais et coutures renforcées" 
-  },
-  { 
-    src: "/zafu-plein-orange.webp", 
-    alt: "Zafu artisanal orange en tissu 100% coton",
-    title: "Zafu orange plein",
-    caption: "Plis réguliers et maintien ferme de l'assise" 
+    src: "/zafus-pile.webp", 
+    alt: "Empilement de zafus artisanaux de différentes couleurs et gabarits réalisés à l'atelier de Montpellier",
+    title: "Confections unitaire à l'atelier",
+    caption: "Chaque zafu est façonné individuellement sur commande, garni d'environ 1 kg de kapok naturel végétal.",
+    category: "Savoir-faire"
   },
   { 
     src: "/zafu-vide-framboise.webp", 
-    alt: "Housse de zafu vide coloris framboise — Myokan",
-    title: "Housse framboise à plat",
-    caption: "Plis minutieusement formés selon la tradition" 
+    alt: "Housse de zafu framboise à plat montrant l'agencement méthodique des plis d'aisance accordéon",
+    title: "Patronage et plis d'aisance",
+    caption: "Les plis latéraux permettent au coussin de s'élargir sous le poids du pratiquant sans faire souffrir les coutures.",
+    category: "Savoir-faire"
   },
   { 
-    src: "/zafu-plein-violet-pois.webp", 
-    alt: "Zafu de méditation violet à pois de confection artisanale",
-    title: "Zafu violet à pois",
-    caption: "Création originale sur mesure pour une pratiquante" 
+    src: "/zafus-vides-gris.webp", 
+    alt: "Série de housses grises découpées et cousues prêtes pour l'étape du garnissage de kapok",
+    title: "Housses préparées avant garnissage",
+    caption: "Toile 100 % coton épaisse et fente intérieure dotée d'un rabat protecteur pour empêcher toute fuite de fibres.",
+    category: "Savoir-faire"
+  },
+  { 
+    src: "/zafu-bleu-fonce.webp", 
+    alt: "Zafu artisanal bleu foncé taille S pour assise basse en lotus complet",
+    title: "Zafu bleu nuit · Gabarit compact",
+    caption: "Format 28 × 13 cm particulièrement adapté aux pratiquants souples et à la mobilité lors des stages.",
+    category: "Produit"
+  },
+  { 
+    src: "/zafu-plein-orange.webp", 
+    alt: "Zafu orange lumineux garni fermement de kapok végétal naturel",
+    title: "Zafu orange · Teinte personnalisée",
+    caption: "Exemple de confection personnalisée en toile de coton colorée, alliant fermeté d'assise et éclat.",
+    category: "Produit"
+  },
+  { 
+    src: "/zabuton-noir-detail.webp", 
+    alt: "Gros plan sur les piqûres d'angle et le capitonnage à la main d'un coussin artisanal Myokan",
+    title: "Détail du piquage artisanal",
+    caption: "Coutures renforcées au fil haute résistance pour garantir une tenue irréprochable au fil des décennies.",
+    category: "Matière"
+  },
+  { 
+    src: "/zabuton-noir-sol.webp", 
+    alt: "Coussin de méditation disposé sur un zabuton noir au sol pour l'assise zazen",
+    title: "Installation d'assise au sol",
+    caption: "Le duo zafu et zabuton constitue le support fondamental de zazen pour ancrer le trépied bassin-genoux.",
+    category: "Pratique"
   },
 ];
 

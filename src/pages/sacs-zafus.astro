@@ -55,7 +55,9 @@ const productSchema = {
 
 <Layout 
   fullTitle="Sac à zafu en coton artisanal — Myokan, Montpellier" 
-  description="Sac de transport pour zafu en coton 100 % naturel, confectionné à Montpellier. Protégez et transportez votre coussin de méditation zen lors de vos déplacements.">
+  description="Sac de transport pour zafu en coton 100 % naturel, confectionné à Montpellier. Protégez et transportez votre coussin de méditation zen lors de vos déplacements."
+  image="/sac-zafu-rouge.webp"
+  imageAlt="Sac à zafu artisanal rouge en pur coton avec bandoulière — Atelier Myokan Montpellier">
   
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumbSchema)} />
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(productSchema)} />
@@ -76,12 +78,11 @@ const productSchema = {
       </ol>
     </nav>
 
-    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white break-words">Sacs à zafu en coton artisanal</h1>
+    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white break-words">Sacs à zafu en coton</h1>
     <PriceTag price="Sur devis" />
 
-    <p class="text-lg mt-6 text-gray-700 dark:text-gray-300 leading-relaxed">
-      Le sac à zafu est l'accessoire indispensable pour tout pratiquant qui transporte régulièrement
-      son <a href="/zafus/" class="underline hover:text-gray-950 dark:hover:text-white font-medium">coussin de zazen</a> — entre son domicile
+    <p class="text-lg mt-6 text-gray-700 dark:text-gray-300 leading-relaxed max-w-2xl">
+      Le sac à zafu est l'accessoire idéal pour transporter votre coussin de méditation entre votre domicile
       et le dojo, lors d'un stage ou d'une sesshin, ou en voyage. Il protège le tissu du zafu des salissures
       et de l'usure tout en facilitant le portage.
     </p>
@@ -96,6 +97,8 @@ const productSchema = {
           width="400"
           height="600"
           class="rounded-xl w-full max-h-96 object-contain mx-auto cursor-pointer hover:opacity-95 transition"
+          loading="eager"
+          fetchpriority="high"
           title="Cliquez pour agrandir"
         />
         <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">Cliquez sur l'image pour agrandir</p>

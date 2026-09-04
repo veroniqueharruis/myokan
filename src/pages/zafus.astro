@@ -131,18 +131,20 @@ const productSchema = {
 
       <div class="lg:grid lg:grid-cols-12 lg:gap-8 items-start">
         
-        <!-- Colonne Gauche : Aperçu visuel sticky & zoom -->
+        <!-- Colonne Gauche : Aperçu visuel enrichi avec vues multiples, zoom & réassurance -->
         <div class="lg:col-span-5 lg:sticky lg:top-6 mb-6 lg:mb-0">
           <div class="bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-200 dark:border-gray-700/80 shadow-sm text-center">
-            <div class="relative overflow-hidden rounded-lg bg-gray-50 dark:bg-gray-900/50 flex items-center justify-center p-3 min-h-[220px] sm:min-h-[260px]">
+            
+            <!-- Zone principale d'affichage de l'image -->
+            <div class="relative overflow-hidden rounded-xl bg-gray-50 dark:bg-gray-900/50 flex items-center justify-center p-3 min-h-[220px] sm:min-h-[260px]">
               <img 
                 id="main-zafu-image" 
                 src="/zafu-plein-noir.webp" 
-                alt="Aperçu du zafu de méditation zen artisanal"
-                width="320"
-                height="240"
+                alt="Zafu artisanal noir traditionnel prêt à l'assise"
+                width="800"
+                height="600"
                 class="mx-auto w-56 sm:w-64 h-auto rounded-lg transition-all duration-300 cursor-zoom-in relative z-10"
-                title="Cliquer pour agrandir la photo"
+                title="Cliquer pour agrandir la photo en haute définition"
               />
               <div 
                 id="color-overlay"
@@ -150,24 +152,110 @@ const productSchema = {
               ></div>
             </div>
 
+            <!-- Légende dynamique sous l'image principale -->
+            <p id="main-zafu-caption" class="mt-2 text-xs text-gray-600 dark:text-gray-400 min-h-[2.5rem] flex items-center justify-center italic px-2">
+              Vue d'ensemble : Zafu traditionnel prêt à l'assise, garni de kapok naturel
+            </p>
+
+            <!-- Miniatures des 5 vues authentiques -->
+            <div class="mt-2 pt-2.5 border-t border-gray-100 dark:border-gray-700/60" aria-label="Angles de vue et détails du zafu">
+              <p class="text-[11px] font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2 text-left px-1">
+                Angles de vue & détails réels
+              </p>
+              <div class="grid grid-cols-5 gap-1.5" role="tablist">
+                <button
+                  type="button"
+                  class="zafu-thumb-btn active p-1 rounded-lg border-2 border-gray-900 dark:border-white transition overflow-hidden bg-gray-50 dark:bg-gray-900 flex flex-col items-center justify-center focus-visible:ring-2"
+                  data-src="/zafu-plein-noir.webp"
+                  data-caption="Vue d'ensemble : Zafu traditionnel prêt à l'assise, garni de kapok naturel"
+                  data-alt="Zafu traditionnel noir modèle Deshimaru"
+                  aria-label="Vue d'ensemble du zafu complet"
+                >
+                  <img src="/zafu-plein-noir.webp" alt="" class="w-full h-9 object-cover rounded-sm" width="60" height="36" />
+                  <span class="text-[9px] font-medium text-gray-700 dark:text-gray-300 mt-0.5 leading-none">Complet</span>
+                </button>
+
+                <button
+                  type="button"
+                  class="zafu-thumb-btn p-1 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-500 transition overflow-hidden bg-gray-50 dark:bg-gray-900 flex flex-col items-center justify-center focus-visible:ring-2"
+                  data-src="/zafu-noir-lin.webp"
+                  data-caption="Finition & Profil : Poignée de transport en pur lin et toile de coton noir robuste"
+                  data-alt="Détail de la poignée en lin pur sur zafu noir artisanal"
+                  aria-label="Vue avec poignée en lin naturel"
+                >
+                  <img src="/zafu-noir-lin.webp" alt="" class="w-full h-9 object-cover rounded-sm object-[center_30%]" width="60" height="36" />
+                  <span class="text-[9px] font-medium text-gray-700 dark:text-gray-300 mt-0.5 leading-none">Poignée</span>
+                </button>
+
+                <button
+                  type="button"
+                  class="zafu-thumb-btn p-1 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-500 transition overflow-hidden bg-gray-50 dark:bg-gray-900 flex flex-col items-center justify-center focus-visible:ring-2"
+                  data-src="/zafu-vide-framboise.webp"
+                  data-caption="Confection : Plis d'aisance accordéon et fente intérieure à rabat protecteur"
+                  data-alt="Structure des plis d'aisance et de la housse de zafu"
+                  aria-label="Vue de la structure et des plis d'aisance"
+                >
+                  <img src="/zafu-vide-framboise.webp" alt="" class="w-full h-9 object-cover rounded-sm" width="60" height="36" />
+                  <span class="text-[9px] font-medium text-gray-700 dark:text-gray-300 mt-0.5 leading-none">Plis</span>
+                </button>
+
+                <button
+                  type="button"
+                  class="zafu-thumb-btn p-1 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-500 transition overflow-hidden bg-gray-50 dark:bg-gray-900 flex flex-col items-center justify-center focus-visible:ring-2"
+                  data-src="/zafus-pile.webp"
+                  data-caption="Dans l'atelier : Zafus confectionnés sur commande empilés avant expédition"
+                  data-alt="Pile de zafus artisanaux confectionnés dans l'atelier Myokan"
+                  aria-label="Vue des confections de l'atelier empilées"
+                >
+                  <img src="/zafus-pile.webp" alt="" class="w-full h-9 object-cover rounded-sm object-[center_35%]" width="60" height="36" />
+                  <span class="text-[9px] font-medium text-gray-700 dark:text-gray-300 mt-0.5 leading-none">Atelier</span>
+                </button>
+
+                <button
+                  type="button"
+                  class="zafu-thumb-btn p-1 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-500 transition overflow-hidden bg-gray-50 dark:bg-gray-900 flex flex-col items-center justify-center focus-visible:ring-2"
+                  data-src="/zabuton-noir-sol.webp"
+                  data-caption="En situation : Zafu disposé sur son zabuton au sol pour l'assise zazen"
+                  data-alt="Zafu et zabuton disposés pour la méditation assise au sol"
+                  aria-label="Vue en situation d'assise zazen"
+                >
+                  <img src="/zabuton-noir-sol.webp" alt="" class="w-full h-9 object-cover rounded-sm" width="60" height="36" />
+                  <span class="text-[9px] font-medium text-gray-700 dark:text-gray-300 mt-0.5 leading-none">Au sol</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Bouton Lightbox plein écran -->
             <button
               type="button"
               id="open-lightbox-btn"
-              class="mt-2.5 inline-flex items-center gap-1.5 text-xs text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition focus-visible:ring-2 rounded px-2 py-1"
-              aria-label="Agrandir la photo du zafu"
+              class="mt-3 w-full py-1.5 px-3 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700/60 inline-flex items-center justify-center gap-1.5 text-xs text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition focus-visible:ring-2"
+              aria-label="Agrandir la photo en haute définition"
             >
               <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" />
               </svg>
-              <span>Cliquez sur l'image pour l'agrandir</span>
+              <span>Agrandir la photo (Haute Définition)</span>
             </button>
             
-            <div class="mt-3 pt-3 border-t border-gray-100 dark:border-gray-700/60 flex items-center justify-around text-[11px] text-gray-500 dark:text-gray-400">
-              <span>Tissu 100 % coton</span>
-              <span>·</span>
-              <span>Kapok végétal</span>
-              <span>·</span>
-              <span>Plis artisanaux</span>
+            <!-- Réassurance produit factuelle (Section 22) -->
+            <div class="mt-4 pt-3 border-t border-gray-100 dark:border-gray-700/60 text-left space-y-1.5 text-xs text-gray-600 dark:text-gray-400">
+              <div class="flex items-center gap-2">
+                <span class="text-amber-700 dark:text-amber-400 font-bold">✓</span>
+                <span><strong>Fabrication artisanale</strong> unitaire à Montpellier</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-amber-700 dark:text-amber-400 font-bold">✓</span>
+                <span><strong>Plis traditionnels</strong> d'aisance méthode Deshimaru</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-amber-700 dark:text-amber-400 font-bold">✓</span>
+                <span><strong>Garnissage 100 % kapok</strong> végétal naturel (~1 kg)</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-amber-700 dark:text-amber-400 font-bold">✓</span>
+                <span><strong>Conseil direct de posture</strong> avec l'artisane avant envoi</span>
+              </div>
             </div>
           </div>
         </div>
@@ -522,7 +610,7 @@ const productSchema = {
         </p>
       </div>
 
-      <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
         {galleryImages.map((img) => (
           <figure class="group overflow-hidden rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800/80 shadow-sm transition flex flex-col justify-between">
             <div class="aspect-[4/3] w-full overflow-hidden bg-gray-50 dark:bg-gray-900/40 relative">
@@ -534,19 +622,25 @@ const productSchema = {
                 class="w-full h-full object-cover object-center cursor-zoom-in group-hover:scale-105 transition-transform duration-300 gallery-thumb"
                 data-full={img.src}
                 data-alt={img.alt}
+                data-caption={img.caption}
                 loading="lazy"
               />
-              <span class="absolute bottom-2 right-2 bg-black/60 text-white p-1 rounded backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" aria-hidden="true">
+              {img.category && (
+                <span class="absolute top-2 left-2 px-2 py-0.5 rounded text-[10px] font-medium bg-white/90 dark:bg-gray-900/90 text-gray-800 dark:text-gray-200 border border-gray-200/60 dark:border-gray-700/60 backdrop-blur-xs">
+                  {img.category}
+                </span>
+              )}
+              <span class="absolute bottom-2 right-2 bg-black/60 text-white p-1 rounded backdrop-blur-xs opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" aria-hidden="true">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" />
                 </svg>
               </span>
             </div>
-            <figcaption class="p-2.5 sm:p-3 text-xs border-t border-gray-100 dark:border-gray-700/60 leading-tight">
-              <strong class="block text-gray-900 dark:text-white font-semibold text-xs mb-0.5 truncate">
+            <figcaption class="p-3 text-xs border-t border-gray-100 dark:border-gray-700/60 leading-tight">
+              <strong class="block text-gray-900 dark:text-white font-semibold text-xs mb-1">
                 {img.title}
               </strong>
-              <span class="text-[11px] text-gray-500 dark:text-gray-400 block line-clamp-1">
+              <span class="text-[11px] text-gray-600 dark:text-gray-400 block leading-snug">
                 {img.caption}
               </span>
             </figcaption>
@@ -850,6 +944,42 @@ const productSchema = {
         });
       });
 
+      // Gestion des miniatures d'angles de vue du zafu
+      const thumbBtns = document.querySelectorAll(".zafu-thumb-btn");
+      const mainCaption = document.getElementById("main-zafu-caption");
+
+      thumbBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+          thumbBtns.forEach(b => {
+            b.classList.remove("active", "border-2", "border-gray-900", "dark:border-white");
+            b.classList.add("border", "border-gray-200", "dark:border-gray-700");
+          });
+          btn.classList.add("active", "border-2", "border-gray-900", "dark:border-white");
+          btn.classList.remove("border", "border-gray-200", "dark:border-gray-700");
+
+          const src = btn.getAttribute("data-src");
+          const alt = btn.getAttribute("data-alt");
+          const caption = btn.getAttribute("data-caption");
+
+          if (zafuImage && src) {
+            zafuImage.src = src;
+            zafuImage.alt = alt || "Aperçu du zafu";
+          }
+          if (mainCaption && caption) {
+            mainCaption.textContent = caption;
+          }
+
+          if (colorOverlay) {
+            const isFirst = btn === thumbBtns[0];
+            if (!isFirst) {
+              colorOverlay.classList.add("hidden");
+            } else if (selectedHex && selectedColor.startsWith("Teinte sur mesure")) {
+              colorOverlay.classList.remove("hidden");
+            }
+          }
+        });
+      });
+
       // Écoute des pastilles de couleur
       colorSwatches.forEach(btn => {
         btn.addEventListener("click", () => {
@@ -876,6 +1006,28 @@ const productSchema = {
             zafuImage.src = btn.dataset.img;
             zafuImage.alt = `Aperçu du zafu de méditation zen artisanal coloris ${selectedColor}`;
           }
+
+          // Réactiver la première miniature avec la couleur sélectionnée
+          if (thumbBtns.length > 0) {
+            const firstThumb = thumbBtns[0];
+            thumbBtns.forEach(b => {
+              b.classList.remove("active", "border-2", "border-gray-900", "dark:border-white");
+              b.classList.add("border", "border-gray-200", "dark:border-gray-700");
+            });
+            firstThumb.classList.add("active", "border-2", "border-gray-900", "dark:border-white");
+            firstThumb.classList.remove("border", "border-gray-200", "dark:border-gray-700");
+
+            const firstThumbImg = firstThumb.querySelector("img");
+            if (firstThumbImg && btn.dataset.img) {
+              firstThumbImg.src = btn.dataset.img;
+            }
+            firstThumb.setAttribute("data-src", btn.dataset.img);
+            firstThumb.setAttribute("data-caption", `Vue d'ensemble : Zafu traditionnel coloris ${selectedColor}, garni de kapok naturel`);
+          }
+          if (mainCaption) {
+            mainCaption.textContent = `Vue d'ensemble : Zafu traditionnel coloris ${selectedColor}, garni de kapok naturel`;
+          }
+
           if (colorOverlay) colorOverlay.classList.add("hidden");
           updateConfig();
         });
@@ -921,12 +1073,12 @@ const productSchema = {
         });
       });
 
-      // Lightbox
-      function openLightbox(src, alt) {
+      // Lightbox accessible
+      function openLightbox(src, alt, caption) {
         if (!lightbox || !lightboxImg) return;
         lightboxImg.src = src;
-        lightboxImg.alt = alt || "Agrandissement photo";
-        if (lightboxCaption) lightboxCaption.textContent = alt || "";
+        lightboxImg.alt = alt || "Agrandissement photo zafu";
+        if (lightboxCaption) lightboxCaption.textContent = caption || alt || "";
         lightbox.classList.remove("hidden");
         lightbox.classList.add("flex");
         document.body.style.overflow = "hidden";
@@ -942,13 +1094,13 @@ const productSchema = {
 
       if (zafuImage) {
         zafuImage.addEventListener("click", () => {
-          openLightbox(zafuImage.src, zafuImage.alt);
+          openLightbox(zafuImage.src, zafuImage.alt, mainCaption?.textContent);
         });
       }
 
       if (openLightboxBtn && zafuImage) {
         openLightboxBtn.addEventListener("click", () => {
-          openLightbox(zafuImage.src, zafuImage.alt);
+          openLightbox(zafuImage.src, zafuImage.alt, mainCaption?.textContent);
         });
       }
 
@@ -956,7 +1108,8 @@ const productSchema = {
         thumb.addEventListener("click", () => {
           const full = thumb.getAttribute("data-full") || thumb.getAttribute("src");
           const alt = thumb.getAttribute("data-alt") || "";
-          openLightbox(full, alt);
+          const caption = thumb.getAttribute("data-caption") || alt;
+          openLightbox(full, alt, caption);
         });
       });
 

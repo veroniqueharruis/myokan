@@ -44,7 +44,9 @@ const personSchema = {
 
 <Layout
   fullTitle="À propos de Véronique Myokan Harruis — Nonne zen et couturière à Montpellier"
-  description="Véronique Myokan Harruis pratique le zazen depuis 1980 et confectionne des zafus artisanaux depuis 1982 à Montpellier selon la tradition transmise par maître Deshimaru.">
+  description="Véronique Myokan Harruis pratique le zazen depuis 1980 et confectionne des zafus artisanaux depuis 1982 à Montpellier selon la tradition transmise par maître Deshimaru."
+  image="/veronique.webp"
+  imageAlt="Véronique Myokan Harruis, nonne zen Soto et couturière artisanale à Montpellier">
   
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumbSchema)} />
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(personSchema)} />
@@ -115,6 +117,42 @@ const personSchema = {
         chaque <a href="/zabutons/" class="underline hover:text-gray-950 dark:hover:text-white font-medium">zabuton</a>, 
         chaque accessoire est cousu à la machine dans le strict respect de la méthode traditionnelle, avec les matériaux et les gestes transmis depuis plus de quarante ans.
       </p>
+
+      <!-- Preuve visuelle du travail du zafu dans l'atelier -->
+      <div class="my-8 grid sm:grid-cols-2 gap-4">
+        <figure class="overflow-hidden rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xs flex flex-col justify-between">
+          <div class="aspect-[4/3] w-full overflow-hidden bg-gray-100 dark:bg-gray-800">
+            <img
+              src="/zafus-vides-gris.webp"
+              alt="Housses de zafus artisanales cousues à la machine avec plis accordéon à plat"
+              width="600"
+              height="450"
+              class="w-full h-full object-cover"
+              loading="lazy"
+            />
+          </div>
+          <figcaption class="p-3 text-xs text-gray-600 dark:text-gray-400 border-t border-gray-100 dark:border-gray-800">
+            <strong>Patronage traditionnel :</strong> plis d'aisance latéraux réguliers formés avant l'insertion du kapok.
+          </figcaption>
+        </figure>
+
+        <figure class="overflow-hidden rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xs flex flex-col justify-between">
+          <div class="aspect-[4/3] w-full overflow-hidden bg-gray-100 dark:bg-gray-800">
+            <img
+              src="/zafus-pile.webp"
+              alt="Zafus artisanaux multicolores garnis de kapok végétal naturel empilés à l'atelier"
+              width="600"
+              height="450"
+              class="w-full h-full object-cover object-[center_35%]"
+              loading="lazy"
+            />
+          </div>
+          <figcaption class="p-3 text-xs text-gray-600 dark:text-gray-400 border-t border-gray-100 dark:border-gray-800">
+            <strong>Tassage dense du kapok :</strong> environ 1 kg de fibre végétale par zafu, assurant fermeté et longévité.
+          </figcaption>
+        </figure>
+      </div>
+
       <p class="text-lg mt-4 text-gray-700 dark:text-gray-300 leading-relaxed">
         Je propose également des <a href="/sacs-zafus/" class="underline hover:text-gray-950 dark:hover:text-white font-medium">sacs à zafu</a> en coton,
         des <a href="/fukusas/" class="underline hover:text-gray-950 dark:hover:text-white font-medium">fukusas</a>,
