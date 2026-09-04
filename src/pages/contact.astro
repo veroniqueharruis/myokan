@@ -31,8 +31,8 @@ const prefilledGeneralBody = encodeURIComponent(
 <Layout
   fullTitle="Contact & Devis artisan — Atelier Myokan, Montpellier"
   description="Contactez Véronique Myokan Harruis à Montpellier pour toute demande de devis, conseil sur la posture zazen ou commande de zafu et accessoires de méditation."
-  image="/veronique.webp"
-  imageAlt="Véronique Myokan Harruis à l'Atelier Myokan Montpellier">
+  image="/veronique-atelier.webp"
+  imageAlt="Véronique Myokan Harruis dans son atelier artisanal Myokan à Montpellier">
   
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumbSchema)} />
 
@@ -60,6 +60,25 @@ const prefilledGeneralBody = encodeURIComponent(
         <p class="text-base sm:text-lg text-gray-700 dark:text-gray-300 mt-3 leading-relaxed">
           Toutes les confections sont réalisées à la demande. Véronique Myokan Harruis répond personnellement à chaque message sous quelques jours ouvrés pour vous conseiller et établir votre devis.
         </p>
+
+        <!-- Encart artisane -->
+        <div class="mt-5 p-4 rounded-2xl bg-white dark:bg-gray-800/90 border border-gray-200 dark:border-gray-700 shadow-xs flex items-center gap-4">
+          <img
+            src="/veronique-atelier.webp"
+            alt="Véronique Myokan Harruis à sa table de confection"
+            width="120"
+            height="120"
+            class="w-16 h-16 sm:w-20 sm:h-20 rounded-xl object-cover object-[center_20%] shrink-0 border border-gray-200 dark:border-gray-700 shadow-2xs"
+            loading="eager"
+          />
+          <div class="text-xs sm:text-sm">
+            <p class="font-bold text-gray-900 dark:text-white">Véronique Myokan Harruis</p>
+            <p class="text-gray-500 dark:text-gray-400 text-xs">Couturière artisanale & nonne zen Soto</p>
+            <p class="text-amber-800 dark:text-amber-400 font-medium text-xs mt-1">
+              « Décrivez-moi votre pratique ou vos doutes de hauteur, je vous réponds personnellement. »
+            </p>
+          </div>
+        </div>
 
         <!-- Lien vers la page explicative de commande -->
         <div class="mt-4 p-4 rounded-xl bg-gray-50 dark:bg-gray-900/60 border border-gray-200 dark:border-gray-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs sm:text-sm">

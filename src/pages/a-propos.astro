@@ -28,7 +28,7 @@ const personSchema = {
   "name": "Véronique Myokan Harruis",
   "jobTitle": "Nonne zen Soto et créatrice de zafus artisanaux",
   "description": "Pratiquante de zazen depuis 1980 ordonnée bodhisattva par maître Taisen Deshimaru et couturière d'accessoires zen artisanaux à Montpellier depuis 1982.",
-  "image": "https://myokan.fr/veronique.webp",
+  "image": "https://myokan.fr/veronique-atelier.webp",
   "worksFor": {
     "@type": "LocalBusiness",
     "name": "Myokan",
@@ -46,8 +46,8 @@ const personSchema = {
 <Layout
   fullTitle="L'atelier Myokan & Véronique Harruis — Confection artisanale depuis 1982 | Montpellier"
   description="Véronique Myokan Harruis pratique le zazen depuis 1980 et confectionne des zafus artisanaux depuis 1982 à Montpellier selon la tradition transmise par maître Deshimaru."
-  image="/veronique.webp"
-  imageAlt="Véronique Myokan Harruis, nonne zen Soto et couturière artisanale à Montpellier">
+  image="/veronique-atelier.webp"
+  imageAlt="Véronique Myokan Harruis dans son atelier artisanal à Montpellier">
   
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumbSchema)} />
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(personSchema)} />
@@ -88,6 +88,24 @@ const personSchema = {
           </div>
         </div>
       </div>
+
+      <!-- Photographie authentique de Véronique à l'atelier -->
+      <figure class="my-8 rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xs">
+        <div class="relative aspect-[4/5] sm:aspect-[16/11] overflow-hidden bg-gray-100 dark:bg-gray-800">
+          <img
+            src="/veronique-atelier.webp"
+            alt="Véronique Myokan Harruis dans son atelier de couture à Montpellier, devant sa machine et ses zafus artisanaux"
+            width="1093"
+            height="1439"
+            class="w-full h-full object-cover object-[center_28%]"
+            loading="eager"
+            fetchpriority="high"
+          />
+        </div>
+        <figcaption class="p-3.5 text-xs sm:text-sm text-center text-gray-600 dark:text-gray-400 border-t border-gray-100 dark:border-gray-800">
+          Véronique Myokan Harruis à sa table de confection dans l'atelier Myokan à Montpellier, entourée de ses créations artisanales.
+        </figcaption>
+      </figure>
 
       <h2 class="text-2xl font-bold text-gray-900 dark:text-white mt-12 mb-4">La pratique du zazen</h2>
       <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">

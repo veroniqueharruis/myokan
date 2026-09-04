@@ -200,6 +200,13 @@ export const baseColors: ZafuColor[] = [
 // Galerie photo du savoir-faire et des confections
 export const galleryImages: ZafuGalleryImage[] = [
   { 
+    src: "/veronique-atelier.webp", 
+    alt: "Véronique Myokan Harruis dans son atelier de couture à Montpellier avec ses zafus artisanaux",
+    title: "L'atelier de confection",
+    caption: "Véronique Myokan Harruis confectionne chaque zafu à la demande dans son atelier de Montpellier depuis 1982.",
+    category: "Atelier"
+  },
+  { 
     src: "/zafu-noir-lin.webp", 
     alt: "Zafu noir traditionnel en toile de coton avec plis latéraux réguliers et poignée de transport en pur lin",
     title: "Poignée en lin pur & toile noire",
