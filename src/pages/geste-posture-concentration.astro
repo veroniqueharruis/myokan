@@ -1,0 +1,200 @@
+---
+import Container from "@components/container.astro";
+import Layout from "@layouts/Layout.astro";
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Le geste, la posture et la concentration",
+  "description": "Zafu, posture, geste et concentration : deux pratiques différentes, zazen et calligraphie chinoise, réunies par une attention particulière au corps et au geste.",
+  "inLanguage": "fr-FR",
+  "mainEntityOfPage": "https://myokan.fr/geste-posture-concentration/",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Myokan",
+    "url": "https://myokan.fr/"
+  }
+};
+---
+
+<Layout
+  fullTitle="Le geste, la posture et la concentration | Myokan"
+  description="Zafu, posture, geste et concentration : deux pratiques différentes, zazen et calligraphie chinoise, réunies par une attention particulière au corps et au geste."
+  ogType="article"
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(structuredData)} />
+
+  <Container>
+    <main id="main-content" class="max-w-4xl mx-auto pt-6 sm:pt-10 pb-16">
+      <!-- Fil d'Ariane -->
+      <nav aria-label="Fil d'Ariane" class="text-xs text-gray-500 dark:text-gray-400 mb-8">
+        <ol class="flex items-center gap-2">
+          <li>
+            <a href="/" class="hover:text-gray-950 dark:hover:text-white transition">Accueil</a>
+          </li>
+          <li aria-hidden="true">/</li>
+          <li class="font-medium text-gray-900 dark:text-white" aria-current="page">Geste &amp; concentration</li>
+        </ol>
+      </nav>
+
+      <!-- En-tête -->
+      <header class="mb-12 pb-8 border-b border-gray-200 dark:border-gray-800">
+        <p class="text-xs font-semibold uppercase tracking-widest text-amber-900 dark:text-amber-400 mb-2 font-mono">
+          Repères &amp; Pratiques traditionnelles
+        </p>
+        <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold font-heading text-gray-900 dark:text-white tracking-tight break-words">
+          Le geste, la posture et la concentration
+        </h1>
+        <p class="text-base sm:text-lg text-gray-700 dark:text-gray-300 mt-4 leading-relaxed max-w-3xl">
+          Le zafu accompagne une pratique d'assise immobile fondée sur la stabilité et la verticalité du corps.
+          La calligraphie chinoise engage le corps dans la dynamique du tracé, du souffle et du pinceau.
+          Deux disciplines distinctes, pourtant réunies par une attention commune au geste juste, à la posture et à la présence attentive.
+        </p>
+      </header>
+
+      <article class="space-y-12">
+        <!-- 1. S'asseoir : le rôle du zafu -->
+        <section class="space-y-4 text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed" aria-labelledby="asseoir-heading">
+          <h2 id="asseoir-heading" class="text-xl sm:text-2xl font-bold font-heading text-gray-900 dark:text-white">
+            S'asseoir : le rôle du zafu
+          </h2>
+          <p>
+            Dans la tradition du zen, le zafu n'est pas né comme un simple coussin de confort domestique&nbsp;: c'est un instrument d'assise rigoureusement proportionné pour permettre au corps de tenir droit et stable dans l'immobilité silencieuse. Confectionné en toile de coton épaisse avec plis d'aisance latéraux et rembourré de kapok végétal dense, il offre une assise ferme et incompressible.
+          </p>
+          <p>
+            Son rôle mécanique est précis&nbsp;: en surélevant le bassin de 13 à 17&nbsp;cm par rapport au sol, le zafu permet aux deux genoux de descendre fermement en contact avec le tapis (zabuton). Cette assise tripode stabilise la base pelvienne et provoque une bascule naturelle du bassin vers l'avant, qui étire la colonne vertébrale du sacrum jusqu'au sommet du crâne sans tension musculaire inutile.
+          </p>
+          <p>
+            La posture d'assise — le zazen — découle de cet équilibre matériel. Lorsque le corps est solidement enraciné et vertical, la respiration abdominale s'installe d'elle-même, lente et profonde, et l'attention peut s'apaiser sans lutter contre la pesanteur.
+          </p>
+          <div class="pt-2">
+            <a 
+              href="/pratique-zazen/" 
+              class="inline-flex items-center gap-1.5 text-sm font-semibold text-amber-900 dark:text-amber-300 underline hover:no-underline"
+            >
+              <span>Consulter nos repères anatomiques sur la posture et le zazen</span>
+              <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </section>
+
+        <!-- 2. Écrire : l'attention portée au geste -->
+        <section class="space-y-4 text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed pt-8 border-t border-gray-200/80 dark:border-gray-800" aria-labelledby="ecrire-heading">
+          <h2 id="ecrire-heading" class="text-xl sm:text-2xl font-bold font-heading text-gray-900 dark:text-white">
+            Écrire : l'attention portée au geste
+          </h2>
+          <p>
+            Si le zafu invite à l'immobilité vigilante de l'assise, d'autres pratiques traditionnelles explorent l'attention à travers le mouvement mesuré. La calligraphie chinoise en est un témoignage vivant. Bien loin d'un simple tracé de caractères, l'art du pinceau engage le corps tout entier&nbsp;: l'ancrage des pieds au sol, la tenue verticale du buste, le relâchement des épaules et la mobilité souple du poignet et du coude participent directement à la trace laissée sur le papier.
+          </p>
+          <p>
+            Chaque trait exige une coordination intime entre le souffle, le rythme intérieur et la conduite de l'encre. Une hésitation, une contraction musculaire ou une retenue dans la respiration se répercutent instantanément sur le support en papier de riz (<em>xuan</em>). La maîtrise du pinceau requiert ainsi une concentration soutenue, où l'intention et le geste physique ne font qu'un.
+          </p>
+          <p>
+            À Lyon, Christophe Desmur enseigne la calligraphie chinoise à travers des ateliers collectifs et des cours individuels. Son enseignement s'attache à transmettre la rigueur du geste traditionnel, la variété des styles historiques et l'attention corporelle indispensable au maniement du pinceau et de l'encre de Chine.
+          </p>
+
+          <!-- Carte ressource externe sobre -->
+          <div class="my-6 p-6 rounded-2xl bg-gray-50/80 dark:bg-gray-900/60 border border-gray-200/80 dark:border-gray-800 space-y-3">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div>
+                <p class="text-xs uppercase tracking-wider font-semibold text-amber-800 dark:text-amber-400 font-mono">
+                  Pratique du pinceau à Lyon
+                </p>
+                <h3 class="text-base sm:text-lg font-bold text-gray-900 dark:text-white mt-0.5">
+                  Ateliers de calligraphie chinoise — Christophe Desmur
+                </h3>
+                <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-300 mt-1">
+                  Cours réguliers, ateliers de découverte et exploration de la voie du pinceau.
+                </p>
+              </div>
+              <a 
+                href="https://ateliersdecalligraphie.com/" 
+                target="_blank" 
+                rel="noopener"
+                class="shrink-0 inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-gray-900 hover:bg-gray-800 text-white dark:bg-white dark:text-gray-950 dark:hover:bg-gray-100 text-xs sm:text-sm font-semibold transition shadow-2xs"
+              >
+                <span>Découvrir les ateliers de calligraphie chinoise à Lyon</span>
+                <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+            <p class="text-xs text-gray-500 dark:text-gray-400 pt-2 border-t border-gray-200/60 dark:border-gray-800">
+              Pour approfondir les passerelles historiques et esthétiques entre l'art du pinceau et la pensée contemplative, vous pouvez également consulter la page consacrée à la <a href="https://ateliersdecalligraphie.com/calligraphie-zen" target="_blank" rel="noopener" class="underline hover:text-gray-900 dark:hover:text-white font-medium inline-flex items-center gap-0.5"><span>calligraphie zen</span><span aria-hidden="true">↗</span></a> sur leur site.
+            </p>
+          </div>
+        </section>
+
+        <!-- 3. Deux pratiques, une attention au geste -->
+        <section class="space-y-4 text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed pt-8 border-t border-gray-200/80 dark:border-gray-800" aria-labelledby="deux-pratiques-heading">
+          <h2 id="deux-pratiques-heading" class="text-xl sm:text-2xl font-bold font-heading text-gray-900 dark:text-white">
+            Deux pratiques, une attention au geste
+          </h2>
+          <p>
+            Le zazen et la calligraphie chinoise sont des pratiques différentes. Elles appartiennent à des histoires, des contextes et des vocations distinctes&nbsp;: le zazen est issu de la transmission monastique et laïque du bouddhisme zen, orienté vers l'assise silencieuse dépouillée de tout but&nbsp;; la calligraphie chinoise est un art classique millénaire, fondé sur l'expression graphique de caractères porteurs de sens, de poésie et de philosophie.
+          </p>
+          <p>
+            Elles peuvent néanmoins se rejoindre dans l'attention portée à la posture, au geste, au souffle et à la concentration. Dans l'une comme dans l'autre, le corps n'est ni un instrument négligé ni un simple réceptacle passif&nbsp;: il constitue le point d'ancrage fondamental. Sans une assise juste ou un maintien équilibré, ni l'immobilité du pratiquant sur son zafu ni le geste du calligraphe sur sa table de travail ne peuvent trouver leur plénitude.
+          </p>
+          <p>
+            Cette parenté réside également dans l'apprentissage par la répétition patiente. Coudre un zafu à l'atelier, s'asseoir quotidiennement face au mur ou répéter inlassablement le même trait fondamental au pinceau demandent le même renoncement à l'immédiateté et le même respect des étapes matérielles du métier.
+          </p>
+        </section>
+
+        <!-- 4. Du mouvement à l'immobilité -->
+        <section class="space-y-4 text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed pt-8 border-t border-gray-200/80 dark:border-gray-800" aria-labelledby="mouvement-immobilite-heading">
+          <h2 id="mouvement-immobilite-heading" class="text-xl sm:text-2xl font-bold font-heading text-gray-900 dark:text-white">
+            Du mouvement à l'immobilité
+          </h2>
+          <p>
+            Entre la calligraphie et le zazen s'établit ainsi une résonance subtile entre mouvement et immobilité.
+          </p>
+          <ul class="space-y-2 pl-5 list-disc text-sm sm:text-base">
+            <li>
+              <strong>La calligraphie exige un mouvement maîtrisé&nbsp;:</strong> le trait suit une trajectoire spatiale et temporelle continue, où chaque millimètre de déplacement d'encre est définitif et sans repentir possible.
+            </li>
+            <li>
+              <strong>Le zazen privilégie l'immobilité&nbsp;:</strong> le corps assis recueille toute agitation extérieure dans le silence de l'assise, ne laissant subsister que l'oscillation discrète du souffle abdominal.
+            </li>
+            <li>
+              <strong>Toutes deux invitent à la conscience corporelle&nbsp;:</strong> habiter pleinement la posture, sentir les appuis au sol, détendre les tensions superflues et laisser l'attention se stabiliser dans l'instant présent.
+            </li>
+          </ul>
+          <p class="pt-2">
+            Que l'on tienne un pinceau ou que l'on s'installe sur un zafu, c'est cette présence au geste et au corps qui donne à ces démarches leur authenticité et leur profondeur.
+          </p>
+        </section>
+
+        <!-- Liens contextuels Myokan -->
+        <section class="pt-10 border-t border-gray-200 dark:border-gray-800">
+          <h2 class="text-base font-bold text-gray-900 dark:text-white uppercase tracking-wider mb-4 font-mono text-xs">
+            Repères et artisanat de l'atelier
+          </h2>
+          <div class="grid sm:grid-cols-3 gap-4 text-sm">
+            <a 
+              href="/pratique-zazen/" 
+              class="p-4 rounded-xl bg-gray-50/80 dark:bg-gray-900/60 border border-gray-200/80 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-700 transition space-y-1 block"
+            >
+              <span class="font-semibold text-gray-900 dark:text-white block">Posture &amp; zazen</span>
+              <span class="text-xs text-gray-600 dark:text-gray-400 block">Les repères anatomiques essentiels de l'assise traditionnelle.</span>
+            </a>
+
+            <a 
+              href="/choisir-son-zafu/" 
+              class="p-4 rounded-xl bg-gray-50/80 dark:bg-gray-900/60 border border-gray-200/80 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-700 transition space-y-1 block"
+            >
+              <span class="font-semibold text-gray-900 dark:text-white block">Quel zafu choisir ?</span>
+              <span class="text-xs text-gray-600 dark:text-gray-400 block">Guide pour sélectionner la hauteur et le garnissage adaptés.</span>
+            </a>
+
+            <a 
+              href="/a-propos/" 
+              class="p-4 rounded-xl bg-gray-50/80 dark:bg-gray-900/60 border border-gray-200/80 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-700 transition space-y-1 block"
+            >
+              <span class="font-semibold text-gray-900 dark:text-white block">L'atelier Myokan</span>
+              <span class="text-xs text-gray-600 dark:text-gray-400 block">Savoir-faire artisanal et transmission depuis 1982 à Montpellier.</span>
+            </a>
+          </div>
+        </section>
+      </article>
+    </main>
+  </Container>
+</Layout>
