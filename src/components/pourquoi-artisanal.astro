@@ -1,39 +1,47 @@
 ---
 const piliers = [
   {
-    title: "Cousu à la main",
-    desc: "Chaque zafu est confectionné à la commande dans l'atelier de Montpellier.",
+    title: "Pensé pour la pratique",
+    desc: "Un instrument d'assise conçu pour basculer naturellement le bassin et redresser la colonne vertébrale sans tension, créant un trépied stable avec les genoux.",
+    icon: "🧘",
+  },
+  {
+    title: "Dans la tradition du zafu",
+    desc: "Véronique Myokan Harruis, nonne zen Soto, applique la méthode et les gabarits transmis en 1982 par madame Deshimaru, fidèles à la tradition japonaise.",
+    icon: "🏮",
+  },
+  {
+    title: "Une fabrication soignée",
+    desc: "Confection unitaire sur commande à Montpellier. Des plis d'aisance accordéon réguliers et du fil haute résistance permettent au coussin d'absorber la charge durablement.",
     icon: "🧵",
   },
   {
-    title: "Kapok naturel",
-    desc: "Un rembourrage végétal ferme et durable, adapté à la pratique du zazen.",
+    title: "Des matériaux choisis",
+    desc: "Toile 100 % coton épaisse et kapok végétal naturel dense (~1 kg). Une fente protégée sous la poignée permet d'ajuster ou renouveler la fibre au fil des années.",
     icon: "🌿",
-  },
-  {
-    title: "Un conseil direct",
-    desc: "Vous échangez directement avec Véronique pour choisir votre zafu.",
-    icon: "💬",
   },
 ];
 ---
 
-<section class="mt-14 sm:mt-20 mx-auto max-w-5xl scroll-mt-20" aria-labelledby="pourquoi-heading">
-  <div class="text-center max-w-2xl mx-auto mb-10">
+<section class="mt-14 sm:mt-20 mx-auto max-w-6xl scroll-mt-20" aria-labelledby="pourquoi-heading">
+  <div class="text-center max-w-3xl mx-auto mb-10">
     <p class="text-xs uppercase tracking-widest font-semibold text-amber-800 dark:text-amber-400 mb-1.5">
-      Savoir-faire & Authenticité
+      Exigence & Transmission
     </p>
     <h2 id="pourquoi-heading" class="text-2xl sm:text-3xl lg:text-4xl font-bold font-heading text-gray-900 dark:text-white tracking-tight">
-      Pourquoi Myokan&nbsp;?
+      Ce qui distingue un zafu Myokan
     </h2>
+    <p class="mt-3 text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed max-w-2xl mx-auto">
+      Un zafu n'est pas un accessoire de bien-être éphémère. C'est un objet simple et sobre, façonné pour accompagner fidèlement la régularité de l'assise au sol.
+    </p>
   </div>
 
-  <div class="grid sm:grid-cols-3 gap-5 lg:gap-6">
+  <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">
     {piliers.map((p) => (
-      <div class="p-6 sm:p-7 rounded-2xl bg-gray-50/70 dark:bg-gray-900/60 border border-gray-200/80 dark:border-gray-800 flex flex-col justify-between shadow-xs">
+      <div class="p-5 sm:p-6 rounded-2xl bg-gray-50/70 dark:bg-gray-900/60 border border-gray-200/80 dark:border-gray-800 flex flex-col justify-between shadow-xs">
         <div>
           <span class="text-2xl mb-3 block" aria-hidden="true">{p.icon}</span>
-          <h3 class="font-bold text-gray-900 dark:text-white text-lg mb-2 font-heading">
+          <h3 class="font-bold text-gray-900 dark:text-white text-base sm:text-lg mb-2 font-heading tracking-tight">
             {p.title}
           </h3>
           <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
@@ -49,7 +57,7 @@ const piliers = [
       href="/a-propos/" 
       class="inline-flex items-center gap-1 text-xs sm:text-sm font-semibold text-gray-800 dark:text-gray-200 hover:text-gray-950 dark:hover:text-white underline hover:no-underline transition"
     >
-      <span>Découvrir le savoir-faire de l'atelier</span>
+      <span>En savoir plus sur l'histoire de l'atelier et la transmission depuis 1982</span>
       <span aria-hidden="true">→</span>
     </a>
   </div>
