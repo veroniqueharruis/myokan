@@ -10,6 +10,11 @@ export default defineConfig({
   trailingSlash: "always",
   redirects: {
     "/l-atelier/": "/a-propos/",
+    "/zafus-colore/": "/zafus-colores/",
+    "/zafu-colore/": "/zafus-colores/",
+    "/zafu-colores/": "/zafus-colores/",
+    "/zafus-couleurs/": "/zafus-colores/",
+    "/zafus-couleur/": "/zafus-colores/",
   },
   integrations: [tailwind(), mdx(), sitemap(), icon()],
 });
