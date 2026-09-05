@@ -373,7 +373,7 @@ export function evaluateZafuRecommendation(answers: UserAnswers): Recommendation
     dimensionsSummary: "30 cm de diamètre · 15 cm de hauteur",
     heightSummary: "15 cm (standard recommandé pour 85 % des pratiquants adultes)",
     fillingSummary: rembourrage === "vide" ? "Housse seule en pur coton (27 €)" : "Plein en kapok végétal naturel dense (45 €)",
-    optionsSummary: "Standard dojo Soto Zen, coutures renforcées, choix de coloris",
+    optionsSummary: "Standard dojo Soto zen, coutures renforcées, choix de coloris",
   };
 }
 

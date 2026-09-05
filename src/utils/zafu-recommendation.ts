@@ -273,7 +273,7 @@ export function recommendZafu(answers: GuideAnswers): RecommendationResult {
     priceVide: "27 € — housse vide",
     whyTitle: "Pourquoi le M ?",
     whyExplanation:
-      "Avec votre profil, le format M de 15 cm constitue le choix le plus polyvalent. Il offre une hauteur intermédiaire adaptée à la majorité des pratiques et transmet fidèlement la méthode traditionnelle Soto Zen. Si vous avez des douleurs, une morphologie spécifique ou hésitez entre deux hauteurs, nous vous recommandons de demander conseil avant de commander.",
+      "Avec votre profil, le format M de 15 cm constitue le choix le plus polyvalent. Il offre une hauteur intermédiaire adaptée à la majorité des pratiques et transmet fidèlement la méthode traditionnelle Soto zen. Si vous avez des douleurs, une morphologie spécifique ou hésitez entre deux hauteurs, nous vous recommandons de demander conseil avant de commander.",
     confidence: "high",
     alternatives: [
       {
