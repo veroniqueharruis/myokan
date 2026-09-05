@@ -4,6 +4,7 @@ import Container from "@components/container.astro";
 const currentPath = Astro.url.pathname.replace(/\/$/, "");
 
 const isZafusActive = currentPath === "/zafus";
+const isZafusColoresActive = currentPath === "/zafus-colores";
 const isChoisirActive = currentPath === "/choisir-son-zafu";
 
 const accessoires = [
@@ -278,6 +279,21 @@ const isContactActive = currentPath === "/contact";
                 ]}
               >
                 Tous nos zafus & configurateur
+              </a>
+            </li>
+            <li>
+              <a
+                href="/zafus-colores/"
+                aria-current={isZafusColoresActive ? "page" : undefined}
+                class:list={[
+                  "block px-3 py-2 rounded-lg text-sm transition flex items-center justify-between",
+                  isZafusColoresActive 
+                    ? "text-gray-950 dark:text-white font-semibold bg-gray-100 dark:bg-gray-800" 
+                    : "text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800/60"
+                ]}
+              >
+                <span>🎨 Zafus colorés pour la maison</span>
+                <span class="text-xs">&rarr;</span>
               </a>
             </li>
             <li>

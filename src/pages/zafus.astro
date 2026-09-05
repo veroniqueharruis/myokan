@@ -429,6 +429,17 @@ const productSchema = {
                 </div>
               </label>
             </div>
+
+            <!-- Suggestion vers les zafus colorés pour la maison -->
+            <div class="mt-2.5 text-right">
+              <a 
+                href="/zafus-colores/" 
+                class="inline-flex items-center gap-1 text-xs text-amber-900 dark:text-amber-300 hover:text-amber-950 dark:hover:text-amber-100 hover:underline"
+              >
+                <span>Vous cherchez un coussin coloré pour le salon ou la maison ? Découvrir les zafus colorés</span>
+                <span aria-hidden="true">&rarr;</span>
+              </a>
+            </div>
           </fieldset>
 
           <!-- Récapitulatif dynamique & Commande directe -->
@@ -776,7 +787,18 @@ const productSchema = {
       <p class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3">
         Compléments indispensables
       </p>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+        <a 
+          href="/zafus-colores/" 
+          class="p-3.5 rounded-xl border border-amber-200 dark:border-amber-800/60 bg-amber-50/40 dark:bg-amber-950/20 hover:border-amber-400 dark:hover:border-amber-600 transition shadow-sm group flex flex-col justify-between"
+        >
+          <div>
+            <span class="block font-bold text-sm text-gray-900 dark:text-white group-hover:underline">Zafus colorés</span>
+            <span class="block text-xs text-gray-600 dark:text-gray-400 mt-1">Coussins d'assise & déco pour la maison</span>
+          </div>
+          <span class="text-xs font-medium text-amber-900 dark:text-amber-300 mt-2">Découvrir →</span>
+        </a>
+
         <a 
           href="/zabutons/" 
           class="p-3.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:border-gray-400 dark:hover:border-gray-500 transition shadow-sm group flex flex-col justify-between"
