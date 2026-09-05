@@ -174,71 +174,78 @@ const personSchema = {
       </div>
 
       <!-- Une culture de la couture et du geste -->
-      <section class="my-10 p-6 sm:p-7 rounded-2xl bg-gray-50/80 dark:bg-gray-900/60 border border-gray-200 dark:border-gray-800" aria-label="Tradition textile du zen">
-        <div class="flex flex-col md:flex-row items-center gap-6">
-          <div class="flex-1 space-y-3">
-            <span class="text-xs font-bold uppercase tracking-wider text-amber-800 dark:text-amber-400 font-mono">
-              Repère & Tradition textile
-            </span>
-            <h3 class="text-xl sm:text-2xl font-bold font-heading text-gray-900 dark:text-white">
-              Une culture de la couture et du geste
-            </h3>
-            <p class="text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed">
-              Le zafu est lui aussi un objet de couture, de matière et de geste. Le savoir-faire de Myokan s'inscrit dans une culture artisanale liée à la pratique du zen, dont la couture traditionnelle du kesa constitue un autre exemple. Cette parenté entre <a href="/geste-posture-concentration/" class="underline hover:text-gray-950 dark:hover:text-white font-medium">traditions artisanales et pratiques du geste</a> se retrouve également dans d'autres voies où la précision de la main et la concentration du corps guident le travail.
-            </p>
-            <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-              À titre de référence, le temple zen Yujo Nyusanji proposait en 2018 un stage consacré à la 
-              <a 
-                href="https://zen-montpellier.fr/stage-meditation-zen/couture-du-kesa-2018/" 
-                target="_blank" 
-                rel="noopener" 
-                class="text-gray-900 dark:text-white font-medium underline hover:no-underline inline-flex items-center gap-1"
-              >
-                <span>couture traditionnelle du kesa</span>
-                <span aria-hidden="true">↗</span>
-              </a>.
-            </p>
-          </div>
+      <!-- Panneau éditorial élargi : sort du couloir de lecture max-w-2xl pour retrouver assez de largeur (texte 35–40 % / images 60–65 %) -->
+      <div class="my-10 md:w-screen md:relative md:left-1/2 md:-translate-x-1/2">
+        <div class="md:max-w-screen-xl md:mx-auto md:px-5">
+          <section class="p-6 sm:p-7 md:p-8 lg:p-10 rounded-2xl bg-gray-50/80 dark:bg-gray-900/60 border border-gray-200 dark:border-gray-800" aria-label="Tradition textile du zen">
+            <div class="md:grid md:grid-cols-2 lg:grid-cols-5 md:items-start gap-6 md:gap-8 lg:gap-10">
 
-          <div class="shrink-0 w-full sm:w-auto flex flex-col sm:flex-row justify-center gap-4">
-            <figure class="max-w-[180px] sm:max-w-[200px] rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-sm mx-auto sm:mx-0">
-              <a
-                href="https://zen-montpellier.fr/stage-meditation-zen/couture-du-kesa-2018/"
-                target="_blank"
-                rel="noopener"
-                class="block group overflow-hidden"
-                aria-label="Consulter la présentation du stage de couture du kesa 2018 au Dojo zen de Montpellier"
-              >
-                <img
-                  src="/affiche-couture-kesa-2018.webp"
-                  alt="Affiche du stage de couture du kesa organisé en 2018 au Dojo zen de Montpellier"
-                  width="400"
-                  height="566"
-                  class="w-full h-auto object-cover group-hover:scale-103 transition-transform duration-300"
-                  loading="lazy"
-                />
-              </a>
-              <figcaption class="p-2 text-[11px] text-center text-gray-500 dark:text-gray-400 border-t border-gray-100 dark:border-gray-700/60 leading-snug">
-                Couture traditionnelle du kesa — Dojo zen de Montpellier, 2018.
-              </figcaption>
-            </figure>
+              <div class="space-y-3 md:max-w-md lg:max-w-none lg:col-span-2">
+                <span class="text-xs font-bold uppercase tracking-wider text-amber-800 dark:text-amber-400 font-mono">
+                  Repère & Tradition textile
+                </span>
+                <h3 class="text-xl sm:text-2xl font-bold font-heading text-gray-900 dark:text-white leading-snug">
+                  Une culture de la couture et du geste
+                </h3>
+                <p class="text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed">
+                  Le zafu est lui aussi un objet de couture, de matière et de geste. Le savoir-faire de Myokan s'inscrit dans une culture artisanale liée à la pratique du zen, dont la couture traditionnelle du kesa constitue un autre exemple. Cette parenté entre <a href="/geste-posture-concentration/" class="underline hover:text-gray-950 dark:hover:text-white font-medium">traditions artisanales et pratiques du geste</a> se retrouve également dans d'autres voies où la précision de la main et la concentration du corps guident le travail.
+                </p>
+                <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
+                  À titre de référence, le temple zen Yujo Nyusanji proposait en 2018 un stage consacré à la
+                  <a
+                    href="https://zen-montpellier.fr/stage-meditation-zen/couture-du-kesa-2018/"
+                    target="_blank"
+                    rel="noopener"
+                    class="text-gray-900 dark:text-white font-medium underline hover:no-underline inline-flex items-center gap-1"
+                  >
+                    <span>couture traditionnelle du kesa</span>
+                    <span aria-hidden="true">↗</span>
+                  </a>.
+                </p>
+              </div>
 
-            <figure class="max-w-[260px] sm:max-w-[280px] rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-sm mx-auto sm:mx-0">
-              <img
-                src="/atelier-couture-kesa-2018.webp"
-                alt="Participants au stage de couture du kesa de 2018 travaillant le tissu autour d'une table à l'atelier"
-                width="1000"
-                height="750"
-                class="w-full h-auto object-cover"
-                loading="lazy"
-              />
-              <figcaption class="p-2 text-[11px] text-center text-gray-500 dark:text-gray-400 border-t border-gray-100 dark:border-gray-700/60 leading-snug">
-                Stage de couture du kesa, 2018 — travail du tissu en petit groupe.
-              </figcaption>
-            </figure>
-          </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 items-start gap-4 sm:gap-5 lg:col-span-3">
+                <figure class="rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-sm">
+                  <a
+                    href="https://zen-montpellier.fr/stage-meditation-zen/couture-du-kesa-2018/"
+                    target="_blank"
+                    rel="noopener"
+                    class="block group overflow-hidden"
+                    aria-label="Consulter la présentation du stage de couture du kesa 2018 au Dojo zen de Montpellier"
+                  >
+                    <img
+                      src="/affiche-couture-kesa-2018.webp"
+                      alt="Affiche du stage de couture du kesa organisé en 2018 au Dojo zen de Montpellier"
+                      width="400"
+                      height="566"
+                      class="w-full h-auto object-cover group-hover:scale-103 transition-transform duration-300"
+                      loading="lazy"
+                    />
+                  </a>
+                  <figcaption class="p-2.5 text-[11px] text-center text-gray-500 dark:text-gray-400 border-t border-gray-100 dark:border-gray-700/60 leading-snug">
+                    Couture traditionnelle du kesa — Dojo zen de Montpellier, 2018.
+                  </figcaption>
+                </figure>
+
+                <figure class="rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-sm">
+                  <img
+                    src="/atelier-couture-kesa-2018.webp"
+                    alt="Participants au stage de couture du kesa de 2018 travaillant le tissu autour d'une table à l'atelier"
+                    width="1000"
+                    height="750"
+                    class="w-full h-auto object-cover"
+                    loading="lazy"
+                  />
+                  <figcaption class="p-2.5 text-[11px] text-center text-gray-500 dark:text-gray-400 border-t border-gray-100 dark:border-gray-700/60 leading-snug">
+                    Stage de couture du kesa, 2018 — travail du tissu en petit groupe.
+                  </figcaption>
+                </figure>
+              </div>
+
+            </div>
+          </section>
         </div>
-      </section>
+      </div>
 
       <p class="text-lg mt-4 text-gray-700 dark:text-gray-300 leading-relaxed">
         Je propose également des <a href="/sacs-zafus/" class="underline hover:text-gray-950 dark:hover:text-white font-medium">sacs à zafu</a> en coton,
