@@ -19,74 +19,18 @@ const breadcrumbSchema = {
     }
   ]
 };
-
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Qu'est-ce que le zazen ?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Zazen est la méditation assise silencieuse au cœur de la tradition bouddhiste Soto zen. Assis sur un coussin traditionnel (zafu), le pratiquant harmonise le corps par la posture juste, la respiration par l'expiration abdominale lente et l'esprit en laissant passer les pensées sans s'y attacher."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Puis-je méditer sur un zafu si je ne suis pas souple ?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Oui, parfaitement. La souplesse n'est pas un prérequis pour débuter le zazen. Un zafu de taille L (plus haut) permet de compenser la raideur des hanches. De plus, poser le zafu sur un zabuton traditionnel soulage la pression sur les chevilles et les genoux. L'assise à genoux à califourchon sur le zafu (posture en seiza) est également possible."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Quelle taille de zafu choisir selon sa posture ?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "La taille M (30 cm de diamètre, 15 cm de hauteur) est la taille standard recommandée pour la majorité des pratiquants. La taille L (32 cm × 17 cm) convient aux personnes mesurant plus de 1m80 ou ayant besoin d'une assise plus haute pour libérer le bassin. La taille S (28 cm × 13 cm) est adaptée aux personnes très souples ou comme zafu de voyage."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Qu'est-ce que le kapok et pourquoi l'utiliser pour un zafu ?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Le kapok est une fibre végétale naturelle soyeuse et imputrescible extraite des fruits du kapokier. Contrairement aux mousses synthétiques qui s'écrasent rapidement, le kapok offre une assise ferme et stable indispensable au maintien du dos droit pendant de longues séances."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Combien de temps dure une séance de zazen ?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Dans la tradition Soto zen, une séance comprend généralement deux périodes d'assise de 30 à 40 minutes, séparées par 10 minutes de kinhin (marche méditative lente au rythme de la respiration abdominale)."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Comment entretenir et laver mon zafu en coton ?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Le kapok ne doit pas être mouillé. Pour nettoyer la housse, videz le kapok au préalable ou brossez délicatement le tissu extérieur avec un chiffon humide. Pour les déplacements, l'usage d'un sac à zafu en coton lavable est vivement recommandé."
-      }
-    }
-  ]
-};
 ---
 
 <Layout
   fullTitle="Posture assise & tradition du zazen | Myokan"
-  description="Repères d'assise et posture traditionnelle : la bascule du bassin, l'alignement de la colonne et le rôle du zafu en kapok naturel dans la pratique du zazen."
-  image="/zafu-noir-lin.webp"
-  imageAlt="Zafu artisanal noir traditionnel et posture de zazen — Atelier Myokan Montpellier">
-  
+  description="La tradition du zazen et le rôle du zafu dans la posture assise : le contexte qui éclaire le savoir-faire de l'atelier Myokan à Montpellier."
+  image="/zazen-assise-dojo.webp"
+  imageAlt="Véronique Myokan Harruis assise en zazen au temple Yujo Nyusanji">
+
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumbSchema)} />
-  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)} />
 
   <main id="main-content" class="px-4 max-w-4xl mx-auto pt-8 sm:pt-10 pb-20">
-    
+
     <!-- Fil d'Ariane -->
     <nav aria-label="Fil d'Ariane" class="text-xs text-gray-500 dark:text-gray-400 mb-8">
       <ol class="flex items-center gap-2">
@@ -107,14 +51,13 @@ const faqSchema = {
         La posture assise et la tradition du zazen
       </h1>
       <p class="text-base sm:text-lg text-gray-700 dark:text-gray-300 mt-4 leading-relaxed max-w-3xl">
-        Le zafu n'est pas né comme un accessoire de confort général&nbsp;: dans la tradition du Soto zen, 
-        c'est un instrument d'assise rigoureusement proportionné pour permettre au corps de tenir 
-        droit et stable dans l'immobilité silencieuse. Cette page rassemble les repères anatomiques essentiels de la posture, 
-        le rôle mécanique du coussin et le contexte d'où provient cet artisanat.
+        Le zafu n'est pas né comme un simple accessoire de confort&nbsp;: dans la tradition du Soto zen,
+        c'est un instrument d'assise conçu pour un usage précis. Comprendre cette pratique et son contexte
+        éclaire la façon dont l'atelier Myokan conçoit et confectionne ses zafus.
       </p>
     </header>
 
-    <!-- Photographie d'assise en zazen au dojo -->
+    <!-- Photographie d'assise en zazen -->
     <figure class="mb-14 rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xs max-w-md mx-auto sm:mx-0 sm:float-right sm:ml-8">
       <img
         src="/zazen-assise-dojo.webp"
@@ -125,129 +68,116 @@ const faqSchema = {
         loading="lazy"
       />
       <figcaption class="p-3 text-xs text-center text-gray-500 dark:text-gray-400 border-t border-gray-100 dark:border-gray-800">
-        Véronique Myokan Harruis assise en zazen au temple Yujo Nyusanji : mudra, dos droit, regard mi-clos.
+        Véronique Myokan Harruis au temple Yujo Nyusanji.
       </figcaption>
     </figure>
 
-    <!-- 1. L'assise dans la tradition du zen -->
+    <!-- 1. Ce qu'est le zazen -->
     <section class="mb-14 space-y-4 text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
       <h2 class="text-xl sm:text-2xl font-bold font-heading text-gray-900 dark:text-white">
         L'assise silencieuse dans la tradition du zen
       </h2>
       <p>
-        «&nbsp;Zazen&nbsp;» signifie littéralement «&nbsp;méditation assise&nbsp;». Dans la tradition du bouddhisme Soto zen, 
-        introduite en Europe par <strong>Maître Taisen Deshimaru</strong> à partir de 1967, zazen n'est ni 
-        une méthode d'évasion ni une technique de relaxation guidée. C'est l'assise dépouillée de tout esprit 
-        de compétition ou de profit (<em>mushotoku</em>).
+        «&nbsp;Zazen&nbsp;» signifie littéralement «&nbsp;méditation assise&nbsp;». Introduite en Europe par
+        <strong>Maître Taisen Deshimaru</strong> à partir de 1967, cette pratique de la tradition Soto zen n'est
+        ni une méthode d'évasion ni une technique de relaxation guidée, mais une assise dépouillée de tout esprit
+        de compétition ou de profit (<em>mushotoku</em>). Assis en silence face au mur, le pratiquant laisse le
+        corps s'organiser autour d'une colonne étirée et d'une respiration abdominale lente, sans s'attacher
+        aux pensées qui traversent l'esprit.
       </p>
-      <p>
-        Assis en silence face au mur, le pratiquant laisse le corps s'organiser autour d'une colonne vertébrale étirée 
-        et d'une respiration abdominale lente. Les pensées et émotions apparaissent et disparaissent d'elles-mêmes, 
-        sans qu'on s'y attache ni qu'on cherche à les supprimer.
+    </section>
+
+    <!-- 2. Pourquoi le zafu : mécanique de la posture + rôle du coussin -->
+    <section id="posture" class="mb-14 pt-6 border-t border-gray-200 dark:border-gray-800 scroll-mt-20 sm:clear-both">
+      <div class="mb-6">
+        <p class="text-xs font-semibold uppercase tracking-wider text-amber-900 dark:text-amber-400">
+          Support matériel
+        </p>
+        <h2 class="text-xl sm:text-2xl font-bold font-heading text-gray-900 dark:text-white mt-1">
+          Le rôle du zafu dans la posture
+        </h2>
+      </div>
+
+      <p class="text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+        S'asseoir à même le sol sans support fait presque immédiatement basculer le bassin vers l'arrière,
+        obligeant le dos à compenser pour ne pas s'effondrer.
       </p>
-      
+
       <blockquote class="my-6 border-l-4 border-amber-700/60 dark:border-amber-500/60 pl-4 py-2 italic bg-amber-50/40 dark:bg-amber-950/20 text-gray-800 dark:text-gray-200 rounded-r-lg text-base">
-        «&nbsp;S’asseoir sur un zafu, quoi que vous fassiez, vous conduit naturellement vers la respiration zen abdominale. 
+        «&nbsp;S’asseoir sur un zafu, quoi que vous fassiez, vous conduit naturellement vers la respiration zen abdominale.
         L’énergie circule dans tout le corps et l’esprit retrouve son calme.&nbsp;»
         <footer class="text-right text-xs sm:text-sm font-normal text-gray-600 dark:text-gray-400 mt-1 not-italic">
           — Maître zen Stéphane Kosen Thibaut
         </footer>
       </blockquote>
 
-      <p class="text-sm sm:text-base text-gray-600 dark:text-gray-400">
-        C'est dans cette même lignée que Véronique Myokan Harruis a appris à confectionner les zafus en 1982, 
-        à l'atelier du dojo de Paris, selon le patronage transmis par maître Deshimaru. L'atelier Myokan confectionne 
-        ainsi des objets d'assise fonctionnels, fidèles aux proportions requises pour cette pratique.
-      </p>
-    </section>
-
-    <!-- 2. La Posture (#posture) -->
-    <section id="posture" class="mb-14 pt-6 border-t border-gray-200 dark:border-gray-800 scroll-mt-20 sm:clear-both">
-      <div class="mb-6">
-        <p class="text-xs font-semibold uppercase tracking-wider text-amber-900 dark:text-amber-400">
-          Anatomie & Stabilité
-        </p>
-        <h2 class="text-xl sm:text-2xl font-bold font-heading text-gray-900 dark:text-white mt-1">
-          Les repères anatomiques de la posture
-        </h2>
-      </div>
-
-      <div class="grid md:grid-cols-2 gap-6 text-gray-700 dark:text-gray-300 leading-relaxed text-sm sm:text-base">
-        <div class="space-y-4">
-          <div class="p-4 rounded-xl bg-gray-50 dark:bg-gray-900/50 border border-gray-200/80 dark:border-gray-800">
-            <h3 class="font-bold text-gray-900 dark:text-white text-base">1. L'assise sur le tiers antérieur</h3>
-            <p class="text-sm mt-1.5 text-gray-600 dark:text-gray-300">
-              On ne s'assoit pas au centre du coussin, mais sur son tiers avant. Cette surélévation fait naturellement 
-              basculer le bassin vers l'avant au niveau de la cinquième vertèbre lombaire, restaurant la lordose 
-              physiologique sans tension musculaire dorsale.
-            </p>
-          </div>
-
-          <div class="p-4 rounded-xl bg-gray-50 dark:bg-gray-900/50 border border-gray-200/80 dark:border-gray-800">
-            <h3 class="font-bold text-gray-900 dark:text-white text-base">2. Le trépied au sol</h3>
-            <p class="text-sm mt-1.5 text-gray-600 dark:text-gray-300">
-              Les genoux descendent fermement en appui sur le sol (ou sur le matelas zabuton). Que l'assise soit 
-              en lotus complet, demi-lotus, tailleur simple ou à genoux à califourchon (seiza), le bassin et les 
-              deux genoux forment un trépied indéracinable.
-            </p>
-          </div>
-
-          <div class="p-4 rounded-xl bg-gray-50 dark:bg-gray-900/50 border border-gray-200/80 dark:border-gray-800">
-            <h3 class="font-bold text-gray-900 dark:text-white text-base">3. La colonne vertébrale étirée</h3>
-            <p class="text-sm mt-1.5 text-gray-600 dark:text-gray-300">
-              La nuque s'allonge par un léger recul du menton. Le sommet du crâne pousse verticalement vers le ciel 
-              tandis que le sacrum s'ancre dans le coussin. Les épaules, les trapèzes et la sangle abdominale restent souples.
-            </p>
-          </div>
-        </div>
-
-        <div class="space-y-4">
-          <div class="p-4 rounded-xl bg-gray-50 dark:bg-gray-900/50 border border-gray-200/80 dark:border-gray-800">
-            <h3 class="font-bold text-gray-900 dark:text-white text-base">4. Le mudra cosmique (Hokkaijoin)</h3>
-            <p class="text-sm mt-1.5 text-gray-600 dark:text-gray-300">
-              La main gauche repose sur la paume droite, les tranches externes appuyées contre le bas-ventre. 
-              Les extrémités des deux pouces s'effleurent horizontalement en formant un ovale régulier, 
-              miroir fidèle de la vigilance de l'esprit.
-            </p>
-          </div>
-
-          <div class="p-4 rounded-xl bg-gray-50 dark:bg-gray-900/50 border border-gray-200/80 dark:border-gray-800">
-            <h3 class="font-bold text-gray-900 dark:text-white text-base">5. Le regard posé</h3>
-            <p class="text-sm mt-1.5 text-gray-600 dark:text-gray-300">
-              Les paupières restent mi-closes. Le regard descend naturellement vers le sol à un mètre environ, 
-              sans rien fixer ni analyser, maintenant le cerveau éveillé sans stimulation visuelle excessive.
-            </p>
-          </div>
-
-          <div class="p-4 rounded-xl bg-gray-50 dark:bg-gray-900/50 border border-gray-200/80 dark:border-gray-800">
-            <h3 class="font-bold text-gray-900 dark:text-white text-base">6. La respiration abdominale</h3>
-            <p class="text-sm mt-1.5 text-gray-600 dark:text-gray-300">
-              L'expiration est lente, continue et profonde vers le bas-ventre (le <em>hara</em>). L'inspiration 
-              se produit d'elle-même, sans reprise brutale d'air, au rythme naturel du diaphragme détendu.
-            </p>
-          </div>
-        </div>
-
-        <p class="text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed mt-6">
-          Cette exigence posturale ne cherche aucune raideur&nbsp;: elle permet au contraire un relâchement profond des tensions périphériques. Cette même <a href="/geste-posture-concentration/" class="underline hover:text-gray-950 dark:hover:text-white font-medium">attention au geste et à la posture</a> se retrouve dans d'autres disciplines traditionnelles, où l'alignement du corps conditionne la stabilité de l'esprit.
-        </p>
-      </div>
-    </section>
-
-    <!-- 3. Rôle du zafu (#choisir-zafu) -->
-    <section id="choisir-zafu" class="mb-14 pt-6 border-t border-gray-200 dark:border-gray-800 scroll-mt-20">
-      <div class="mb-6">
-        <p class="text-xs font-semibold uppercase tracking-wider text-amber-900 dark:text-amber-400">
-          Support matériel
-        </p>
-        <h2 class="text-xl sm:text-2xl font-bold font-heading text-gray-900 dark:text-white mt-1">
-          Le rôle du zafu dans la tenue du dos
-        </h2>
-      </div>
-
       <p class="text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
-        S'asseoir à même le sol sans support engendre presque immédiatement un enroulement du bassin en arrière,
-        forçant les muscles dorsaux à compenser pour éviter la chute. Le zafu résout ce problème mécanique précis.
+        En surélevant légèrement le bassin et en invitant à s'asseoir sur son tiers avant, le zafu bascule
+        naturellement le bassin vers l'avant&nbsp;: la colonne peut s'étirer sans tension musculaire, tandis que
+        les genoux, ancrés au sol, forment avec le coussin un trépied stable. C'est cette mécanique précise —
+        et non un simple confort — qui a fixé les proportions traditionnelles du zafu.
+      </p>
+
+      <div class="grid sm:grid-cols-2 gap-6 text-sm sm:text-base">
+        <div class="p-5 rounded-xl bg-gray-50 dark:bg-gray-900/50 border border-gray-200/80 dark:border-gray-800">
+          <h3 class="font-bold text-gray-900 dark:text-white text-base mb-2">Les plis d'aisance et le kapok dense</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+            Les plis latéraux cousus en accordéon laissent la toile s'évaser sous la charge. Le rembourrage en
+            <a href="/zafus/#kapok" class="underline hover:text-gray-950 dark:hover:text-white font-medium">kapok végétal</a>,
+            dense et imputrescible, maintient une fermeté que la mousse synthétique ne peut égaler dans la durée.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-xl bg-gray-50 dark:bg-gray-900/50 border border-gray-200/80 dark:border-gray-800">
+          <h3 class="font-bold text-gray-900 dark:text-white text-base mb-2">L'indispensable duo avec le zabuton</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+            Le zafu élève le bassin, mais les genoux et les chevilles restent au contact du sol. Posé dessous, le
+            <a href="/zabutons/" class="underline hover:text-gray-950 dark:hover:text-white font-medium">zabuton</a>
+            amortit les articulations et permet à l'assise en trépied de s'établir sans douleur.
+          </p>
+        </div>
+      </div>
+
+      <!-- Repères de hauteurs -->
+      <div id="choisir-zafu" class="mt-6 p-5 rounded-xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 scroll-mt-20">
+        <h3 class="font-bold text-gray-900 dark:text-white text-base mb-3">Repères de hauteurs selon la morphologie</h3>
+        <ul class="space-y-2.5 text-sm text-gray-700 dark:text-gray-300">
+          <li class="flex items-start gap-2.5">
+            <span class="font-semibold text-gray-900 dark:text-white shrink-0">Taille S (28 × 13 cm) :</span>
+            <span>personnes souples ou zafu de voyage.</span>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <span class="font-semibold text-gray-900 dark:text-white shrink-0">Taille M (30 × 15 cm) :</span>
+            <span>hauteur standard, adaptée à la majorité des pratiquants.</span>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <span class="font-semibold text-gray-900 dark:text-white shrink-0">Taille L (32 × 17 cm) :</span>
+            <span>plus d'1m80 ou hanches raides, pour faciliter la bascule lombaire.</span>
+          </li>
+        </ul>
+        <div class="mt-4 pt-3 border-t border-gray-100 dark:border-gray-800 flex flex-wrap items-center gap-4 text-xs sm:text-sm">
+          <a href="/choisir-son-zafu/" class="font-semibold text-amber-900 dark:text-amber-300 underline hover:no-underline">
+            Accéder au guide interactif pour choisir son zafu &rarr;
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Le savoir-faire de Myokan -->
+    <section id="savoir-faire" class="mb-14 pt-6 border-t border-gray-200 dark:border-gray-800 scroll-mt-20">
+      <div class="mb-6">
+        <p class="text-xs font-semibold uppercase tracking-wider text-amber-900 dark:text-amber-400">
+          De la pratique à l'atelier
+        </p>
+        <h2 class="text-xl sm:text-2xl font-bold font-heading text-gray-900 dark:text-white mt-1">
+          Le savoir-faire de Myokan
+        </h2>
+      </div>
+
+      <p class="text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed">
+        C'est dans cette même lignée que Véronique Myokan Harruis a appris à confectionner les zafus en 1982,
+        à l'atelier du dojo de Paris, selon la méthode transmise par maître Deshimaru. L'atelier Myokan
+        confectionne depuis des objets d'assise fidèles aux proportions requises par cette pratique.
       </p>
 
       <blockquote class="my-6 border-l-4 border-amber-700/60 dark:border-amber-500/60 pl-4 py-2 italic bg-amber-50/40 dark:bg-amber-950/20 text-gray-800 dark:text-gray-200 rounded-r-lg text-base">
@@ -257,193 +187,57 @@ const faqSchema = {
         </footer>
       </blockquote>
 
-      <div class="grid sm:grid-cols-2 gap-6 text-sm sm:text-base">
-        <div class="p-5 rounded-xl bg-gray-50 dark:bg-gray-900/50 border border-gray-200/80 dark:border-gray-800 flex flex-col justify-between">
-          <div>
-            <h3 class="font-bold text-gray-900 dark:text-white text-base mb-2">Les plis d'aisance et le kapok dense</h3>
-            <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
-              Les plis latéraux cousus en accordéon permettent à la toile de s'évaser sous la charge tout en maintenant 
-              une assiette stable. Rembourré de <strong>kapok végétal naturel</strong> — fibre imputrescible et dense —, 
-              le coussin offre une fermeté incompressible impossible à reproduire avec de la mousse synthétique, 
-              assurant que le bassin ne s'affaisse pas après 20 ou 30 minutes d'immobilité.
-            </p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-gray-200/60 dark:border-gray-800 text-xs text-gray-500 dark:text-gray-400">
-            Fibre végétale naturelle issue du kapokier · Toile 100 % coton
-          </div>
-        </div>
-
-        <div class="p-5 rounded-xl bg-gray-50 dark:bg-gray-900/50 border border-gray-200/80 dark:border-gray-800 flex flex-col justify-between">
-          <div>
-            <h3 class="font-bold text-gray-900 dark:text-white text-base mb-2">L'indispensable duo avec le zabuton</h3>
-            <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
-              Le zafu élève le bassin, mais les genoux et les chevilles doivent supporter une part substantielle 
-              du poids corporel. Posé directement sous le zafu, le <a href="/zabutons/" class="underline hover:text-gray-950 dark:hover:text-white font-medium">zabuton</a> (tapis de sol de 70 × 80 cm) 
-              amortit les malléoles et permet à l'assise en trépied de s'établir sans douleur articulaire liée au sol dur.
-            </p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-gray-200/60 dark:border-gray-800 text-xs text-gray-500 dark:text-gray-400">
-            Tapis de sol matelassé traditionnel pour les articulations
-          </div>
-        </div>
-      </div>
-
-      <!-- Repères de hauteurs (remplace le catalogue commercial) -->
-      <div class="mt-6 p-5 rounded-xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800">
-        <h3 class="font-bold text-gray-900 dark:text-white text-base mb-3">Repères de hauteurs selon la morphologie</h3>
-        <ul class="space-y-2.5 text-sm text-gray-700 dark:text-gray-300">
-          <li class="flex items-start gap-2.5">
-            <span class="font-semibold text-gray-900 dark:text-white shrink-0">Taille S (28 × 13 cm) :</span>
-            <span>Assise plus basse, adaptée aux personnes souples dont les genoux descendent aisément au sol, ou comme coussin de voyage compact.</span>
-          </li>
-          <li class="flex items-start gap-2.5">
-            <span class="font-semibold text-gray-900 dark:text-white shrink-0">Taille M (30 × 15 cm) :</span>
-            <span>Hauteur standard traditionnelle, recommandée pour la grande majorité des pratiquants réguliers ou débutants.</span>
-          </li>
-          <li class="flex items-start gap-2.5">
-            <span class="font-semibold text-gray-900 dark:text-white shrink-0">Taille L (32 × 17 cm) :</span>
-            <span>Hauteur rehaussée, conseillée aux personnes mesurant plus d'1m80 ou ressentant une raideur dans les hanches afin de faciliter la bascule lombaire.</span>
-          </li>
-        </ul>
-        <div class="mt-4 pt-3 border-t border-gray-100 dark:border-gray-800 flex flex-wrap items-center gap-4 text-xs sm:text-sm">
-          <a href="/choisir-son-zafu/" class="font-semibold text-amber-900 dark:text-amber-300 underline hover:no-underline">
-            Accéder au guide interactif pour choisir son zafu &rarr;
-          </a>
-          <span class="text-gray-300 dark:text-gray-700" aria-hidden="true">|</span>
-          <a href="/zafus/" class="text-gray-700 dark:text-gray-300 hover:text-gray-950 dark:hover:text-white underline">
-            Voir les zafus confectionnés à l'atelier
-          </a>
-        </div>
-      </div>
+      <p class="text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed">
+        Cette attention portée au geste et à la posture rejoint d'autres traditions artisanales, comme le montre
+        notre page sur <a href="/geste-posture-concentration/" class="underline hover:text-gray-950 dark:hover:text-white font-medium">le geste, la posture et la concentration</a>.
+      </p>
     </section>
 
-    <!-- 4. Le dojo (#dojo-montpellier) -->
+    <!-- 4. La pratique au dojo -->
     <section id="dojo-montpellier" class="mb-14 pt-6 border-t border-gray-200 dark:border-gray-800 scroll-mt-20">
       <div class="mb-6">
         <p class="text-xs font-semibold uppercase tracking-wider text-amber-900 dark:text-amber-400">
-          Pratique collective
+          Repère vivant
         </p>
         <h2 class="text-xl sm:text-2xl font-bold font-heading text-gray-900 dark:text-white mt-1">
-          Pour aller plus loin : la pratique au dojo
+          La pratique au dojo de Montpellier
         </h2>
       </div>
 
-      <p class="text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
-        Si l'assise solitaire chez soi est précieuse, la pratique collective au dojo reste le creuset 
-        où la posture s'ajuste et s'approfondit avec l'aide d'anciens pratiquants. Pour ceux qui résident à Montpellier 
-        ou dans sa région, des séances et initiations sont régulièrement ouvertes.
-      </p>
-
       <div class="p-6 bg-gray-50 dark:bg-gray-900/50 rounded-2xl border border-gray-200/80 dark:border-gray-800 text-sm text-gray-700 dark:text-gray-300 space-y-3.5">
-        <div class="flex items-start gap-3">
-          <span class="font-bold text-gray-900 dark:text-white shrink-0">•</span>
-          <div>
-            <p class="font-semibold text-gray-900 dark:text-white">Dojo Zen de Montpellier (Kosen Sangha)</p>
-            <p class="text-gray-600 dark:text-gray-400 text-xs sm:text-sm mt-0.5">34, rue Bourrely — 34000 Montpellier (centre-ville)</p>
-          </div>
+        <div>
+          <p class="font-semibold text-gray-900 dark:text-white">Dojo Zen de Montpellier (Kosen Sangha)</p>
+          <p class="text-gray-600 dark:text-gray-400 text-xs sm:text-sm mt-0.5">34, rue Bourrely — 34000 Montpellier</p>
         </div>
 
-        <div class="flex items-start gap-3">
-          <span class="font-bold text-gray-900 dark:text-white shrink-0">•</span>
-          <p>
-            <strong>Initiations débutants :</strong> Il est conseillé d'arriver 15 à 20 minutes avant l'horaire de séance afin qu'un pratiquant vous montre concrètement les repères de l'assise et le fonctionnement du dojo.
-          </p>
-        </div>
-
-        <div class="flex items-start gap-3">
-          <span class="font-bold text-gray-900 dark:text-white shrink-0">•</span>
-          <p>
-            <strong>Tenue recommandée :</strong> Vêtements amples et souples de teinte sombre (noir, bleu marine, gris, marron), sans ceinture rigide pour laisser le ventre respirer librement.
-          </p>
-        </div>
-
-        <div class="flex items-start gap-3">
-          <span class="font-bold text-gray-900 dark:text-white shrink-0">•</span>
-          <p>
-            <strong>Matériel sur place :</strong> Les zafus et zabutons sont prêtés sur place au dojo pour les débutants. Il n'est pas nécessaire d'acheter son propre matériel avant une première séance.
-          </p>
-        </div>
+        <p>
+          Véronique Myokan Harruis y poursuit sa pratique. Les débutants y sont accueillis&nbsp;: zafus et
+          zabutons sont prêtés sur place, aucun matériel personnel n'est requis pour une première séance.
+        </p>
 
         <div class="pt-3 border-t border-gray-200 dark:border-gray-700 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs sm:text-sm">
-          <span class="text-gray-600 dark:text-gray-400">Horaires des séances, calendrier et contact dojo :</span>
-          <a 
-            href="https://zen-montpellier.fr/" 
-            target="_blank" 
-            rel="noopener" 
+          <span class="text-gray-600 dark:text-gray-400">Horaires, calendrier et informations pratiques :</span>
+          <a
+            href="https://zen-montpellier.fr/"
+            target="_blank"
+            rel="noopener"
             class="font-semibold text-gray-900 dark:text-white underline hover:no-underline inline-flex items-center gap-1.5"
           >
-            <span>Consulter le site officiel zen-montpellier.fr</span>
+            <span>zen-montpellier.fr</span>
             <span aria-hidden="true">↗</span>
           </a>
         </div>
       </div>
     </section>
 
-    <!-- 5. FAQ (#faq) -->
-    <section id="faq" class="mb-14 pt-6 border-t border-gray-200 dark:border-gray-800 scroll-mt-20">
-      <div class="mb-6">
-        <p class="text-xs font-semibold uppercase tracking-wider text-amber-900 dark:text-amber-400">
-          Éclairages
-        </p>
-        <h2 class="text-xl sm:text-2xl font-bold font-heading text-gray-900 dark:text-white mt-1">
-          Questions fréquentes sur l'assise
-        </h2>
-      </div>
-
-      <div class="space-y-3">
-        <details class="group p-4 bg-gray-50 dark:bg-gray-900/50 rounded-xl border border-gray-200/80 dark:border-gray-800">
-          <summary class="font-semibold text-gray-900 dark:text-white text-base cursor-pointer flex items-center justify-between">
-            <span>Puis-je méditer sur un zafu si je ne suis pas souple&nbsp;?</span>
-            <span class="text-gray-400 group-open:rotate-180 transition-transform duration-200 text-xs">▼</span>
-          </summary>
-          <p class="text-gray-700 dark:text-gray-300 text-sm mt-3 leading-relaxed">
-            Oui, parfaitement. La souplesse n'est pas un prérequis pour débuter le zazen. Un <a href="/zafus/" class="underline hover:text-gray-950 dark:hover:text-white font-medium">zafu de taille L (17 cm)</a> 
-            permet de surélever davantage le bassin pour compenser la raideur des hanches. De plus, poser le coussin sur un <a href="/zabutons/" class="underline hover:text-gray-950 dark:hover:text-white font-medium">zabuton</a> 
-            soulage immédiatement la pression sur les articulations. Si l'assise croisée est trop inconfortable, l'assise à genoux à califourchon sur le zafu (posture seiza) permet également de garder le dos droit.
-          </p>
-        </details>
-
-        <details class="group p-4 bg-gray-50 dark:bg-gray-900/50 rounded-xl border border-gray-200/80 dark:border-gray-800">
-          <summary class="font-semibold text-gray-900 dark:text-white text-base cursor-pointer flex items-center justify-between">
-            <span>Combien de temps dure une séance de zazen&nbsp;?</span>
-            <span class="text-gray-400 group-open:rotate-180 transition-transform duration-200 text-xs">▼</span>
-          </summary>
-          <p class="text-gray-700 dark:text-gray-300 text-sm mt-3 leading-relaxed">
-            Dans la tradition Soto zen, une séance comprend généralement deux périodes d'assise de 30 à 40 minutes, 
-            séparées par 10 minutes de <em>kinhin</em> (marche méditative lente au rythme de la respiration abdominale). Chez soi, débuter par 15 à 20 minutes quotidiennes permet d'habituer le corps en douceur.
-          </p>
-        </details>
-
-        <details class="group p-4 bg-gray-50 dark:bg-gray-900/50 rounded-xl border border-gray-200/80 dark:border-gray-800">
-          <summary class="font-semibold text-gray-900 dark:text-white text-base cursor-pointer flex items-center justify-between">
-            <span>Vaut-il mieux commander un zafu plein ou à remplir&nbsp;?</span>
-            <span class="text-gray-400 group-open:rotate-180 transition-transform duration-200 text-xs">▼</span>
-          </summary>
-          <p class="text-gray-700 dark:text-gray-300 text-sm mt-3 leading-relaxed">
-            Si vous n'avez pas de kapok chez vous, le zafu livré plein est prêt à l'emploi avec le tassement traditionnel idéal réalisé à l'atelier. Le zafu vide permet d'économiser sur les frais d'expédition si vous possédez déjà votre rembourrage.
-          </p>
-        </details>
-
-        <details class="group p-4 bg-gray-50 dark:bg-gray-900/50 rounded-xl border border-gray-200/80 dark:border-gray-800">
-          <summary class="font-semibold text-gray-900 dark:text-white text-base cursor-pointer flex items-center justify-between">
-            <span>Comment entretenir et laver mon zafu en coton&nbsp;?</span>
-            <span class="text-gray-400 group-open:rotate-180 transition-transform duration-200 text-xs">▼</span>
-          </summary>
-          <p class="text-gray-700 dark:text-gray-300 text-sm mt-3 leading-relaxed">
-            La fibre de kapok ne doit pas être immergée. Pour nettoyer la toile de coton, brossez délicatement l'extérieur avec une éponge ou un chiffon légèrement humide. Pour transporter le coussin sans le salir, l'usage d'un <a href="/sacs-zafus/" class="underline hover:text-gray-950 dark:hover:text-white">sac à zafu en coton lavable</a> est vivement conseillé.
-          </p>
-        </details>
-      </div>
-    </section>
-
-    <!-- 6. Poursuivre la découverte -->
+    <!-- 5. Poursuivre la découverte -->
     <nav aria-label="Poursuivre la découverte" class="pt-8 border-t border-gray-200 dark:border-gray-800">
       <p class="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-4">
         Poursuivre sur le site Myokan
       </p>
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 text-sm">
-        <a 
-          href="/zafus/" 
+        <a
+          href="/zafus/"
           class="p-4 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800/80 hover:border-gray-400 dark:hover:border-gray-600 transition shadow-2xs group flex flex-col justify-between"
         >
           <div>
@@ -453,8 +247,8 @@ const faqSchema = {
           <span class="text-xs font-medium text-gray-700 dark:text-gray-300 mt-3">Voir les zafus &rarr;</span>
         </a>
 
-        <a 
-          href="/choisir-son-zafu/" 
+        <a
+          href="/choisir-son-zafu/"
           class="p-4 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800/80 hover:border-gray-400 dark:hover:border-gray-600 transition shadow-2xs group flex flex-col justify-between"
         >
           <div>
@@ -464,8 +258,8 @@ const faqSchema = {
           <span class="text-xs font-medium text-gray-700 dark:text-gray-300 mt-3">Consulter le guide &rarr;</span>
         </a>
 
-        <a 
-          href="/zabutons/" 
+        <a
+          href="/zabutons/"
           class="p-4 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800/80 hover:border-gray-400 dark:hover:border-gray-600 transition shadow-2xs group flex flex-col justify-between"
         >
           <div>
@@ -475,8 +269,8 @@ const faqSchema = {
           <span class="text-xs font-medium text-gray-700 dark:text-gray-300 mt-3">Voir les zabutons &rarr;</span>
         </a>
 
-        <a 
-          href="/a-propos/" 
+        <a
+          href="/a-propos/"
           class="p-4 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800/80 hover:border-gray-400 dark:hover:border-gray-600 transition shadow-2xs group flex flex-col justify-between"
         >
           <div>
