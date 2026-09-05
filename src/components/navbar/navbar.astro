@@ -57,23 +57,7 @@ const isContactActive = currentPath === "/contact";
           </a>
         </li>
 
-        <!-- 2. Pratique du zazen (Educational Authority) -->
-        <li>
-          <a
-            href="/pratique-zazen/"
-            aria-current={isPratiqueActive ? "page" : undefined}
-            class:list={[
-              "px-3 py-2 rounded-md transition focus-visible:ring-2",
-              isPratiqueActive 
-                ? "text-gray-950 dark:text-white font-semibold underline underline-offset-4 decoration-2" 
-                : "text-gray-700 dark:text-gray-300 hover:text-gray-950 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800"
-            ]}
-          >
-            Pratique du zazen
-          </a>
-        </li>
-
-        <!-- 3. Accessoires (Secondary Commercial Category with dropdown) -->
+        <!-- 2. Accessoires (Secondary Commercial Category with dropdown) -->
         <li class="relative" id="accessoires-dropdown-container">
           <div class="flex items-center">
             <a
@@ -314,46 +298,7 @@ const isContactActive = currentPath === "/contact";
           </ul>
         </div>
 
-        <!-- 2. Pratique du zazen (Educational Authority) -->
-        <div class="border-t border-gray-200 dark:border-gray-800 pt-3 mb-3.5">
-          <p class="px-3 pb-1 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-            Pratique du zazen & Enseignement
-          </p>
-          <ul class="space-y-0.5">
-            <li>
-              <a
-                href="/pratique-zazen/"
-                aria-current={isPratiqueActive ? "page" : undefined}
-                class:list={[
-                  "block px-3 py-2 rounded-md text-sm transition",
-                  isPratiqueActive 
-                    ? "text-gray-950 dark:text-white font-semibold bg-gray-100 dark:bg-gray-800" 
-                    : "text-gray-700 dark:text-gray-300 hover:text-gray-950 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800/60"
-                ]}
-              >
-                Pratique du zazen & Guide débutant
-              </a>
-            </li>
-            <li>
-              <a
-                href="/pratique-zazen/#posture"
-                class="block px-3 py-1.5 text-xs text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
-              >
-                ↳ La posture assise & l'alignement
-              </a>
-            </li>
-            <li>
-              <a
-                href="/pratique-zazen/#dojo-montpellier"
-                class="block px-3 py-1.5 text-xs text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
-              >
-                ↳ Le Dojo Zen de Montpellier
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        <!-- 3. Accessoires (Secondary Commercial) -->
+        <!-- 2. Accessoires (Secondary Commercial) -->
         <div class="border-t border-gray-200 dark:border-gray-800 pt-3 mb-3.5">
           <div class="flex items-center justify-between px-3 pb-1">
             <p class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
@@ -386,8 +331,8 @@ const isContactActive = currentPath === "/contact";
           </ul>
         </div>
 
-        <!-- 4. L'atelier & Contact -->
-        <div class="border-t border-gray-200 dark:border-gray-800 pt-3 space-y-1">
+        <!-- 3. L'atelier & Contact -->
+        <div class="border-t border-gray-200 dark:border-gray-800 pt-3 mb-3.5 space-y-1">
           <a
             href="/a-propos/"
             aria-current={isAtelierActive ? "page" : undefined}
@@ -421,6 +366,45 @@ const isContactActive = currentPath === "/contact";
           >
             Commander un zafu / Tarifs & Devis
           </a>
+        </div>
+
+        <!-- 4. Repères & Posture (Secondary reference) -->
+        <div class="border-t border-gray-200 dark:border-gray-800 pt-3">
+          <p class="px-3 pb-1 text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider">
+            Repères & Posture
+          </p>
+          <ul class="space-y-0.5">
+            <li>
+              <a
+                href="/pratique-zazen/"
+                aria-current={isPratiqueActive ? "page" : undefined}
+                class:list={[
+                  "block px-3 py-1.5 rounded-md text-sm transition",
+                  isPratiqueActive 
+                    ? "text-gray-950 dark:text-white font-semibold bg-gray-100 dark:bg-gray-800" 
+                    : "text-gray-700 dark:text-gray-300 hover:text-gray-950 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800/60"
+                ]}
+              >
+                Posture assise & tradition du zazen
+              </a>
+            </li>
+            <li>
+              <a
+                href="/pratique-zazen/#posture"
+                class="block px-3 py-1 text-xs text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
+              >
+                ↳ Repères anatomiques d'assise
+              </a>
+            </li>
+            <li>
+              <a
+                href="/pratique-zazen/#dojo-montpellier"
+                class="block px-3 py-1 text-xs text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
+              >
+                ↳ Dojo Zen de Montpellier
+              </a>
+            </li>
+          </ul>
         </div>
       </nav>
     </div>
