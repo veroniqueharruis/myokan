@@ -1,12 +1,10 @@
 ---
 import Container from "@components/container.astro";
 import Hero from "@components/hero.astro";
-import ZafusSection from "@components/zafus-section.astro";
-import PourquoiArtisanal from "@components/pourquoi-artisanal.astro";
-import ChoisirZafu from "@components/choisir-zafu.astro";
 import AtelierBio from "@components/atelier-bio.astro";
+import PourquoiArtisanal from "@components/pourquoi-artisanal.astro";
+import ZafusSection from "@components/zafus-section.astro";
 import AccessoiresSection from "@components/accessoires-section.astro";
-import GesteConcentrationSection from "@components/geste-concentration-section.astro";
 import Cta from "@components/cta.astro";
 import Layout from "@layouts/Layout.astro";
 
@@ -30,7 +28,7 @@ const structuredData = {
         "@type": "Brand",
         "name": "Myokan"
       },
-      "image": "https://myokan.fr/zafu-noir-lin.webp",
+      "image": "https://myokan.fr/zafu-bleu-marine-motif.webp",
       "offers": {
         "@type": "AggregateOffer",
         "priceCurrency": "EUR",
@@ -84,21 +82,19 @@ const structuredData = {
 ---
 
 <Layout
-  fullTitle="Zafu traditionnel pour zazen & méditation assise | Myokan"
-  description="Des zafus conçus pour soutenir la pratique assise, dans la tradition du zen. Confection unitaire sur mesure en toile de coton et kapok végétal dense à Montpellier."
-  image="/zafu-noir-lin.webp"
-  imageAlt="Zafu de méditation zen artisanal noir avec poignée en pur lin — Atelier Myokan Montpellier">
-  <link rel="preload" as="image" href="/zafu-noir-lin.webp" type="image/webp" fetchpriority="high" slot="head" />
+  fullTitle="Zafu traditionnel japonais fait main | Myokan, Montpellier"
+  description="Zafus traditionnels faits main par une nonne zen à Montpellier, selon la méthode transmise en 1982. Toile de coton et kapok végétal naturel dense."
+  image="/veronique-atelier.webp"
+  imageAlt="Véronique Myokan Harruis, nonne zen, façonnant un zafu dans son atelier à Montpellier">
+  <link rel="preload" as="image" href="/zafu-bleu-marine-motif.webp" type="image/webp" fetchpriority="high" slot="head" />
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(structuredData)} />
   <Container>
     <main id="main-content">
       <Hero />
-      <ZafusSection />
-      <PourquoiArtisanal />
-      <ChoisirZafu />
       <AtelierBio />
+      <PourquoiArtisanal />
+      <ZafusSection />
       <AccessoiresSection />
-      <GesteConcentrationSection />
       <Cta />
     </main>
   </Container>

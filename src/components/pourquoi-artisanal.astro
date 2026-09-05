@@ -6,11 +6,6 @@ const piliers = [
     icon: "🧘",
   },
   {
-    title: "Dans la tradition du zafu",
-    desc: "Véronique Myokan Harruis, nonne zen Soto, applique la méthode et les gabarits transmis en 1982 par maître Deshimaru, fidèles à la tradition japonaise.",
-    icon: "🏮",
-  },
-  {
     title: "Une fabrication soignée",
     desc: "Confection unitaire sur commande à Montpellier. Des plis d'aisance accordéon réguliers et du fil haute résistance permettent au coussin d'absorber la charge durablement.",
     icon: "🧵",
@@ -26,17 +21,17 @@ const piliers = [
 <section class="mt-14 sm:mt-20 mx-auto max-w-6xl scroll-mt-20" aria-labelledby="pourquoi-heading">
   <div class="text-center max-w-3xl mx-auto mb-10">
     <p class="text-xs uppercase tracking-widest font-semibold text-amber-800 dark:text-amber-400 mb-1.5">
-      Exigence & Transmission
+      Ce qui distingue un zafu Myokan
     </p>
     <h2 id="pourquoi-heading" class="text-2xl sm:text-3xl lg:text-4xl font-bold font-heading text-gray-900 dark:text-white tracking-tight">
-      Ce qui distingue un zafu Myokan
+      Un zafu n’est pas seulement un coussin de méditation
     </h2>
     <p class="mt-3 text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed max-w-2xl mx-auto">
-      Un zafu n’est pas un accessoire de bien-être éphémère. C’est un objet simple et sobre, façonné pour accompagner fidèlement la régularité de l’assise au sol.
+      Sa forme, ses proportions et sa construction répondent à un usage précis&nbsp;: le zazen, la méditation assise du zen japonais. Chaque détail y a un rôle.
     </p>
   </div>
 
-  <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">
+  <div class="grid sm:grid-cols-3 gap-4 lg:gap-5">
     {piliers.map((p) => (
       <div class="p-5 sm:p-6 rounded-2xl bg-gray-50/70 dark:bg-gray-900/60 border border-gray-200/80 dark:border-gray-800 flex flex-col justify-between shadow-xs">
         <div>
@@ -53,11 +48,11 @@ const piliers = [
   </div>
 
   <div class="mt-8 text-center">
-    <a 
-      href="/a-propos/" 
+    <a
+      href="/pratique-zazen/#posture"
       class="inline-flex items-center gap-1 text-xs sm:text-sm font-semibold text-gray-800 dark:text-gray-200 hover:text-gray-950 dark:hover:text-white underline hover:no-underline transition"
     >
-      <span>En savoir plus sur l’histoire de l’atelier et la transmission depuis 1982</span>
+      <span>Comprendre le rôle du zafu dans la posture du zazen</span>
       <span aria-hidden="true">→</span>
     </a>
   </div>
